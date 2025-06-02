@@ -1,181 +1,221 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Molecular Technology</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      color: white;
-      font-family: 'Courier Prime', monospace;
-      overflow-x: hidden;
-    }header {
-  text-align: center;
-  padding: 2rem 1rem;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Molecular Technology</title>
 
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: linear-gradient(to right, #8b0000, #ff0000, #8b0000);
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: pulse 2s infinite;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
 
-@keyframes pulse {
-  0%, 100% { text-shadow: 0 0 10px red; }
-  50% { text-shadow: 0 0 20px #ff4d4d; }
-}
+  <!-- CSS -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Caladea', serif;
+      color: white;
+      overflow-x: hidden;
+    }
 
-.slogan {
-  font-family: 'Courier Prime', monospace;
-  font-size: 1rem;
-  width: 90%;
-  margin: auto;
-  border-right: .15em solid red;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 6s steps(60, end), blink-caret .75s step-end infinite;
-}
+    header {
+      text-align: center;
+      padding: 40px 20px 10px;
+    }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 90%; }
-}
+    .company-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8em;
+      background: linear-gradient(45deg, #ff0000, #660000, #ff1a1a, #990000);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: moveText 6s ease infinite;
+      letter-spacing: 2px;
+    }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: red; }
-}
+    @keyframes moveText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-.nav-line {
-  height: 2px;
-  background: linear-gradient(to right, black, red, black);
-  margin: 1rem 0;
-}
+    .slogan {
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.1em;
+      margin-top: 10px;
+      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid red;
+      width: 0;
+      animation: typing 8s steps(80, end) forwards, blink .75s step-end infinite;
+    }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
 
-nav button {
-  background-color: #111;
-  border: 1px solid red;
-  color: red;
-  padding: 0.5rem 1.5rem;
-  font-size: 1rem;
-  font-family: 'Orbitron', sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: red; }
+    }
 
-nav button:hover {
-  background-color: red;
-  color: white;
-  box-shadow: 0 0 10px red;
-}
+    .nav-line {
+      height: 2px;
+      width: 90%;
+      margin: 20px auto;
+      background-color: red;
+      border-radius: 1px;
+    }
 
-section {
-  padding: 2rem;
-  text-align: center;
-}
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+    }
 
-h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
-  color: red;
-}
+    .nav-button {
+      background-color: #1c1c1c;
+      border: 1px solid red;
+      padding: 12px 24px;
+      font-size: 1em;
+      font-family: 'Orbitron', sans-serif;
+      color: red;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.scroll-container {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 1rem 0;
-  scrollbar-width: thin;
-}
+    .nav-button:hover {
+      background-color: #ff1c1c;
+      color: white;
+      transform: scale(1.05);
+    }
 
-.scroll-container img {
-  height: 400px;
-  width: 600px;
-  object-fit: cover;
-  border: 2px solid red;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
+    .mission {
+      text-align: center;
+      margin: 40px 20px;
+      font-size: 1.2em;
+      color: white;
+    }
 
-.scroll-container img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px red;
-}
+    .products-section {
+      padding: 20px;
+    }
 
-.mission {
-  font-family: 'Caladea', serif;
-  font-size: 1.2rem;
-  padding: 2rem 1rem;
-  background: #111;
-  margin: 2rem 0;
-}
+    .products-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6em;
+      color: red;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-.socials {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  font-size: 1.5rem;
-}
+    .scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 10px;
+      scroll-behavior: smooth;
+    }
 
-.socials a {
-  color: red;
-  transition: transform 0.3s;
-}
+    .product {
+      flex: 0 0 auto;
+      width: 400px;
+      height: 600px;
+      border-radius: 20px;
+      background-color: #1c1c1c;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-.socials a:hover {
-  transform: scale(1.3);
-}
+    .product:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px red;
+    }
 
-  </style>
-</head><body>
-  <header>
-    <div class="logo">Molecular Technology</div>
-    <div class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</div>
-  </header> <div class="nav-line"></div> <nav>
-    <button>HOME</button>
-    <button>INNOVATIONS</button>
-    <button>MARKETX</button>
-    <button>ANNOUNCES</button>
-    <button>STARTUPS</button>
-    <button>ISSUES</button>
-    <button>HELP</button>
-  </nav> <section>
-    <h2>LAYEST INNOVATIONS</h2>
-    <div class="scroll-container">
-      <img src="assets/showcaseproduct1.png" alt="Innovation 3">
-      <img src="assets/showcaseproduct2.png" alt="Innovation 2">
-      <img src="assets/showcaseproduct3.png" alt="Innovation 3">
-      <img src="assets/showcaseproduct4.png" alt="Innovation 4">
-      <img src="assets/showcaseproduct5.png" alt="Innovation 5">
-      <img src="assets/showcaseproduct6.png" alt="Innovation 6">
-    </div>
-  </section> <section>
-    <h2>UPCOMING INNOVATIONS</h2>
-    <div class="scroll-container">
-      <img src="assets/images/upcomingproduct1.png" alt="Upcoming 1">
-      <img src="assets/images/upcoming2.png" alt="Upcoming 2">
-      <img src="assets/images/upcoming3.png" alt="Upcoming 3">
-      <img src="assets/images/upcoming4.png" alt="Upcoming 4">
-    </div>
-  </section> <div class="mission">OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</div> <div class="socials">
-    <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/share/1FEy9L4KAj/"><i class="fab fa-facebook"></i></a>
-    <a href="https://x.com/MoleculartTechX?s=09"><i class="fab fa-x-twitter"></i></a>
-  </div>
-</body></html>
+    .social-links {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .social-links img {
+      width: 32px;
+      height: 32px;
+      margin: 10px;
+      filter: grayscale(1) brightness(1.5);
+      transition: transform 0.3s ease;
+    }
+
+    .social-links img:hover {
+      transform: scale(1.3);
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        width: 300px;
+        height: 450px;
+      }
+
+      .company-name {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="company-name">MOLECULAR TECHNOLOGY</div>
+    <div class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</div>
+  </header>
+
+  <div class="nav-line"></div>
+
+  <nav>
+    <button class="nav-button" onclick="navigate('home')">HOME</button>
+    <button class="nav-button" onclick="navigate('innovations')">INNOVATIONS</button>
+    <button class="nav-button" onclick="navigate('marketx')">MARKETX</button>
+    <button class="nav-button" onclick="navigate('announces')">ANNOUNCES</button>
+    <button class="nav-button" onclick="navigate('startups')">STARTUPS</button>
+    <button class="nav-button" onclick="navigate('issues')">ISSUES</button>
+    <button class="nav-button" onclick="navigate('help')">HELP</button>
+  </nav>
+
+  <div class="products-section">
+    <h2>LATEST INNOVATIONS</h2>
+    <div class="scroll-container">
+      <a class="product" href="YOUR_REDIRECT_LINK_1"></a>
+      <a class="product" href="YOUR_REDIRECT_LINK_2"></a>
+      <a class="product" href="YOUR_REDIRECT_LINK_3"></a>
+      <a class="product" href="YOUR_REDIRECT_LINK_4"></a>
+      <a class="product" href="YOUR_REDIRECT_LINK_5"></a>
+      <a class="product" href="YOUR_REDIRECT_LINK_6"></a>
+    </div>
+  </div>
+
+  <div class="mission">
+    <p>OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</p>
+  </div>
+
+  <div class="social-links">
+    <a href="https://www.instagram.com/molecular_technology_org"><img src="instagram.png" alt="Instagram"></a>
+    <a href="https://youtube.com/@moleculartechnologyorg"><img src="youtube.png" alt="YouTube"></a>
+    <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
+    <a href="https://x.com/MoleculartTechX"><img src="twitter.png" alt="Twitter"></a>
+  </div>
+
+  <script>
+    function navigate(page) {
+      // You’ll create pages like innovations.html, etc.
+      window.location.href = page.toLowerCase() + ".html";
+    }
+  </script>
+
+</body>
+</html>
