@@ -1,514 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Molecular Technology - Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-black: #0a0a0a;
-            --secondary-black: #121212;
-            --dark-grey: #1e1e1e;
-            --medium-grey: #2d2d2d;
-            --light-grey: #444;
-            --primary-red: #e63946;
-            --secondary-red: #ff2a3c;
-            --white: #ffffff;
-            --glow-red: 0 0 10px rgba(230, 57, 70, 0.7), 0 0 20px rgba(230, 57, 70, 0.5);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        body {
-            background-color: var(--primary-black);
-            color: var(--white);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        
-        /* Header Styles */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(40, 40, 40, 0.1) 0%, rgba(10, 10, 10, 0.9) 70%);
-            z-index: -1;
-        }
-        
-        .hero::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                rgba(230, 57, 70, 0.05) 0%, 
-                rgba(230, 57, 70, 0.02) 20%, 
-                rgba(10, 10, 10, 0) 50%, 
-                rgba(230, 57, 70, 0.02) 80%, 
-                rgba(230, 57, 70, 0.05) 100%);
-            z-index: -1;
-            animation: pulse 15s infinite alternate;
-        }
-        
-        .company-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, #ff2a3c, #e63946, #ff2a3c);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-            animation: aurora 3s linear infinite;
-            text-shadow: 0 0 10px rgba(230, 57, 70, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .slogan {
-            font-family: 'Courier Prime', monospace;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--white);
-            margin-bottom: 2.5rem;
-            max-width: 800px;
-            position: relative;
-            height: 1.5em;
-            overflow: hidden;
-            padding: 0.5rem 0;
-        }
-        
-        .slogan::after {
-            content: "|";
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            animation: blink 1s step-end infinite;
-            color: var(--primary-red);
-        }
-        
-        .divider {
-            width: 80%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
-            margin: 1.5rem 0 2.5rem;
-            position: relative;
-            animation: dividerGlow 2s infinite alternate;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-bottom: 3rem;
-            max-width: 1000px;
-        }
-        
-        .nav-button {
-            background-color: var(--dark-grey);
-            color: var(--primary-red);
-            border: 1px solid var(--primary-red);
-            padding: 0.8rem 1.8rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 500;
-            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .nav-button::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(to bottom, rgba(230, 57, 70, 0.2), transparent);
-            transition: height 0.3s ease;
-            z-index: -1;
-        }
-        
-        .nav-button:hover {
-            box-shadow: var(--glow-red);
-            transform: translateY(-3px);
-        }
-        
-        .nav-button:hover::before {
-            height: 100%;
-        }
-        
-        .mission {
-            font-family: 'Caladea', serif;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--white);
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            padding: 0 1rem;
-            text-align: center;
-            opacity: 0;
-            animation: fadeInUp 1.5s forwards 0.5s;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: var(--dark-grey);
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--medium-grey);
-        }
-        
-        .social-icon::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(to bottom, var(--primary-red), transparent);
-            transition: height 0.3s ease;
-            z-index: -1;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--glow-red);
-        }
-        
-        .social-icon:hover::before {
-            height: 100%;
-        }
-        
-        .featured-products {
-            padding: 3rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            text-align: center;
-            margin-bottom: 2.5rem;
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.8s;
-        }
-        
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: var(--primary-red);
-            margin: 0.8rem auto 0;
-            animation: stretch 1.5s forwards 1s;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .product-card {
-            background-color: var(--secondary-black);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transform: translateY(30px);
-            opacity: 0;
-            animation: fadeInUp 0.8s forwards;
-            animation-delay: calc(var(--delay) * 0.2s);
-            transition: transform 0.3s ease;
-            border: 1px solid var(--medium-grey);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(230, 57, 70, 0.2);
-        }
-        
-        .product-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-image::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(230, 57, 70, 0.1) 0%, transparent 70%);
-            animation: pulse 4s infinite alternate;
-        }
-        
-        .product-image i {
-            font-size: 4rem;
-            color: var(--primary-red);
-            opacity: 0.3;
-        }
-        
-        .product-info {
-            padding: 1.5rem;
-        }
-        
-        .product-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            color: var(--white);
-            margin-bottom: 0.8rem;
-        }
-        
-        .product-description {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-        }
-        
-        .coming-soon {
-            color: var(--primary-red);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-        }
-        
-        /* Animations */
-        @keyframes aurora {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 200% 50%;
-            }
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        @keyframes dividerGlow {
-            0% { box-shadow: 0 0 5px rgba(230, 57, 70, 0.3); }
-            100% { box-shadow: 0 0 20px rgba(230, 57, 70, 0.7); }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.7; }
-        }
-        
-        @keyframes stretch {
-            from { width: 0; }
-            to { width: 100px; }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-buttons {
-                gap: 0.8rem;
-            }
-            
-            .nav-button {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.85rem;
-            }
-            
-            .social-icons {
-                gap: 1.2rem;
-            }
-            
-            .social-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molecular Technology | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Caladea', serif;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      background: linear-gradient(90deg, red, violet, cyan);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: aurora 6s infinite alternate;
+    }
+    @keyframes aurora {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+    .slogan {
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.1rem;
+      width: 90%;
+      margin: 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid red;
+      animation: typing 6s steps(60, end), blink .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 90%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .menu {
+      margin: 2rem auto 0;
+      border-top: 1px solid red;
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1rem;
+    }
+    .menu button {
+      background-color: #111;
+      color: red;
+      border: 1px solid red;
+      padding: 0.8rem 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .menu button:hover {
+      background-color: red;
+      color: black;
+    }
+    .gallery {
+      margin: 2rem auto;
+      width: 90%;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-color: red transparent;
+    }
+    .gallery img {
+      height: 200px;
+      margin-right: 1rem;
+      border: 2px solid red;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .mission {
+      text-align: center;
+      margin: 3rem 1rem;
+      font-size: 1.2rem;
+    }
+    .socials {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .socials a {
+      color: white;
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .socials a:hover {
+      transform: scale(1.2);
+      color: red;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1 class="company-name">Molecular Technology</h1>
-        
-        <div class="slogan">
-            OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.
-        </div>
-        
-        <div class="divider"></div>
-        
-        <div class="nav-buttons">
-            <button class="nav-button">Home</button>
-            <button class="nav-button">Innovations</button>
-            <button class="nav-button">MarketX</button>
-            <button class="nav-button">Announces</button>
-            <button class="nav-button">Startup</button>
-            <button class="nav-button">Issues</button>
-            <button class="nav-button">Help</button>
-        </div>
-        
-        <p class="mission">
-            OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.
-        </p>
-        
-        <div class="social-icons">
-            <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw==" target="_blank" class="social-icon">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa" target="_blank" class="social-icon">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://www.facebook.com/share/1FEy9L4KAj/" target="_blank" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://x.com/MoleculartTechX?s=09" target="_blank" class="social-icon">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </div>
-    </section>
-    
-    <!-- Featured Products Section -->
-    <section class="featured-products">
-        <h2 class="section-title">Featured Innovations</h2>
-        
-        <div class="products-grid">
-            <div class="product-card" style="--delay: 1">
-                <div class="product-image">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Quantum Processor</h3>
-                    <p class="product-description">Next-generation computing technology that revolutionizes data processing capabilities.</p>
-                    <p class="coming-soon">Coming Soon</p>
-                </div>
-            </div>
-            
-            <div class="product-card" style="--delay: 2">
-                <div class="product-image">
-                    <i class="fas fa-atom"></i>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Nano Robotics</h3>
-                    <p class="product-description">Microscopic robots designed for medical applications and precision manufacturing.</p>
-                    <p class="coming-soon">Coming Soon</p>
-                </div>
-            </div>
-            
-            <div class="product-card" style="--delay: 3">
-                <div class="product-image">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Neural Interface</h3>
-                    <p class="product-description">Direct brain-to-computer communication technology for enhanced human capabilities.</p>
-                    <p class="coming-soon">Coming Soon</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Typing animation for slogan
-        document.addEventListener('DOMContentLoaded', function() {
-            const sloganElement = document.querySelector('.slogan');
-            const text = sloganElement.textContent;
-            sloganElement.textContent = '';
-            
-            let i = 0;
-            const typingEffect = setInterval(() => {
-                if (i < text.length) {
-                    sloganElement.textContent += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(typingEffect);
-                }
-            }, 50);
-            
-            // Add animations to navigation buttons
-            const navButtons = document.querySelectorAll('.nav-button');
-            navButtons.forEach((button, index) => {
-                button.style.animationDelay = `${index * 0.1 + 0.2}s`;
-                button.style.opacity = '0';
-                button.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    button.style.animation = 'fadeInUp 0.8s forwards';
-                }, 300 + index * 100);
-            });
-        });
-    </script>
+  <header>
+    <h1>Molecular Technology</h1>
+    <p class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</p>
+  </header> <div class="menu">
+    <button onclick="location.href='home.html'">HOME</button>
+    <button onclick="location.href='innovations.html'">INNOVATIONS</button>
+    <button onclick="location.href='marketx.html'">MARKETX</button>
+    <button onclick="location.href='announces.html'">ANNOUNCES</button>
+    <button onclick="location.href='startups.html'">STARTUPS</button>
+    <button onclick="location.href='issues.html'">ISSUES</button>
+    <button onclick="location.href='help.html'">HELP</button>
+  </div> <div class="gallery">
+    <!-- Future product images -->
+    <img src="placeholder1.jpg" alt="Product 1" onclick="location.href='marketx.html'" />
+    <img src="placeholder2.jpg" alt="Product 2" onclick="location.href='innovations.html'" />
+  </div> <div class="mission">
+    OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.
+  </div> <div class="socials">
+    <a href="https://www.instagram.com/molecular_technology_org" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@moleculartechnologyorg" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/share/1FEy9L4KAj" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://x.com/MoleculartTechX" target="_blank"><i class="fab fa-twitter"></i></a>
+  </div>
 </body>
 </html>
