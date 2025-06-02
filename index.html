@@ -1,195 +1,185 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Molecular Technology</title>  <!-- Google Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Yatra+One&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">  <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOLECULAR TECHNOLOGY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Yatra+One&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
+  <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
     }
-
     body {
-      background-color: black;
-      font-family: 'Orbitron', sans-serif;
+      background: black;
       color: white;
+      font-family: 'Orbitron', sans-serif;
       overflow-x: hidden;
     }
-
-    .header {
+    header {
       text-align: center;
-      padding: 2rem 1rem 0.5rem 1rem;
+      padding: 2rem 1rem 1rem;
+      font-family: 'Orbitron', sans-serif;
     }
-
     .company-name {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 900;
-      background: linear-gradient(-45deg, red, darkred, crimson, orangered);
+      background: linear-gradient(270deg, #ff0000, #c70039, #ff4d4d);
+      background-size: 600% 600%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: aurora 4s linear infinite;
+      animation: auroraRed 10s ease infinite;
     }
-
-    @keyframes aurora {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    @keyframes auroraRed {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
-
     .slogan {
       font-family: 'Courier Prime', monospace;
       font-size: 1rem;
       color: white;
       text-shadow: 0 0 5px white;
-      margin: 0.5rem auto;
-      width: 80%;
-      animation: typing 5s steps(60, end), blink 0.75s step-end infinite;
+      margin-top: 0.5rem;
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid white;
+      width: 100%;
+      animation: typing 5s steps(80, end), blink-caret .75s step-end infinite;
     }
-
     @keyframes typing {
-      from { width: 0; }
-      to { width: 80%; border-right: none; }
+      from { width: 0 }
+      to { width: 100% }
     }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: white; }
     }
-
+    nav {
+      margin: 1rem auto;
+      width: fit-content;
+      display: flex;
+      gap: 0.8rem;
+    }
+    nav a {
+      padding: 0.5rem 1rem;
+      background: #111;
+      border: 1px solid red;
+      color: red;
+      text-decoration: none;
+      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px red;
+    }
+    nav a:hover {
+      background: red;
+      color: black;
+      box-shadow: 0 0 15px red;
+    }
     .red-line {
       width: 100%;
-      height: 3px;
+      height: 2px;
       background: red;
-      box-shadow: 0 0 8px red;
-      margin: 1rem 0;
-    }
-
-    .nav-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding-bottom: 1rem;
-    }
-
-    .nav-buttons a {
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      color: red;
-      background-color: #1a1a1a;
-      border: 1px solid red;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
       box-shadow: 0 0 10px red;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .nav-buttons a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px crimson;
-    }
-
     .section-title {
       font-family: 'Yatra One', cursive;
-      color: red;
-      font-size: 2rem;
+      font-size: 1.5rem;
       text-align: center;
-      margin-top: 2rem;
-      text-shadow: 0 0 8px red;
+      margin: 2rem 0 1rem;
+      color: red;
+      text-shadow: 0 0 10px red;
     }
-
     .scroll-section {
       display: flex;
       overflow-x: auto;
       gap: 1rem;
       padding: 1rem;
-      scroll-snap-type: x mandatory;
     }
-
-    .scroll-section::-webkit-scrollbar {
-      display: none;
-    }
-
-    .scroll-img {
-      flex: 0 0 auto;
+    .scroll-section a {
+      display: inline-block;
       width: 400px;
       height: 500px;
-      border-radius: 12px;
-      background: #111;
-      box-shadow: 0 0 12px rgba(255,0,0,0.6);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
     }
-
-    .scroll-img:hover {
+    .scroll-section a:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255,0,0,0.9);
-      background: linear-gradient(-45deg, rgba(255,0,0,0.3), rgba(255,20,147,0.3), rgba(255,0,0,0.3));
+      box-shadow: 0 0 20px rgb(255, 0, 0);
     }
-
+    .scroll-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .mission {
       font-family: 'Caladea', serif;
       font-size: 1.2rem;
-      margin: 2rem auto;
       text-align: center;
-      width: 80%;
+      margin: 3rem auto;
+      max-width: 80%;
       background: linear-gradient(270deg, red, green, blue);
+      background-size: 600% 600%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: aurora 6s linear infinite;
-      text-shadow: 0 0 8px white;
+      animation: auroraRGB 10s ease infinite;
+      text-shadow: 0 0 10px white;
     }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
+    @keyframes auroraRGB {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
-
-    .social-links img {
+    footer {
+      text-align: center;
+      padding: 1rem;
+    }
+    .social-icons img {
       width: 32px;
-      height: 32px;
+      margin: 0 10px;
     }
-  </style></head>
+  </style>
+</head>
 <body>
-  <div class="header">
-    <h1 class="company-name">MOLECULAR TECHNOLOGY</h1>
-    <p class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</p>
-  </div>  <div class="red-line"></div>  <div class="nav-buttons">
-    <a href="index.html">HOME</a>
+  <header>
+    <div class="company-name">MOLECULAR TECHNOLOGY</div>
+    <div class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</div>
+  </header>
+  <div class="red-line"></div>
+  <nav>
+    <a href="home.html">HOME</a>
     <a href="innovations.html">INNOVATIONS</a>
     <a href="marketx.html">MARKETX</a>
     <a href="announces.html">ANNOUNCES</a>
     <a href="startups.html">STARTUPS</a>
     <a href="issues.html">ISSUES</a>
     <a href="help.html">HELP</a>
-  </div>  <h2 class="section-title">LATEST INNOVATIONS</h2>
+  </nav>  <div class="section-title">LATEST INNOVATIONS</div>
   <div class="scroll-section">
-    <img src="latestproduct1.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="latestproduct2.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="latestproduct3.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="latestproduct4.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="latestproduct5.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="latestproduct6.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-
-  </div>  <h2 class="section-title">UPCOMING INNOVATIONS</h2>
-  <div class="image-scroll">
-    <img src="upcomingproduct1.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="upcomingproduct2.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="upcomingproduct3.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="upcomingproduct4.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="upcomingproduct5.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-    <img src="upcomingproduct6.jpg" onclick="location.href='YOUR_REDIRECT_LINK_HERE'" />
-
-  </div>  <p class="mission">OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</p>  <div class="social-links">
-    <a href="https://www.instagram.com/molecular_technology_org"><img src="instagram.png" alt="Instagram"></a>
-    <a href="https://youtube.com/@moleculartechnologyorg"><img src="youtube.png" alt="YouTube"></a>
-    <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
-    <a href="https://x.com/MoleculartTechX"><img src="twitter.png" alt="Twitter"></a>
-  </div>
+    <a href="YOUR REDIRECT LINK HERE"><img src="latestinnovationsimage1.jpg" alt="Innovation 1"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="latestinnovationsimage2.jpg" alt="Innovation 2"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="latestinnovationsimage3.jpg" alt="Innovation 3"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="latestinnovationsimage4.jpg" alt="Innovation 4"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="latestinnovationsimage5.jpg" alt="Innovation 5"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="latestinnovationsimage6.jpg" alt="Innovation 6"></a>
+  </div>  <div class="section-title">UPCOMING INNOVATIONS</div>
+  <div class="scroll-section">
+    <a href="YOUR REDIRECT LINK HERE"><img src="upcominginnovationsimage1.jpg" alt="Upcoming 1"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="upcominginnovationsimage2.jpg" alt="Upcoming 2"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="upcominginnovationsimage3.jpg" alt="Upcoming 3"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="upcominginnovationsimage4.jpg" alt="Upcoming 4"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="upcominginnovationsimage5.jpg" alt="Upcoming 5"></a>
+    <a href="YOUR REDIRECT LINK HERE"><img src="upcominginnovationsimage6.jpg" alt="Upcoming 6"></a>
+  </div>  <div class="mission">OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</div>  <footer>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><img src="instagram.png" alt="Instagram"></a>
+      <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><img src="youtube.png" alt="YouTube"></a>
+      <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
+      <a href="https://x.com/MoleculartTechX?s=09"><img src="twitter.png" alt="X"></a>
+    </div>
+  </footer>
 </body>
 </html>
