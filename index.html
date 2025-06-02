@@ -1,145 +1,181 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Molecular Technology | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: #000;
-      color: white;
-      font-family: 'Caladea', serif;
-      overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      background: linear-gradient(90deg, red, violet, cyan);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: aurora 6s infinite alternate;
-    }
-    @keyframes aurora {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
-    .slogan {
-      font-family: 'Courier Prime', monospace;
-      font-size: 1.1rem;
-      width: 90%;
-      margin: 0 auto;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid red;
-      animation: typing 6s steps(60, end), blink .75s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 90%; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-    .menu {
-      margin: 2rem auto 0;
-      border-top: 1px solid red;
-      width: 90%;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding-top: 1rem;
-    }
-    .menu button {
-      background-color: #111;
-      color: red;
-      border: 1px solid red;
-      padding: 0.8rem 1.5rem;
-      font-family: 'Orbitron', sans-serif;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .menu button:hover {
-      background-color: red;
-      color: black;
-    }
-    .gallery {
-      margin: 2rem auto;
-      width: 90%;
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-color: red transparent;
-    }
-    .gallery img {
-      height: 200px;
-      margin-right: 1rem;
-      border: 2px solid red;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .mission {
-      text-align: center;
-      margin: 3rem 1rem;
-      font-size: 1.2rem;
-    }
-    .socials {
-      text-align: center;
-      margin: 2rem 0;
-    }
-    .socials a {
-      color: white;
-      margin: 0 1rem;
-      font-size: 1.5rem;
-      transition: transform 0.3s;
-    }
-    .socials a:hover {
-      transform: scale(1.2);
-      color: red;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Molecular Technology</h1>
-    <p class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</p>
-  </header> <div class="menu">
-    <button onclick="location.href='home.html'">HOME</button>
-    <button onclick="location.href='innovations.html'">INNOVATIONS</button>
-    <button onclick="location.href='marketx.html'">MARKETX</button>
-    <button onclick="location.href='announces.html'">ANNOUNCES</button>
-    <button onclick="location.href='startups.html'">STARTUPS</button>
-    <button onclick="location.href='issues.html'">ISSUES</button>
-    <button onclick="location.href='help.html'">HELP</button>
-  </div> <div class="gallery">
-    <!-- Future product images -->
-    <img src="placeholder1.jpg" alt="Product 1" onclick="location.href='marketx.html'" />
-    <img src="placeholder2.jpg" alt="Product 2" onclick="location.href='innovations.html'" />
-  </div> <div class="mission">
-    OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.
-  </div> <div class="socials">
-    <a href="https://www.instagram.com/molecular_technology_org" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@moleculartechnologyorg" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/share/1FEy9L4KAj" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://x.com/MoleculartTechX" target="_blank"><i class="fab fa-twitter"></i></a>
-  </div>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molecular Technology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: 'Courier Prime', monospace;
+      overflow-x: hidden;
+    }header {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #8b0000, #ff0000, #8b0000);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 10px red; }
+  50% { text-shadow: 0 0 20px #ff4d4d; }
+}
+
+.slogan {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  width: 90%;
+  margin: auto;
+  border-right: .15em solid red;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 6s steps(60, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 90%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: red; }
+}
+
+.nav-line {
+  height: 2px;
+  background: linear-gradient(to right, black, red, black);
+  margin: 1rem 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav button {
+  background-color: #111;
+  border: 1px solid red;
+  color: red;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav button:hover {
+  background-color: red;
+  color: white;
+  box-shadow: 0 0 10px red;
+}
+
+section {
+  padding: 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: red;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  scrollbar-width: thin;
+}
+
+.scroll-container img {
+  height: 400px;
+  width: 600px;
+  object-fit: cover;
+  border: 2px solid red;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.scroll-container img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px red;
+}
+
+.mission {
+  font-family: 'Caladea', serif;
+  font-size: 1.2rem;
+  padding: 2rem 1rem;
+  background: #111;
+  margin: 2rem 0;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+}
+
+.socials a {
+  color: red;
+  transition: transform 0.3s;
+}
+
+.socials a:hover {
+  transform: scale(1.3);
+}
+
+  </style>
+</head><body>
+  <header>
+    <div class="logo">Molecular Technology</div>
+    <div class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</div>
+  </header> <div class="nav-line"></div> <nav>
+    <button>HOME</button>
+    <button>INNOVATIONS</button>
+    <button>MARKETX</button>
+    <button>ANNOUNCES</button>
+    <button>STARTUPS</button>
+    <button>ISSUES</button>
+    <button>HELP</button>
+  </nav> <section>
+    <h2>LAYEST INNOVATIONS</h2>
+    <div class="scroll-container">
+      <img src="assets/showcaseproduct1.png" alt="Innovation 3">
+      <img src="assets/showcaseproduct2.png" alt="Innovation 2">
+      <img src="assets/showcaseproduct3.png" alt="Innovation 3">
+      <img src="assets/showcaseproduct4.png" alt="Innovation 4">
+      <img src="assets/showcaseproduct5.png" alt="Innovation 5">
+      <img src="assets/showcaseproduct6.png" alt="Innovation 6">
+    </div>
+  </section> <section>
+    <h2>UPCOMING INNOVATIONS</h2>
+    <div class="scroll-container">
+      <img src="assets/images/upcomingproduct1.png" alt="Upcoming 1">
+      <img src="assets/images/upcoming2.png" alt="Upcoming 2">
+      <img src="assets/images/upcoming3.png" alt="Upcoming 3">
+      <img src="assets/images/upcoming4.png" alt="Upcoming 4">
+    </div>
+  </section> <div class="mission">OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</div> <div class="socials">
+    <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/share/1FEy9L4KAj/"><i class="fab fa-facebook"></i></a>
+    <a href="https://x.com/MoleculartTechX?s=09"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</body></html>
