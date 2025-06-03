@@ -1,291 +1,298 @@
 <!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Innovations | Molecular Technology</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Yatra+One&family=Caladea&family=Courier+Prime&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INNOVATIONS - Molecular Technology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Caladea&family=Courier+Prime&family=Yatra+One&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
+      font-family: 'Orbitron', sans-serif;
     }body {
-  font-family: 'Orbitron', sans-serif;
-  background: #000;
+  background: black;
   color: white;
   overflow-x: hidden;
 }
 
 header {
   text-align: center;
-  margin-top: 30px;
-  animation: fadeIn 2s ease-in;
+  padding: 50px 20px 10px;
 }
 
-.company-name {
-  font-size: 3rem;
+.title {
+  font-family: 'Orbitron', sans-serif;
   font-weight: 900;
-  background: linear-gradient(270deg, #ff0000, #ff4d4d, #ff0000);
+  font-size: 2.8em;
+  background: linear-gradient(270deg, #ff0000, #990000, #ff0000);
   background-size: 600% 600%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: auroraRed 6s ease infinite, minimalGlow 2s ease-in-out infinite;
+  animation: auroraRed 5s ease infinite, fadeIn 2s ease;
+  text-shadow: 0 0 5px red;
 }
 
-.page-subtitle {
-  font-family: 'Montagu Slab', serif;
+.subtitle {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.2em;
   color: white;
-  font-size: 1.3rem;
-  text-align: center;
-  margin-top: 10px;
-  animation: type 4s steps(60, end);
-  white-space: nowrap;
+  text-shadow: 0 0 10px white;
+  animation: fadeIn 3s ease, typing 4s steps(60, end);
   overflow: hidden;
-  border-right: 2px solid white;
+  white-space: nowrap;
   width: 100%;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  border-right: .15em solid white;
 }
 
-@keyframes type {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.red-line {
+  height: 3px;
+  width: 100%;
+  background: red;
+  margin: 20px 0;
 }
 
-.nav-bar {
-  margin-top: 20px;
+nav {
   display: flex;
   justify-content: center;
   gap: 15px;
+  margin-bottom: 30px;
 }
 
-.nav-bar button {
-  background-color: #111;
+nav button {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  padding: 10px 25px;
+  background: #1a1a1a;
   color: white;
   border: 2px solid red;
-  font-weight: 800;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Orbitron', sans-serif;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
-.nav-bar button:hover {
-  background-color: #222;
-  transform: scale(1.05);
-  box-shadow: 0 0 10px red;
+nav button:hover {
+  background: red;
+  color: black;
+  box-shadow: 0 0 15px red;
 }
 
-.search-bar-container {
+.search-filter {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
   gap: 10px;
-  flex-wrap: wrap;
+  padding: 20px;
 }
 
-.search-bar {
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  font-family: 'Lato', sans-serif;
-  width: 300px;
+.search-box {
+  flex: 1;
+  padding: 10px;
   border: none;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
 }
 
 .filter-btn {
-  padding: 10px 20px;
-  background-color: #111;
-  color: white;
+  padding: 10px 15px;
   border: 2px solid red;
-  border-radius: 10px;
-  font-family: 'Orbitron', sans-serif;
+  border-radius: 30px;
+  background-color: transparent;
+  color: red;
   cursor: pointer;
 }
 
-.section-buttons {
+.categories {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
   flex-wrap: wrap;
-  gap: 10px;
-}
-
-.section-buttons button {
-  padding: 10px 15px;
-  background-color: #111;
-  color: white;
-  border: 1px solid red;
-  font-family: 'Orbitron', sans-serif;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.section-buttons button:hover {
-  background: #222;
-  box-shadow: 0 0 10px red;
-}
-
-.products-section {
-  padding: 40px 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.product-card {
-  background-color: #111;
-  border-radius: 20px;
+  gap: 15px;
   padding: 20px;
-  box-shadow: 0 0 10px #111;
+}
+
+.categories button {
+  padding: 8px 20px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  border-radius: 20px;
   transition: 0.3s;
 }
 
-.product-card:hover {
-  box-shadow: 0 0 20px red;
+.categories button:hover {
+  background-color: white;
+  color: black;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.product {
+  width: 300px;
+  background-color: #111;
+  border: 1px solid red;
+  border-radius: 20px;
+  padding: 15px;
+  transition: 0.4s;
+  position: relative;
+}
+
+.product:hover {
+  box-shadow: 0 0 15px red;
   transform: translateY(-5px);
 }
 
-.product-logo {
-  width: 100px;
-  height: 100px;
+.product img {
+  width: 100%;
+  height: 160px;
   object-fit: cover;
   border-radius: 10px;
 }
 
-.product-info {
+.product h3 {
   margin-top: 10px;
+  font-size: 1.2em;
 }
 
-.product-title {
-  font-size: 1.2rem;
-  font-weight: bold;
+.product p {
+  font-size: 0.9em;
+  color: #ccc;
 }
 
-.view-more-btn {
-  margin-top: 15px;
-  background: red;
+.view-btn {
+  display: block;
+  margin-top: 10px;
+  background-color: red;
   color: black;
-  border: none;
   padding: 10px;
-  border-radius: 10px;
   font-family: 'Lato', sans-serif;
-  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 20px;
   transition: 0.3s;
 }
 
-.view-more-btn:hover {
+.view-btn:hover {
   box-shadow: 0 0 10px white;
 }
 
 @keyframes auroraRed {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes minimalGlow {
-  0%, 100% {
-    text-shadow: 0 0 3px red;
-  }
-  50% {
-    text-shadow: 0 0 8px red;
-  }
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
 }
 
   </style>
 </head><body>
   <header>
-    <h1 class="company-name">INNOVATIONS</h1>
-    <p class="page-subtitle">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
-  </header>  <div class="nav-bar">
+    <h1 class="title">INNOVATIONS</h1>
+    <p class="subtitle">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
+    <div class="red-line"></div>
+  </header>  <nav>
     <button onclick="location.href='index.html'">HOME</button>
-    <button onclick="location.href='innovations.html'">INNOVATIONS</button>
     <button onclick="location.href='marketx.html'">MARKETX</button>
     <button onclick="location.href='announces.html'">ANNOUNCES</button>
     <button onclick="location.href='startups.html'">STARTUPS</button>
     <button onclick="location.href='issues.html'">ISSUES</button>
     <button onclick="location.href='help.html'">HELP</button>
-  </div>  <div class="search-bar-container">
-    <input class="search-bar" type="text" placeholder="Search Any App, Game, Book, Gadget Etc...">
+  </nav>  <div class="search-filter">
+    <input type="text" class="search-box" placeholder="Search Any App, Game, Book, Gadget Etc...">
     <button class="filter-btn">Filter</button>
-  </div>  <div class="section-buttons">
-    <button>All</button>
-    <button>Apps</button>
-    <button>Games</button>
-    <button>Books</button>
-    <button>Gadgets</button>
-    <button>More</button>
-  </div>  <section class="products-section">
-    <!-- Sample App -->
-    <div class="product-card">
-      <img class="product-logo" src="images/app1icon.png" alt="App 1">
-      <div class="product-info">
-        <div class="product-title">VoiceNoteX</div>
-        <p>Category: Productivity · Internet: Low · Downloads: 10K+ · Rating: ★★★★☆</p>
-        <p>Record and summarize your voice notes instantly.</p>
-        <button class="view-more-btn">View More</button>
-      </div>
-    </div><!-- Sample Game -->
-<div class="product-card">
-  <img class="product-logo" src="images/game1icon.png" alt="Game 1">
-  <div class="product-info">
-    <div class="product-title">SIMULIFE: Underworld</div>
-    <p>Category: Simulation · Internet: Medium · Downloads: 5K+ · Rating: ★★★★★</p>
-    <p>Experience gangster life in a low-poly open-world.</p>
-    <button class="view-more-btn">View More</button>
-  </div>
+  </div>  <div class="categories">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('apps')">Apps</button>
+    <button onclick="filterCategory('games')">Games</button>
+    <button onclick="filterCategory('books')">Books</button>
+    <button onclick="filterCategory('gadgets')">Gadgets</button>
+    <button onclick="filterCategory('more')">More</button>
+  </div>  <div class="products" id="product-list">
+    <!-- Sample Apps -->
+    <div class="product" data-category="apps">
+      <img src="images/app1icon.png" alt="App 1">
+      <h3>Peter AI Assistant</h3>
+      <p>Voice-based multilingual assistant with smart AI features.</p>
+      <a class="view-btn" onclick="viewDetails('Peter AI Assistant')">View More</a>
+    </div><div class="product" data-category="apps">
+  <img src="images/app2icon.png" alt="App 2">
+  <h3>Photo Glitcher</h3>
+  <p>Glitch effects editor for futuristic-looking photos.</p>
+  <a class="view-btn" onclick="viewDetails('Photo Glitcher')">View More</a>
 </div>
 
-<!-- Sample Book -->
-<div class="product-card">
-  <img class="product-logo" src="images/book1icon.png" alt="Book 1">
-  <div class="product-info">
-    <div class="product-title">Beyond Tomorrow</div>
-    <p>Category: Sci-Fi · Format: PDF · Rating: ★★★★☆</p>
-    <p>A journey through space and time with deep emotion.</p>
-    <button class="view-more-btn">View More</button>
-  </div>
+<!-- Sample Games -->
+<div class="product" data-category="games">
+  <img src="images/game1icon.png" alt="Game 1">
+  <h3>SIMULIFE: Underworld Legacy</h3>
+  <p>Offline gangster simulator game in low-poly style.</p>
+  <a class="view-btn" onclick="viewDetails('SIMULIFE: Underworld Legacy')">View More</a>
 </div>
 
-<!-- Sample Gadget -->
-<div class="product-card">
-  <img class="product-logo" src="images/gadget1icon.png" alt="Gadget 1">
-  <div class="product-info">
-    <div class="product-title">SmartBand Nano</div>
-    <p>Category: Wearable Tech · Type: Tracker · Rating: ★★★★☆</p>
-    <p>Track your health in style and with ease.</p>
-    <button class="view-more-btn">View More</button>
-  </div>
+<div class="product" data-category="games">
+  <img src="images/game2icon.png" alt="Game 2">
+  <h3>Galaxy Shooter Neo</h3>
+  <p>Retro-style arcade shooter with neon effects.</p>
+  <a class="view-btn" onclick="viewDetails('Galaxy Shooter Neo')">View More</a>
 </div>
 
-  </section>
-</body>
-</html>
+<!-- Sample Books -->
+<div class="product" data-category="books">
+  <img src="images/book1cover.png" alt="Book 1">
+  <h3>The Red Algorithm</h3>
+  <p>Futuristic tech thriller unraveling machine conspiracies.</p>
+  <a class="view-btn" onclick="viewDetails('The Red Algorithm')">View More</a>
+</div>
+
+<div class="product" data-category="books">
+  <img src="images/book2cover.png" alt="Book 2">
+  <h3>Code & Chaos</h3>
+  <p>Motivational journey through tech and innovation battles.</p>
+  <a class="view-btn" onclick="viewDetails('Code & Chaos')">View More</a>
+</div>
+
+<!-- Sample Gadgets -->
+<div class="product" data-category="gadgets">
+  <img src="images/gadget1.png" alt="Gadget 1">
+  <h3>MOLECULAR TrackBand</h3>
+  <p>High-tech wrist band with health and AI features.</p>
+  <a class="view-btn" onclick="viewDetails('MOLECULAR TrackBand')">View More</a>
+</div>
+
+<div class="product" data-category="gadgets">
+  <img src="images/gadget2.png" alt="Gadget 2">
+  <h3>Neon KeyHub</h3>
+  <p>Multifunctional AI-enabled keyboard for developers.</p>
+  <a class="view-btn" onclick="viewDetails('Neon KeyHub')">View More</a>
+</div>
+
+  </div>  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.product');
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function viewDetails(name) {
+      alert('Showing detailed view for: ' + name);
+    }
+  </script></body></html>
