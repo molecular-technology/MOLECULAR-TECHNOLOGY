@@ -125,6 +125,7 @@
       gap: 1rem;
       flex-wrap: wrap;
       padding: 1rem 1rem 2rem;
+      position: relative;
       animation: fadeIn 1.5s ease-out;
     }
     .search-bar {
@@ -156,14 +157,13 @@
     .suggestions {
       position: absolute;
       top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
+      left: calc(50% - 250px);
+      width: 500px;
       background: #111;
       border: 1px solid #444;
       max-height: 200px;
       overflow-y: auto;
       border-radius: 0 0 8px 8px;
-      width: 500px;
       display: none;
       z-index: 10;
     }
@@ -419,7 +419,7 @@
 
   <!-- SEARCH & FILTER -->
   <div class="search-filter">
-    <div style="position:relative;">
+    <div style="position:relative; width: 500px; max-width: 90%;">
       <input type="text" id="searchInput" class="search-bar" placeholder="Search Any App, Game, Book, Gadget Etc..." onkeyup="updateSuggestions()" />
       <div id="suggestions" class="suggestions"></div>
     </div>
@@ -484,7 +484,11 @@
           • “Smooth and reliable.” – Techie</span>`,
           previewImgs: ["images/app1prev1.png", "images/app1prev2.png", "images/app1prev3.png"],
           ageRating: "3+",
-          similar: ["PhotoPro", "Voice Hero"]
+          similar: ["PhotoPro", "Voice Hero"],
+          supported: "Android 5.0+",
+          lastUpdate: "June 1, 2025",
+          version: "2.1.0",
+          reviews: ["“Best chat app ever!” – User123", "“Smooth and reliable.” – Techie"]
         }
       },
       {
@@ -511,7 +515,11 @@
           • “Worth every penny.” – EditorPro</span>`,
           previewImgs: ["images/app2prev1.png", "images/app2prev2.png", "images/app2prev3.png"],
           ageRating: "7+",
-          similar: ["ChatMaster", "AI Art Studio"]
+          similar: ["ChatMaster", "AI Art Studio"],
+          supported: "Android 6.0+",
+          lastUpdate: "May 12, 2025",
+          version: "3.4.5",
+          reviews: ["“Stunning results!” – PhotoFan", "“Worth every penny.” – EditorPro"]
         }
       },
 
@@ -540,7 +548,11 @@
           • “Addictive gameplay.” – SpaceFan</span>`,
           previewImgs: ["images/game1prev1.png", "images/game1prev2.png", "images/game1prev3.png"],
           ageRating: "9+",
-          similar: ["ZombieSurvival", "MetaverseRoom"]
+          similar: ["ZombieSurvival", "MetaverseRoom"],
+          supported: "Android 6.0+",
+          lastUpdate: "April 20, 2025",
+          version: "1.8.2",
+          reviews: ["“Amazing visuals!” – GamerX", "“Addictive gameplay.” – SpaceFan"]
         }
       },
       {
@@ -567,7 +579,11 @@
           • “Best zombie game.” – Shehero</span>`,
           previewImgs: ["images/game2prev1.png", "images/game2prev2.png", "images/game2prev3.png"],
           ageRating: "16+",
-          similar: ["SpaceOdyssey", "Neon KeyHub"]
+          similar: ["SpaceOdyssey", "Neon KeyHub"],
+          supported: "Android 7.0+",
+          lastUpdate: "May 30, 2025",
+          version: "2.3.1",
+          reviews: ["“Heart-pounding!” – Survivor123", "“Best zombie game.” – Shehero"]
         }
       },
 
@@ -595,7 +611,11 @@
           • “A must-read.” – SelfHelpGuru</span>`,
           previewImgs: ["images/book1prev1.png", "images/book1prev2.png", "images/book1prev3.png"],
           ageRating: "All Ages",
-          similar: ["CodeChaos", "AI Art Studio"]
+          similar: ["CodeChaos", "AI Art Studio"],
+          supported: "PDF",
+          lastUpdate: "March 10, 2025",
+          version: "1st Edition",
+          reviews: ["“Truly inspiring.” – ReaderOne", "“A must-read.” – SelfHelpGuru"]
         }
       },
       {
@@ -621,7 +641,11 @@
           • “Chilling vision.” – ThrillerCritic</span>`,
           previewImgs: ["images/book2prev1.png", "images/book2prev2.png", "images/book2prev3.png"],
           ageRating: "16+",
-          similar: ["TheMotivator", "UnderworldX"]
+          similar: ["TheMotivator", "UnderworldX"],
+          supported: "EPUB",
+          lastUpdate: "April 5, 2025",
+          version: "1.1.0",
+          reviews: ["“Cannot put it down.” – BookFanatic", "“Chilling vision.” – ThrillerCritic"]
         }
       },
 
@@ -649,7 +673,11 @@
           • “Best design I’ve seen.” – StyleCritic</span>`,
           previewImgs: ["images/gadget1prev1.png", "images/gadget1prev2.png", "images/gadget1prev3.png"],
           ageRating: "All Ages",
-          similar: ["Neon KeyHub", "M-Quantum Watch"]
+          similar: ["Neon KeyHub", "M-Quantum Watch"],
+          supported: "Android & iOS",
+          lastUpdate: "May 1, 2025",
+          version: "1.0.0",
+          reviews: ["“Love this watch!” – TechGuru", "“Best design I’ve seen.” – StyleCritic"]
         }
       },
       {
@@ -675,7 +703,11 @@
           • “Eco-friendly & powerful.” – GreenTech</span>`,
           previewImgs: ["images/gadget2prev1.png", "images/gadget2prev2.png", "images/gadget2prev3.png"],
           ageRating: "All Ages",
-          similar: ["SmartWatchX", "MetaverseRoom"]
+          similar: ["SmartWatchX", "MetaverseRoom"],
+          supported: "Bluetooth 5.0, AUX",
+          lastUpdate: "April 25, 2025",
+          version: "1.0.0",
+          reviews: ["“Impressive audio.” – AudioExpert", "“Eco-friendly & powerful.” – GreenTech"]
         }
       },
 
@@ -703,7 +735,11 @@
           • “Next-level innovation.” – TechCritic</span>`,
           previewImgs: ["images/more1prev1.png", "images/more1prev2.png", "images/more1prev3.png"],
           ageRating: "All Ages",
-          similar: ["AI Art Studio", "SpaceOdyssey"]
+          similar: ["AI Art Studio", "SpaceOdyssey"],
+          supported: "VR headset",
+          lastUpdate: "N/A",
+          version: "v0.5 Alpha",
+          reviews: ["“Mind-blowing VR!” – VRFan", "“Next-level innovation.” – TechCritic"]
         }
       },
       {
@@ -717,7 +753,7 @@
         description: "Generate futuristic art with built-in AI models.",
         type: "coming-soon",
         price: "",
-        redirect: "https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA9HM&pcampaignid=web_share",
+        redirect: "#",
         detailed: {
           longDesc: `AI Art Studio uses advanced GAN and VQ-VAE models to generate high-resolution digital art on the fly. Choose styles and export up to 4K.<br><br>
           <span id="readMore10" class="read-more">Read More</span>
@@ -729,7 +765,11 @@
           • “A creative powerhouse.” – PainterPro</span>`,
           previewImgs: ["images/more2prev1.png", "images/more2prev2.png", "images/more2prev3.png"],
           ageRating: "All Ages",
-          similar: ["MetaverseRoom", "PhotoPro"]
+          similar: ["MetaverseRoom", "PhotoPro"],
+          supported: "PC/Web",
+          lastUpdate: "N/A",
+          version: "v0.7 Beta",
+          reviews: ["“Unreal results!” – ArtGeek", "“A creative powerhouse.” – PainterPro"]
         }
       }
     ];
@@ -738,10 +778,10 @@
     let activeCategory = 'all';
 
     // ===== INITIAL RENDER =====
-    window.onload = () => {
+    window.addEventListener('DOMContentLoaded', () => {
       renderProducts('all');
       populateSuggestions();
-    };
+    });
 
     // ===== RENDER PRODUCTS =====
     function renderProducts(category) {
@@ -845,9 +885,7 @@
         </div>
       `;
 
-      // Description + Read More
       document.getElementById('detailDescription').innerHTML = prod.detailed.longDesc;
-      // Attach readMore click
       const idx = products.indexOf(prod) + 1;
       const readMore = document.getElementById(`readMore${idx}`);
       const extra = document.getElementById(`extra${idx}`);
@@ -858,7 +896,6 @@
         };
       }
 
-      // Preview images
       const imgContainer = document.getElementById('detailImages');
       imgContainer.innerHTML = '';
       prod.detailed.previewImgs.forEach(src => {
@@ -867,7 +904,6 @@
         imgContainer.appendChild(img);
       });
 
-      // Extra info
       document.getElementById('detailExtra').innerHTML = `
         <p><strong>Supported:</strong> ${prod.detailed.supported || 'N/A'}</p>
         <p><strong>Last Update:</strong> ${prod.detailed.lastUpdate || 'N/A'}</p>
@@ -878,7 +914,6 @@
         <p><strong>Similar:</strong> ${prod.detailed.similar.join(', ')}</p>
       `;
 
-      // Download/Buy button
       const dl = document.getElementById('detailDownload');
       if (prod.type === 'paid') {
         dl.innerHTML = `<button class="download-btn paid" onclick="window.location.href='${prod.redirect}'">BUY NOW - $${prod.price}</button>`;
