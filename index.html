@@ -2,195 +2,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOLECULAR TECHNOLOGY</title>  <!-- Google Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Yatra+One&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">  <style>
+  <title>MOLECULAR TECHNOLOGY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Courier+Prime&family=Caladea&family=Yatra+One&display=swap" rel="stylesheet">
+  <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-    body {
-      background-color: #000;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      padding: 30px 10px;
-    }
-    .company-name {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
-      font-size: 2.8rem;
-      background: linear-gradient(90deg, red, crimson, darkred);
-      background-size: 400% auto;
-      color: #fff;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: auroraText 8s ease-in-out infinite;
-    }
-    @keyframes auroraText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .slogan {
-      font-family: 'Courier Prime', monospace;
-      font-size: 1.1rem;
-      color: white;
-      margin-top: 15px;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid white;
-      width: 0;
-      animation: typing 5s steps(80, end) forwards, blink-caret .75s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: white; }
-    }
-    .red-line {
-      margin: 20px auto;
-      width: 90%;
-      height: 3px;
-      background: #ff4d4d;
-      box-shadow: 0 0 10px #ff4d4d;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 20px 0;
-    }
-    .nav-btn {
-      background-color: #111;
-      border: 1px solid red;
-      padding: 12px 20px;
-      color: red;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .nav-btn:hover {
-      background-color: red;
-      color: white;
-      box-shadow: 0 0 10px red;
-      transform: scale(1.05);
-    }
-    .section-title {
-      font-family: 'Yatra One', cursive;
-      color: red;
-      font-size: 1.5rem;
-      margin: 30px 20px 10px;
-      text-shadow: 0 0 10px red;
-    }
-    .scroll-section {
-      display: flex;
-      overflow-x: auto;
-      padding: 20px;
-      scroll-behavior: smooth;
-      gap: 20px;
-    }
-    .scroll-section::-webkit-scrollbar {
-      height: 10px;
-    }
-    .scroll-section::-webkit-scrollbar-thumb {
-      background: red;
-      border-radius: 6px;
-    }
-    .image-box {
-      min-width: 400px;
-      height: 500px;
-      border-radius: 10px;
-      background-color: #111;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 0 15px #ff0000;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    .image-box:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #ff0000;
-      background-blend-mode: overlay;
-    }
-    .mission {
-      font-family: 'Caladea', serif;
-      font-size: 1.2rem;
-      margin: 40px 15px;
-      text-align: center;
-      animation: rgbGlow 6s infinite;
-    }
-    @keyframes rgbGlow {
-      0% { color: red; }
-      33% { color: lime; }
-      66% { color: blue; }
-      100% { color: red; }
-    }
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-    .social-icons img {
-      width: 32px;
-      margin: 10px;
-    }
-    .arrow-btn {
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    .arrow-btn:hover {
-      color: red;
-    }
-  </style></head>
+    }body {
+  background-color: black;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.company-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  background: linear-gradient(-45deg, red, crimson, orangered, darkred);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 6s ease infinite;
+  text-transform: uppercase;
+  text-shadow: 0 0 3px red;
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.slogan {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  color: white;
+  margin: 10px auto 30px;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .15em solid white;
+  animation: typing 5s steps(80, end), blink-caret 0.75s step-end infinite;
+  text-shadow: 0 0 5px white;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+.nav-bar {
+  background-color: transparent;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.red-line {
+  height: 2px;
+  width: 100%;
+  background: red;
+  box-shadow: 0 0 10px red;
+  margin-bottom: 10px;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  color: red;
+  background-color: #1a1a1a;
+  border: 1px solid red;
+  padding: 10px 15px;
+  margin: 5px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  box-shadow: 0 0 5px red;
+}
+
+.nav-bar a:hover {
+  background-color: red;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px red;
+}
+
+.section-title {
+  font-family: 'Yatra One', cursive;
+  font-size: 1.5rem;
+  color: red;
+  text-align: center;
+  margin: 30px 0 10px;
+  text-shadow: 0 0 8px red;
+}
+
+.scroll-section {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  scroll-behavior: smooth;
+  gap: 20px;
+}
+
+.image-box {
+  min-width: 400px;
+  height: 500px;
+  background-color: #222;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.image-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+.image-box a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('latestinnovationsimage1.jpg'); /* placeholder */
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+}
+
+.mission {
+  font-family: 'Caladea', serif;
+  font-size: 1rem;
+  text-align: center;
+  padding: 30px 10px 10px;
+  background: linear-gradient(270deg, red, green, blue);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 10s ease infinite;
+  text-shadow: 0 0 4px white;
+}
+
+.socials {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.socials img {
+  width: 32px;
+  height: 32px;
+  margin: 5px;
+}
+
+  </style>
+</head>
 <body>
   <header>
     <div class="company-name">MOLECULAR TECHNOLOGY</div>
     <div class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</div>
   </header>
-  <div class="red-line"></div>  <nav>
-    <a href="home.html" class="nav-btn">HOME</a>
-    <a href="innovations.html" class="nav-btn">INNOVATIONS</a>
-    <a href="marketx.html" class="nav-btn">MARKETX</a>
-    <a href="announces.html" class="nav-btn">ANNOUNCES</a>
-    <a href="startups.html" class="nav-btn">STARTUPS</a>
-    <a href="issues.html" class="nav-btn">ISSUES</a>
-    <a href="help.html" class="nav-btn">HELP</a>
-  </nav>  <h2 class="section-title">LATEST INNOVATIONS</h2>
+  <div class="red-line"></div>
+  <nav class="nav-bar">
+    <a href="home.html">HOME</a>
+    <a href="innovations.html">INNOVATIONS</a>
+    <a href="marketx.html">MARKETX</a>
+    <a href="announces.html">ANNOUNCES</a>
+    <a href="startups.html">STARTUPS</a>
+    <a href="issues.html">ISSUES</a>
+    <a href="help.html">HELP</a>
+  </nav>  <div class="section-title">LATEST INNOVATIONS</div>
   <div class="scroll-section">
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('latestinnovationsimage1.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('latestinnovationsimage2.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('latestinnovationsimage3.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('latestinnovationsimage4.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('latestinnovationsimage5.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('latestinnovationsimage6.jpg');"></a>
-  </div>  <h2 class="section-title">UPCOMING INNOVATIONS</h2>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+  </div>  <div class="section-title">UPCOMING INNOVATIONS</div>
   <div class="scroll-section">
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('upcominginnovationsimage1.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('upcominginnovationsimage2.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('upcominginnovationsimage3.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('upcominginnovationsimage4.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('upcominginnovationsimage5.jpg');"></a>
-    <a href="YOUR REDIRECT LINK HERE" class="image-box" style="background-image: url('upcominginnovationsimage6.jpg');"></a>
-  </div>  <div class="mission">OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</div>  <footer>
-    <div class="social-icons">
-      <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><img src="instagram.png" alt="Instagram"></a>
-      <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><img src="youtube.png" alt="YouTube"></a>
-      <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
-      <a href="https://x.com/MoleculartTechX?s=09"><img src="twitter.png" alt="Twitter"></a>
-    </div>
-  </footer>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+    <div class="image-box"><a href="YOUR REDIRECT LINK HERE"></a></div>
+  </div>  <div class="mission">
+    OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.
+  </div>  <div class="socials">
+    <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><img src="instagram.png" alt="Instagram"></a>
+    <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><img src="youtube.png" alt="YouTube"></a>
+    <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
+    <a href="https://x.com/MoleculartTechX?s=09"><img src="twitter.png" alt="Twitter"></a>
+  </div>
 </body>
 </html>
