@@ -6,7 +6,10 @@
   <title>INNOVATIONS | Molecular Technology</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Montagu+Slab:wght@500&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Montagu+Slab:wght@500&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     /* ===== RESET & BASE ===== */
@@ -17,7 +20,7 @@
       scroll-behavior: smooth;
     }
     body {
-      background: #000;
+      background-color: #000;
       color: #fff;
       font-family: 'Lato', sans-serif;
       overflow-x: hidden;
@@ -69,7 +72,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: auroraRed 6s linear infinite;
-      text-shadow: 0 0 10px rgba(255,0,0,0.5);
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
     }
     header p {
       font-family: 'Montagu Slab', serif;
@@ -85,7 +88,7 @@
     }
     .red-line {
       height: 3px;
-      background: #ff0000;
+      background-color: #ff0000;
       width: 100%;
       margin: 1rem 0;
       box-shadow: 0 0 10px red;
@@ -102,7 +105,7 @@
     }
     .nav-buttons a {
       padding: 0.6rem 1.5rem;
-      background: #111;
+      background-color: #111;
       border: 1px solid red;
       color: red;
       font-family: 'Orbitron', sans-serif;
@@ -111,7 +114,7 @@
       transition: 0.3s;
     }
     .nav-buttons a:hover {
-      background: red;
+      background-color: red;
       color: #000;
       box-shadow: 0 0 10px red;
       transform: scale(1.05);
@@ -131,7 +134,7 @@
     .search-bar {
       flex: 1;
       max-width: 500px;
-      background: rgba(255,255,255,0.1);
+      background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid #444;
       color: #fff;
       padding: 0.8rem 1rem;
@@ -141,7 +144,7 @@
     }
     .filter-btn {
       padding: 0.8rem 1.2rem;
-      background: #111;
+      background-color: #111;
       border: 1px solid red;
       color: red;
       border-radius: 8px;
@@ -150,7 +153,7 @@
       transition: 0.3s;
     }
     .filter-btn:hover {
-      background: red;
+      background-color: red;
       color: #000;
       box-shadow: 0 0 10px red;
     }
@@ -159,7 +162,8 @@
       top: 100%;
       left: calc(50% - 250px);
       width: 500px;
-      background: #111;
+      max-width: 90%;
+      background-color: #111;
       border: 1px solid #444;
       max-height: 200px;
       overflow-y: auto;
@@ -173,7 +177,7 @@
       transition: background 0.2s;
     }
     .suggestions div:hover {
-      background: rgba(255,0,0,0.2);
+      background-color: rgba(255, 0, 0, 0.2);
     }
 
     /* ===== CATEGORY TABS ===== */
@@ -188,7 +192,7 @@
     }
     .categories button {
       padding: 0.6rem 1rem;
-      background: #111;
+      background-color: #111;
       border: 1px solid #555;
       color: #fff;
       border-radius: 6px;
@@ -197,7 +201,7 @@
     }
     .categories button.active,
     .categories button:hover {
-      background: red;
+      background-color: red;
       color: #000;
       box-shadow: 0 0 10px red;
     }
@@ -211,7 +215,7 @@
       animation: fadeIn 1.5s ease-out;
     }
     .product-card {
-      background: #111;
+      background-color: #111;
       border-radius: 12px;
       padding: 1rem;
       border: 1px solid #444;
@@ -251,7 +255,7 @@
       margin-top: 1rem;
       display: block;
       width: 100%;
-      background: red;
+      background-color: red;
       color: #000;
       font-family: 'Lato', sans-serif;
       font-weight: 700;
@@ -260,7 +264,7 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
     .view-more-btn:hover {
-      background: #aa0000;
+      background-color: #aa0000;
       color: #fff;
       box-shadow: 0 0 10px white;
     }
@@ -279,7 +283,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
+      background-color: rgba(0, 0, 0, 0.9);
       display: none;
       justify-content: center;
       align-items: center;
@@ -287,7 +291,7 @@
       z-index: 100;
     }
     .modal-content {
-      background: #111;
+      background-color: #111;
       border-radius: 12px;
       max-width: 800px;
       width: 100%;
@@ -300,7 +304,7 @@
     .modal-close {
       position: absolute;
       top: 1rem; right: 1rem;
-      background: red;
+      background-color: red;
       border: none;
       color: #000;
       font-size: 1.2rem;
@@ -380,19 +384,19 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
     .download-btn.free {
-      background: #444;
+      background-color: #444;
       color: #fff;
     }
     .download-btn.free:hover {
-      background: #666;
+      background-color: #666;
       box-shadow: 0 0 10px #fff;
     }
     .download-btn.paid {
-      background: #ff0000;
+      background-color: #ff0000;
       color: #000;
     }
     .download-btn.paid:hover {
-      background: #aa0000;
+      background-color: #aa0000;
       color: #fff;
       box-shadow: 0 0 10px #fff;
     }
@@ -419,8 +423,14 @@
 
   <!-- SEARCH & FILTER -->
   <div class="search-filter">
-    <div style="position:relative; width: 500px; max-width: 90%;">
-      <input type="text" id="searchInput" class="search-bar" placeholder="Search Any App, Game, Book, Gadget Etc..." onkeyup="updateSuggestions()" />
+    <div style="position: relative; width: 500px; max-width: 90%;">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-bar"
+        placeholder="Search Any App, Game, Book, Gadget Etc..."
+        onkeyup="updateSuggestions()"
+      />
       <div id="suggestions" class="suggestions"></div>
     </div>
     <button class="filter-btn" onclick="openFilterPanel()">FILTER</button>
@@ -471,7 +481,7 @@
         description: "A seamless messaging app connecting you globally.",
         type: "free",
         price: "",
-        redirect: "https://roawrvideostore.itch.io/thunderhead",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `ChatMaster features end-to-end encryption, group chats, multimedia sharing, and customizable themes.<br><br>
           <span id="readMore1" class="read-more">Read More</span>
@@ -502,7 +512,7 @@
         description: "Professional photo editor with AI enhancements.",
         type: "paid",
         price: "2.99",
-        redirect: "https://nektogone.itch.io/dead-tapes-fading-father",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `PhotoPro offers AI-powered filters, background removal, and batch processing.<br><br>
           <span id="readMore2" class="read-more">Read More</span>
@@ -528,14 +538,14 @@
         id: "SpaceOdyssey",
         category: "games",
         title: "Space Odyssey",
-        icon: "assets/images/game1spaceodysseyicon.png",
+        icon: "assets/images/game1spaceobysseyicon.png",
         internet: "Low",
         downloads: "20K",
         rating: "4.9★",
         description: "Embark on an interstellar adventure to save the galaxy.",
         type: "free",
         price: "",
-        redirect: "https://shipscaptain.itch.io/late-night-dj",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `Space Odyssey lets you pilot your ship through neon-lit galaxies, battling pirates and exploring cosmic secrets.<br><br>
           <span id="readMore3" class="read-more">Read More</span>
@@ -566,7 +576,7 @@
         description: "Survive the apocalypse in this thrilling zombie game.",
         type: "paid",
         price: "3.99",
-        redirect: "https://vexe.itch.io/jungle-rot",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `Zombie Survival drops you into a post-apocalyptic world overrun by the undead. Scavenge supplies, build defenses, and lead survivors.<br><br>
           <span id="readMore4" class="read-more">Read More</span>
@@ -599,7 +609,7 @@
         description: "Unlock your potential with this inspiring read.",
         type: "free",
         price: "",
-        redirect: "https://riengray.itch.io/martis-the-brazen",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `The Motivator provides actionable insights and interviews with top innovators to help you achieve your goals.<br><br>
           <span id="readMore5" class="read-more">Read More</span>
@@ -629,7 +639,7 @@
         description: "A tech-thriller exploring AI gone rogue.",
         type: "paid",
         price: "1.99",
-        redirect: "https://mariaying.itch.io/the-hades-calculus",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `Code & Chaos delves into a future where AI evolves beyond human control, raising ethical dilemmas and thrilling action.<br><br>
           <span id="readMore6" class="read-more">Read More</span>
@@ -661,7 +671,7 @@
         description: "Stay connected with this sleek smartwatch.",
         type: "paid",
         price: "99.99",
-        redirect: "https://amzn.in/d/8n0RXEo",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `SmartWatch X features heart-rate monitoring, GPS tracking, and customizable watch faces. Its sleek design makes it perfect for any occasion.<br><br>
           <span id="readMore7" class="read-more">Read More</span>
@@ -691,7 +701,7 @@
         description: "Experience high-quality sound with eco-friendly materials.",
         type: "paid",
         price: "49.99",
-        redirect: "https://amzn.in/d/cLjmcg5",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `EcoSpeaker is crafted from recycled materials and features crystal-clear audio, Bluetooth 5.0, and a 12-hour battery life.<br><br>
           <span id="readMore8" class="read-more">Read More</span>
@@ -723,7 +733,7 @@
         description: "High-tech virtual innovation studio demo.",
         type: "coming-soon",
         price: "",
-        redirect: "https://amzn.in/d/7pHzuGO",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `Metaverse Room is an immersive VR studio built with Unreal Engine. Explore 3D models of futuristic gadgets and collaborate in real time.<br><br>
           <span id="readMore9" class="read-more">Read More</span>
@@ -735,7 +745,7 @@
           • “Next-level innovation.” – TechCritic</span>`,
           previewImgs: ["images/more1prev1.png", "images/more1prev2.png", "images/more1prev3.png"],
           ageRating: "All Ages",
-          similar: ["AI Art Studio", "SpaceOdyssey"],
+          similar: ["AI Art Studio", "Space Odyssey"],
           supported: "VR headset",
           lastUpdate: "N/A",
           version: "v0.5 Alpha",
@@ -753,7 +763,7 @@
         description: "Generate futuristic art with built-in AI models.",
         type: "coming-soon",
         price: "",
-        redirect: "https://amzn.in/d/3ZKWLpu",
+        redirect: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ae%2FIts-Prank-Practical-Inappropriate-Outrageously%2Fdp%2FB084X92KBL&psig=AOvVaw3BkVgouSm4_2OQNoF-MBag&ust=1749039486901000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDzz_6d1Y0DFQAAAAAdAAAAABAE",
         detailed: {
           longDesc: `AI Art Studio uses advanced GAN and VQ-VAE models to generate high-resolution digital art on the fly. Choose styles and export up to 4K.<br><br>
           <span id="readMore10" class="read-more">Read More</span>
