@@ -2,174 +2,211 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Molecular Technology</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Yatra+One&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
+  <title>MOLECULAR TECHNOLOGY</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: black;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-    }
-    .company-name {
-      font-size: 2.5rem;
-      font-weight: 900;
-      background: linear-gradient(90deg, red, crimson, darkred);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: auroraRed 5s infinite linear;
-      filter: drop-shadow(0 0 2px red);
-    }
-    @keyframes auroraRed {
-      0% { background-position: 0% }
-      100% { background-position: 200% }
-    }
-    .slogan {
-      font-family: 'Courier Prime', monospace;
-      font-size: 1rem;
-      margin-top: 0.5rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid white;
-      width: 100%;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      color: white;
-      filter: drop-shadow(0 0 2px white);
-      animation: typing 6s steps(75, end), blink 1s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-    .nav-line {
-      height: 3px;
-      margin: 1rem auto;
-      width: 80%;
-      background: red;
-      box-shadow: 0 0 5px red;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 0.5rem 0;
-    }
-    nav a {
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      color: red;
-      background-color: #1a1a1a;
-      border: 1px solid red;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 5px red;
-    }
-    nav a:hover {
-      background-color: #333;
-      color: white;
-      transform: scale(1.05);
-      box-shadow: 0 0 10px red;
-    }
-    .mission {
-      margin-top: 3rem;
-      font-family: 'Caladea', serif;
-      font-size: 1.2rem;
-      text-align: center;
-      padding: 1rem;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: auroraRGB 8s infinite linear;
-      filter: drop-shadow(0 0 2px white);
-    }
-    @keyframes auroraRGB {
-      0% { background-position: 0% }
-      100% { background-position: 200% }
-    }
-    .section-title {
-      font-family: 'Yatra One', cursive;
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
-      color: red;
-      text-align: center;
-      text-shadow: 0 0 5px red;
-    }
-    .scroll-section {
-      position: relative;
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding: 1rem;
-      scroll-behavior: smooth;
-    }
-    .scroll-section::-webkit-scrollbar {
-      display: none;
-    }
-    .image-card {
-      min-width: 400px;
-      height: 500px;
-      border-radius: 10px;
-      background-color: #222;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      background-size: cover;
-      background-position: center;
-      filter: drop-shadow(0 0 4px red);
-      cursor: pointer;
-    }
-    .image-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
-      background-image: linear-gradient(45deg, rgba(255,0,0,0.3), rgba(255,255,255,0.1));
-    }
-    .scroll-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255, 0, 0, 0.8);
-      color: white;
-      padding: 0.5rem;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 5;
-    }
-    .left-arrow { left: 0.5rem; }
-    .right-arrow { right: 0.5rem; }
-    footer {
-      text-align: center;
-      margin: 3rem 0 1rem;
-    }
-    .social-icons img {
-      width: 32px;
-      height: 32px;
-      margin: 0 0.5rem;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Courier+Prime&family=Caladea&family=Yatra+One&display=swap');* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 40px 10px 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.company-name {
+  font-size: 2.8em;
+  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(90deg, #ff4d4d, #ff1a75, #ff4d4d);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auroraRed 10s ease infinite, glowRed 2s ease-in-out infinite;
+}
+
+@keyframes auroraRed {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowRed {
+  0%, 100% { text-shadow: 0 0 4px #ff1a1a; }
+  50% { text-shadow: 0 0 12px #ff3333; }
+}
+
+.slogan {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1em;
+  color: white;
+  animation: typing 8s steps(70, end) 1, blink-caret 0.75s step-end infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid white;
+  width: fit-content;
+  margin: 10px auto 20px;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+nav a {
+  padding: 10px 20px;
+  background-color: #1a1a1a;
+  color: red;
+  border: 1px solid red;
+  text-decoration: none;
+  font-weight: 800;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255,0,0,0.3);
+}
+
+nav a:hover {
+  background-color: #330000;
+  box-shadow: 0 0 15px rgba(255,0,0,0.7);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.red-line {
+  height: 3px;
+  width: 100%;
+  background: red;
+  box-shadow: 0 0 10px red;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Yatra One', cursive;
+  color: red;
+  text-align: center;
+  margin: 40px 0 20px;
+  font-size: 1.5em;
+  text-shadow: 0 0 10px red;
+}
+
+.scroll-section {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.image-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 0 40px;
+  scroll-behavior: smooth;
+}
+
+.image-row::-webkit-scrollbar {
+  display: none;
+}
+
+.image-card {
+  min-width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #ff0000, #ff33cc, #ff0000);
+  background-size: 300% 300%;
+  animation: auroraRed 8s ease infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.arrow {
+  position: absolute;
+  font-size: 2em;
+  color: red;
+  background: black;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.left-arrow {
+  left: 5px;
+}
+
+.right-arrow {
+  right: 5px;
+}
+
+.mission {
+  font-family: 'Caladea', serif;
+  font-size: 1.1em;
+  margin: 60px auto;
+  text-align: center;
+  width: 80%;
+  background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 1400% 1400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auroraRGB 15s linear infinite;
+}
+
+@keyframes auroraRGB {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+}
+
+.socials img {
+  width: 32px;
+  height: 32px;
+  margin: 0 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   </style>
 </head>
 <body>
   <header>
     <div class="company-name">MOLECULAR TECHNOLOGY</div>
     <div class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</div>
-  </header>
-  <div class="nav-line"></div>
-  <nav>
-    <a href="index.html">HOME</a>
+  </header>  <div class="red-line"></div>  <nav>
+    <a href="home.html">HOME</a>
     <a href="innovations.html">INNOVATIONS</a>
     <a href="marketx.html">MARKETX</a>
     <a href="announces.html">ANNOUNCES</a>
@@ -177,36 +214,40 @@
     <a href="issues.html">ISSUES</a>
     <a href="help.html">HELP</a>
   </nav>  <div class="section-title">LATEST INNOVATIONS</div>
-  <div class="scroll-section" id="latest">
-    <div class="scroll-arrow left-arrow" onclick="scrollSection('latest', -400)">&#8592;</div>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('latestinnovationsimage1.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('latestinnovationsimage2.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('latestinnovationsimage3.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('latestinnovationsimage4.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('latestinnovationsimage5.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('latestinnovationsimage6.png');"></div></a>
-    <div class="scroll-arrow right-arrow" onclick="scrollSection('latest', 400)">&#8594;</div>
+  <div class="scroll-section">
+    <button class="arrow left-arrow" onclick="scrollImages('latest', -1)">&gt;</button>
+    <div class="image-row" id="latest">
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="latestinnovationsimage1"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="latestinnovationsimage2"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="latestinnovationsimage3"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="latestinnovationsimage4"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="latestinnovationsimage5"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="latestinnovationsimage6"></div></a>
+    </div>
+    <button class="arrow right-arrow" onclick="scrollImages('latest', 1)">&gt;</button>
   </div>  <div class="section-title">UPCOMING INNOVATIONS</div>
-  <div class="scroll-section" id="upcoming">
-    <div class="scroll-arrow left-arrow" onclick="scrollSection('upcoming', -400)">&#8592;</div>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('upcominginnovationsimage1.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('upcominginnovationsimage2.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('upcominginnovationsimage3.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('upcominginnovationsimage4.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('upcominginnovationsimage5.png');"></div></a>
-    <a href="YOUR REDIRECT LINK HERE"><div class="image-card" style="background-image: url('upcominginnovationsimage6.png');"></div></a>
-    <div class="scroll-arrow right-arrow" onclick="scrollSection('upcoming', 400)">&#8594;</div>
+  <div class="scroll-section">
+    <button class="arrow left-arrow" onclick="scrollImages('upcoming', -1)">&gt;</button>
+    <div class="image-row" id="upcoming">
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="upcominginnovationsimage1"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="upcominginnovationsimage2"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="upcominginnovationsimage3"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="upcominginnovationsimage4"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="upcominginnovationsimage5"></div></a>
+      <a href="YOUR REDIRECT LINK HERE"><div class="image-card" id="upcominginnovationsimage6"></div></a>
+    </div>
+    <button class="arrow right-arrow" onclick="scrollImages('upcoming', 1)">&gt;</button>
   </div>  <div class="mission">OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</div>  <footer>
-    <div class="social-icons">
+    <div class="socials">
       <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><img src="instagram.png" alt="Instagram"></a>
       <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><img src="youtube.png" alt="YouTube"></a>
       <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
-      <a href="https://x.com/MoleculartTechX?s=09"><img src="twitter.png" alt="X"></a>
+      <a href="https://x.com/MoleculartTechX?s=09"><img src="twitter.png" alt="Twitter/X"></a>
     </div>
   </footer>  <script>
-    function scrollSection(id, offset) {
-      const section = document.getElementById(id);
-      section.scrollBy({ left: offset, behavior: 'smooth' });
+    function scrollImages(sectionId, direction) {
+      const row = document.getElementById(sectionId);
+      row.scrollBy({ left: direction * 420, behavior: 'smooth' });
     }
   </script></body>
 </html>
