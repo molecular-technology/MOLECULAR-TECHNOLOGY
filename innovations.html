@@ -1,298 +1,974 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INNOVATIONS - Molecular Technology</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Caladea&family=Courier+Prime&family=Yatra+One&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }body {
-  background: black;
-  color: white;
-  overflow-x: hidden;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INNOVATIONS | Molecular Technology</title>
 
-header {
-  text-align: center;
-  padding: 50px 20px 10px;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Lato:wght@400;700&family=Montagu+Slab:wght@600&display=swap" rel="stylesheet">
 
-.title {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  font-size: 2.8em;
-  background: linear-gradient(270deg, #ff0000, #990000, #ff0000);
-  background-size: 600% 600%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: auroraRed 5s ease infinite, fadeIn 2s ease;
-  text-shadow: 0 0 5px red;
-}
+  <style>
+    /* ----------------- RESET & BASE ----------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Lato', sans-serif;
+    }
+    body {
+      background-color: #0e0e0e;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.subtitle {
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.2em;
-  color: white;
-  text-shadow: 0 0 10px white;
-  animation: fadeIn 3s ease, typing 4s steps(60, end);
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
-  border-right: .15em solid white;
-}
+    /* ----------------- HEADER ----------------- */
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    .title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 3rem;
+      background: linear-gradient(90deg, #ff0000, #a40000, #ff3333);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: auroraRed 6s linear infinite, fadeIn 1.5s ease-out;
+      text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+    }
+    .slogan {
+      font-family: 'Montagu Slab', serif;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+      width: 0;
+      animation: typing 4s steps(60) forwards, blink 0.75s step-end infinite;
+      text-shadow: 0 0 5px #fff;
+    }
+    .line {
+      width: 100%;
+      height: 2px;
+      background-color: #ff0000;
+      margin: 1rem 0;
+      animation: fadeIn 1.5s ease-out;
+    }
 
-.red-line {
-  height: 3px;
-  width: 100%;
-  background: red;
-  margin: 20px 0;
-}
+    /* ----------------- NAVIGATION BUTTONS ----------------- */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+    nav button {
+      background: #1c1c1c;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    nav button:hover {
+      background: #2e2e2e;
+      color: #ff0000;
+      text-shadow: 0 0 8px #ff0000;
+      transform: scale(1.05);
+    }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
-}
+    /* ----------------- SEARCH & FILTER ----------------- */
+    .search-filter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1rem 2rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+    .search-box {
+      flex: 1;
+      max-width: 500px;
+      padding: 0.8rem;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      outline: none;
+    }
+    .filter-btn {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid #ff0000;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-btn:hover {
+      background: #ff0000;
+      color: #0e0e0e;
+      text-shadow: 0 0 5px #fff;
+    }
 
-nav button {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 800;
-  padding: 10px 25px;
-  background: #1a1a1a;
-  color: white;
-  border: 2px solid red;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
+    /* ----------------- SECTION TABS ----------------- */
+    .sections {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+    .sections button {
+      padding: 0.6rem 1.2rem;
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+    }
+    .sections button:hover,
+    .sections button.active {
+      background: #ff0000;
+      color: #0e0e0e;
+      box-shadow: 0 0 10px #ff0000;
+    }
 
-nav button:hover {
-  background: red;
-  color: black;
-  box-shadow: 0 0 15px red;
-}
+    /* ----------------- PRODUCT GRID ----------------- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 1rem;
+      animation: fadeIn 2s ease-out;
+    }
+    .product-card {
+      background: #181818;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #ff0000;
+    }
+    .product-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product-info {
+      margin-top: 0.7rem;
+    }
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ff0000;
+    }
+    .product-meta {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 0.3rem;
+    }
+    .product-desc {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+    }
+    .view-more-btn {
+      margin-top: 1rem;
+      background: #ff0000;
+      color: #0e0e0e;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .view-more-btn:hover {
+      background: #aa0000;
+      color: #fff;
+      text-shadow: 0 0 5px #fff;
+    }
 
-.search-filter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 20px;
-}
+    /* ----------------- MODAL / DETAIL VIEW ----------------- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      z-index: 100;
+    }
+    .modal-content {
+      background: #181818;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.5rem;
+      position: relative;
+      animation: fadeIn 0.5s ease-out;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #ff0000;
+      border: none;
+      color: #0e0e0e;
+      font-size: 1.2rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .detail-header {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .detail-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .detail-info {
+      flex: 1;
+    }
+    .detail-info h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #ff0000;
+    }
+    .detail-info p.meta {
+      color: #ccc;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .detail-description {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #ddd;
+    }
+    .detail-description .read-more {
+      color: #ff0000;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .detail-extra {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+    .detail-images {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+    .detail-images img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .detail-images img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #fff;
+    }
+    .detail-download {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .download-btn {
+      background: #333;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .download-btn.free:hover {
+      background: #555;
+    }
+    .download-btn.paid:hover {
+      background: #aa0000;
+      color: #fff;
+    }
 
-.search-box {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 30px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-family: 'Lato', sans-serif;
-  font-size: 1em;
-}
+    /* ----------------- KEYFRAMES ----------------- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.filter-btn {
-  padding: 10px 15px;
-  border: 2px solid red;
-  border-radius: 30px;
-  background-color: transparent;
-  color: red;
-  cursor: pointer;
-}
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
 
-.categories {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 20px;
-}
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="title">INNOVATIONS</div>
+    <div class="slogan">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</div>
+    <div class="line"></div>
+  </header>
 
-.categories button {
-  padding: 8px 20px;
-  border: 2px solid white;
-  background-color: transparent;
-  color: white;
-  border-radius: 20px;
-  transition: 0.3s;
-}
+  <!-- NAVIGATION BUTTONS -->
+  <nav>
+    <button onclick="location.href='index.html'">HOME</button>
+    <button onclick="location.href='marketx.html'">MARKETX</button>
+    <button onclick="location.href='announces.html'">ANNOUNCES</button>
+    <button onclick="location.href='startups.html'">STARTUPS</button>
+    <button onclick="location.href='issues.html'">ISSUES</button>
+    <button onclick="location.href='help.html'">HELP</button>
+  </nav>
 
-.categories button:hover {
-  background-color: white;
-  color: black;
-}
+  <!-- SEARCH & FILTER BAR -->
+  <div class="search-filter">
+    <input type="text" class="search-box" id="searchInput" placeholder="Search Any App, Game, Book, Gadget Etc..." onkeyup="applyFilters()" />
+    <button class="filter-btn" onclick="openFilterPanel()">Filter</button>
+  </div>
 
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 30px;
-}
+  <!-- SECTION TABS -->
+  <div class="sections" id="sectionTabs">
+    <button class="active" onclick="showSection('all')">All</button>
+    <button onclick="showSection('apps')">Apps</button>
+    <button onclick="showSection('games')">Games</button>
+    <button onclick="showSection('books')">Books</button>
+    <button onclick="showSection('gadgets')">Gadgets</button>
+    <button onclick="showSection('more')">More</button>
+  </div>
 
-.product {
-  width: 300px;
-  background-color: #111;
-  border: 1px solid red;
-  border-radius: 20px;
-  padding: 15px;
-  transition: 0.4s;
-  position: relative;
-}
+  <!-- PRODUCT GRID -->
+  <div class="product-grid" id="productGrid">
+    <!-- ------------- APPS ------------- -->
+    <div class="product-card" data-category="apps" data-title="Voice Hero" data-type="communication,mobile,free">
+      <img src="images/app1icon.png" alt="Voice Hero Icon" />
+      <div class="product-info">
+        <div class="product-title">Voice Hero</div>
+        <div class="product-meta">Category: Communication · Size: 25MB · Downloads: 10K · Rating: 4.7★</div>
+        <div class="product-desc">Smart AI voice assistant for productivity.</div>
+        <button class="view-more-btn" onclick="openDetail('Voice Hero')">View More</button>
+      </div>
+    </div>
 
-.product:hover {
-  box-shadow: 0 0 15px red;
-  transform: translateY(-5px);
-}
+    <div class="product-card" data-category="apps" data-title="Photo Glitch" data-type="photo,pc,paid">
+      <img src="images/app2icon.png" alt="Photo Glitch Icon" />
+      <div class="product-info">
+        <div class="product-title">Photo Glitch</div>
+        <div class="product-meta">Category: Photo Editor · Size: 40MB · Downloads: 5K · Rating: 4.5★ · Price: $2.99</div>
+        <div class="product-desc">Create retro glitch effects on your images.</div>
+        <button class="view-more-btn" onclick="openDetail('Photo Glitch')">View More</button>
+      </div>
+    </div>
 
-.product img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
-}
+    <!-- ------------- GAMES ------------- -->
+    <div class="product-card" data-category="games" data-title="Underworld X" data-type="action,pc,paid">
+      <img src="images/game1icon.png" alt="Underworld X Icon" />
+      <div class="product-info">
+        <div class="product-title">Underworld X</div>
+        <div class="product-meta">Category: Action · Size: 350MB · Downloads: 50K · Rating: 4.9★ · Price: $4.99</div>
+        <div class="product-desc">Low-poly gangster open-world offline game.</div>
+        <button class="view-more-btn" onclick="openDetail('Underworld X')">View More</button>
+      </div>
+    </div>
 
-.product h3 {
-  margin-top: 10px;
-  font-size: 1.2em;
-}
+    <div class="product-card" data-category="games" data-title="Galaxy Shooter" data-type="arcade,mobile,free">
+      <img src="images/game2icon.png" alt="Galaxy Shooter Icon" />
+      <div class="product-info">
+        <div class="product-title">Galaxy Shooter</div>
+        <div class="product-meta">Category: Arcade · Size: 120MB · Downloads: 30K · Rating: 4.6★</div>
+        <div class="product-desc">Neon-style retro space shooter.</div>
+        <button class="view-more-btn" onclick="openDetail('Galaxy Shooter')">View More</button>
+      </div>
+    </div>
 
-.product p {
-  font-size: 0.9em;
-  color: #ccc;
-}
+    <!-- ------------- BOOKS ------------- -->
+    <div class="product-card" data-category="books" data-title="Tech Rebirth" data-type="motivational,ebook,free">
+      <img src="images/book1cover.png" alt="Tech Rebirth Cover" />
+      <div class="product-info">
+        <div class="product-title">Tech Rebirth</div>
+        <div class="product-meta">Category: Motivational · Format: PDF · Pages: 120 · Rating: 4.8★</div>
+        <div class="product-desc">A motivational journey through emerging technologies.</div>
+        <button class="view-more-btn" onclick="openDetail('Tech Rebirth')">View More</button>
+      </div>
+    </div>
 
-.view-btn {
-  display: block;
-  margin-top: 10px;
-  background-color: red;
-  color: black;
-  padding: 10px;
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 20px;
-  transition: 0.3s;
-}
+    <div class="product-card" data-category="books" data-title="Code & Chaos" data-type="fiction,ebook,paid">
+      <img src="images/book2cover.png" alt="Code & Chaos Cover" />
+      <div class="product-info">
+        <div class="product-title">Code & Chaos</div>
+        <div class="product-meta">Category: Fiction · Format: EPUB · Pages: 200 · Rating: 4.5★ · Price: $1.99</div>
+        <div class="product-desc">A tech-thriller exploring AI gone rogue.</div>
+        <button class="view-more-btn" onclick="openDetail('Code & Chaos')">View More</button>
+      </div>
+    </div>
 
-.view-btn:hover {
-  box-shadow: 0 0 10px white;
-}
+    <!-- ------------- GADGETS ------------- -->
+    <div class="product-card" data-category="gadgets" data-title="M-Quantum Watch" data-type="wearable,paid">
+      <img src="images/gadget1icon.png" alt="M-Quantum Watch" />
+      <div class="product-info">
+        <div class="product-title">M-Quantum Watch</div>
+        <div class="product-meta">Category: Wearable Tech · Rating: Upcoming</div>
+        <div class="product-desc">AI-powered smartwatch with energy-harvesting chip.</div>
+        <button class="view-more-btn" onclick="openDetail('M-Quantum Watch')">View More</button>
+      </div>
+    </div>
 
-@keyframes auroraRed {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    <div class="product-card" data-category="gadgets" data-title="Neon KeyHub" data-type="peripheral,free">
+      <img src="images/gadget2icon.png" alt="Neon KeyHub" />
+      <div class="product-info">
+        <div class="product-title">Neon KeyHub</div>
+        <div class="product-meta">Category: Peripheral · Rating: Upcoming</div>
+        <div class="product-desc">AI-enabled RGB keyboard hub for developers.</div>
+        <button class="view-more-btn" onclick="openDetail('Neon KeyHub')">View More</button>
+      </div>
+    </div>
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    <!-- ------------- MORE ------------- -->
+    <div class="product-card" data-category="more" data-title="Metaverse Room" data-type="vr,coming-soon">
+      <img src="images/more1icon.png" alt="Metaverse Room" />
+      <div class="product-info">
+        <div class="product-title">Metaverse Room</div>
+        <div class="product-meta">Category: VR Demo · Rating: Upcoming</div>
+        <div class="product-desc">High-tech virtual innovation studio demo.</div>
+        <button class="view-more-btn" onclick="openDetail('Metaverse Room')">View More</button>
+      </div>
+    </div>
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
+    <div class="product-card" data-category="more" data-title="AI Art Studio" data-type="creative,free">
+      <img src="images/more2icon.png" alt="AI Art Studio" />
+      <div class="product-info">
+        <div class="product-title">AI Art Studio</div>
+        <div class="product-meta">Category: Creative · Rating: Upcoming</div>
+        <div class="product-desc">Generate futuristic art with AI.</div>
+        <button class="view-more-btn" onclick="openDetail('AI Art Studio')">View More</button>
+      </div>
+    </div>
+  </div>
 
-  </style>
-</head><body>
-  <header>
-    <h1 class="title">INNOVATIONS</h1>
-    <p class="subtitle">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
-    <div class="red-line"></div>
-  </header>  <nav>
-    <button onclick="location.href='index.html'">HOME</button>
-    <button onclick="location.href='marketx.html'">MARKETX</button>
-    <button onclick="location.href='announces.html'">ANNOUNCES</button>
-    <button onclick="location.href='startups.html'">STARTUPS</button>
-    <button onclick="location.href='issues.html'">ISSUES</button>
-    <button onclick="location.href='help.html'">HELP</button>
-  </nav>  <div class="search-filter">
-    <input type="text" class="search-box" placeholder="Search Any App, Game, Book, Gadget Etc...">
-    <button class="filter-btn">Filter</button>
-  </div>  <div class="categories">
-    <button onclick="filterCategory('all')">All</button>
-    <button onclick="filterCategory('apps')">Apps</button>
-    <button onclick="filterCategory('games')">Games</button>
-    <button onclick="filterCategory('books')">Books</button>
-    <button onclick="filterCategory('gadgets')">Gadgets</button>
-    <button onclick="filterCategory('more')">More</button>
-  </div>  <div class="products" id="product-list">
-    <!-- Sample Apps -->
-    <div class="product" data-category="apps">
-      <img src="images/app1icon.png" alt="App 1">
-      <h3>Peter AI Assistant</h3>
-      <p>Voice-based multilingual assistant with smart AI features.</p>
-      <a class="view-btn" onclick="viewDetails('Peter AI Assistant')">View More</a>
-    </div><div class="product" data-category="apps">
-  <img src="images/app2icon.png" alt="App 2">
-  <h3>Photo Glitcher</h3>
-  <p>Glitch effects editor for futuristic-looking photos.</p>
-  <a class="view-btn" onclick="viewDetails('Photo Glitcher')">View More</a>
-</div>
+  <!-- ----------------- DETAIL MODAL ----------------- -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content" id="modalContent">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="detailHeader" class="detail-header">
+        <img id="detailIcon" src="" alt="Product Icon"/>
+        <div class="detail-info">
+          <h2 id="detailTitle"></h2>
+          <p class="meta" id="detailCategory"></p>
+        </div>
+      </div>
+      <div class="detail-description" id="detailDescription"></div>
+      <div class="detail-extra" id="detailExtra"></div>
+      <div class="detail-images" id="detailImages"></div>
+      <div class="detail-download" id="detailDownload"></div>
+    </div>
+  </div>
 
-<!-- Sample Games -->
-<div class="product" data-category="games">
-  <img src="images/game1icon.png" alt="Game 1">
-  <h3>SIMULIFE: Underworld Legacy</h3>
-  <p>Offline gangster simulator game in low-poly style.</p>
-  <a class="view-btn" onclick="viewDetails('SIMULIFE: Underworld Legacy')">View More</a>
-</div>
+  <!-- ----------------- SCRIPT ----------------- -->
+  <script>
+    // ----------------- DATA FOR SAMPLE PRODUCTS -----------------
+    const products = [
+      // APPS
+      {
+        id: "Voice Hero",
+        category: "apps",
+        title: "Voice Hero",
+        icon: "images/app1icon.png",
+        internet: "Low",
+        downloads: "10K",
+        rating: "4.7★",
+        description: `Voice Hero is a powerful AI-based voice assistant that handles reminders, calls, and smart queries seamlessly.`,
+        detailed: {
+          longDesc: `Voice Hero leverages the power of embedded AI to handle your everyday tasks using voice commands. 
+          Simply say "Call Mom," "Set an alarm for 7 AM," or "Summarize my meeting notes," and Voice Hero executes flawlessly.<br><br>
+          <strong>Features:</strong><br>
+          • Natural language understanding<br>
+          • Multi-language support (English, Hindi, Bengali)<br>
+          • Offline voice recognition for key commands<br>
+          • Customizable voice packs and wake words<br>
+          • Integrated emergency SOS feature<br><br>
+          <span id="readMoreLink1" class="read-more">Read More</span>
+          <span id="extraText1" style="display:none;">
+            <br><br><strong>Supported Android Versions:</strong> 5.0 (Lollipop) and above (Min), 11 (Recommended)<br>
+            <strong>Last Update:</strong> May 20, 2025<br>
+            <strong>Size:</strong> 25MB<br>
+            <strong>Reviews:</strong> “Voice Hero changed my workflow completely!” – User123<br>
+            “Incredible offline command detection.” – TechReviewer<br>
+          </span>`,
+          previewImgs: ["images/app1prev1.png","images/app1prev2.png","images/app1prev3.png"],
+          ageRating: "3+",
+          similar: ["Photo Glitch","AI Art Studio"],
+          version: "v2.3.1",
+          reviews: ["“Absolutely genius!” – Alex","“Best voice assistant ever!” – Sam"],
+          type: "free",
+          redirect: "https://itch.io/voice-hero-download"
+        }
+      },
+      {
+        id: "Photo Glitch",
+        category: "apps",
+        title: "Photo Glitch",
+        icon: "images/app2icon.png",
+        internet: "Medium",
+        downloads: "5K",
+        rating: "4.5★",
+        description: `Photo Glitch lets you create retro glitch effects on photos, perfect for social media and tech art.`,
+        detailed: {
+          longDesc: `Apply vibrant neon glitch filters to your photos with easy-to-use sliders and presets.<br><br>
+          <strong>Features:</strong><br>
+          • 20+ glitch filter presets<br>
+          • Real-time editing with preview<br>
+          • Save images in HD resolution<br>
+          • Share directly to Instagram, Twitter<br><br>
+          <span id="readMoreLink2" class="read-more">Read More</span>
+          <span id="extraText2" style="display:none;">
+            <br><br><strong>Supported Platforms:</strong> Android 6.0+ (Min), 12 (Recommended)<br>
+            <strong>Last Update:</strong> April 10, 2025<br>
+            <strong>Size:</strong> 40MB<br>
+            <strong>Price:</strong> $2.99<br>
+            <strong>Reviews:</strong> “Stunning effects!” – PhotoFanatic<br>
+          </span>`,
+          previewImgs: ["images/app2prev1.png","images/app2prev2.png","images/app2prev3.png"],
+          ageRating: "7+",
+          similar: ["AI Art Studio","Galaxy Shooter"],
+          version: "v1.8.0",
+          reviews: ["“Worth every penny.” – PixelPro"],
+          type: "paid",
+          redirect: "https://gumroad.com/photo-glitch"
+        }
+      },
 
-<div class="product" data-category="games">
-  <img src="images/game2icon.png" alt="Game 2">
-  <h3>Galaxy Shooter Neo</h3>
-  <p>Retro-style arcade shooter with neon effects.</p>
-  <a class="view-btn" onclick="viewDetails('Galaxy Shooter Neo')">View More</a>
-</div>
+      // GAMES
+      {
+        id: "Underworld X",
+        category: "games",
+        title: "Underworld X",
+        icon: "images/game1icon.png",
+        internet: "Offline",
+        downloads: "50K",
+        rating: "4.9★",
+        description: `Dive into the gritty low-poly gangster open-world adventure, offline and immersive.`,
+        detailed: {
+          longDesc: `Underworld X places you in a sprawling low-poly city where you join a rising gang boss. 
+          Complete missions, engage in dynamic gang wars, and build your criminal empire.<br><br>
+          <strong>Features:</strong><br>
+          • Open-world low-poly graphics<br>
+          • Offline gameplay with AI-driven NPCs<br>
+          • Gang rivalry and territory control<br><br>
+          <span id="readMoreLink3" class="read-more">Read More</span>
+          <span id="extraText3" style="display:none;">
+            <br><br><strong>Supported Android:</strong> 7.0+ (Min), 11 (Recommended)<br>
+            <strong>Last Update:</strong> March 5, 2025<br>
+            <strong>Size:</strong> 350MB<br>
+            <strong>Version:</strong> v3.2.4<br>
+            <strong>Reviews:</strong> “Best gangster sim!” – GameFiend<br>
+          </span>`,
+          previewImgs: ["images/game1prev1.png","images/game1prev2.png","images/game1prev3.png"],
+          ageRating: "16+",
+          similar: ["Galaxy Shooter","Metaverse Room"],
+          version: "v3.2.4",
+          reviews: ["“So much content!” – GamerGeek"],
+          type: "paid",
+          redirect: "https://itch.io/underworld-x-download"
+        }
+      },
+      {
+        id: "Galaxy Shooter",
+        category: "games",
+        title: "Galaxy Shooter",
+        icon: "images/game2icon.png",
+        internet: "Low",
+        downloads: "30K",
+        rating: "4.6★",
+        description: `Neon retro space shooter with intense gameplay and glowing effects.`,
+        detailed: {
+          longDesc: `Pilot your spaceship through neon-infused galaxies, blasting enemies and collecting power-ups.<br><br>
+          <strong>Features:</strong><br>
+          • Neon retro graphics<br>
+          • Boss battles with unique mechanics<br>
+          • Leaderboards and achievements<br><br>
+          <span id="readMoreLink4" class="read-more">Read More</span>
+          <span id="extraText4" style="display:none;">
+            <br><br><strong>Supported Platforms:</strong> Android 6.0+ (Min), 10 (Recommended)<br>
+            <strong>Last Update:</strong> May 1, 2025<br>
+            <strong>Size:</strong> 120MB<br>
+            <strong>Version:</strong> v2.0.1<br>
+            <strong>Reviews:</strong> “Addictive neon shooter!” – RetroFan<br>
+          </span>`,
+          previewImgs: ["images/game2prev1.png","images/game2prev2.png","images/game2prev3.png"],
+          ageRating: "7+",
+          similar: ["Underworld X","Neon KeyHub"],
+          version: "v2.0.1",
+          reviews: ["“Brilliant design.” – SpaceLord"],
+          type: "free",
+          redirect: "https://itch.io/galaxy-shooter-download"
+        }
+      },
 
-<!-- Sample Books -->
-<div class="product" data-category="books">
-  <img src="images/book1cover.png" alt="Book 1">
-  <h3>The Red Algorithm</h3>
-  <p>Futuristic tech thriller unraveling machine conspiracies.</p>
-  <a class="view-btn" onclick="viewDetails('The Red Algorithm')">View More</a>
-</div>
+      // BOOKS
+      {
+        id: "Tech Rebirth",
+        category: "books",
+        title: "Tech Rebirth",
+        icon: "images/book1cover.png",
+        internet: "N/A",
+        downloads: "—",
+        rating: "4.8★",
+        description: `A motivational journey exploring the future of technology and innovation.`,
+        detailed: {
+          longDesc: `Tech Rebirth takes you on an inspiring adventure through emerging technologies, 
+          interviews with innovators, and practical insights to shape the future.<br><br>
+          <strong>Contents:</strong><br>
+          1. Rise of AI and Machine Learning<br>
+          2. Quantum Computing Demystified<br>
+          3. Bioengineering Breakthroughs<br>
+          4. Space Exploration & Colonization<br><br>
+          <span id="readMoreLink5" class="read-more">Read More</span>
+          <span id="extraText5" style="display:none;">
+            <br><br><strong>Format:</strong> PDF<br>
+            <strong>Pages:</strong> 120<br>
+            <strong>Price:</strong> Free<br>
+            <strong>Reviews:</strong> “Enlightening read.” – TechGuru<br>
+          </span>`,
+          previewImgs: ["images/book1prev1.png","images/book1prev2.png","images/book1prev3.png"],
+          ageRating: "All Ages",
+          similar: ["Code & Chaos","AI Art Studio"],
+          version: "First Edition",
+          reviews: ["“Highly recommended.” – ReaderOne"],
+          type: "free",
+          redirect: "https://gumroad.com/tech-rebirth-download"
+        }
+      },
+      {
+        id: "Code & Chaos",
+        category: "books",
+        title: "Code & Chaos",
+        icon: "images/book2cover.png",
+        internet: "N/A",
+        downloads: "—",
+        rating: "4.5★",
+        description: `A futuristic tech-thriller about AI rebels, cyber warfare, and ethical dilemmas.`,
+        detailed: {
+          longDesc: `In a near-future world dominated by superintelligent AI, a renegade coder discovers 
+          the hidden truth behind a global conspiracy. Follow them as they navigate cyber dangers and moral conflicts.<br><br>
+          <strong>Chapters:</strong><br>
+          1. Genesis of the Singularity<br>
+          2. Cyber Heist in Neo City<br>
+          3. The Human Algorithm<br>
+          4. Final Uprising<br><br>
+          <span id="readMoreLink6" class="read-more">Read More</span>
+          <span id="extraText6" style="display:none;">
+            <br><br><strong>Format:</strong> EPUB<br>
+            <strong>Pages:</strong> 200<br>
+            <strong>Price:</strong> $1.99<br>
+            <strong>Reviews:</strong> “Edge-of-the-seat thriller.” – NovelLover<br>
+          </span>`,
+          previewImgs: ["images/book2prev1.png","images/book2prev2.png","images/book2prev3.png"],
+          ageRating: "16+",
+          similar: ["Tech Rebirth","Underworld X"],
+          version: "v1.1.0",
+          reviews: ["“Couldn’t put it down.” – PageTurner"],
+          type: "paid",
+          redirect: "https://gumroad.com/code-and-chaos-download"
+        }
+      },
 
-<div class="product" data-category="books">
-  <img src="images/book2cover.png" alt="Book 2">
-  <h3>Code & Chaos</h3>
-  <p>Motivational journey through tech and innovation battles.</p>
-  <a class="view-btn" onclick="viewDetails('Code & Chaos')">View More</a>
-</div>
+      // GADGETS
+      {
+        id: "M-Quantum Watch",
+        category: "gadgets",
+        title: "M-Quantum Watch",
+        icon: "images/gadget1icon.png",
+        internet: "N/A",
+        downloads: "—",
+        rating: "Coming Soon",
+        description: `AI-driven smartwatch with quantum energy-harvesting chipset.`,
+        detailed: {
+          longDesc: `The M-Quantum Watch uses quantum tunneling technology to harvest ambient energy, keeping your watch powered indefinitely. 
+          It also integrates AI-driven health metrics, real-time notifications, and biometric authentication.<br><br>
+          <strong>Features:</strong><br>
+          • Quantum energy harvesting<br>
+          • AI health analysis (heart rate, SpO2, sleep)<br>
+          • Encrypted biometric login<br>
+          • AR display for notifications<br><br>
+          <span id="readMoreLink7" class="read-more">Read More</span>
+          <span id="extraText7" style="display:none;">
+            <br><br><strong>Compatibility:</strong> Android & iOS via companion app<br>
+            <strong>Battery:</strong> Self-sustained (quantum)<br>
+            <strong>Price:</strong> $199.99 (preorder)<br>
+            <strong>Reviews:</strong> “The future on your wrist!” – GadgetGeek<br>
+          </span>`,
+          previewImgs: ["images/gadget1prev1.png","images/gadget1prev2.png","images/gadget1prev3.png"],
+          ageRating: "All Ages",
+          similar: ["Neon KeyHub","AI Art Studio"],
+          version: "Prototype v0.9",
+          reviews: ["“Revolutionary!” – TechCritic"],
+          type: "paid",
+          redirect: "https://gumroad.com/m-quantum-watch"
+        }
+      },
+      {
+        id: "Neon KeyHub",
+        category: "gadgets",
+        title: "Neon KeyHub",
+        icon: "images/gadget2icon.png",
+        internet: "N/A",
+        downloads: "—",
+        rating: "Coming Soon",
+        description: `AI-enabled RGB keyboard hub designed for developers and gamers.`,
+        detailed: {
+          longDesc: `Neon KeyHub provides customizable RGB lighting zones, programmable macro keys, and integrated AI prediction for coding assistance. 
+          Connect via USB-C or wirelessly, and switch profiles instantly.<br><br>
+          <strong>Features:</strong><br>
+          • 16M RGB color zones<br>
+          • Programmable macros & AI code suggestions<br>
+          • Wireless & wired modes<br>
+          • Haptic feedback keys<br><br>
+          <span id="readMoreLink8" class="read-more">Read More</span>
+          <span id="extraText8" style="display:none;">
+            <br><br><strong>Connectivity:</strong> USB-C, Bluetooth 5.2<br>
+            <strong>Battery:</strong> Up to 30 hours<br>
+            <strong>Price:</strong> $129.99 (preorder)<br>
+            <strong>Reviews:</strong> “A coder’s dream!” – DevMaster<br>
+          </span>`,
+          previewImgs: ["images/gadget2prev1.png","images/gadget2prev2.png","images/gadget2prev3.png"],
+          ageRating: "All Ages",
+          similar: ["M-Quantum Watch","Metaverse Room"],
+          version: "Prototype v0.8",
+          reviews: ["“Incredible hardware.” – KeyboardKing"],
+          type: "paid",
+          redirect: "https://gumroad.com/neon-keyhub"
+        }
+      },
 
-<!-- Sample Gadgets -->
-<div class="product" data-category="gadgets">
-  <img src="images/gadget1.png" alt="Gadget 1">
-  <h3>MOLECULAR TrackBand</h3>
-  <p>High-tech wrist band with health and AI features.</p>
-  <a class="view-btn" onclick="viewDetails('MOLECULAR TrackBand')">View More</a>
-</div>
+      // MORE
+      {
+        id: "Metaverse Room",
+        category: "more",
+        title: "Metaverse Room",
+        icon: "images/more1icon.png",
+        internet: "N/A",
+        downloads: "—",
+        rating: "Coming Soon",
+        description: `High-tech VR innovation studio demo, under development.`,
+        detailed: {
+          longDesc: `Metaverse Room is a virtual innovation studio built in Unreal Engine. 
+          Interact with 3D models of next-gen gadgets, attend virtual conferences, and showcase your creations in VR.<br><br>
+          <strong>Features:</strong><br>
+          • Unreal Engine VR environment<br>
+          • Live-stream integration<br>
+          • 3D collaboration tools<br>
+          • Gesture-based controls<br><br>
+          <span id="readMoreLink9" class="read-more">Read More</span>
+          <span id="extraText9" style="display:none;">
+            <br><br><strong>Requirements:</strong> VR headset (Quest 2 or higher)<br>
+            <strong>Platform:</strong> PC/VR<br>
+            <strong>Release:</strong> Q3 2025 (expected)<br>
+            <strong>Reviews:</strong> “Mind-blowing!” – VRFan<br>
+          </span>`,
+          previewImgs: ["images/more1prev1.png","images/more1prev2.png","images/more1prev3.png"],
+          ageRating: "All Ages",
+          similar: ["AI Art Studio","Neon KeyHub"],
+          version: "v0.5 Alpha",
+          reviews: ["“Next-level VR.” – ImmersionPro"],
+          type: "coming-soon",
+          redirect: "#"
+        }
+      },
+      {
+        id: "AI Art Studio",
+        category: "more",
+        title: "AI Art Studio",
+        icon: "images/more2icon.png",
+        internet: "N/A",
+        downloads: "—",
+        rating: "Coming Soon",
+        description: `Generate futuristic digital art using built-in AI models, still in development.`,
+        detailed: {
+          longDesc: `AI Art Studio combines GANs and VQ-VAE for on-the-fly digital art generation. 
+          Choose from style presets, tweak parameters, and export high-resolution images.<br><br>
+          <strong>Features:</strong><br>
+          • Multiple AI models (GAN/VQ-VAE)<br>
+          • Style transfer and parameter tuning<br>
+          • Export up to 4K resolution<br>
+          • Social share integration<br><br>
+          <span id="readMoreLink10" class="read-more">Read More</span>
+          <span id="extraText10" style="display:none;">
+            <br><br><strong>Status:</strong> Beta Q4 2025<br>
+            <strong>Requirements:</strong> PC/Web<br>
+            <strong>Reviews:</strong> “Fascinating tool.” – ArtGeek<br>
+          </span>`,
+          previewImgs: ["images/more2prev1.png","images/more2prev2.png","images/more2prev3.png"],
+          ageRating: "All Ages",
+          similar: ["Metaverse Room","Photo Glitch"],
+          version: "v0.7 Beta",
+          reviews: ["“Stunning AI art.” – PainterPro"],
+          type: "coming-soon",
+          redirect: "#"
+        }
+      }
+    ];
 
-<div class="product" data-category="gadgets">
-  <img src="images/gadget2.png" alt="Gadget 2">
-  <h3>Neon KeyHub</h3>
-  <p>Multifunctional AI-enabled keyboard for developers.</p>
-  <a class="view-btn" onclick="viewDetails('Neon KeyHub')">View More</a>
-</div>
+    // ----------------- STATE -----------------
+    let activeSection = 'all';
 
-  </div>  <script>
-    function filterCategory(category) {
-      const items = document.querySelectorAll('.product');
-      items.forEach(item => {
-        if (category === 'all' || item.dataset.category === category) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
+    // ----------------- ON LOAD -----------------
+    window.onload = () => {
+      displayProducts('all');
+    };
 
-    function viewDetails(name) {
-      alert('Showing detailed view for: ' + name);
-    }
-  </script></body></html>
+    // ----------------- DISPLAY PRODUCTS BY SECTION -----------------
+    function displayProducts(category) {
+      activeSection = category;
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = ''; // Clear
+
+      products.forEach(prod => {
+        if (category === 'all' || prod.category === category) {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.setAttribute('data-id', prod.id);
+
+          card.innerHTML = `
+            <img src="${prod.icon}" alt="${prod.title} Icon" />
+            <div class="product-info">
+              <div class="product-title">${prod.title}</div>
+              <div class="product-meta">
+                Category: ${capitalize(prod.category)} · ${prod.internet ? `Internet: ${prod.internet} ·` : ''} Downloads: ${prod.downloads} · Rating: ${prod.rating}${prod.type === 'paid' ? ` · $${prod.detailed.price || 'TBD'}` : ''}
+              </div>
+              <div class="product-desc">${prod.description}</div>
+              <button class="view-more-btn" onclick="openDetail('${prod.id}')">View More</button>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+      });
+
+      // Update active tab style
+      const tabs = document.querySelectorAll('.sections button');
+      tabs.forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.sections button[onclick="showSection('${category}')"]`).classList.add('active');
+    }
+
+    function showSection(section) {
+      displayProducts(section);
+    }
+
+    // ----------------- SEARCH FILTER -----------------
+    function applyFilters() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const title = card.querySelector('.product-title').innerText.toLowerCase();
+        const matchesQuery = title.includes(query);
+        const matchesSection = (activeSection === 'all') || (card.getAttribute('data-id') && products.find(p => p.id === card.getAttribute('data-id')).category === activeSection);
+        card.style.display = (matchesQuery && matchesSection) ? 'flex' : 'none';
+      });
+    }
+
+    // ----------------- MODAL DETAIL VIEW -----------------
+    function openDetail(id) {
+      const prod = products.find(p => p.id === id);
+      if (!prod) return;
+
+      // Populate modal content
+      document.getElementById('detailIcon').src = prod.icon;
+      document.getElementById('detailTitle').innerText = prod.title;
+      document.getElementById('detailCategory').innerText = `Category: ${capitalize(prod.category)}`;
+
+      // Description + Read More logic
+      document.getElementById('detailDescription').innerHTML = prod.detailed.longDesc + `<div id="extra-${id.replace(/\\s+/g, '')}" style="display:none;"></div>`;
+      const readMore = document.getElementById(`readMoreLink${products.indexOf(prod) + 1}`);
+      if (readMore) {
+        readMore.onclick = () => {
+          document.getElementById(`extra-${id.replace(/\\s+/g, '')}`).innerHTML = prod.detailed.extraText || '';
+          readMore.style.display = 'none';
+        };
+      }
+
+      // Preview images
+      const imgContainer = document.getElementById('detailImages');
+      imgContainer.innerHTML = '';
+      prod.detailed.previewImgs.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        imgContainer.appendChild(img);
+      });
+
+      // Extra info (OS, Last update, etc.)
+      document.getElementById('detailExtra').innerHTML = `
+        <p>Supported: ${prod.detailed.supported || 'N/A'}</p>
+        <p>Last Update: ${prod.detailed.lastUpdate}</p>
+        <p>Version: ${prod.detailed.version}</p>
+        <p>Age Rating: ${prod.detailed.ageRating}</p>
+        <p>Downloads: ${prod.downloads}</p>
+        <p>Reviews:</p>
+        <ul>
+          ${prod.detailed.reviews.map(r => `<li>${r}</li>`).join('')}
+        </ul>
+        <p>Similar: ${prod.detailed.similar.join(', ')}</p>
+      `;
+
+      // Download/Buy button
+      const dl = document.getElementById('detailDownload');
+      if (prod.type === 'paid') {
+        dl.innerHTML = `<button class="download-btn paid" onclick="window.location='${prod.detailed.redirect}'">BUY NOW - $${prod.detailed.price || 'TBD'}</button>`;
+      } else if (prod.type === 'free') {
+        dl.innerHTML = `<button class="download-btn free" onclick="window.location='${prod.detailed.redirect}'">DOWNLOAD FREE</button>`;
+      } else {
+        dl.innerHTML = `<p style="color:#999;">Coming Soon</p>`;
+      }
+
+      // Show modal
+      document.getElementById('modalOverlay').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').style.display = 'none';
+    }
+
+    // ----------------- UTILITY -----------------
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+  </script>
+</body>
+</html>
