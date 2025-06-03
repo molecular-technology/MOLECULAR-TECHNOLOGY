@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovations | Molecular Technology</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Yatra+One&family=Caladea&family=Courier+Prime&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }body {
+  font-family: 'Orbitron', sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  margin-top: 30px;
+  animation: fadeIn 2s ease-in;
+}
+
+.company-name {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(270deg, #ff0000, #ff4d4d, #ff0000);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auroraRed 6s ease infinite, minimalGlow 2s ease-in-out infinite;
+}
+
+.page-subtitle {
+  font-family: 'Montagu Slab', serif;
+  color: white;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 10px;
+  animation: type 4s steps(60, end);
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.nav-bar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nav-bar button {
+  background-color: #111;
+  color: white;
+  border: 2px solid red;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.nav-bar button:hover {
+  background-color: #222;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px red;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif;
+  width: 300px;
+  border: none;
+  color: white;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  background-color: #111;
+  color: white;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+}
+
+.section-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.section-buttons button {
+  padding: 10px 15px;
+  background-color: #111;
+  color: white;
+  border: 1px solid red;
+  font-family: 'Orbitron', sans-serif;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.section-buttons button:hover {
+  background: #222;
+  box-shadow: 0 0 10px red;
+}
+
+.products-section {
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background-color: #111;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px #111;
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  box-shadow: 0 0 20px red;
+  transform: translateY(-5px);
+}
+
+.product-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-info {
+  margin-top: 10px;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.view-more-btn {
+  margin-top: 15px;
+  background: red;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-more-btn:hover {
+  box-shadow: 0 0 10px white;
+}
+
+@keyframes auroraRed {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes minimalGlow {
+  0%, 100% {
+    text-shadow: 0 0 3px red;
+  }
+  50% {
+    text-shadow: 0 0 8px red;
+  }
+}
+
+  </style>
+</head><body>
+  <header>
+    <h1 class="company-name">INNOVATIONS</h1>
+    <p class="page-subtitle">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
+  </header>  <div class="nav-bar">
+    <button onclick="location.href='index.html'">HOME</button>
+    <button onclick="location.href='innovations.html'">INNOVATIONS</button>
+    <button onclick="location.href='marketx.html'">MARKETX</button>
+    <button onclick="location.href='announces.html'">ANNOUNCES</button>
+    <button onclick="location.href='startups.html'">STARTUPS</button>
+    <button onclick="location.href='issues.html'">ISSUES</button>
+    <button onclick="location.href='help.html'">HELP</button>
+  </div>  <div class="search-bar-container">
+    <input class="search-bar" type="text" placeholder="Search Any App, Game, Book, Gadget Etc...">
+    <button class="filter-btn">Filter</button>
+  </div>  <div class="section-buttons">
+    <button>All</button>
+    <button>Apps</button>
+    <button>Games</button>
+    <button>Books</button>
+    <button>Gadgets</button>
+    <button>More</button>
+  </div>  <section class="products-section">
+    <!-- Sample App -->
+    <div class="product-card">
+      <img class="product-logo" src="images/app1icon.png" alt="App 1">
+      <div class="product-info">
+        <div class="product-title">VoiceNoteX</div>
+        <p>Category: Productivity · Internet: Low · Downloads: 10K+ · Rating: ★★★★☆</p>
+        <p>Record and summarize your voice notes instantly.</p>
+        <button class="view-more-btn">View More</button>
+      </div>
+    </div><!-- Sample Game -->
+<div class="product-card">
+  <img class="product-logo" src="images/game1icon.png" alt="Game 1">
+  <div class="product-info">
+    <div class="product-title">SIMULIFE: Underworld</div>
+    <p>Category: Simulation · Internet: Medium · Downloads: 5K+ · Rating: ★★★★★</p>
+    <p>Experience gangster life in a low-poly open-world.</p>
+    <button class="view-more-btn">View More</button>
+  </div>
+</div>
+
+<!-- Sample Book -->
+<div class="product-card">
+  <img class="product-logo" src="images/book1icon.png" alt="Book 1">
+  <div class="product-info">
+    <div class="product-title">Beyond Tomorrow</div>
+    <p>Category: Sci-Fi · Format: PDF · Rating: ★★★★☆</p>
+    <p>A journey through space and time with deep emotion.</p>
+    <button class="view-more-btn">View More</button>
+  </div>
+</div>
+
+<!-- Sample Gadget -->
+<div class="product-card">
+  <img class="product-logo" src="images/gadget1icon.png" alt="Gadget 1">
+  <div class="product-info">
+    <div class="product-title">SmartBand Nano</div>
+    <p>Category: Wearable Tech · Type: Tracker · Rating: ★★★★☆</p>
+    <p>Track your health in style and with ease.</p>
+    <button class="view-more-btn">View More</button>
+  </div>
+</div>
+
+  </section>
+</body>
+</html>
