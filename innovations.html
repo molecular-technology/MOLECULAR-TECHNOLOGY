@@ -1,952 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>INNOVATIONS | Molecular Technology</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INNOVATIONS | Molecular Technology</title>
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Lato:wght@400;700&family=Montserrat:wght@400;600&family=Ubuntu+Mono&display=swap');* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #0a0a0a;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+header {
+  text-align: center;
+  margin-top: 40px;
+}
+.page-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3em;
+  color: #ff0000;
+  animation: fadeIn 2s ease-out, glow 2s ease-in-out infinite alternate;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+  to { text-shadow: 0 0 20px #ff4d4d, 0 0 30px #ff4d4d; }
+}
+.slogan {
+  font-family: 'Montserrat', serif;
+  font-size: 1.2em;
+  color: white;
+  margin: 10px auto;
+  width: 90%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
+}
+.divider {
+  height: 4px;
+  background-color: red;
+  margin: 20px 0;
+  width: 100%;
+}
+.nav-buttons {
+  text-align: center;
+  margin: 10px 0;
+}
+.nav-buttons button {
+  background: transparent;
+  border: 1px solid red;
+  color: red;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Orbitron';
+  transition: background 0.3s, color 0.3s;
+}
+.nav-buttons button:hover {
+  background: red;
+  color: black;
+}
+.search-filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  gap: 10px;
+}
+.search-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid red;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: white;
+  width: 300px;
+  font-family: 'Lato';
+}
+.filter-btn {
+  padding: 10px 15px;
+  border: none;
+  background: red;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Montserrat';
+}
+.section-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.section-tabs button {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  background: #222;
+  color: white;
+  font-family: 'Lato';
+  cursor: pointer;
+  border: 1px solid red;
+  transition: 0.3s;
+}
+.section-tabs button:hover,
+.section-tabs .active {
+  background: red;
+  color: black;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+.product-card {
+  background: #111;
+  border: 1px solid red;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px red;
+}
+.product-logo {
+  width: 100%;
+  height: 160px;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.product-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.product-info h3 {
+  color: red;
+  font-family: 'Orbitron';
+  margin-bottom: 5px;
+}
+.product-info p {
+  font-size: 0.9em;
+  color: #ccc;
+}
+.view-more {
+  background: red;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 10px;
+  font-family: 'Lato';
+  cursor: pointer;
+  transition: 0.3s;
+}
+.view-more:hover {
+  box-shadow: 0 0 10px white;
+  color: white;
+}
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  margin: 40px 0;
+  color: #666;
+}
 
-  <!-- Google Fonts (must load over HTTP/HTTPS) -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Montagu+Slab:wght@500&family=Lato:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    /* ===== RESET & BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Lato', sans-serif;
-      overflow-x: hidden;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    button {
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    /* ===== KEYFRAMES ===== */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes auroraRed {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blinkCaret {
-      50% { border-color: transparent; }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      animation: fadeInDown 1.5s ease-out;
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      background: linear-gradient(90deg, #ff0000, #990000, #ff3333);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: auroraRed 6s linear infinite;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    }
-    header p {
-      font-family: 'Montagu Slab', serif;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #fff;
-      width: 0;
-      animation: typing 4s steps(50, end) forwards, blinkCaret 1s step-end infinite;
-      color: #ddd;
-      text-shadow: 0 0 5px #fff;
-    }
-    .red-line {
-      height: 3px;
-      background-color: #ff0000;
-      width: 100%;
-      margin: 1rem 0;
-      box-shadow: 0 0 10px red;
-      animation: fadeIn 1.5s ease-out;
-    }
-
-    /* ===== NAV BUTTONS ===== */
-    .nav-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      animation: fadeIn 1.5s ease-out;
-    }
-    .nav-buttons a {
-      padding: 0.6rem 1.5rem;
-      background-color: #111;
-      border: 1px solid red;
-      color: red;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-    .nav-buttons a:hover {
-      background-color: red;
-      color: #000;
-      box-shadow: 0 0 10px red;
-      transform: scale(1.05);
-    }
-
-    /* ===== SEARCH & FILTER ===== */
-    .search-filter {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 1rem 1rem 2rem;
-      position: relative;
-      animation: fadeIn 1.5s ease-out;
-    }
-    .search-bar {
-      flex: 1;
-      max-width: 500px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid #444;
-      color: #fff;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      font-family: 'Lato', sans-serif;
-      font-size: 1rem;
-    }
-    .filter-btn {
-      padding: 0.8rem 1.2rem;
-      background-color: #111;
-      border: 1px solid red;
-      color: red;
-      border-radius: 8px;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      transition: 0.3s;
-    }
-    .filter-btn:hover {
-      background-color: red;
-      color: #000;
-      box-shadow: 0 0 10px red;
-    }
-    .suggestions {
-      position: absolute;
-      top: 100%;
-      left: calc(50% - 250px);
-      width: 500px;
-      max-width: 90%;
-      background-color: #111;
-      border: 1px solid #444;
-      max-height: 200px;
-      overflow-y: auto;
-      border-radius: 0 0 8px 8px;
-      display: none;
-      z-index: 10;
-    }
-    .suggestions div {
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .suggestions div:hover {
-      background-color: rgba(255, 0, 0, 0.2);
-    }
-
-    /* ===== CATEGORY TABS ===== */
-    .categories {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 2rem;
-      padding: 0 1rem;
-      animation: fadeIn 1.5s ease-out;
-    }
-    .categories button {
-      padding: 0.6rem 1rem;
-      background-color: #111;
-      border: 1px solid #555;
-      color: #fff;
-      border-radius: 6px;
-      font-family: 'Orbitron', sans-serif;
-      transition: 0.3s;
-    }
-    .categories button.active,
-    .categories button:hover {
-      background-color: red;
-      color: #000;
-      box-shadow: 0 0 10px red;
-    }
-
-    /* ===== PRODUCT GRID ===== */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem 1rem;
-      animation: fadeIn 1.5s ease-out;
-    }
-    .product-card {
-      background-color: #111;
-      border-radius: 12px;
-      padding: 1rem;
-      border: 1px solid #444;
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px red;
-    }
-    .product-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    .product-info {
-      margin-top: 0.8rem;
-    }
-    .product-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
-      color: red;
-    }
-    .product-meta {
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-top: 0.3rem;
-    }
-    .product-desc {
-      font-size: 0.9rem;
-      color: #ddd;
-      margin-top: 0.5rem;
-    }
-    .view-more-btn {
-      margin-top: 1rem;
-      display: block;
-      width: 100%;
-      background-color: red;
-      color: #000;
-      font-family: 'Lato', sans-serif;
-      font-weight: 700;
-      padding: 0.6rem;
-      border-radius: 8px;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    .view-more-btn:hover {
-      background-color: #aa0000;
-      color: #fff;
-      box-shadow: 0 0 10px white;
-    }
-
-    /* ===== UNDER DEVELOPMENT ===== */
-    .under-dev {
-      text-align: center;
-      margin: 3rem 1rem;
-      font-size: 1.2rem;
-      color: #888;
-      display: none;
-    }
-
-    /* ===== MODAL DETAIL VIEW ===== */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      z-index: 100;
-    }
-    .modal-content {
-      background-color: #111;
-      border-radius: 12px;
-      max-width: 800px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 1.5rem;
-      position: relative;
-      animation: fadeIn 0.5s ease-out;
-    }
-    .modal-close {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      background-color: red;
-      border: none;
-      color: #000;
-      font-size: 1.2rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .detail-header {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-    .detail-header img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-    .detail-info {
-      flex: 1;
-    }
-    .detail-info h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      color: red;
-    }
-    .detail-info p.meta {
-      color: #aaa;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-    }
-    .detail-description {
-      margin-top: 1rem;
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #ddd;
-    }
-    .detail-description .read-more {
-      color: #ff3333;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .detail-extra {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #bbb;
-    }
-    .detail-images {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-    }
-    .detail-images img {
-      width: 120px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .detail-images img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px #fff;
-    }
-    .detail-download {
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-    .download-btn {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    .download-btn.free {
-      background-color: #444;
-      color: #fff;
-    }
-    .download-btn.free:hover {
-      background-color: #666;
-      box-shadow: 0 0 10px #fff;
-    }
-    .download-btn.paid {
-      background-color: #ff0000;
-      color: #000;
-    }
-    .download-btn.paid:hover {
-      background-color: #aa0000;
-      color: #fff;
-      box-shadow: 0 0 10px #fff;
-    }
-  </style>
+  </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <h1>INNOVATIONS</h1>
-    <p>This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
-    <div class="red-line"></div>
-  </header>
-
-  <!-- NAV BUTTONS -->
-  <div class="nav-buttons">
-    <a href="index.html">HOME</a>
-    <a href="innovations.html">INNOVATIONS</a>
-    <a href="marketx.html">MARKETX</a>
-    <a href="announces.html">ANNOUNCES</a>
-    <a href="startups.html">STARTUPS</a>
-    <a href="issues.html">ISSUES</a>
-    <a href="help.html">HELP</a>
-  </div>
-
-  <!-- SEARCH & FILTER -->
-  <div class="search-filter">
-    <div style="position: relative; width: 500px; max-width: 90%;">
-      <input
-        type="text"
-        id="searchInput"
-        class="search-bar"
-        placeholder="Search Any App, Game, Book, Gadget Etc..."
-        onkeyup="updateSuggestions()"
-      />
-      <div id="suggestions" class="suggestions"></div>
-    </div>
-    <button class="filter-btn" onclick="openFilterPanel()">FILTER</button>
-  </div>
-
-  <!-- CATEGORY TABS -->
-  <div class="categories" id="categoryTabs">
-    <button class="active" onclick="renderProducts('all')">All</button>
-    <button onclick="renderProducts('apps')">Apps</button>
-    <button onclick="renderProducts('games')">Games</button>
-    <button onclick="renderProducts('books')">Books</button>
-    <button onclick="renderProducts('gadgets')">Gadgets</button>
-    <button onclick="renderProducts('more')">More</button>
-  </div>
-
-  <!-- PRODUCT GRID -->
-  <div class="product-grid" id="productGrid"></div>
-
-  <!-- UNDER DEVELOPMENT MESSAGE -->
-  <div id="underDev" class="under-dev">
-    These sections are under development. Check back soon!
-  </div>
-
-  <!-- DETAIL MODAL -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="detail-header" id="detailHeader"></div>
-      <div class="detail-description" id="detailDescription"></div>
-      <div class="detail-extra" id="detailExtra"></div>
-      <div class="detail-images" id="detailImages"></div>
-      <div class="detail-download" id="detailDownload"></div>
-    </div>
-  </div>
-
-  <script>
-    // ===== SAMPLE PRODUCT DATA =====
-    const products = [
-      // APPS
-      {
-        id: "ChatMaster",
-        category: "apps",
-        title: "ChatMaster",
-        icon: "assets/images/app1chatmastericon.png",
-        internet: "Low",
-        downloads: "12K",
-        rating: "4.8★",
-        description: "A seamless messaging app connecting you globally.",
-        type: "free",
-        price: "",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `ChatMaster features end-to-end encryption, group chats, multimedia sharing, and customizable themes.<br><br>
-          <span id="readMore1" class="read-more">Read More</span>
-          <span id="extra1" style="display:none;">
-          <br><br><strong>Supported Android:</strong> 5.0+<br>
-          <strong>Last Update:</strong> June 1, 2025<br>
-          <strong>Version:</strong> 2.1.0<br>
-          <strong>Reviews:</strong><br>
-          • “Best chat app ever!” – User123<br>
-          • “Smooth and reliable.” – Techie</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "3+",
-          similar: ["PhotoPro", "Voice Hero"],
-          supported: "Android 5.0+",
-          lastUpdate: "June 1, 2025",
-          version: "2.1.0",
-          reviews: ["“Best chat app ever!” – User123", "“Smooth and reliable.” – Techie"]
-        }
-      },
-      {
-        id: "PhotoPro",
-        category: "apps",
-        title: "PhotoPro",
-        icon: "assets/images/app2photoproicon.png",
-        internet: "Medium",
-        downloads: "8K",
-        rating: "4.6★",
-        description: "Professional photo editor with AI enhancements.",
-        type: "paid",
-        price: "2.99",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `PhotoPro offers AI-powered filters, background removal, and batch processing.<br><br>
-          <span id="readMore2" class="read-more">Read More</span>
-          <span id="extra2" style="display:none;">
-          <br><br><strong>Supported Android:</strong> 6.0+<br>
-          <strong>Last Update:</strong> May 12, 2025<br>
-          <strong>Version:</strong> 3.4.5<br>
-          <strong>Reviews:</strong><br>
-          • “Stunning results!” – PhotoFan<br>
-          • “Worth every penny.” – EditorPro</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "7+",
-          similar: ["ChatMaster", "AI Art Studio"],
-          supported: "Android 6.0+",
-          lastUpdate: "May 12, 2025",
-          version: "3.4.5",
-          reviews: ["“Stunning results!” – PhotoFan", "“Worth every penny.” – EditorPro"]
-        }
-      },
-
-      // GAMES
-      {
-        id: "SpaceOdyssey",
-        category: "games",
-        title: "Space Odyssey",
-        icon: "assets/images/game1spaceodysseyicon.png",
-        internet: "Low",
-        downloads: "20K",
-        rating: "4.9★",
-        description: "Embark on an interstellar adventure to save the galaxy.",
-        type: "free",
-        price: "",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `Space Odyssey lets you pilot your ship through neon-lit galaxies, battling pirates and exploring cosmic secrets.<br><br>
-          <span id="readMore3" class="read-more">Read More</span>
-          <span id="extra3" style="display:none;">
-          <br><br><strong>Supported Android:</strong> 6.0+<br>
-          <strong>Last Update:</strong> April 20, 2025<br>
-          <strong>Version:</strong> 1.8.2<br>
-          <strong>Reviews:</strong><br>
-          • “Amazing visuals!” – GamerX<br>
-          • “Addictive gameplay.” – SpaceFan</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "9+",
-          similar: ["ZombieSurvival", "MetaverseRoom"],
-          supported: "Android 6.0+",
-          lastUpdate: "April 20, 2025",
-          version: "1.8.2",
-          reviews: ["“Amazing visuals!” – GamerX", "“Addictive gameplay.” – SpaceFan"]
-        }
-      },
-      {
-        id: "ZombieSurvival",
-        category: "games",
-        title: "Zombie Survival",
-        icon: "assets/images/game2zombiesurvivalicon.png",
-        internet: "Medium",
-        downloads: "15K",
-        rating: "4.7★",
-        description: "Survive the apocalypse in this thrilling zombie game.",
-        type: "paid",
-        price: "3.99",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `Zombie Survival drops you into a post-apocalyptic world overrun by the undead. Scavenge supplies, build defenses, and lead survivors.<br><br>
-          <span id="readMore4" class="read-more">Read More</span>
-          <span id="extra4" style="display:none;">
-          <br><br><strong>Supported Android:</strong> 7.0+<br>
-          <strong>Last Update:</strong> May 30, 2025<br>
-          <strong>Version:</strong> 2.3.1<br>
-          <strong>Reviews:</strong><br>
-          • “Heart-pounding!” – Survivor123<br>
-          • “Best zombie game.” – Shehero</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "16+",
-          similar: ["SpaceOdyssey", "Neon KeyHub"],
-          supported: "Android 7.0+",
-          lastUpdate: "May 30, 2025",
-          version: "2.3.1",
-          reviews: ["“Heart-pounding!” – Survivor123", "“Best zombie game.” – Shehero"]
-        }
-      },
-
-      // BOOKS
-      {
-        id: "TheMotivator",
-        category: "books",
-        title: "The Motivator",
-        icon: "assets/images/book1themotivatorcover.png",
-        internet: "N/A",
-        downloads: "—",
-        rating: "4.8★",
-        description: "Unlock your potential with this inspiring read.",
-        type: "free",
-        price: "",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `The Motivator provides actionable insights and interviews with top innovators to help you achieve your goals.<br><br>
-          <span id="readMore5" class="read-more">Read More</span>
-          <span id="extra5" style="display:none;">
-          <br><br><strong>Format:</strong> PDF<br>
-          <strong>Pages:</strong> 150<br>
-          <strong>Reviews:</strong><br>
-          • “Truly inspiring.” – ReaderOne<br>
-          • “A must-read.” – SelfHelpGuru</span>`,
-          previewImgs: ["images/book1prev1.png", "images/book1prev2.png", "images/book1prev3.png"],
-          ageRating: "All Ages",
-          similar: ["CodeChaos", "AI Art Studio"],
-          supported: "PDF",
-          lastUpdate: "March 10, 2025",
-          version: "1st Edition",
-          reviews: ["“Truly inspiring.” – ReaderOne", "“A must-read.” – SelfHelpGuru"]
-        }
-      },
-      {
-        id: "CodeChaos",
-        category: "books",
-        title: "Code & Chaos",
-        icon: "assets/images/book2codechaoscover.png",
-        internet: "N/A",
-        downloads: "—",
-        rating: "4.6★",
-        description: "A tech-thriller exploring AI gone rogue.",
-        type: "paid",
-        price: "1.99",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `Code & Chaos delves into a future where AI evolves beyond human control, raising ethical dilemmas and thrilling action.<br><br>
-          <span id="readMore6" class="read-more">Read More</span>
-          <span id="extra6" style="display:none;">
-          <br><br><strong>Format:</strong> EPUB<br>
-          <strong>Pages:</strong> 220<br>
-          <strong>Reviews:</strong><br>
-          • “Cannot put it down.” – BookFanatic<br>
-          • “Chilling vision.” – ThrillerCritic</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "16+",
-          similar: ["TheMotivator", "UnderworldX"],
-          supported: "EPUB",
-          lastUpdate: "April 5, 2025",
-          version: "1.1.0",
-          reviews: ["“Cannot put it down.” – BookFanatic", "“Chilling vision.” – ThrillerCritic"]
-        }
-      },
-
-      // GADGETS
-      {
-        id: "SmartWatchX",
-        category: "gadgets",
-        title: "SmartWatch X",
-        icon: "assets/images/gadget1smartwatchxicon.png",
-        internet: "N/A",
-        downloads: "—",
-        rating: "Coming Soon",
-        description: "Stay connected with this sleek smartwatch.",
-        type: "paid",
-        price: "99.99",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `SmartWatch X features heart-rate monitoring, GPS tracking, and customizable watch faces. Its sleek design makes it perfect for any occasion.<br><br>
-          <span id="readMore7" class="read-more">Read More</span>
-          <span id="extra7" style="display:none;">
-          <br><br><strong>Compatibility:</strong> Android & iOS<br>
-          <strong>Battery:</strong> Up to 48 hours<br>
-          <strong>Reviews:</strong><br>
-          • “Love this watch!” – TechGuru<br>
-          • “Best design I’ve seen.” – StyleCritic</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "All Ages",
-          similar: ["Neon KeyHub", "M-Quantum Watch"],
-          supported: "Android & iOS",
-          lastUpdate: "May 1, 2025",
-          version: "1.0.0",
-          reviews: ["“Love this watch!” – TechGuru", "“Best design I’ve seen.” – StyleCritic"]
-        }
-      },
-      {
-        id: "EcoSpeaker",
-        category: "gadgets",
-        title: "EcoSpeaker",
-        icon: "assets/images/gadget2ecospeakericon.png",
-        internet: "N/A",
-        downloads: "—",
-        rating: "Coming Soon",
-        description: "Experience high-quality sound with eco-friendly materials.",
-        type: "paid",
-        price: "49.99",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `EcoSpeaker is crafted from recycled materials and features crystal-clear audio, Bluetooth 5.0, and a 12-hour battery life.<br><br>
-          <span id="readMore8" class="read-more">Read More</span>
-          <span id="extra8" style="display:none;">
-          <br><br><strong>Connectivity:</strong> Bluetooth 5.0, AUX<br>
-          <strong>Battery:</strong> Up to 12 hours<br>
-          <strong>Reviews:</strong><br>
-          • “Impressive audio.” – AudioExpert<br>
-          • “Eco-friendly & powerful.” – GreenTech</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "All Ages",
-          similar: ["SmartWatchX", "MetaverseRoom"],
-          supported: "Bluetooth 5.0, AUX",
-          lastUpdate: "April 25, 2025",
-          version: "1.0.0",
-          reviews: ["“Impressive audio.” – AudioExpert", "“Eco-friendly & powerful.” – GreenTech"]
-        }
-      },
-
-      // MORE
-      {
-        id: "MetaverseRoom",
-        category: "more",
-        title: "Metaverse Room",
-        icon: "assets/images/more1metaverseroomicon.png",
-        internet: "N/A",
-        downloads: "—",
-        rating: "Coming Soon",
-        description: "High-tech virtual innovation studio demo.",
-        type: "coming-soon",
-        price: "",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `Metaverse Room is an immersive VR studio built with Unreal Engine. Explore 3D models of futuristic gadgets and collaborate in real time.<br><br>
-          <span id="readMore9" class="read-more">Read More</span>
-          <span id="extra9" style="display:none;">
-          <br><br><strong>Requirements:</strong> VR headset (Quest 2+)<br>
-          <strong>Release:</strong> Q3 2025 (expected)<br>
-          <strong>Reviews:</strong><br>
-          • “Mind-blowing VR!” – VRFan<br>
-          • “Next-level innovation.” – TechCritic</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "All Ages",
-          similar: ["AI Art Studio", "Space Odyssey"],
-          supported: "VR headset",
-          lastUpdate: "N/A",
-          version: "v0.5 Alpha",
-          reviews: ["“Mind-blowing VR!” – VRFan", "“Next-level innovation.” – TechCritic"]
-        }
-      },
-      {
-        id: "AIArtStudio",
-        category: "more",
-        title: "AI Art Studio",
-        icon: "assets/images/more2aiartstudioicon.png",
-        internet: "N/A",
-        downloads: "—",
-        rating: "Coming Soon",
-        description: "Generate futuristic art with built-in AI models.",
-        type: "coming-soon",
-        price: "",
-        redirect: "https://amzn.in/d/ie5BOOu",
-        detailed: {
-          longDesc: `AI Art Studio uses advanced GAN and VQ-VAE models to generate high-resolution digital art on the fly. Choose styles and export up to 4K.<br><br>
-          <span id="readMore10" class="read-more">Read More</span>
-          <span id="extra10" style="display:none;">
-          <br><br><strong>Status:</strong> Beta Q4 2025<br>
-          <strong>Requirements:</strong> PC/Web<br>
-          <strong>Reviews:</strong><br>
-          • “Unreal results!” – ArtGeek<br>
-          • “A creative powerhouse.” – PainterPro</span>`,
-          previewImgs: ["assets/images/previewtestimage.png", "assets/images/previewtestimage.png", "assets/images/previewtestimage.png"],
-          ageRating: "All Ages",
-          similar: ["MetaverseRoom", "PhotoPro"],
-          supported: "PC/Web",
-          lastUpdate: "N/A",
-          version: "v0.7 Beta",
-          reviews: ["“Unreal results!” – ArtGeek", "“A creative powerhouse.” – PainterPro"]
-        }
-      }
-    ];
-
-    // ===== STATE =====
-    let activeCategory = 'all';
-
-    // ===== INITIAL RENDER =====
-    window.addEventListener('DOMContentLoaded', () => {
-      renderProducts('all');
-      populateSuggestions();
-    });
-
-    // ===== RENDER PRODUCTS =====
-    function renderProducts(category) {
-      activeCategory = category;
-      const grid = document.getElementById('productGrid');
-      grid.innerHTML = '';
-      const filtered = products.filter(p => category === 'all' || p.category === category);
-      if (filtered.length === 0) {
-        document.getElementById('underDev').style.display = 'block';
-      } else {
-        document.getElementById('underDev').style.display = 'none';
-        filtered.forEach(prod => {
-          const card = document.createElement('div');
-          card.className = 'product-card';
-          card.innerHTML = `
-            <img src="${prod.icon}" alt="${prod.title} Icon" />
-            <div class="product-info">
-              <div class="product-title">${prod.title}</div>
-              <div class="product-meta">
-                Category: ${capitalize(prod.category)}${prod.internet !== 'N/A' ? ` · Internet: ${prod.internet}` : ''} · Downloads: ${prod.downloads} · Rating: ${prod.rating}${prod.type === 'paid' ? ` · $${prod.price}` : ''}
-              </div>
-              <div class="product-desc">${prod.description}</div>
-              <button class="view-more-btn" onclick="openDetail('${prod.id}')">View More</button>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-      }
-      updateActiveTab(category);
-    }
-
-    function updateActiveTab(category) {
-      const tabs = document.querySelectorAll('.categories button');
-      tabs.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent.toLowerCase() === category) {
-          btn.classList.add('active');
-        }
-      });
-    }
-
-    // ===== SEARCH & SUGGESTIONS =====
-    function populateSuggestions() {
-      const suggestions = document.getElementById('suggestions');
-      suggestions.innerHTML = '';
-      products.forEach(p => {
-        const div = document.createElement('div');
-        div.textContent = p.title;
-        div.onclick = () => {
-          document.getElementById('searchInput').value = p.title;
-          filterBySearch(p.title.toLowerCase());
-          suggestions.style.display = 'none';
-        };
-        suggestions.appendChild(div);
-      });
-    }
-
-    function updateSuggestions() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const suggestions = document.getElementById('suggestions');
-      if (!query) {
-        suggestions.style.display = 'none';
-        renderProducts(activeCategory);
-        return;
-      }
-      suggestions.style.display = 'block';
-      Array.from(suggestions.children).forEach(item => {
-        if (item.textContent.toLowerCase().includes(query)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-      filterBySearch(query);
-    }
-
-    function filterBySearch(term) {
-      const grid = document.getElementById('productGrid');
-      Array.from(grid.children).forEach(card => {
-        const title = card.querySelector('.product-title').innerText.toLowerCase();
-        const desc = card.querySelector('.product-desc').innerText.toLowerCase();
-        if (title.includes(term) || desc.includes(term)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // ===== OPEN DETAIL MODAL =====
-    function openDetail(id) {
-      const prod = products.find(p => p.id === id);
-      if (!prod) return;
-      document.getElementById('modalOverlay').style.display = 'flex';
-
-      document.getElementById('detailHeader').innerHTML = `
-        <img src="${prod.icon}" alt="${prod.title} Icon" />
-        <div class="detail-info">
-          <h2>${prod.title}</h2>
-          <p class="meta">Category: ${capitalize(prod.category)}${prod.internet !== 'N/A' ? ` · Internet: ${prod.internet}` : ''} · Downloads: ${prod.downloads} · Rating: ${prod.rating}${prod.type === 'paid' ? ` · $${prod.price}` : ''}</p>
-        </div>
-      `;
-
-      document.getElementById('detailDescription').innerHTML = prod.detailed.longDesc;
-      const idx = products.indexOf(prod) + 1;
-      const readMore = document.getElementById(`readMore${idx}`);
-      const extra = document.getElementById(`extra${idx}`);
-      if (readMore) {
-        readMore.onclick = () => {
-          extra.style.display = 'inline';
-          readMore.style.display = 'none';
-        };
-      }
-
-      const imgContainer = document.getElementById('detailImages');
-      imgContainer.innerHTML = '';
-      prod.detailed.previewImgs.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        imgContainer.appendChild(img);
-      });
-
-      document.getElementById('detailExtra').innerHTML = `
-        <p><strong>Supported:</strong> ${prod.detailed.supported || 'N/A'}</p>
-        <p><strong>Last Update:</strong> ${prod.detailed.lastUpdate || 'N/A'}</p>
-        <p><strong>Version:</strong> ${prod.detailed.version || 'N/A'}</p>
-        <p><strong>Age Rating:</strong> ${prod.detailed.ageRating || 'N/A'}</p>
-        <p><strong>Reviews:</strong></p>
-        <ul>${prod.detailed.reviews.map(r => `<li>${r}</li>`).join('')}</ul>
-        <p><strong>Similar:</strong> ${prod.detailed.similar.join(', ')}</p>
-      `;
-
-      const dl = document.getElementById('detailDownload');
-      if (prod.type === 'paid') {
-        dl.innerHTML = `<button class="download-btn paid" onclick="window.location.href='${prod.redirect}'">BUY NOW - $${prod.price}</button>`;
-      } else if (prod.type === 'free') {
-        dl.innerHTML = `<button class="download-btn free" onclick="window.location.href='${prod.redirect}'">DOWNLOAD FREE</button>`;
-      } else {
-        dl.innerHTML = `<p style="color:#888; font-size:1rem;">Coming Soon</p>`;
-      }
-    }
-
-    function closeModal() {
-      document.getElementById('modalOverlay').style.display = 'none';
-    }
-
-    // ===== UTILITY =====
-    function capitalize(s) {
-      return s.charAt(0).toUpperCase() + s.slice(1);
-    }
-
-    // ===== FILTER PANEL PLACEHOLDER =====
-    function openFilterPanel() {
-      alert('Filter options will be available soon!');
-    }
-  </script>
+  <header>
+    <h1 class="page-title">INNOVATIONS</h1>
+    <p class="slogan">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
+    <div class="divider"></div>
+  </header>  <div class="nav-buttons">
+    <button>HOME</button>
+    <button>MARKETX</button>
+    <button>ANNOUNCES</button>
+    <button>STARTUPS</button>
+    <button>ISSUES</button>
+    <button>HELP</button>
+  </div>  <div class="search-filter-bar">
+    <input type="text" class="search-box" placeholder="Search Any App, Game, Book, Gadget Etc..." />
+    <button class="filter-btn">Filter</button>
+  </div>  <div class="section-tabs">
+    <button class="active">All</button>
+    <button>Apps</button>
+    <button>Games</button>
+    <button>Books</button>
+    <button>Gadgets</button>
+    <button>More</button>
+  </div>  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-logo"><img src="images/sampleappicon.png" alt="App Icon" /></div>
+      <div class="product-info">
+        <h3>Sample App</h3>
+        <p>Category: Productivity<br>Free - 30MB - ★★★★☆<br>Short description goes here...</p>
+        <button class="view-more">View More</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-logo"><img src="assets/images/samplegameicon.png" alt="Game Icon" /></div>
+      <div class="product-info">
+        <h3>Sample Game</h3>
+        <p>Category: Simulation<br>Paid - $4.99 - 300MB - ★★★★★<br>Short description goes here...</p>
+        <button class="view-more">View More</button>
+      </div>
+    </div>
+  </div>  <footer>
+    &copy; 2025 MOLECULAR TECHNOLOGY. All rights reserved.
+  </footer>
 </body>
 </html>
