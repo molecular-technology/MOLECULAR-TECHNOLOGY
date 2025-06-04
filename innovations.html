@@ -1,215 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Innovations | Molecular Technology</title>
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Molecular-Technology/MolecularTechnology/main/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Rubik', sans-serif;
-      background-color: #0a0a0a;
-      color: #fff;
-      overflow-x: hidden;
-    }
-    header {
-      background: linear-gradient(to right, #111, #1a1a1a);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid red;
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: #ff002e;
-    }
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #ccc;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #ff002e;
-    }
-    .slogan {
-      text-align: center;
-      font-size: 1.4rem;
-      padding: 2rem;
-      color: #888;
-      font-family: 'Orbitron', sans-serif;
-    }
-    .search-filter {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 1rem;
-    }
-    .search-filter input,
-    .search-filter select {
-      padding: 0.6rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-    .product-card {
-      background: #1a1a1a;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(255, 0, 46, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(255, 0, 46, 0.6);
-    }
-    .product-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .product-card .content {
-      padding: 1rem;
-    }
-    .product-card h3 {
-      margin: 0;
-      font-size: 1.2rem;
-      color: #ff002e;
-    }
-    .product-card p {
-      color: #bbb;
-      font-size: 0.9rem;
-      margin: 0.5rem 0 0 0;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-    .typewriter {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 0.15em solid #ff002e;
-      width: 0;
-      margin: auto;
-      animation: typing 4s steps(40, end) forwards, blink 1s step-end infinite;
-      font-size: 1.2rem;
-      color: #ff002e;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: #777;
-      font-size: 0.8rem;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>INNOVATIONS - Molecular Technology</title>
+  <style>
+    /* Global styles */
+    html { scroll-behavior: smooth; }
+    body {
+      margin:0; font-family: 'Exo', 'Lato', sans-serif;
+      background: #000; color: #fff; overflow-x:hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    /* Header */
+    header {
+      text-align: center; padding: 50px 20px; position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-family: 'Montagu Slab', serif; font-size: 4em; color: #fff;
+      opacity: 0;
+      animation: fadeInUp 1.5s forwards;
+    }
+    header p.subtitle {
+      font-family: 'Exo', sans-serif; font-size: 1.2em;
+      color: #fff; margin: 10px 0;
+      overflow: hidden; white-space: nowrap;
+      border-right: .15em solid #f00;
+      animation: typing 5s steps(60, end), blink-caret .75s step-end infinite;
+    }
+    header hr { width: 80%; border:0; border-bottom: 2px solid #f00; margin:20px auto; }
+    @keyframes fadeInUp {
+      0% { opacity:0; transform: translateY(50%); }
+      100% { opacity:1; transform: translateY(0); }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #f00; }
+    }
+    /* Navigation Buttons (same style as HOME page assumed) */
+    nav { margin-top: 20px; }
+    nav .nav-btn {
+      display: inline-block; margin: 0 10px;
+      padding: 10px 20px; border: 2px solid #f00; color: #f00;
+      border-radius: 25px; transition: all 0.3s;
+    }
+    nav .nav-btn:hover {
+      background: #f00; color: #000;
+    }
+    /* Search & Filter */
+    .search-filter { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
+    .search-filter input[type=text] {
+      font-family: 'Expo', sans-serif; font-size: 1em;
+      padding: 10px 15px; width: 300px; background: rgba(0,0,0,0.5);
+      color: #fff; border: 1px solid #555; border-radius: 20px;
+      transition: border-color 0.3s;
+    }
+    .search-filter input[type=text]:focus {
+      border-color: #f00; outline:none;
+    }
+    .search-filter button, .search-filter select {
+      margin-left:10px; padding:10px; font-size:1em;
+      border-radius: 20px; background: rgba(255,255,255,0.1);
+      color: #fff; border: 1px solid #444; cursor:pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .search-filter button:hover, .search-filter select:hover {
+      background: rgba(255,0,0,0.2); transform: scale(1.05);
+    }
+    .autocomplete-items {
+      position: absolute; border: 1px solid #d4d4d4; border-bottom: none;
+      border-top: none; z-index: 99; background:#fff; max-height:200px; overflow-y:auto;
+    }
+    .autocomplete-items div {
+      padding: 10px; cursor: pointer; background-color: #fff;
+    }
+    .autocomplete-items div:hover {
+      background-color: #e9e9e9;
+    }
+    /* Tabs */
+    .tabs {
+      display: flex; overflow-x: auto; white-space: nowrap;
+      padding: 10px; background: #111;
+    }
+    .tabs button {
+      flex: 0 0 auto; margin:0 5px; padding:10px 20px; background:#222;
+      color:#fff; border:none; border-radius: 15px; cursor:pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .tabs button.active { background: #f00; color:#000; }
+    .tabs button:hover { background:#333; transform:scale(1.05); }
+    /* Cards */
+    .cards-container {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      padding: 20px; gap: 20px;
+    }
+    .card {
+      background: #111; border-radius: 15px; overflow: hidden;
+      width: 300px; display: flex; flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px); box-shadow: 0 0 10px 2px rgba(255,0,0,0.7);
+    }
+    .card img.icon { width: 100%; height: 150px; object-fit: cover; }
+    .card-content { padding: 15px; flex:1; display: flex; flex-direction: column; }
+    .card-title { font-size: 1.2em; margin:0 0 10px; }
+    .card-info { font-size: 0.9em; margin-bottom: 10px; color: #bbb; }
+    .card-desc { flex:1; font-size: 0.9em; margin-bottom: 10px; }
+    .card-price { font-size: 1em; font-weight: bold; margin-bottom: 10px; }
+    .card-button {
+      padding: 10px; background: #f00; color: #000; font-family: 'Lato', sans-serif;
+      text-align:center; border:none; border-radius: 20px; cursor:pointer;
+      box-shadow: 0 0 5px #900;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .card-button:hover {
+      box-shadow: 0 0 20px #f00; transform: scale(1.05);
+    }
+    /* Expanded detail section */
+    .card-details {
+      display: none; background:#222; padding:15px; margin-top:10px;
+      border-radius: 10px; color: #ddd; font-size:0.9em;
+    }
+    .card-details img.logo { width: 100px; float:left; margin-right:15px; }
+    .card-details .full-desc { margin-top:0; }
+    .card-details table { width:100%; border-collapse: collapse; margin:10px 0; }
+    .card-details table td { padding:5px; vertical-align: top; border-top:1px solid #444; }
+    .card-details .actions { margin-top: 10px; }
+    .card-details .actions button {
+      padding: 10px 20px; background: #0f0; color: #000; border:none;
+      border-radius: 20px; cursor:pointer; font-family: 'Lato', sans-serif;
+      transition: background 0.3s;
+    }
+    .card-details .actions button:hover {
+      background: #5f5;
+    }
+    /* Review section */
+    .reviews { margin-top: 15px; }
+    .review-item { margin-bottom: 10px; }
+    .stars { color: #ffa500; }
+    .stars .fa-star { margin-right: 2px; }
+    /* Audio toggle */
+    #musicToggle {
+      position: fixed; bottom: 20px; right: 20px; padding: 10px;
+      background: rgba(255,0,0,0.8); border: none; border-radius: 50%;
+      color: #000; font-size: 1.2em; cursor: pointer;
+      box-shadow: 0 0 10px #f00;
+      transition: transform 0.2s;
+    }
+    #musicToggle:hover { transform: scale(1.1); }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Molecular Technology</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="innovations.html">Innovations</a>
-      <a href="marketx.html">MarketX</a>
-      <a href="announces.html">Announces</a>
-      <a href="startups.html">Startups</a>
-      <a href="issues.html">Issues</a>
-      <a href="help.html">Help</a>
-    </nav>
-  </header>
 
-  <div class="slogan">
-    <div class="typewriter">Innovating the Future, One Idea at a Time...</div>
-  </div>
+<header>
+  <h1>INNOVATIONS</h1>
+  <p class="subtitle">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
+  <hr>
+  <nav>
+    <a href="home.html" class="nav-btn">Home</a>
+    <a href="innovations.html" class="nav-btn">Innovations</a>
+    <a href="about.html" class="nav-btn">About</a>
+    <a href="contact.html" class="nav-btn">Contact</a>
+  </nav>
+</header>
 
-  <div class="search-filter">
-    <input type="text" id="search" placeholder="Search Products...">
-    <select id="category">
-      <option value="all">All</option>
-      <option value="apps">Apps</option>
-      <option value="games">Games</option>
-      <option value="books">Books</option>
-      <option value="gadgets">Gadgets</option>
-      <option value="more">More</option>
-    </select>
-  </div>
+<section class="search-filter">
+  <div class="autocomplete" style="position:relative;">
+    <input id="searchBar" type="text" placeholder="Search Any App, Game, Book, Gadget Etc..." autocomplete="off">
+    <div id="suggestions" class="autocomplete-items"></div>
+  </div>
+  <select id="filterCategory">
+    <option>Category</option>
+    <option>App</option><option>Game</option><option>Book</option><option>Gadget</option><option>More</option>
+  </select>
+  <select id="filterType">
+    <option>Type</option>
+    <option>Action</option><option>Simulation</option><option>Casual</option>
+  </select>
+  <select id="filterPlatform">
+    <option>Platform</option>
+    <option>Mobile</option><option>PC</option>
+  </select>
+  <select id="filterPricing">
+    <option>Pricing</option>
+    <option>Free</option><option>Paid</option>
+  </select>
+</section>
 
-  <div class="products" id="productList">
-    <!-- Sample Product Cards -->
-    <div class="product-card" data-category="apps">
-      <img src="https://via.placeholder.com/400x180?text=Peter+App" alt="Peter App">
-      <div class="content">
-        <h3>Peter Voice Assistant</h3>
-        <p>A high-tech voice-only Android assistant with AI power.</p>
-      </div>
-    </div>
+<div class="tabs">
+  <button class="tab-button active" data-cat="All">All</button>
+  <button class="tab-button" data-cat="App">Apps</button>
+  <button class="tab-button" data-cat="Game">Games</button>
+  <button class="tab-button" data-cat="Book">Books</button>
+  <button class="tab-button" data-cat="Gadget">Gadgets</button>
+  <button class="tab-button" data-cat="More">More</button>
+</div>
 
-    <div class="product-card" data-category="games">
-      <img src="https://via.placeholder.com/400x180?text=Simulife+Game" alt="Simulife Game">
-      <div class="content">
-        <h3>SIMULIFE: Underworld Legacy</h3>
-        <p>Offline open-world gangster game inspired by GTA.</p>
-      </div>
-    </div>
+<div id="cards" class="cards-container">
+  <!-- Sample App Card 1 -->
+  <div class="card" data-category="App">
+    <img class="icon" src="https://www.edigitalagency.com.au/wp-content/uploads/new-small-Instagram-logo-full-colour-png-184x184-pixels.png" alt="App 1 Icon">
+    <div class="card-content">
+      <h2 class="card-title">Peter Beta</h2>
+      <div class="card-info">Category: App | Internet: 67MB | Downloads: 1.2M | Rating: 
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+      </div>
+      <p class="card-desc">A Hyper Brain With Amazing Voice That Interacts With You And Makes Your Daily Works More Facile.</p>
+      <div class="card-price">Free</div>
+      <button class="card-button view-more">View More</button>
+    </div>
+    <div class="card-details">
+      <img class="logo" src="https://www.edigitalagency.com.au/wp-content/uploads/new-small-Instagram-logo-full-colour-png-184x184-pixels.png" alt="App One Logo">
+      <p class="full-desc">App One is an innovative application that does amazing things. <span class="dots">...</span><span class="more-text" style="display:none;">
+      This is the extended description of App One with more details about its functionality.</span></p>
+      <button class="read-more-btn">Read More</button>
+      <table>
+        <tr><td>OS Support:</td><td>iOS, Android</td></tr>
+        <tr><td>Last Update:</td><td>2025-05-31</td></tr>
+        <tr><td>Version:</td><td>1.0</td></tr>
+        <tr><td>Age Rating:</td><td> 3</td></tr>
+        <tr><td>Download Size:</td><td>67 MB</td></tr>
+        <tr><td>Storage Needed:</td><td>98 MB</td></tr>
+        <tr><td>Platform:</td><td>Mobile</td></tr>
+        <tr><td>Pricing:</td><td>Free with Ads</td></tr>
+      </table>
+      <div class="actions">
+        <button onclick="window.open('https://play.google.com/store/apps/details?id=com.twitter.android&pcampaignid=web_share')">Download</button>
+      </div>
+      <div class="reviews">
+        <h4>Reviews</h4>
+        <div class="review-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>Such A Great app!</div>
+        <div class="review-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>Love it!</div>
+        <textarea id="new-review-app1" rows="2" style="width:100%; margin-top:5px;" placeholder="Write a review..."></textarea>
+        <div><button onclick="submitReview('app1')">Submit Review</button></div>
+      </div>
+      <h4>More Similar Kind Of Products You Might Like</h4>
+      <div><a href="#">App Two</a> | <a href="#">App Three</a></div>
+    </div>
+  </div>
+  <!-- Sample App Card 2 -->
+  <div class="card" data-category="App">
+    <img class="icon" src="placeholder-app2.jpg" alt="App 2 Icon">
+    <div class="card-content">
+      <h2 class="card-title">App Two</h2>
+      <div class="card-info">Category: App | Internet: No | Downloads: 500K | Rating: 
+        <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+      </div>
+      <p class="card-desc">A short description of App Two, highlighting its features and benefits.</p>
+      <div class="card-price">$1.99</div>
+      <button class="card-button view-more">View More</button>
+    </div>
+    <div class="card-details">
+      <!-- Similar structure as above with placeholder content -->
+      <img class="logo" src="placeholder-app2-logo.png" alt="App Two Logo">
+      <p class="full-desc">App Two offers premium features. <span class="dots">...</span><span class="more-text" style="display:none;">
+      More information about App Two's functionality and unique selling points.</span></p>
+      <button class="read-more-btn">Read More</button>
+      <table>
+        <tr><td>OS Support:</td><td>Android</td></tr>
+        <tr><td>Last Update:</td><td>2025-01-20</td></tr>
+        <tr><td>Version:</td><td>2.8.0</td></tr>
+        <tr><td>Age Rating:</td><td>PEGI 7</td></tr>
+        <tr><td>Download Size:</td><td>30 MB</td></tr>
+        <tr><td>Storage Needed:</td><td>80 MB</td></tr>
+        <tr><td>Platform:</td><td>Mobile</td></tr>
+        <tr><td>Pricing:</td><td>Paid</td></tr>
+      </table>
+      <div class="actions">
+        <button onclick="window.open('https://buy.example.com/apptwo')">Buy Now</button>
+      </div>
+      <div class="reviews">
+        <h4>Reviews</h4>
+        <div class="review-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>Good value.</div>
+        <textarea id="new-review-app2" rows="2" style="width:100%; margin-top:5px;" placeholder="Write a review..."></textarea>
+        <div><button onclick="submitReview('app2')">Submit Review</button></div>
+      </div>
+      <h4>You May Also Like</h4>
+      <div><a href="#">App One</a> | <a href="#">App Three</a></div>
+    </div>
+  </div>
+  <!-- Sample Game Card 1 -->
+  <div class="card" data-category="Game">
+    <img class="icon" src="placeholder-game1.jpg" alt="Game 1 Icon">
+    <div class="card-content">
+      <h2 class="card-title">Game One</h2>
+      <div class="card-info">Category: Game | Internet: Yes | Downloads: 2M | Rating: 
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <p class="card-desc">A short description of Game One, highlighting its features and gameplay.</p>
+      <div class="card-price">Free</div>
+      <button class="card-button view-more">View More</button>
+    </div>
+    <div class="card-details">
+      <img class="logo" src="placeholder-game1-logo.png" alt="Game One Logo">
+      <p class="full-desc">Game One is an exciting adventure. <span class="dots">...</span><span class="more-text" style="display:none;">
+      More details about Game One's mechanics, story, and features.</span></p>
+      <button class="read-more-btn">Read More</button>
+      <table>
+        <tr><td>OS Support:</td><td>Windows, Mac</td></tr>
+        <tr><td>Last Update:</td><td>2025-04-05</td></tr>
+        <tr><td>Version:</td><td>3.5.2</td></tr>
+        <tr><td>Age Rating:</td><td>PEGI 12</td></tr>
+        <tr><td>Download Size:</td><td>500 MB</td></tr>
+        <tr><td>Storage Needed:</td><td>1 GB</td></tr>
+        <tr><td>Platform:</td><td>PC</td></tr>
+        <tr><td>Pricing:</td><td>Free</td></tr>
+      </table>
+      <div class="actions">
+        <button onclick="window.open('https://download.example.com/gameone')">Download</button>
+      </div>
+      <div class="reviews">
+        <h4>Reviews</h4>
+        <div class="review-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>Amazing graphics!</div>
+        <textarea id="new-review-game1" rows="2" style="width:100%; margin-top:5px;" placeholder="Write a review..."></textarea>
+        <div><button onclick="submitReview('game1')">Submit Review</button></div>
+      </div>
+      <h4>You May Also Like</h4>
+      <div><a href="#">Game Two</a> | <a href="#">Game Three</a></div>
+    </div>
+  </div>
+  <!-- Sample Game Card 2 -->
+  <div class="card" data-category="Game">
+    <img class="icon" src="placeholder-game2.jpg" alt="Game 2 Icon">
+    <div class="card-content">
+      <h2 class="card-title">Game Two</h2>
+      <div class="card-info">Category: Game | Internet: No | Downloads: 800K | Rating: 
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <p class="card-desc">A short description of Game Two, highlighting its features and gameplay.</p>
+      <div class="card-price">$4.99</div>
+      <button class="card-button view-more">View More</button>
+    </div>
+    <div class="card-details">
+      <img class="logo" src="placeholder-game2-logo.png" alt="Game Two Logo">
+      <p class="full-desc">Game Two offers premium gameplay. <span class="dots">...</span><span class="more-text" style="display:none;">
+      More details about Game Two's mechanics and features.</span></p>
+      <button class="read-more-btn">Read More</button>
+      <table>
+        <tr><td>OS Support:</td><td>Windows</td></tr>
+        <tr><td>Last Update:</td><td>2025-02-18</td></tr>
+        <tr><td>Version:</td><td>1.2.0</td></tr>
+        <tr><td>Age Rating:</td><td>PEGI 16</td></tr>
+        <tr><td>Download Size:</td><td>1 GB</td></tr>
+        <tr><td>Storage Needed:</td><td>2 GB</td></tr>
+        <tr><td>Platform:</td><td>PC</td></tr>
+        <tr><td>Pricing:</td><td>Paid</td></tr>
+      </table>
+      <div class="actions">
+        <button onclick="window.open('https://buy.example.com/gametwo')">Buy Now</button>
+      </div>
+      <div class="reviews">
+        <h4>Reviews</h4>
+        <div class="review-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>Worth it!</div>
+        <textarea id="new-review-game2" rows="2" style="width:100%; margin-top:5px;" placeholder="Write a review..."></textarea>
+        <div><button onclick="submitReview('game2')">Submit Review</button></div>
+      </div>
+      <h4>You May Also Like</h4>
+      <div><a href="#">Game One</a> | <a href="#">Game Three</a></div>
+    </div>
+  </div>
+  <!-- Sample Book Card 1 -->
+  <div class="card" data-category="Book">
+    <img class="icon" src="placeholder-book1.jpg" alt="Book 1 Icon">
+    <div class="card-content">
+      <h2 class="card-title">Book One</h2>
+      <div class="card-info">Category: Book | Internet: No | Downloads: 300K | Rating: 
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+      </div>
+      <p class="card-desc">A short description of Book One, highlighting its content and genre.</p>
+      <div class="card-price">$9.99</div>
+      <button class="card-button view-more">View More</button>
+    </div>
+    <div class="card-details">
+      <img class="logo" src="placeholder-book1-cover.png" alt="Book One Cover">
+      <p class="full-desc">Book One is a thrilling novel. <span class="dots">...</span><span class="more-text" style="display:none;">
+      More details about Book One's plot and reviews.</span></p>
+      <button class="read-more-btn">Read More</button>
+      <table>
+        <tr><td>OS Support:</td><td>ePub, PDF</td></tr>
+        <tr><td>Last Update:</td><td>2025-05-01</td></tr>
+        <tr><td>Version:</td><td>First Edition</td></tr>
+        <tr><td>Age Rating:</td><td>All Ages</td></tr>
+        <tr><td>Download Size:</td><td>5 MB</td></tr>
+        <tr><td>Storage Needed:</td><td>5 MB</td></tr>
+        <tr><td>Platform:</td><td>Mobile, PC</td></tr>
+        <tr><td>Pricing:</td><td>Paid</td></tr>
+      </table>
+      <div class="actions">
+        <button onclick="window.open('https://buy.example.com/bookone')">Buy Now</button>
+      </div>
+      <div class="reviews">
+        <h4>Reviews</h4>
+        <div class="review-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>Loved it.</div>
+        <textarea id="new-review-book1" rows="2" style="width:100%; margin-top:5px;" placeholder="Write a review..."></textarea>
+        <div><button onclick="submitReview('book1')">Submit Review</button></div>
+      </div>
+      <h4>You May Also Like</h4>
+      <div><a href="#">Book Two</a> | <a href="#">Book Three</a></div>
+    </div>
+  </div>
+  <!-- Sample Book Card 2 -->
+  <div class="card" data-category="Book">
+    <img class="icon" src="placeholder-book2.jpg" alt="Book 2 Icon">
+    <div class="card-content">
+      <h2 class="card-title">Book Two</h2>
+      <div class="card-info">Category: Book | Internet: No | Downloads: 450K | Rating: 
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <p class="card-desc">A short description of Book Two, highlighting its content and genre.</p>
+      <div class="card-price">Free</div>
+      <button class="card-button view-more">View More</button>
+    </div>
+    <div class="card-details">
+      <img class="logo" src="placeholder-book2-cover.png" alt="Book Two Cover">
+      <p class="full-desc">Book Two is an inspiring tale. <span class="dots">...</span><span class="more-text" style="display:none;">
+      More details about Book Two's plot and reviews.</span></p>
+      <button class="read-more-btn">Read More</button>
+      <table>
+        <tr><td>OS Support:</td><td>ePub, PDF</td></tr>
+        <tr><td>Last Update:</td><td>2025-03-22</td></tr>
+        <tr><td>Version:</td><td>Second Edition</td></tr>
+        <tr><td>Age Rating:</td><td>All Ages</td></tr>
+        <tr><td>Download Size:</td><td>8 MB</td></tr>
+        <tr><td>Storage Needed:</td><td>8 MB</td></tr>
+        <tr><td>Platform:</td><td>Mobile, PC</td></tr>
+        <tr><td>Pricing:</td><td>Free</td></tr>
+      </table>
+      <div class="actions">
+        <button onclick="window.open('https://download.example.com/booktwo')">Download</button>
+      </div>
+      <div class="reviews">
+        <h4>Reviews</h4>
+        <div class="review-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>Great read.</div>
+        <textarea id="new-review-book2" rows="2" style="width:100%; margin-top:5px;" placeholder="Write a review..."></textarea>
+        <div><button onclick="submitReview('book2')">Submit Review</button></div>
+      </div>
+      <h4>You May Also Like</h4>
+      <div><a href="#">Book One</a> | <a href="#">Book Three</a></div>
+    </div>
+  </div>
+</div>
 
-    <div class="product-card" data-category="books">
-      <img src="https://via.placeholder.com/400x180?text=MT+Ebook" alt="MT Book">
-      <div class="content">
-        <h3>Innovation E-book</h3>
-        <p>Our official Molecular Technology knowledge handbook.</p>
-      </div>
-    </div>
-  </div>
+<section id="placeholder">
+  <div id="gadgets-msg" style="display:none; text-align:center; margin:20px; color:#888;">
+    These Are Upcoming Projects And Under Development…
+  </div>
+</section>
 
-  <footer>
-    &copy; 2025 Molecular Technology. All rights reserved.
-  </footer>
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="placeholder-music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<button id="musicToggle">🔊</button>
 
-  <script>
-    // Typewriter effect start after load
-    window.onload = function() {
-      const tw = document.querySelector('.typewriter');
-      tw.style.width = "100%";
-    };
+<script>
+  // Fade-in audio on page load
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.volume = 0;
+  bgMusic.play().catch(()=>{ /* autoplay may be blocked */ });
+  let vol = 0;
+  const fadeInterval = setInterval(() => {
+    if (vol < 1.0) {
+      vol = Math.min(vol + 0.1, 1);
+      bgMusic.volume = vol;
+    } else clearInterval(fadeInterval);
+  }, 500);
 
-    const searchInput = document.getElementById('search');
-    const categorySelect = document.getElementById('category');
-    const products = document.querySelectorAll('.product-card');
+  // Music toggle button
+  document.getElementById('musicToggle').addEventListener('click', () => {
+    if (bgMusic.paused) bgMusic.play();
+    else bgMusic.pause();
+  });
 
-    function filterProducts() {
-      const searchValue = searchInput.value.toLowerCase();
-      const selectedCategory = categorySelect.value;
+  // Autocomplete suggestions (example keywords)
+  const keywords = ["App One","App Two","Game One","Game Two","Book One","Book Two","Gadget X","Gadget Y"];
+  function autocomplete(inp, arr) {
+    const suggestionBox = document.getElementById('suggestions');
+    inp.addEventListener("input", function(){
+      let val = this.value;
+      suggestionBox.innerHTML = "";
+      if (!val) { return false; }
+      arr.forEach(function(item){
+        if (item.toLowerCase().includes(val.toLowerCase())) {
+          const div = document.createElement("div");
+          div.innerHTML = "<strong>" + item.substr(0, val.length) + "</strong>" + item.substr(val.length);
+          div.addEventListener("click", function(){
+            inp.value = this.textContent;
+            suggestionBox.innerHTML = "";
+          });
+          suggestionBox.appendChild(div);
+        }
+      });
+    });
+    document.addEventListener("click", function (e) {
+      suggestionBox.innerHTML = "";
+    });
+  }
+  autocomplete(document.getElementById('searchBar'), keywords);
 
-      products.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const matchesSearch = title.includes(searchValue);
-        const matchesCategory = selectedCategory === 'all' || card.dataset.category === selectedCategory;
+  // Tabs filtering
+  document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-cat');
+      document.querySelectorAll('.card').forEach(card => {
+        if (cat === 'All' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      // Show placeholder if Gadgets or More
+      document.getElementById('gadgets-msg').style.display = (cat==='Gadget' || cat==='More') ? 'block' : 'none';
+    });
+  });
 
-        if (matchesSearch && matchesCategory) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
+  // View More toggles for each card
+  document.querySelectorAll('.view-more').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const details = btn.closest('.card').querySelector('.card-details');
+      details.style.display = (details.style.display === 'block') ? 'none' : 'block';
+    });
+  });
+  // Read More toggles
+  document.querySelectorAll('.read-more-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parent = btn.parentElement;
+      const dots = parent.querySelector('.dots');
+      const more = parent.querySelector('.more-text');
+      if (dots.style.display === 'none') {
+        dots.style.display = 'inline';
+        more.style.display = 'none';
+        btn.textContent = 'Read More';
+      } else {
+        dots.style.display = 'none';
+        more.style.display = 'inline';
+        btn.textContent = 'Read Less';
+      }
+    });
+  });
 
-    searchInput.addEventListener('input', filterProducts);
-    categorySelect.addEventListener('change', filterProducts);
-  </script>
+  // Submit review (placeholder action)
+  function submitReview(id) {
+    const textarea = document.getElementById('new-review-' + id);
+    if (textarea && textarea.value.trim() !== '') {
+      const reviewList = textarea.parentElement.parentElement.querySelector('.reviews');
+      const newDiv = document.createElement('div');
+      newDiv.className = 'review-item';
+      newDiv.innerHTML = '<span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> ' + textarea.value;
+      reviewList.insertBefore(newDiv, textarea.parentElement);
+      textarea.value = '';
+    }
+  }
+</script>
+
 </body>
 </html>
