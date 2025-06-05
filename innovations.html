@@ -3,737 +3,1022 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INNOVATIONS - Molecular Technology</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Yatra+One&family=Caladea&family=Montagu+Slab&display=swap" rel="stylesheet">
+    <title>Molecular Technology - Innovations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montagu+Slab:wght@500;700&family=Kaushan+Script&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        body {
+        :root {
+            --primary-bg: #000000;
+            --primary-accent: #FF0000;
+            --secondary-accent: #444444;
+            --main-text: #FFFFFF;
+            --sub-text: #CCCCCC;
+            --button-bg: #2a2a2a;
+            --button-hover-bg: #FF0000;
+            --button-hover-text: #000000;
+            --card-bg: #1c1c1c;
+            --modal-bg: #121212;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: 'Caladea', serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--main-text);
+            font-family: 'Lato', sans-serif;
             overflow-x: hidden;
-            animation: fadeInBody 1s ease;
+            min-height: 100vh;
         }
-        @keyframes fadeInBody {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        /* Header Title Animation */
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3em;
+
+        /* Header styles */
+        .header {
+            padding: 2rem 1rem;
             text-align: center;
-            background: linear-gradient(90deg, #ff0000, #ff8c00, #ff0000);
-            background-size: 300%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        radial-gradient(circle at top right, rgba(255,0,0,0.2), transparent 30%);
+        }
+
+        .page-title {
+            font-family: 'Montagu Slab', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #f00);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientText 5s infinite alternate, fadeIn 2s ease-out;
-            margin: 20px 0 10px 0;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 1.5s ease-out, glow 2s infinite alternate;
         }
-        @keyframes gradientText {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+
+        .slogan {
+            font-family: 'Montagu Slab', serif;
+            font-size: 1.5rem;
+            color: var(--main-text);
+            margin-bottom: 1.5rem;
+            min-height: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            border-right: 2px solid var(--primary-accent);
+            white-space: nowrap;
+            animation: typing 4s steps(60, end), blink 0.75s step-end infinite;
         }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-accent), transparent);
+            margin: 1rem auto 2rem;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(255,0,0,0.5);
+        }
+
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .nav-btn {
+            background-color: transparent;
+            color: var(--main-text);
+            border: 1px solid var(--secondary-accent);
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-accent);
+            color: var(--button-hover-text);
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 15px rgba(255,0,0,0.7);
+            transform: translateY(-3px);
+        }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .nav-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Search and Filter */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            margin: 0 auto 2rem;
+            max-width: 800px;
+        }
+
+        .search-bar {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background-color: var(--button-bg);
+            border: 1px solid var(--secondary-accent);
+            border-radius: 30px 0 0 30px;
+            color: var(--main-text);
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 10px rgba(255,0,0,0.5);
+        }
+
+        .search-bar::placeholder {
+            color: var(--sub-text);
+        }
+
+        .filter-btn {
+            background-color: var(--button-bg);
+            color: var(--main-text);
+            border: 1px solid var(--secondary-accent);
+            border-left: none;
+            padding: 0 1.5rem;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary-accent);
+            color: var(--button-hover-text);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--modal-bg);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            z-index: 100;
+            border: 1px solid var(--secondary-accent);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .filter-group h4 {
+            color: var(--primary-accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .filter-option {
+            display: block;
+            padding: 0.5rem;
+            color: var(--sub-text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-option:hover {
+            color: var(--main-text);
+            background-color: rgba(255,0,0,0.1);
+        }
+
+        /* Section Buttons */
+        .section-nav {
+            display: flex;
+            overflow-x: auto;
+            padding: 1rem 0.5rem;
+            margin: 0 auto 2rem;
+            max-width: 1200px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .section-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .section-btn {
+            background-color: transparent;
+            color: var(--main-text);
+            border: 2px solid var(--secondary-accent);
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+
+        .section-btn.active, .section-btn:hover {
+            background-color: var(--primary-accent);
+            color: var(--button-hover-text);
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 15px rgba(255,0,0,0.7);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(68,68,68,0.3);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255,0,0,0.3);
+            border-color: var(--primary-accent);
+        }
+
+        .product-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(68,68,68,0.3);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--button-bg);
+            border-radius: 12px;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-accent);
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-category {
+            font-size: 0.9rem;
+            color: var(--sub-text);
+            background-color: rgba(255,0,0,0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--sub-text);
+        }
+
+        .product-rating {
+            color: gold;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .product-description {
+            color: var(--sub-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .view-more-btn {
+            background-color: var(--primary-accent);
+            color: var(--button-hover-text);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-more-btn:hover {
+            box-shadow: 0 0 15px rgba(255,0,0,0.7);
+            transform: translateY(-3px);
+        }
+
+        .view-more-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20px;
+            height: 200%;
+            background: rgba(255,255,255,0.3);
+            transform: rotate(30deg);
+            transition: all 0.6s;
+        }
+
+        .view-more-btn:hover::after {
+            left: 120%;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.5s;
+        }
+
+        .modal-content {
+            background-color: var(--modal-bg);
+            margin: 5% auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--secondary-accent);
+            box-shadow: 0 0 30px rgba(255,0,0,0.3);
+        }
+
+        .modal-header {
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(40,40,40,0.8), rgba(20,20,20,0.9));
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--secondary-accent);
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--button-bg);
+            border-radius: 16px;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-accent);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-category {
+            font-size: 1rem;
+            color: var(--sub-text);
+            background-color: rgba(255,0,0,0.1);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--sub-text);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-description {
+            color: var(--sub-text);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .spec-item {
+            background-color: rgba(40,40,40,0.5);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-accent);
+        }
+
+        .spec-label {
+            font-size: 0.9rem;
+            color: var(--sub-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .action-btn {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            text-align: center;
+            font-family: 'Montagu Slab', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .free-btn {
+            background-color: var(--button-bg);
+            color: var(--main-text);
+        }
+
+        .paid-btn {
+            background-color: var(--primary-accent);
+            color: var(--button-hover-text);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,0,0,0.3);
+        }
+
+        /* Upcoming Section */
+        .upcoming-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(20,20,20,0.9), rgba(0,0,0,0.9));
+            border-radius: 12px;
+            margin: 2rem;
+            border: 1px solid var(--secondary-accent);
+        }
+
+        .upcoming-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-accent);
+            font-family: 'Montagu Slab', serif;
+        }
+
+        .upcoming-text {
+            font-size: 1.2rem;
+            color: var(--sub-text);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        /* Subtitle Typing Effect */
-        h2.subtitle {
-            font-family: 'Montagu Slab', serif;
-            font-size: 1.2em;
-            text-align: center;
-            color: #fff;
-            overflow: hidden;
-            border-right: .15em solid #fff;
-            white-space: nowrap;
-            margin: 0 auto;
-            width: 76ch; /* match subtitle text length */
-            animation: typing 8s steps(76), blink .75s step-end infinite;
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255,0,0,0.5); }
+            100% { text-shadow: 0 0 20px rgba(255,0,0,0.8), 0 0 30px rgba(255,0,0,0.6); }
         }
+
         @keyframes typing {
-            from { width: 0; }
-            to { width: 76ch; }
+            from { width: 0 }
+            to { width: 100% }
         }
+
         @keyframes blink {
-            50% { border-color: transparent; }
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-accent); }
         }
-        /* Glowing Line */
-        hr.glow-line {
-            border: none;
-            height: 2px;
-            background: #ff0000;
-            box-shadow: 0 0 10px #ff0000;
-            margin: 20px 40px;
-        }
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        nav a {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1em;
-            padding: 10px 20px;
-            border: 2px solid #fff;
-            transition: 0.3s;
-        }
-        nav a:hover, nav a.active {
-            color: #ff0000;
-            border-color: #ff0000;
-            box-shadow: 0 0 8px #ff0000;
-            transform: scale(1.05);
-        }
-        /* Search and Filter Section */
-        .search-filter {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px;
-        }
-        #searchInput {
-            padding: 10px;
-            font-size: 1em;
-            border: 2px solid #444;
-            background-color: rgba(50,50,50,0.7);
-            color: #fff;
-            width: 300px;
-            border-radius: 5px;
-        }
-        #searchInput:focus {
-            outline: none;
-            border-color: #ff0000;
-            box-shadow: 0 0 10px #ff0000;
-        }
-        .filters select {
-            padding: 8px;
-            font-size: 0.9em;
-            border-radius: 5px;
-            border: 2px solid #444;
-            background-color: rgba(50,50,50,0.7);
-            color: #fff;
-        }
-        .filters select:focus {
-            outline: none;
-            border-color: #ff0000;
-            box-shadow: 0 0 5px #ff0000;
-        }
-        /* Suggestion Box */
-        .suggestions {
-            position: relative;
-        }
-        #suggestionsList {
-            position: absolute;
-            top: 38px;
-            left: 0;
-            width: 300px;
-            background-color: #222;
-            border: 1px solid #444;
-            border-radius: 0 0 5px 5px;
-            max-height: 150px;
-            overflow-y: auto;
-            display: none;
-            z-index: 1000;
-        }
-        #suggestionsList div {
-            padding: 8px;
-            cursor: pointer;
-        }
-        #suggestionsList div:hover {
-            background-color: #444;
-        }
-        /* Category Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px;
-        }
-        .tablink {
-            font-family: 'Yatra One', cursive;
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #444;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .tablink:hover, .tablink.active {
-            background-color: #ff0000;
-            color: #000;
-            border-color: #ff0000;
-            box-shadow: 0 0 8px #ff0000;
-        }
-        /* Product Cards */
-        .products {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 10px;
-        }
-        .product-card {
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 10px;
-            display: flex;
-            width: 90%;
-            max-width: 800px;
-            overflow: hidden;
-            box-shadow: 0 0 5px #000;
-            transition: 0.3s;
-        }
-        .product-card:hover {
-            box-shadow: 0 0 15px #ff0000;
-            transform: scale(1.02);
-        }
-        .card-icon {
-            flex: 0 0 120px;
-            background-color: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .card-icon img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-        .card-info {
-            padding: 10px 15px;
-            flex: 1;
-        }
-        .card-info h3 {
-            margin: 0 0 5px 0;
-            font-family: 'Yatra One', cursive;
-            color: #ff8c00;
-        }
-        .card-info p {
-            margin: 4px 0;
-            font-size: 0.9em;
-        }
-        .view-more {
-            margin-top: 10px;
-            padding: 8px 16px;
-            font-family: 'Orbitron', sans-serif;
-            background-color: #ff0000;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .view-more:hover {
-            background-color: #ff4d4d;
-            box-shadow: 0 0 8px #ff0000;
-            transform: scale(1.05);
-        }
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background: rgba(0,0,0,0.8);
-            animation: fadeIn 0.5s ease;
-        }
-        .modal-content {
-            background-color: #111;
-            margin: 5% auto;
-            border: 1px solid #444;
-            width: 90%;
-            max-width: 700px;
-            border-radius: 10px;
-            padding: 20px;
-            position: relative;
-        }
-        .modal-content img.modal-logo {
-            width: 80px;
-            float: right;
-            margin-left: 20px;
-        }
-        .modal-content h2 {
-            margin-top: 0;
-            font-family: 'Yatra One', cursive;
-            color: #ff8c00;
-        }
-        .modal-content p, .modal-content li {
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-        .modal-content ul {
-            margin: 5px 0 10px 20px;
-        }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: #fff;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .modal-content .download-btn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            font-family: 'Orbitron', sans-serif;
-            background-color: #ff0000;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .modal-content .download-btn:hover {
-            background-color: #ff4d4d;
-            box-shadow: 0 0 8px #ff0000;
-        }
-        .media-preview {
-            margin: 10px 0;
-        }
-        .media-preview img, .media-preview video {
-            width: 100%;
-            max-height: 200px;
-            border-radius: 5px;
-        }
-        /* Background Music Toggle */
-        #musicToggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            font-size: 0.9em;
-            background-color: #222;
-            border: 1px solid #444;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        #musicToggle:hover {
-            background-color: #444;
-        }
+
         /* Responsive */
-        @media (max-width: 600px) {
-            .product-card {
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .slogan {
+                font-size: 1.1rem;
+                white-space: normal;
+                animation: none;
+                border-right: none;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .nav-btn {
+                margin: 0.25rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .search-container {
                 flex-direction: column;
-                align-items: center;
             }
-            .card-icon {
-                width: 100%;
+            
+            .search-bar {
+                border-radius: 30px;
+                margin-bottom: 0.5rem;
             }
-            .card-icon img {
-                width: 80px;
-                height: 80px;
+            
+            .filter-btn {
+                border-radius: 30px;
+                border-left: 1px solid var(--secondary-accent);
+                padding: 1rem;
+                justify-content: center;
             }
-            .tabs, nav {
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-header {
                 flex-direction: column;
+                text-align: center;
+            }
+            
+            .modal-icon {
+                margin: 0 auto 1rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
-    <header>
-        <h1>INNOVATIONS</h1>
-        <h2 class="subtitle">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</h2>
-        <hr class="glow-line">
-        <nav>
-            <a href="index.html">HOME</a>
-            <a href="innovations.html" class="active">INNOVATIONS</a>
-            <a href="about.html">ABOUT</a>
-            <a href="contact.html">CONTACT</a>
-        </nav>
+    <header class="header">
+        <h1 class="page-title">INNOVATIONS</h1>
+        <div class="slogan">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</div>
+        <div class="divider"></div>
     </header>
 
-    <!-- Search and Filter Section -->
-    <div class="search-filter">
-        <div class="suggestions">
-            <input type="text" id="searchInput" placeholder="Search Any App, Game, Book, Gadget Etc...">
-            <div id="suggestionsList"></div>
-        </div>
-        <div class="filters">
-            <select id="categoryFilter">
-                <option value="All">All</option>
-                <option value="App">App</option>
-                <option value="Game">Game</option>
-                <option value="Book">Book</option>
-                <option value="Gadget">Gadget</option>
-                <option value="More">More</option>
-            </select>
-            <select id="typeFilter">
-                <option value="All">All Types</option>
-                <option value="Utility">Utility</option>
-                <option value="Action">Action</option>
-                <option value="Education">Education</option>
-                <option value="Hardware">Hardware</option>
-                <option value="Misc">Misc</option>
-            </select>
-            <select id="platformFilter">
-                <option value="All">All Platforms</option>
-                <option value="Android">Android</option>
-                <option value="Windows">Windows</option>
-                <option value="Kindle">Kindle</option>
-                <option value="Universal">Universal</option>
-            </select>
-            <select id="priceFilter">
-                <option value="All">All Pricing</option>
-                <option value="Free">Free</option>
-                <option value="Paid">Paid</option>
-            </select>
+    <!-- Navigation -->
+    <div class="nav-container">
+      <a href="index.html">Home</a>
+      <a href="innovations.html">Innovations</a>
+      <a href="marketx.html">MarketX</a>
+      <a href="announces.html">Announces</a>
+      <a href="startups.html">Startups</a>
+      <a href="issues.html">Issues</a>
+      <a href="help.html">Help</a>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search Any App, Game, Book, Gadget Etc...">
+        <div class="filter-container">
+            <button class="filter-btn">Filter</button>
+            <div class="dropdown-content">
+                <div class="filter-group">
+                    <h4>Category</h4>
+                    <div class="filter-option">App</div>
+                    <div class="filter-option">Game</div>
+                    <div class="filter-option">Book</div>
+                    <div class="filter-option">Gadget</div>
+                    <div class="filter-option">More</div>
+                </div>
+                <div class="filter-group">
+                    <h4>Type</h4>
+                    <div class="filter-option">Action</div>
+                    <div class="filter-option">Simulation</div>
+                    <div class="filter-option">Romance</div>
+                    <div class="filter-option">PC</div>
+                    <div class="filter-option">Mobile</div>
+                    <div class="filter-option">Free</div>
+                    <div class="filter-option">Paid</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Category Tabs -->
-    <div class="tabs">
-        <button class="tablink active" data-cat="All">All</button>
-        <button class="tablink" data-cat="App">Apps</button>
-        <button class="tablink" data-cat="Game">Games</button>
-        <button class="tablink" data-cat="Book">Books</button>
-        <button class="tablink" data-cat="Gadget">Gadgets</button>
-        <button class="tablink" data-cat="More">More</button>
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <button class="section-btn active">All</button>
+        <button class="section-btn">Apps</button>
+        <button class="section-btn">Games</button>
+        <button class="section-btn">Books</button>
+        <button class="section-btn">Gadgets</button>
+        <button class="section-btn">More</button>
     </div>
 
-    <!-- Products Section -->
-    <div class="products" id="productContainer">
-        <!-- Sample App Product -->
-        <div class="product-card" data-name="Orbit Translator" data-category="App" data-type="Utility" data-platform="Android" data-price="Free" data-internet="No" data-downloads="1K+" data-rating="4.5">
-            <div class="card-icon"><img src="https://www.edigitalagency.com.au/wp-content/uploads/new-small-Instagram-logo-full-colour-png-184x184-pixels.png" alt="Orbit Translator Icon"></div>
-            <div class="card-info">
-                <h3>Orbit Translator</h3>
-                <p><strong>Category:</strong> App</p>
-                <p><strong>Internet:</strong> No</p>
-                <p><strong>Downloads:</strong> 1K+</p>
-                <p><strong>Rating:</strong> ★★★★☆</p>
-                <p><strong>Description:</strong> Translate text in real time with our AI-powered translator.</p>
-                <p><strong>Price:</strong> Free</p>
-                <button class="view-more" data-modal="modalApp1">View More</button>
+    <!-- Products Grid -->
+    <div class="products-grid">
+        <!-- App 1 -->
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-icon">🧬</div>
+                <div class="product-info">
+                    <h3 class="product-title">Molecular Analyzer</h3>
+                    <div class="product-category">App</div>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-meta">
+                    <span>Internet Required</span>
+                    <span>⭐ 4.8 (1.2K)</span>
+                </div>
+                <p class="product-description">Advanced molecular structure analysis tool for researchers and scientists. Real-time visualization and simulation capabilities.</p>
+                <button class="view-more-btn" onclick="openModal('modal1')">View Details</button>
             </div>
         </div>
 
-        <!-- Sample Game Product -->
-        <div class="product-card" data-name="Space Quest" data-category="Game" data-type="Action" data-platform="Windows" data-price="Paid" data-internet="Yes" data-downloads="500K+" data-rating="4.8">
-            <div class="card-icon"><img src="https://via.placeholder.com/100" alt="Space Quest Icon"></div>
-            <div class="card-info">
-                <h3>Space Quest</h3>
-                <p><strong>Category:</strong> Game</p>
-                <p><strong>Internet:</strong> Yes</p>
-                <p><strong>Downloads:</strong> 500K+</p>
-                <p><strong>Rating:</strong> ★★★★★</p>
-                <p><strong>Description:</strong> Explore the galaxy in this thrilling space adventure game.</p>
-                <p><strong>Price:</strong> $9.99</p>
-                <button class="view-more" data-modal="modalGame1">View More</button>
+        <!-- App 2 -->
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-icon">🔬</div>
+                <div class="product-info">
+                    <h3 class="product-title">NanoLab Pro</h3>
+                    <div class="product-category">App</div>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-meta">
+                    <span>Internet Required</span>
+                    <span>⭐ 4.7 (890)</span>
+                </div>
+                <p class="product-description">Virtual nanotechnology laboratory for designing and testing molecular structures in a simulated environment.</p>
+                <button class="view-more-btn" onclick="openModal('modal2')">View Details</button>
             </div>
         </div>
 
-        <!-- Sample Book Product -->
-        <div class="product-card" data-name="Quantum Computing 101" data-category="Book" data-type="Education" data-platform="Kindle" data-price="Free" data-internet="No" data-downloads="2K+" data-rating="4.2">
-            <div class="card-icon"><img src="https://via.placeholder.com/100" alt="Quantum Computing 101 Cover"></div>
-            <div class="card-info">
-                <h3>Quantum Computing 101</h3>
-                <p><strong>Category:</strong> Book</p>
-                <p><strong>Internet:</strong> No</p>
-                <p><strong>Downloads:</strong> 2K+</p>
-                <p><strong>Rating:</strong> ★★★★☆</p>
-                <p><strong>Description:</strong> An introductory guide to the principles of quantum computing.</p>
-                <p><strong>Price:</strong> Free</p>
-                <button class="view-more" data-modal="modalBook1">View More</button>
+        <!-- Game 1 -->
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-icon">🎮</div>
+                <div class="product-info">
+                    <h3 class="product-title">Quantum Frontier</h3>
+                    <div class="product-category">Game</div>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-meta">
+                    <span>Offline Play</span>
+                    <span>⭐ 4.9 (2.4K)</span>
+                </div>
+                <p class="product-description">Explore the quantum realm in this immersive sci-fi adventure. Solve puzzles at subatomic levels.</p>
+                <button class="view-more-btn" onclick="openModal('modal3')">View Details</button>
             </div>
         </div>
 
-        <!-- Sample Gadget Product -->
-        <div class="product-card" data-name="Plasma Widget" data-category="Gadget" data-type="Hardware" data-platform="Universal" data-price="Paid" data-internet="No" data-downloads="100+" data-rating="3.9">
-            <div class="card-icon"><img src="https://via.placeholder.com/100" alt="Plasma Widget Icon"></div>
-            <div class="card-info">
-                <h3>Plasma Widget</h3>
-                <p><strong>Category:</strong> Gadget</p>
-                <p><strong>Internet:</strong> No</p>
-                <p><strong>Downloads:</strong> 100+</p>
-                <p><strong>Rating:</strong> ★★★★☆</p>
-                <p><strong>Description:</strong> A revolutionary gadget that harnesses plasma energy for everyday use.</p>
-                <p><strong>Price:</strong> $299.99</p>
-                <button class="view-more" data-modal="modalGadget1">View More</button>
+        <!-- Game 2 -->
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-icon">🕹️</div>
+                <div class="product-info">
+                    <h3 class="product-title">BioGenesis</h3>
+                    <div class="product-category">Game</div>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-meta">
+                    <span>Online Required</span>
+                    <span>⭐ 4.6 (1.1K)</span>
+                </div>
+                <p class="product-description">Create life from molecular components in this revolutionary biology simulation game.</p>
+                <button class="view-more-btn" onclick="openModal('modal4')">View Details</button>
             </div>
         </div>
 
-        <!-- Sample More Product -->
-        <div class="product-card" data-name="Innovator's Toolkit" data-category="More" data-type="Misc" data-platform="Universal" data-price="Free" data-internet="Yes" data-downloads="500+" data-rating="4.0">
-            <div class="card-icon"><img src="https://via.placeholder.com/100" alt="Innovator's Toolkit Icon"></div>
-            <div class="card-info">
-                <h3>Innovator's Toolkit</h3>
-                <p><strong>Category:</strong> More</p>
-                <p><strong>Internet:</strong> Yes</p>
-                <p><strong>Downloads:</strong> 500+</p>
-                <p><strong>Rating:</strong> ★★★★☆</p>
-                <p><strong>Description:</strong> A bundle of resources and tools for creative innovators.</p>
-                <p><strong>Price:</strong> Free</p>
-                <button class="view-more" data-modal="modalMore1">View More</button>
+        <!-- Book 1 -->
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-icon">📘</div>
+                <div class="product-info">
+                    <h3 class="product-title">Molecular Revolution</h3>
+                    <div class="product-category">Book</div>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-meta">
+                    <span>Ebook/Print</span>
+                    <span>⭐ 4.9 (540)</span>
+                </div>
+                <p class="product-description">The definitive guide to molecular technology and its impact on our future. 450 pages of cutting-edge insights.</p>
+                <button class="view-more-btn" onclick="openModal('modal5')">View Details</button>
             </div>
         </div>
+
+        <!-- Book 2 -->
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-icon">📚</div>
+                <div class="product-info">
+                    <h3 class="product-title">Nano Engineering</h3>
+                    <div class="product-category">Book</div>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-meta">
+                    <span>Ebook/Print</span>
+                    <span>⭐ 4.8 (620)</span>
+                </div>
+                <p class="product-description">Comprehensive textbook on nanotechnology principles and applications for students and professionals.</p>
+                <button class="view-more-btn" onclick="openModal('modal6')">View Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gadgets Section Placeholder -->
+    <div class="upcoming-section">
+        <h2 class="upcoming-title">Gadgets & More</h2>
+        <p class="upcoming-text">These Are Upcoming Projects And Under Development So, Soon You're Able To Interact With This Section Also. We're working on revolutionary molecular-scale devices that will change how we interact with technology.</p>
     </div>
 
     <!-- Modals -->
-    <!-- App Modal -->
-    <div id="modalApp1" class="modal">
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
         <div class="modal-content">
-            <span class="close-btn" data-modal="modalApp1">&times;</span>
-            <h2>Orbit Translator</h2>
-            <img class="modal-logo" src="https://www.edigitalagency.com.au/wp-content/uploads/new-small-Instagram-logo-full-colour-png-184x184-pixels.png">
-            <p class="description">Orbit Translator is an advanced language translation application powered by cutting-edge neural networks. It instantly translates text and speech between multiple languages with high accuracy. Whether you’re traveling abroad or learning a new language, Orbit Translator ensures seamless communication. Our offline mode allows translations without internet, making it convenient anytime, anywhere.</p>
-            <ul><strong>Supported OS:</strong>
-                <li>Android</li>
-                <li>iOS</li>
-                <li>Windows</li>
-            </ul>
-            <p><strong>Version:</strong> 1.0</p>
-            <p><strong>Last Updated:</strong> 2025-03-01</p>
-            <p><strong>Internet Required:</strong> No</p>
-            <p><strong>Storage Needed:</strong> 50MB</p>
-            <div class="media-preview">
-                <img src="https://www.edigitalagency.com.au/wp-content/uploads/new-small-Instagram-logo-full-colour-png-184x184-pixels.png" alt="Orbit Translator Screenshot">
-                <!--<video src="orbit_translator_demo.mp4" autoplay muted loop></video>-->
+            <div class="modal-header">
+                <div class="modal-icon">🧬</div>
+                <div>
+                    <h2 class="modal-title">Molecular Analyzer</h2>
+                    <div class="modal-category">App</div>
+                </div>
+                <button class="close-modal" onclick="closeModal('modal1')">&times;</button>
             </div>
-            <p><strong>Age Rating:</strong> All Ages</p>
-            <p><strong>Reviews:</strong> "Amazing translation app!" - ★★★★☆, "Very useful!" - ★★★★★</p>
-            <button class="download-btn">Download App</button>
+            <div class="modal-body">
+                <p class="modal-description">Molecular Analyzer is a breakthrough application for researchers, chemists, and educators. It provides real-time molecular visualization, structure analysis, and simulation capabilities. With our proprietary algorithm, you can predict molecular behavior under various conditions and visualize complex molecular interactions in 3D space.</p>
+                
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Platform</div>
+                        <div class="spec-value">Windows, macOS</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Version</div>
+                        <div class="spec-value">2.1.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Last Updated</div>
+                        <div class="spec-value">May 15, 2025</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Storage</div>
+                        <div class="spec-value">850 MB</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Internet</div>
+                        <div class="spec-value">Required</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Downloads</div>
+                        <div class="spec-value">1,250+</div>
+                    </div>
+                </div>
+                
+                <button class="action-btn free-btn">Download Free</button>
+            </div>
         </div>
     </div>
 
-    <!-- Game Modal -->
-    <div id="modalGame1" class="modal">
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
         <div class="modal-content">
-            <span class="close-btn" data-modal="modalGame1">&times;</span>
-            <h2>Space Quest</h2>
-            <img class="modal-logo" src="https://via.placeholder.com/80" alt="Space Quest Logo">
-            <p class="description">Space Quest takes you on an epic journey through the cosmos. Pilot your spaceship across galaxies, battle aliens, and complete interstellar missions. Stunning graphics and an immersive soundtrack will transport you to the final frontier. Customize your ship and team up with friends in multiplayer mode for even more excitement!</p>
-            <ul><strong>Supported OS:</strong>
-                <li>Windows</li>
-                <li>MacOS</li>
-            </ul>
-            <p><strong>Version:</strong> 2.5</p>
-            <p><strong>Last Updated:</strong> 2025-02-15</p>
-            <p><strong>Internet Required:</strong> Yes (for multiplayer)</p>
-            <p><strong>Storage Needed:</strong> 2GB</p>
-            <div class="media-preview">
-                <img src="https://via.placeholder.com/600x300" alt="Space Quest Screenshot">
+            <div class="modal-header">
+                <div class="modal-icon">🔬</div>
+                <div>
+                    <h2 class="modal-title">NanoLab Pro</h2>
+                    <div class="modal-category">App</div>
+                </div>
+                <button class="close-modal" onclick="closeModal('modal2')">&times;</button>
             </div>
-            <p><strong>Age Rating:</strong> 12+</p>
-            <p><strong>Reviews:</strong> "Best space game ever!" - ★★★★★, "Thrilling and fun." - ★★★★☆</p>
-            <button class="download-btn">Buy Now ($9.99)</button>
+            <div class="modal-body">
+                <p class="modal-description">NanoLab Pro revolutionizes nanotechnology research by providing a virtual environment for designing, testing, and simulating molecular structures. The app includes a comprehensive database of molecular properties and allows for real-time manipulation of nanostructures with unprecedented precision.</p>
+                
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Platform</div>
+                        <div class="spec-value">Windows, macOS, Linux</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Version</div>
+                        <div class="spec-value">1.3.8</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Last Updated</div>
+                        <div class="spec-value">April 28, 2025</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Storage</div>
+                        <div class="spec-value">1.2 GB</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Internet</div>
+                        <div class="spec-value">Required</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Downloads</div>
+                        <div class="spec-value">890+</div>
+                    </div>
+                </div>
+                
+                <button class="action-btn paid-btn">Buy Now ₹1,499</button>
+            </div>
         </div>
     </div>
 
-    <!-- Book Modal -->
-    <div id="modalBook1" class="modal">
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
         <div class="modal-content">
-            <span class="close-btn" data-modal="modalBook1">&times;</span>
-            <h2>Quantum Computing 101</h2>
-            <img class="modal-logo" src="https://via.placeholder.com/80" alt="Quantum Computing Logo">
-            <p class="description">Quantum Computing 101 is an accessible guide that introduces the fundamental concepts of quantum computing. Through clear explanations and practical examples, readers will learn about qubits, entanglement, and superposition. Perfect for beginners, this ebook breaks down complex theories into understandable terms.</p>
-            <ul><strong>Supported Formats:</strong>
-                <li>Kindle</li>
-                <li>ePub</li>
-            </ul>
-            <p><strong>Version:</strong> 1.0</p>
-            <p><strong>Last Updated:</strong> 2025-01-10</p>
-            <p><strong>Internet Required:</strong> No</p>
-            <p><strong>Storage Needed:</strong> 5MB</p>
-            <div class="media-preview">
-                <img src="https://via.placeholder.com/600x300" alt="Quantum Computing Preview">
+            <div class="modal-header">
+                <div class="modal-icon">🎮</div>
+                <div>
+                    <h2 class="modal-title">Quantum Frontier</h2>
+                    <div class="modal-category">Game</div>
+                </div>
+                <button class="close-modal" onclick="closeModal('modal3')">&times;</button>
             </div>
-            <p><strong>Age Rating:</strong> 10+</p>
-            <p><strong>Reviews:</strong> "Very informative book." - ★★★★☆, "Great for beginners." - ★★★★☆</p>
-            <button class="download-btn">Download Book</button>
+            <div class="modal-body">
+                <p class="modal-description">Embark on a journey through the quantum realm in this visually stunning adventure game. Solve intricate puzzles at subatomic levels, manipulate quantum states, and uncover the secrets of the universe. With realistic physics and mind-bending mechanics, Quantum Frontier offers an experience like no other.</p>
+                
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Platform</div>
+                        <div class="spec-value">PC, PlayStation, Xbox</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Version</div>
+                        <div class="spec-value">1.0.3</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Last Updated</div>
+                        <div class="spec-value">June 1, 2025</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Storage</div>
+                        <div class="spec-value">25 GB</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Internet</div>
+                        <div class="spec-value">Offline Play</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Downloads</div>
+                        <div class="spec-value">2,400+</div>
+                    </div>
+                </div>
+                
+                <button class="action-btn paid-btn">Buy Now ₹2,999</button>
+            </div>
         </div>
     </div>
-
-    <!-- Gadget Modal -->
-    <div id="modalGadget1" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" data-modal="modalGadget1">&times;</span>
-            <h2>Plasma Widget</h2>
-            <img class="modal-logo" src="https://via.placeholder.com/80" alt="Plasma Widget">
-            <p class="description">The Plasma Widget is a state-of-the-art gadget that uses plasma energy to charge your devices wirelessly. Compact and stylish, it fits on any desk or nightstand. The futuristic design makes it a conversation starter while keeping your tech powered up. Comes with customizable LED lights that pulse as it charges.</p>
-            <ul><strong>Supported Devices:</strong>
-                <li>Smartphones</li>
-                <li>Tablets</li>
-            </ul>
-            <p><strong>Version:</strong> 1.2</p>
-            <p><strong>Last Updated:</strong> 2025-04-05</p>
-            <p><strong>Internet Required:</strong> No</p>
-            <p><strong>Storage Needed:</strong> 200MB (setup app)</p>
-            <div class="media-preview">
-                <img src="https://via.placeholder.com/600x300" alt="Plasma Widget Demo">
-            </div>
-            <p><strong>Age Rating:</strong> All Ages</p>
-            <p><strong>Reviews:</strong> "Very innovative gadget." - ★★★★☆</p>
-            <button class="download-btn">Buy Now ($299.99)</button>
-        </div>
-    </div>
-
-    <!-- More Modal -->
-    <div id="modalMore1" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" data-modal="modalMore1">&times;</span>
-            <h2>Innovator's Toolkit</h2>
-            <img class="modal-logo" src="https://via.placeholder.com/80" alt="Innovator's Toolkit">
-            <p class="description">Innovator's Toolkit is a comprehensive package of software and e-books designed for creative professionals. It includes design apps, productivity tools, and learning materials to spark innovation. Whether you are an artist, engineer, or entrepreneur, this toolkit provides everything you need to turn ideas into reality.</p>
-            <ul><strong>Included:</strong>
-                <li>Design Pro App</li>
-                <li>Entrepreneur eBook</li>
-                <li>Idea Planner</li>
-            </ul>
-            <p><strong>Version:</strong> 1.0</p>
-            <p><strong>Last Updated:</strong> 2025-02-20</p>
-            <p><strong>Internet Required:</strong> Yes</p>
-            <p><strong>Storage Needed:</strong> 150MB</p>
-            <div class="media-preview">
-                <img src="https://via.placeholder.com/600x300" alt="Toolkit Preview">
-            </div>
-            <p><strong>Age Rating:</strong> All Ages</p>
-            <p><strong>Reviews:</strong> "Excellent bundle." - ★★★★☆</p>
-            <button class="download-btn">Download Toolkit</button>
-        </div>
-    </div>
-
-    <!-- Background Music -->
-    <audio id="bgMusic" src="https://example.com/placeholder.mp3" autoplay loop></audio>
-    <button id="musicToggle">Pause Music</button>
 
     <script>
-        // Elements
-        const searchInput = document.getElementById('searchInput');
-        const suggestionsList = document.getElementById('suggestionsList');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const typeFilter = document.getElementById('typeFilter');
-        const platformFilter = document.getElementById('platformFilter');
-        const priceFilter = document.getElementById('priceFilter');
-        const tabs = document.querySelectorAll('.tablink');
-        const cards = document.querySelectorAll('.product-card');
-
-        // Search suggestions
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            suggestionsList.innerHTML = '';
-            if (query.length > 0) {
-                cards.forEach(card => {
-                    const name = card.dataset.name.toLowerCase();
-                    if (name.includes(query)) {
-                        const suggestion = document.createElement('div');
-                        suggestion.textContent = card.dataset.name;
-                        suggestion.addEventListener('click', function() {
-                            searchInput.value = this.textContent;
-                            suggestionsList.style.display = 'none';
-                            applyFilters();
-                        });
-                        suggestionsList.appendChild(suggestion);
-                    }
-                });
-                suggestionsList.style.display = suggestionsList.children.length ? 'block' : 'none';
-                applyFilters();
-            } else {
-                suggestionsList.style.display = 'none';
-                applyFilters();
-            }
-        });
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.suggestions')) {
-                suggestionsList.style.display = 'none';
-            }
-        });
-
-        // Tab click events
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                tabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                categoryFilter.value = this.dataset.cat;
-                applyFilters();
+        // Typing effect for slogan
+        document.addEventListener('DOMContentLoaded', function() {
+            const slogan = document.querySelector('.slogan');
+            setTimeout(() => {
+                slogan.style.animation = 'typing 4s steps(60, end), blink 0.75s step-end infinite';
+            }, 500);
+            
+            // Filter button functionality
+            const filterBtn = document.querySelector('.filter-btn');
+            const dropdown = document.querySelector('.dropdown-content');
+            
+            filterBtn.addEventListener('click', function() {
+                dropdown.classList.toggle('show');
             });
-        });
-
-        // Filter change events
-        categoryFilter.addEventListener('change', function() {
-            applyFilters();
-            tabs.forEach(t => {
-                if (t.dataset.cat === this.value) {
-                    tabs.forEach(tt => tt.classList.remove('active'));
-                    t.classList.add('active');
+            
+            // Close dropdown when clicking outside
+            window.addEventListener('click', function(e) {
+                if (!filterBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('show');
                 }
             });
+            
+            // Section buttons functionality
+            const sectionBtns = document.querySelectorAll('.section-btn');
+            sectionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    sectionBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
         });
-        typeFilter.addEventListener('change', applyFilters);
-        platformFilter.addEventListener('change', applyFilters);
-        priceFilter.addEventListener('change', applyFilters);
 
-        function applyFilters() {
-            const query = searchInput.value.toLowerCase();
-            const catVal = categoryFilter.value;
-            const typeVal = typeFilter.value;
-            const platVal = platformFilter.value;
-            const priceVal = priceFilter.value;
-            cards.forEach(card => {
-                const name = card.dataset.name.toLowerCase();
-                const category = card.dataset.category;
-                const type = card.dataset.type;
-                const platform = card.dataset.platform;
-                const price = card.dataset.price;
-                const matchName = name.includes(query);
-                const matchCategory = (catVal === 'All' || category === catVal);
-                const matchType = (typeVal === 'All' || type === typeVal);
-                const matchPlat = (platVal === 'All' || platform === platVal);
-                const matchPrice = (priceVal === 'All' || price === priceVal);
-                if (matchName && matchCategory && matchType && matchPlat && matchPrice) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
         }
 
-        // Modal logic
-        const modalButtons = document.querySelectorAll('.view-more');
-        modalButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const modalId = this.dataset.modal;
-                document.getElementById(modalId).style.display = 'block';
+        // Search functionality
+        const searchBar = document.querySelector('.search-bar');
+        searchBar.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.product-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.product-title').textContent.toLowerCase();
+                const category = card.querySelector('.product-category').textContent.toLowerCase();
+                const description = card.querySelector('.product-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || category.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
-        });
-        const closeButtons = document.querySelectorAll('.close-btn');
-        closeButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const modalId = this.dataset.modal;
-                document.getElementById(modalId).style.display = 'none';
-            });
-        });
-        window.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-            }
-        });
-
-        // Music toggle
-        const bgMusic = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        musicToggle.addEventListener('click', function() {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                this.textContent = 'Pause Music';
-            } else {
-                bgMusic.pause();
-                this.textContent = 'Play Music';
-            }
         });
     </script>
 </body>
