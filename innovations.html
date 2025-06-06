@@ -1,810 +1,929 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Molecular Technology - Innovations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/komika-axis" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/gorilla" rel="stylesheet">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            color: #fff;
-            font-family: 'Lato', sans-serif;
-        }
-        h1.title {
-            font-family: 'Komika Axis', sans-serif;
-            text-align: center;
-            font-size: 3em;
-            margin: 20px 0;
-            animation: fadeIn 2s ease-out;
-        }
-        #typing {
-            font-family: 'Montagu Slab', serif;
-            text-align: center;
-            margin: 10px;
-            min-height: 1.2em;
-        }
-        hr {
-            border: none;
-            height: 2px;
-            background: #FF0000;
-            margin: 10px 0 20px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        nav {
-            text-align: center;
-            margin: 10px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Gorilla', sans-serif;
-            padding: 8px 12px;
-            border: 1px solid #FF0000;
-            border-radius: 5px;
-            transition: box-shadow 0.3s;
-        }
-        nav ul li a:hover {
-            box-shadow: 0 0 10px #FF0000;
-        }
-        nav ul li a.active {
-            background: #FF0000;
-            color: #000;
-        }
-        .search-container {
-            position: relative;
-            width: 300px;
-            margin: 20px auto;
-        }
-        #search {
-            width: 100%;
-            padding: 8px;
-            font-size: 1em;
-            background: #333;
-            border: 1px solid #FF0000;
-            color: #fff;
-            border-radius: 4px;
-        }
-        #suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: #333;
-            border: 1px solid #FF0000;
-            display: none;
-            z-index: 100;
-            max-height: 150px;
-            overflow-y: auto;
-            border-top: none;
-        }
-        .suggestion {
-            padding: 5px;
-            cursor: pointer;
-            color: #fff;
-        }
-        .suggestion:hover {
-            background: #444;
-        }
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 10px 0;
-        }
-        .filters select {
-            padding: 5px;
-            background: #333;
-            color: #fff;
-            border: 1px solid #FF0000;
-            border-radius: 4px;
-        }
-        .sections {
-            display: flex;
-            overflow-x: auto;
-            padding: 10px 0;
-            margin-bottom: 10px;
-        }
-        .section-button {
-            flex: none;
-            background: none;
-            border: 2px solid #FF0000;
-            color: #fff;
-            padding: 8px 12px;
-            margin-right: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: box-shadow 0.3s, background 0.3s;
-        }
-        .section-button:hover {
-            box-shadow: 0 0 10px #FF0000;
-        }
-        .section-button.active {
-            background: #FF0000;
-            color: #000;
-        }
-        #product-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            transition: opacity 0.5s ease;
-        }
-        .product-card {
-            background: #111;
-            border: 1px solid #222;
-            border-radius: 8px;
-            display: flex;
-            width: 300px;
-            margin: 10px;
-        }
-        .icon {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px 0 0 8px;
-        }
-        .card-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 10px;
-            flex: 1;
-        }
-        .product-info h3 {
-            margin: 0 0 5px;
-        }
-        .product-info .category {
-            color: #FF0000;
-            font-size: 0.9em;
-            margin: 0;
-        }
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .price.free {
-            color: #0f0;
-        }
-        .price.paid {
-            color: #f00;
-        }
-        .view-more-btn {
-            background: #FF0000;
-            color: #000;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: box-shadow 0.3s;
-        }
-        .view-more-btn:hover {
-            box-shadow: 0 0 10px #FF0000;
-        }
-        .placeholder {
-            color: #888;
-            font-size: 1.2em;
-            margin: 20px;
-            text-align: center;
-        }
-        #modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
-            overflow: auto;
-            padding: 20px;
-        }
-        .modal-open #modal {
-            display: flex;
-        }
-        .modal-content {
-            background: #222;
-            color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 800px;
-        }
-        .close-button {
-            float: right;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .icon-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-        }
-        .screenshots img {
-            width: 100px;
-            margin: 5px;
-            border: 1px solid #333;
-            border-radius: 4px;
-        }
-        .similar-items {
-            display: flex;
-        }
-        .similar-item {
-            text-align: center;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .similar-item img {
-            width: 50px;
-            height: 50px;
-            border-radius: 4px;
-        }
-        .review {
-            border-top: 1px solid #333;
-            margin-top: 10px;
-            padding-top: 5px;
-        }
-        .add-review input, .add-review select, .add-review textarea {
-            display: block;
-            width: 100%;
-            margin: 5px 0;
-            padding: 5px;
-            background: #333;
-            color: #fff;
-            border: 1px solid #FF0000;
-            border-radius: 4px;
-            font-family: 'Lato', sans-serif;
-        }
-        .add-review textarea {
-            height: 60px;
-        }
-        .download-btn {
-            display: block;
-            width: 100%;
-            background: #FF0000;
-            color: #000;
-            border: none;
-            padding: 10px;
-            font-size: 1.1em;
-            margin-top: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: box-shadow 0.3s;
-        }
-        .download-btn:hover {
-            box-shadow: 0 0 10px #FF0000;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>INNOVATIONS - Molecular Technology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Komika+Axis&family=Gorilla&family=Montagu+Slab&family=Expo&display=swap" rel="stylesheet">
+<style>
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Komika Axis', sans-serif;
+}
+h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 50px;
+    animation: fadeInTitle 2s ease-out;
+}
+h2 {
+    font-family: 'Montagu Slab', serif;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    color: #ccc;
+}
+/* Subtitle typing effect */
+.subtitle {
+    display: inline-block;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(50, end), blink-caret .75s step-end infinite;
+    font-size: 1.2em;
+}
+/* navigation menu */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+nav a {
+    font-family: 'Gorilla', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2em;
+    position: relative;
+}
+nav a:hover {
+    color: #FF0000;
+}
+nav a.active {
+    color: #FF0000;
+}
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #FF0000;
+    transition: width .3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+nav a:hover::after {
+    width: 100%;
+}
+nav a.active::after {
+    width: 100%;
+}
+/* Red horizontal line */
+.red-line {
+    width: 50%;
+    margin: 20px auto;
+    border-top: 2px solid #FF0000;
+    opacity: 0;
+    animation: slideInLine 1s forwards;
+}
+@keyframes slideInLine {
+    from { width: 0; opacity: 0; }
+    to { width: 50%; opacity: 1; }
+}
+/* Section buttons */
+.sections {
+    display: flex;
+    overflow-x: auto;
+    margin: 20px 0;
+    padding: 10px 5px;
+}
+.section-btn {
+    flex: 0 0 auto;
+    background: #111;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background .3s, transform .3s;
+    white-space: nowrap;
+}
+.section-btn.active, .section-btn:hover {
+    background: #FF0000;
+    border-color: #FF0000;
+    transform: scale(1.05);
+}
+/* Search and filter */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+}
+.search-container input[type="text"] {
+    width: 300px;
+    max-width: 80%;
+    padding: 10px;
+    border: 2px solid #444;
+    border-radius: 5px 0 0 5px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1em;
+}
+.search-container button {
+    padding: 10px;
+    border: 2px solid #444;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    cursor: pointer;
+}
+.search-container button:hover {
+    background: rgba(255,255,255,0.2);
+}
+.suggestions {
+    position: absolute;
+    background: #111;
+    border: 1px solid #333;
+    width: 300px;
+    max-width: 80%;
+    margin-top: 5px;
+    border-radius: 3px;
+    display: none;
+    z-index: 100;
+}
+.suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+.suggestions div:hover {
+    background: #222;
+}
+/* Filter panel */
+#filterPanel {
+    position: fixed;
+    top: 50px;
+    right: -300px;
+    width: 300px;
+    height: calc(100% - 100px);
+    background: #111;
+    border-left: 2px solid #FF0000;
+    padding: 20px;
+    transition: right 0.5s;
+    overflow-y: auto;
+    z-index: 200;
+}
+#filterPanel.open {
+    right: 0;
+}
+.filter-section {
+    margin-bottom: 20px;
+}
+.filter-section h3 {
+    margin-bottom: 10px;
+    color: #FF0000;
+}
+.filter-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+.filter-section input[type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.2);
+}
+/* Product cards container */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0 20px;
+}
+.product-card {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInCard 1s ease-out;
+}
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.product-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+    color: #FF0000;
+}
+.product-card .category {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+.product-card .desc {
+    font-size: 0.9em;
+    height: 40px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.product-card .specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+}
+.product-card .specs li {
+    font-size: 0.85em;
+    margin: 2px 0;
+}
+.product-card .view-more {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Expo', sans-serif;
+    letter-spacing: 0.5px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.product-card .view-more:hover {
+    box-shadow: 0 0 10px #FF0000;
+    transform: scale(1.05);
+}
+/* Modal */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.95);
+}
+.modal-content {
+    background: #111;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #FF0000;
+    width: 90%;
+    max-width: 800px;
+    color: #fff;
+    border-radius: 10px;
+    position: relative;
+}
+.modal-close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.modal-close:hover, .modal-close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-header {
+    text-align: center;
+}
+.modal-header img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+.modal-header h3 {
+    margin-top: 5px;
+    font-size: 2em;
+    color: #FF0000;
+}
+.modal-header .category {
+    font-size: 1em;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+.modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+.modal-body p {
+    font-size: 1em;
+    line-height: 1.4;
+}
+.read-more {
+    color: #FF0000;
+    cursor: pointer;
+    display: inline;
+}
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    margin: 10px 0;
+    padding-bottom: 10px;
+}
+.carousel img, .carousel video {
+    width: 200px;
+    border-radius: 8px;
+}
+.modal-details {
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+.reviews {
+    margin: 20px 0;
+}
+.review {
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.review .username {
+    color: #FF0000;
+    font-weight: bold;
+}
+.review .rating {
+    color: #FFD700; /* gold star */
+}
+.similar {
+    margin: 20px 0;
+}
+.similar h4 {
+    color: #FF0000;
+}
+.similar-list {
+    display: flex;
+    overflow-x: auto;
+}
+.similar-item {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    text-align: center;
+    flex: 0 0 150px;
+}
+.similar-item img {
+    width: 100%;
+    border-radius: 5px;
+}
+.similar-item p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+}
+.modal-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #FF0000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background 0.3s, transform 0.3s;
+}
+.download-btn:hover {
+    background: #e60000;
+    transform: scale(1.05);
+}
+
+/* Keyframe animations */
+@keyframes fadeInTitle {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+}
+</style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#" class="active">Innovations</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <h1 class="title">INNOVATIONS</h1>
-    <p id="typing"></p>
-    <hr>
-    <div class="search-container">
-        <input type="text" id="search" placeholder="Search innovations...">
-        <div id="suggestions"></div>
-    </div>
-    <div class="filters">
-        Category:
-        <select id="filterCategory">
-            <option>All</option>
-            <option>App</option>
-            <option>Game</option>
-            <option>Book</option>
-            <option>Gadget</option>
-            <option>More</option>
-        </select>
-        Type:
-        <select id="filterType">
-            <option>All</option>
-            <option>Productivity</option>
-            <option>Health</option>
-            <option>Action</option>
-            <option>Adventure</option>
-            <option>Education</option>
-            <option>Fiction</option>
-        </select>
-        Platform:
-        <select id="filterPlatform">
-            <option>All</option>
-            <option>Mobile</option>
-            <option>PC</option>
-        </select>
-        Price:
-        <select id="filterPrice">
-            <option>All</option>
-            <option>Free</option>
-            <option>Paid</option>
-        </select>
-    </div>
-    <div class="sections">
-        <button class="section-button active" data-section="All">All</button>
-        <button class="section-button" data-section="Apps">Apps</button>
-        <button class="section-button" data-section="Games">Games</button>
-        <button class="section-button" data-section="Books">Books</button>
-        <button class="section-button" data-section="Gadgets">Gadgets</button>
-        <button class="section-button" data-section="More">More</button>
-    </div>
-    <div id="product-container"></div>
-    <div id="modal"></div>
-    <script>
-        var products = [
-            {
-                "id": "app1",
-                "name": "Smart Organizer",
-                "category": "App",
-                "type": "Productivity",
-                "platform": "Mobile",
-                "price": "Free",
-                "downloads": "1M+",
-                "rating": 4.5,
-                "size": "20 MB",
-                "short_desc": "Keep your tasks organized and manageable.",
-                "full_desc": "Smart Organizer is a comprehensive productivity app designed to help you manage tasks, set reminders, and organize your schedule efficiently. With its intuitive interface and powerful features, you can stay on top of your daily routine and never miss an important event. The app supports sync across devices and integrates with calendars, ensuring all your plans are in one place. Enjoy themes and customization options for a personalized experience.",
-                "icon": "https://via.placeholder.com/100/FF0000/FFFFFF?text=App+1",
-                "screenshots": [
-                    "https://via.placeholder.com/300x200/FF0000/FFFFFF?text=Screenshot+1",
-                    "https://via.placeholder.com/300x200/FF0000/FFFFFF?text=Screenshot+2"
-                ],
-                "androidOS": "Android 6.0 and up",
-                "updated": "2025-05-10",
-                "internet": "No",
-                "storage": "20 MB",
-                "version": "1.2.3",
-                "age": "Everyone",
-                "similar": ["app2", "game1"],
-                "reviews": [
-                    {"user": "Alice", "rating": 5, "comment": "Very useful app, highly recommend!"},
-                    {"user": "Bob", "rating": 4, "comment": "Good features but could improve UI."}
-                ],
-                "externalLink": ""
-            },
-            {
-                "id": "app2",
-                "name": "Health Tracker",
-                "category": "App",
-                "type": "Health",
-                "platform": "Mobile",
-                "price": "Free",
-                "downloads": "500K+",
-                "rating": 4.0,
-                "size": "15 MB",
-                "short_desc": "Track your workouts and monitor your health metrics.",
-                "full_desc": "Health Tracker is your companion for a healthier lifestyle. Log your workouts, monitor your heart rate, and track calories burned. The app also provides nutrition tracking and integrates with wearable devices. Achieve your fitness goals with personalized workout plans and daily insights into your health.",
-                "icon": "https://via.placeholder.com/100/00CC00/FFFFFF?text=App+2",
-                "screenshots": [
-                    "https://via.placeholder.com/300x200/00CC00/FFFFFF?text=Screenshot+1",
-                    "https://via.placeholder.com/300x200/00CC00/FFFFFF?text=Screenshot+2"
-                ],
-                "androidOS": "Android 5.0 and up",
-                "updated": "2025-04-20",
-                "internet": "Yes (for sync)",
-                "storage": "15 MB",
-                "version": "2.0.1",
-                "age": "Everyone",
-                "similar": ["app1", "game2"],
-                "reviews": [
-                    {"user": "Charlie", "rating": 5, "comment": "Great for tracking my fitness journey."},
-                    {"user": "Dana", "rating": 4, "comment": "Useful but sometimes crashes on older devices."}
-                ],
-                "externalLink": ""
-            },
-            {
-                "id": "game1",
-                "name": "Space Shooter",
-                "category": "Game",
-                "type": "Action",
-                "platform": "Mobile",
-                "price": "Free",
-                "downloads": "2M+",
-                "rating": 4.7,
-                "size": "50 MB",
-                "short_desc": "Defend the galaxy in this classic space shooter.",
-                "full_desc": "Space Shooter is a fast-paced action game where you pilot a spaceship and fight off waves of alien enemies. Enjoy multiple levels, power-ups, and boss battles. The game features stunning graphics and intense gameplay. Earn high scores and compete with friends on leaderboards.",
-                "icon": "https://via.placeholder.com/100/0000FF/FFFFFF?text=Game+1",
-                "screenshots": [
-                    "https://via.placeholder.com/300x200/0000FF/FFFFFF?text=Screenshot+1",
-                    "https://via.placeholder.com/300x200/0000FF/FFFFFF?text=Screenshot+2"
-                ],
-                "androidOS": "Android 7.0 and up",
-                "updated": "2025-03-15",
-                "internet": "No",
-                "storage": "50 MB",
-                "version": "3.1.0",
-                "age": "10+",
-                "similar": ["game2", "app1"],
-                "reviews": [
-                    {"user": "Eve", "rating": 5, "comment": "Addictive gameplay and great graphics!"},
-                    {"user": "Frank", "rating": 4, "comment": "Fun but a bit repetitive."}
-                ],
-                "externalLink": ""
-            },
-            {
-                "id": "game2",
-                "name": "Mystery Quest",
-                "category": "Game",
-                "type": "Adventure",
-                "platform": "Mobile",
-                "price": "Paid",
-                "downloads": "100K+",
-                "rating": 4.8,
-                "size": "100 MB",
-                "short_desc": "Solve mysteries in a thrilling adventure game.",
-                "full_desc": "Mystery Quest is an immersive adventure game with puzzles and mysteries to solve. Explore different worlds, find clues, and unravel a captivating story. The game offers stunning visuals, engaging gameplay, and multiple endings based on your choices. Enhance your detective skills and enjoy a rich narrative experience.",
-                "icon": "https://via.placeholder.com/100/FF00FF/FFFFFF?text=Game+2",
-                "screenshots": [
-                    "https://via.placeholder.com/300x200/FF00FF/FFFFFF?text=Screenshot+1",
-                    "https://via.placeholder.com/300x200/FF00FF/FFFFFF?text=Screenshot+2"
-                ],
-                "androidOS": "Android 8.0 and up",
-                "updated": "2025-02-10",
-                "internet": "No",
-                "storage": "100 MB",
-                "version": "1.0.5",
-                "age": "12+",
-                "similar": ["game1", "app2"],
-                "reviews": [
-                    {"user": "Gina", "rating": 5, "comment": "Loved the story and puzzles!"},
-                    {"user": "Hank", "rating": 4, "comment": "Great game but a bit short."}
-                ],
-                "externalLink": "https://example.com/mystery-quest"
-            },
-            {
-                "id": "book1",
-                "name": "Learn JavaScript",
-                "category": "Book",
-                "type": "Education",
-                "platform": "N/A",
-                "price": "Free",
-                "downloads": "50K+",
-                "rating": 4.6,
-                "size": "500 KB",
-                "short_desc": "A comprehensive guide to JavaScript programming.",
-                "full_desc": "Learn JavaScript is an in-depth guide to mastering JavaScript programming. Covers fundamentals, advanced concepts, and practical examples. Perfect for beginners and experienced developers looking to enhance their skills. Includes exercises, quizzes, and projects to practice as you learn.",
-                "icon": "https://via.placeholder.com/150x200/333333/FFFFFF?text=JS+Book",
-                "screenshots": [
-                    "https://via.placeholder.com/300x200/333333/FFFFFF?text=Page+1",
-                    "https://via.placeholder.com/300x200/333333/FFFFFF?text=Page+2"
-                ],
-                "androidOS": "5+",
-                "updated": "2025-01-01",
-                "internet": "No",
-                "storage": "500 KB",
-                "version": "1.0.0",
-                "age": "All Ages",
-                "similar": ["book2", "app2"],
-                "reviews": [
-                    {"user": "Ian", "rating": 5, "comment": "Great resource for learning JS."},
-                    {"user": "Jill", "rating": 4, "comment": "Very informative, well structured."}
-                ],
-                "externalLink": "https://example.com/learn-js"
-            },
-            {
-                "id": "book2",
-                "name": "Mystery Tales",
-                "category": "Book",
-                "type": "Fiction",
-                "platform": "N/A",
-                "price": "Paid",
-                "downloads": "10K+",
-                "rating": 4.9,
-                "size": "300 KB",
-                "short_desc": "Collection of short mystery stories.",
-                "full_desc": "Mystery Tales is an anthology of gripping short stories full of suspense and mystery. Each story offers unique twists and surprises that will keep you engaged until the last page. Perfect for mystery lovers and readers who enjoy thrilling narratives. Written by award-winning authors in the genre.",
-                "icon": "https://via.placeholder.com/150x200/666666/FFFFFF?text=Mystery+Book",
-                "screenshots": [
-                    "https://via.placeholder.com/300x200/666666/FFFFFF?text=Page+1",
-                    "https://via.placeholder.com/300x200/666666/FFFFFF?text=Page+2"
-                ],
-                "androidOS": "",
-                "updated": "2024-12-01",
-                "internet": "No",
-                "storage": "300 KB",
-                "version": "1.0.0",
-                "age": "13+",
-                "similar": ["book1", "game2"],
-                "reviews": [
-                    {"user": "Kyle", "rating": 5, "comment": "Couldn't put it down!"},
-                    {"user": "Laura", "rating": 5, "comment": "Loved the short stories collection."}
-                ],
-                "externalLink": "https://example.com/mystery-tales"
-            }
-        ];
 
-        var currentSection = "All";
-        var filterCategory = "All";
-        var filterType = "All";
-        var filterPlatform = "All";
-        var filterPrice = "All";
+<!-- Navigation Menu -->
+<nav>
+    <a href="home.html">HOME</a>
+    <a href="innovations.html" class="active">INNOVATIONS</a>
+    <a href="marketx.html">MARKETX</a>
+    <a href="announces.html">ANNOUNCES</a>
+    <a href="startup.html">STARTUP</a>
+    <a href="issues.html">ISSUES</a>
+    <a href="help.html">HELP</a>
+</nav>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize section buttons
-            var sectionButtons = document.querySelectorAll('.section-button');
-            sectionButtons.forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    sectionButtons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    currentSection = this.dataset.section;
-                    filterCategory = "All"; // reset filters when changing section
-                    document.getElementById('filterCategory').value = 'All';
-                    document.getElementById('filterType').value = 'All';
-                    document.getElementById('filterPlatform').value = 'All';
-                    document.getElementById('filterPrice').value = 'All';
-                    renderProducts();
-                });
-            });
+<!-- Page Title and Subtitle -->
+<h1>INNOVATIONS</h1>
+<h2><span class="subtitle" id="subtitle"></span></h2>
 
-            // Search input
-            var searchInput = document.getElementById('search');
-            searchInput.addEventListener('keyup', function() {
-                showSuggestions(this.value);
-                renderProducts(); // update product list as well
-            });
+<hr class="red-line">
 
-            // Filter dropdowns
-            document.getElementById('filterCategory').addEventListener('change', function() {
-                filterCategory = this.value;
-                renderProducts();
-            });
-            document.getElementById('filterType').addEventListener('change', function() {
-                filterType = this.value;
-                renderProducts();
-            });
-            document.getElementById('filterPlatform').addEventListener('change', function() {
-                filterPlatform = this.value;
-                renderProducts();
-            });
-            document.getElementById('filterPrice').addEventListener('change', function() {
-                filterPrice = this.value;
-                renderProducts();
-            });
+<!-- Search and Filter Section -->
+<div class="search-container">
+    <input type="text" id="searchBar" placeholder="Search Any App, Game, Book, Gadget Etc..." autocomplete="off">
+    <button onclick="toggleFilter()">Filter</button>
+    <div class="suggestions" id="suggestions"></div>
+</div>
 
-            renderProducts(); // initial render
+<div id="filterPanel">
+    <h2>Filter Options</h2>
+    <div class="filter-section">
+        <h3>Category</h3>
+        <label><input type="checkbox" name="category" value="App" checked> Apps</label>
+        <label><input type="checkbox" name="category" value="Game" checked> Games</label>
+        <label><input type="checkbox" name="category" value="Book" checked> Books</label>
+        <label><input type="checkbox" name="category" value="Gadget"> Gadgets</label>
+        <label><input type="checkbox" name="category" value="More"> More</label>
+    </div>
+    <div class="filter-section">
+        <h3>Type</h3>
+        <label><input type="checkbox" name="type" value="Action"> Action</label>
+        <label><input type="checkbox" name="type" value="Survival"> Survival</label>
+        <label><input type="checkbox" name="type" value="PC"> PC</label>
+        <label><input type="checkbox" name="type" value="Mobile"> Mobile</label>
+        <label><input type="checkbox" name="type" value="Free"> Free</label>
+        <label><input type="checkbox" name="type" value="Paid"> Paid</label>
+    </div>
+</div>
 
-            // Typing animation
-            var slogan = "This Page Gives You Access To Download And Purchase Each Of Our Innovations.";
-            var i = 0;
-            function typeWriter() {
-                if (i < slogan.length) {
-                    document.getElementById("typing").innerHTML += slogan.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                }
-            }
-            typeWriter();
-        });
+<!-- Section Buttons -->
+<div class="sections">
+    <div class="section-btn active" onclick="filterSection('All')">All</div>
+    <div class="section-btn" onclick="filterSection('App')">Apps</div>
+    <div class="section-btn" onclick="filterSection('Game')">Games</div>
+    <div class="section-btn" onclick="filterSection('Book')">Books</div>
+    <div class="section-btn" onclick="filterSection('Gadget')">Gadgets</div>
+    <div class="section-btn" onclick="filterSection('More')">More</div>
+</div>
 
-        // Filter function
-        function renderProducts() {
-            var container = document.getElementById('product-container');
-            container.innerHTML = '';
-            var filtered = products.slice();
+<!-- Products Container -->
+<div class="products-container" id="productsContainer">
+    <!-- Product cards will be injected here -->
+</div>
 
-            // Section filter
-            if (currentSection !== "All") {
-                if (currentSection === "Gadgets" || currentSection === "More") {
-                    container.innerHTML = "<div class='placeholder'>Content coming soon in this section!</div>";
-                    return;
-                }
-                // remove trailing 's' for plural
-                var sectionCat = currentSection.slice(0, -1);
-                filtered = filtered.filter(p => p.category === sectionCat);
-            }
+<!-- Placeholder for Gadgets/More -->
+<div id="placeholderText" style="display:none; text-align:center; margin-top:50px;">
+    <p style="font-size: 1.2em; color: #ccc;">These Are Upcoming Projects And Under Development.</p>
+</div>
 
-            // Dropdown filter: Category
-            if (filterCategory && filterCategory !== "All") {
-                filtered = filtered.filter(p => p.category === filterCategory);
-            }
-            // Type
-            if (filterType && filterType !== "All") {
-                filtered = filtered.filter(p => p.type === filterType);
-            }
-            // Platform
-            if (filterPlatform && filterPlatform !== "All") {
-                filtered = filtered.filter(p => p.platform === filterPlatform);
-            }
-            // Price
-            if (filterPrice && filterPrice !== "All") {
-                filtered = filtered.filter(p => p.price === filterPrice);
-            }
-            // Search
-            var query = document.getElementById('search').value.toLowerCase();
-            if (query) {
-                filtered = filtered.filter(p => p.name.toLowerCase().includes(query) || (p.type && p.type.toLowerCase().includes(query)));
-            }
+<!-- Modal -->
+<div id="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-header">
+            <img id="modalIcon" src="" alt="Product Icon">
+            <h3 id="modalName"></h3>
+            <div class="category" id="modalCategory"></div>
+        </div>
+        <div class="modal-body">
+            <p id="modalDesc"></p>
+            <span class="read-more" id="readMore" style="display:none;">Read More</span>
+            <div class="carousel" id="modalCarousel"></div>
+            <div class="modal-details">
+                <p id="modalAndroid"></p>
+                <p id="modalStorage"></p>
+                <p id="modalLastUpdate"></p>
+                <p id="modalVersion"></p>
+            </div>
+            <div class="reviews" id="modalReviews">
+                <h4>Reviews:</h4>
+                <!-- Reviews will be inserted here -->
+            </div>
+            <div class="similar" id="modalSimilar">
+                <h4>Similar Items:</h4>
+                <div class="similar-list" id="similarList"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a id="downloadBtn" href="#" class="download-btn">DOWNLOAD</a>
+        </div>
+    </div>
+</div>
 
-            // Render cards
-            if (filtered.length === 0) {
-                container.innerHTML = "<div class='placeholder'>No products found matching criteria.</div>";
-                return;
-            }
-            filtered.forEach(function(p) {
-                var card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <img src="${p.icon}" alt="${p.name}" class="icon">
-                    <div class="card-content">
-                        <div class="product-info">
-                            <h3>${p.name}</h3>
-                            <p class="category">${p.category}</p>
-                            <p>${p.short_desc}</p>
-                            <p><strong>Downloads:</strong> ${p.downloads} &nbsp; <strong>Rating:</strong> ${p.rating} ⭐</p>
-                            <p><strong>Size:</strong> ${p.size}</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="price ${p.price === 'Free' ? 'free' : 'paid'}">${p.price}</span>
-                            <button class="view-more-btn" data-id="${p.id}">View More</button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+<script>
+// Sample product data
+const products = [
+    {
+        id: 'app1',
+        name: 'App One',
+        category: 'App',
+        type: ['Utility','Mobile','Free'],
+        shortDesc: 'A useful utility app to organize tasks.',
+        longDesc: 'App One is a comprehensive utility that helps you manage tasks efficiently. It offers a sleek interface and high performance. Ideal for productivity and daily use.',
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKElEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA... (base64 data)',
+        images: [
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKElEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKElEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        internet: 'Yes',
+        storage: '50MB',
+        downloads: '1M+',
+        rating: 4.5,
+        price: 'Free',
+        lastUpdate: '2024-08-01',
+        version: '1.2.0',
+        reviews: [
+            {user: 'Alice', rating: 5, comment: 'Great app!'},
+            {user: 'Bob', rating: 4, comment: 'Very useful.'}
+        ],
+        similar: ['app2', 'game1']
+    },
+    {
+        id: 'app2',
+        name: 'App Two',
+        category: 'App',
+        type: ['Utility','Mobile','Paid'],
+        shortDesc: 'A paid app for advanced task management.',
+        longDesc: 'App Two provides advanced features for task management and productivity. It includes cloud sync and multi-device support.',
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEZUlEQVR4nO3bMQEAAAwCoNm/9HI63CA5yPNcBAgQIAAAQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAAECBAgAABAgQIECAAARfJnBwAB4Jp/zwAAAABJRU5ErkJggg==',
+        images: [
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKklEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        internet: 'Yes',
+        storage: '75MB',
+        downloads: '500K+',
+        rating: 4.0,
+        price: 'Paid',
+        lastUpdate: '2024-07-15',
+        version: '2.0.5',
+        reviews: [
+            {user: 'Charlie', rating: 4, comment: 'Good features.'},
+            {user: 'Dana', rating: 3, comment: 'Too expensive.'}
+        ],
+        similar: ['app1', 'game2']
+    }
+];
+/* Continue with games and books ... */
+products.push(
+    {
+        id: 'game1',
+        name: 'Game One',
+        category: 'Game',
+        type: ['Action','PC','Free'],
+        shortDesc: 'An exciting action survival game.',
+        longDesc: 'Game One immerses you in an epic world of adventure. Survive against all odds in this action-packed survival game for PC.',
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEHUlEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+        images: [
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKklEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        internet: 'Yes',
+        storage: '200MB',
+        downloads: '2M+',
+        rating: 4.7,
+        price: 'Free',
+        lastUpdate: '2024-09-10',
+        version: '3.1.0',
+        reviews: [
+            {user: 'Eve', rating: 5, comment: 'Amazing gameplay!'},
+            {user: 'Frank', rating: 4, comment: 'Great graphics.'}
+        ],
+        similar: ['game2', 'app1']
+    },
+    {
+        id: 'game2',
+        name: 'Game Two',
+        category: 'Game',
+        type: ['Survival','Mobile','Paid'],
+        shortDesc: 'A challenging survival game for mobile.',
+        longDesc: 'Game Two tests your survival skills on mobile devices. Face challenges and overcome obstacles in this thrilling survival game.',
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEFklEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        images: [
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKklEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        internet: 'Yes',
+        storage: '120MB',
+        downloads: '1M+',
+        rating: 4.3,
+        price: 'Paid',
+        lastUpdate: '2024-05-22',
+        version: '1.5.2',
+        reviews: [
+            {user: 'Helen', rating: 5, comment: 'Extremely challenging!'},
+            {user: 'Ian', rating: 4, comment: 'Very addictive.'}
+        ],
+        similar: ['game1', 'app2']
+    }
+);
+products.push(
+    {
+        id: 'book1',
+        name: 'Book One',
+        category: 'Book',
+        type: ['Literature','PC','Free'],
+        shortDesc: 'A classic literature book in digital form.',
+        longDesc: 'Book One is a timeless classic that explores human emotions and relationships. Enjoy it on your device with adjustable settings and features.',
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEF0lEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+        images: [
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKklEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        internet: 'No',
+        storage: '5MB',
+        downloads: '200K+',
+        rating: 4.8,
+        price: 'Free',
+        lastUpdate: '2023-12-05',
+        version: '1.0.0',
+        reviews: [
+            {user: 'Grace', rating: 5, comment: 'Loved this book on my tablet.'},
+            {user: 'Hank', rating: 4, comment: 'Very insightful.'}
+        ],
+        similar: ['book2', 'app2']
+    },
+    {
+        id: 'book2',
+        name: 'Book Two',
+        category: 'Book',
+        type: ['Fantasy','Mobile','Paid'],
+        shortDesc: 'A fantasy novel with rich illustrations.',
+        longDesc: 'Book Two is a fantasy novel that transports you to another world. Rich illustrations and interactive features make reading on mobile a joy.',
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEHklEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        images: [
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKklEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...',
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAACRaJicAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3bMQ0AMAgDQbb/P7U2mArBhMauGjLoC7z88iAAAAgG84WsEAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABAgAABA...'
+        ],
+        internet: 'No',
+        storage: '10MB',
+        downloads: '100K+',
+        rating: 4.2,
+        price: 'Paid',
+        lastUpdate: '2024-01-20',
+        version: '1.1.0',
+        reviews: [
+            {user: 'Ivy', rating: 5, comment: 'Beautiful illustrations!'},
+            {user: 'Jack', rating: 4, comment: 'Story is captivating.'}
+        ],
+        similar: ['book1', 'app1']
+    }
+);
 
-            // Add event listeners for view more buttons
-            document.querySelectorAll('.view-more-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    var prodId = this.dataset.id;
-                    showModal(prodId);
-                });
-            });
-        }
+// State and init
+let activeSection = 'All';
+let searchTerm = '';
+window.onload = function() {
+    filterSection('All');
+    typeSubtitle();
+};
 
-        // Search suggestions
-        function showSuggestions(text) {
-            var suggestionBox = document.getElementById('suggestions');
-            suggestionBox.innerHTML = '';
-            if (!text) {
-                suggestionBox.style.display = 'none';
-                return;
-            }
-            var suggestions = products.filter(p => p.name.toLowerCase().includes(text.toLowerCase()));
-            if (suggestions.length === 0) {
-                suggestionBox.style.display = 'none';
-                return;
-            }
-            suggestions.slice(0,5).forEach(p => {
-                var div = document.createElement('div');
-                div.className = 'suggestion';
-                div.innerText = p.name;
-                div.addEventListener('click', function() {
-                    document.getElementById('search').value = p.name;
-                    suggestionBox.style.display = 'none';
-                    renderProducts();
-                });
-                suggestionBox.appendChild(div);
-            });
-            suggestionBox.style.display = 'block';
-        }
+// Typing animation for subtitle
+const subtitleText = 'This Page Gives You Access To Download And Purchase Each Of Our Innovations.';
+function typeSubtitle() {
+    let i = 0;
+    function type() {
+        if (i < subtitleText.length) {
+            document.getElementById('subtitle').innerHTML += subtitleText.charAt(i);
+            i++;
+            setTimeout(type, 50);
+        }
+    }
+    type();
+}
 
-        // Modal
-        function showModal(id) {
-            var prod = products.find(p => p.id === id);
-            if (!prod) return;
-            // Build modal content
-            var modal = document.getElementById('modal');
-            var similarHtml = '';
-            if (prod.similar && prod.similar.length > 0) {
-                prod.similar.forEach(sid => {
-                    var sp = products.find(x => x.id === sid);
-                    if (sp) {
-                        similarHtml += `<div class="similar-item" onclick="showModal('${sp.id}')"><img src="${sp.icon}" alt="${sp.name}"><p>${sp.name}</p></div>`;
-                    }
-                });
-            }
-            var reviewsHtml = '';
-            if (prod.reviews && prod.reviews.length > 0) {
-                prod.reviews.forEach(r => {
-                    reviewsHtml += `<div class="review"><strong>${r.user}</strong> (${r.rating}⭐): <p>${r.comment}</p></div>`;
-                });
-            }
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-button" onclick="closeModal()">&times;</span>
-                    <div class="modal-header">
-                        <img src="${prod.icon}" alt="${prod.name}" class="icon-large">
-                        <h2>${prod.name}</h2>
-                        <p class="rating">${prod.rating} ⭐</p>
-                    </div>
-                    <p><strong>Full Description:</strong> ${prod.full_desc}</p>
-                    <p><strong>Android OS:</strong> ${prod.androidOS || 'N/A'}</p>
-                    <p><strong>Last Updated:</strong> ${prod.updated}</p>
-                    <p><strong>Internet Needed:</strong> ${prod.internet}</p>
-                    <p><strong>Storage Needed:</strong> ${prod.storage}</p>
-                    <p><strong>Downloads:</strong> ${prod.downloads}</p>
-                    <p><strong>Version:</strong> ${prod.version}</p>
-                    <p><strong>Age Rating:</strong> ${prod.age}</p>
-                    <h3>Screenshots:</h3>
-                    <div class="screenshots">
-                        ${prod.screenshots.map(img => `<img src="${img}" alt="Screenshot">`).join('')}
-                    </div>
-                    <h3>Similar:</h3>
-                    <div class="similar-items">${similarHtml}</div>
-                    <h3>User Reviews:</h3>
-                    <div id="reviews-section">${reviewsHtml}</div>
-                    <div class="add-review">
-                        <input type="text" id="review-user" placeholder="Your Name" />
-                        <select id="review-rating">
-                            <option value="5">5 ⭐</option>
-                            <option value="4">4 ⭐</option>
-                            <option value="3">3 ⭐</option>
-                            <option value="2">2 ⭐</option>
-                            <option value="1">1 ⭐</option>
-                        </select>
-                        <textarea id="review-comment" placeholder="Your review"></textarea>
-                        <button id="add-review-btn">Add Review</button>
-                    </div>
-                    <button class="download-btn">${(prod.category === 'Book' || prod.price === 'Paid') ? 'Buy Now' : 'Download Now'}</button>
-                </div>
-            `;
-            document.body.classList.add('modal-open');
+// Section filter
+function filterSection(section) {
+    activeSection = section;
+    // Set active button
+    document.querySelectorAll('.section-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === section || (section==='App' && btn.textContent==='Apps') || (section==='Game' && btn.textContent==='Games') || (section==='Book' && btn.textContent==='Books') || (section==='Gadget' && btn.textContent==='Gadgets') || (section==='More' && btn.textContent==='More'));
+    });
+    if (section === 'Gadget' || section === 'More') {
+        document.getElementById('productsContainer').style.display = 'none';
+        document.getElementById('placeholderText').style.display = 'block';
+    } else {
+        document.getElementById('productsContainer').style.display = 'grid';
+        document.getElementById('placeholderText').style.display = 'none';
+        populateProducts();
+    }
+}
 
-            // Add review functionality
-            document.getElementById('add-review-btn').addEventListener('click', function() {
-                var user = document.getElementById('review-user').value;
-                var rating = document.getElementById('review-rating').value;
-                var comment = document.getElementById('review-comment').value;
-                if (!user || !comment) {
-                    alert('Please provide name and review.');
-                    return;
-                }
-                var newReview = {user: user, rating: parseInt(rating), comment: comment};
-                prod.reviews.push(newReview);
-                // update display
-                var reviewsSection = document.getElementById('reviews-section');
-                var newDiv = document.createElement('div');
-                newDiv.className = 'review';
-                newDiv.innerHTML = `<strong>${user}</strong> (${rating}⭐): <p>${comment}</p>`;
-                reviewsSection.appendChild(newDiv);
-                // clear inputs
-                document.getElementById('review-user').value = '';
-                document.getElementById('review-comment').value = '';
-            });
-            // Download/Buy button click
-            var downloadBtn = document.querySelector('.download-btn');
-            if (prod.category === 'Book' || prod.price === 'Paid') {
-                downloadBtn.addEventListener('click', function() {
-                    window.open(prod.externalLink || 'https://example.com', '_blank');
-                });
-            } else {
-                downloadBtn.addEventListener('click', function() {
-                    alert('Downloading ' + prod.name);
-                });
-            }
-        }
+// Toggle filter panel
+function toggleFilter() {
+    document.getElementById('filterPanel').classList.toggle('open');
+}
 
-        // Close modal
-        function closeModal() {
-            var modal = document.getElementById('modal');
-            document.body.classList.remove('modal-open');
-            modal.innerHTML = '';
-        }
-    </script>
+// Update view after any filter/search change
+function updateView() {
+    populateProducts();
+}
+
+// Populate product cards
+function populateProducts() {
+    const container = document.getElementById('productsContainer');
+    container.innerHTML = '';
+    let allowedCategories = [];
+    // If section specific
+    if (activeSection && activeSection !== 'All') {
+        allowedCategories = [activeSection];
+    } else {
+        // All section or not set, use checkboxes
+        document.querySelectorAll('#filterPanel input[name="category"]:checked').forEach(cb => {
+            allowedCategories.push(cb.value);
+        });
+    }
+    let selectedTypes = [];
+    document.querySelectorAll('#filterPanel input[name="type"]:checked').forEach(cb => {
+        selectedTypes.push(cb.value);
+    });
+    const term = searchTerm.toLowerCase();
+    products.forEach(product => {
+        if (allowedCategories.length && !allowedCategories.includes(product.category)) return;
+        // More and Gadget category skip (no products)
+        if (product.category === 'Gadget' || product.category === 'More') return;
+        if (term) {
+            if (!product.name.toLowerCase().includes(term) && !product.category.toLowerCase().includes(term)) {
+                return;
+            }
+        }
+        if (selectedTypes.length > 0) {
+            let match = false;
+            for (let t of selectedTypes) {
+                if (product.type.includes(t)) {
+                    match = true;
+                    break;
+                }
+            }
+            if (!match) return;
+        }
+        // Create card
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <img src="${product.icon}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p class="category">${product.category}</p>
+            <p class="desc">${product.shortDesc}</p>
+            <ul class="specs">
+                <li>Internet: ${product.internet}</li>
+                <li>Storage: ${product.storage}</li>
+                <li>Downloads: ${product.downloads}</li>
+                <li>Rating: ${'★'.repeat(Math.floor(product.rating))}${product.rating % 1 ? '☆' : ''}</li>
+                <li>Price: ${product.price}</li>
+            </ul>
+            <button class="view-more" onclick="openModal('${product.id}')">View More</button>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Search suggestions and filtering
+const searchBar = document.getElementById('searchBar');
+const suggestionsBox = document.getElementById('suggestions');
+searchBar.addEventListener('input', function() {
+    const query = this.value.trim().toLowerCase();
+    suggestionsBox.innerHTML = '';
+    if (!query) { suggestionsBox.style.display = 'none'; searchTerm = ''; updateView(); return; }
+    let count = 0;
+    products.forEach(prod => {
+        if (prod.name.toLowerCase().includes(query)) {
+            const div = document.createElement('div');
+            div.textContent = prod.name;
+            div.onclick = function() {
+                searchBar.value = prod.name;
+                suggestionsBox.style.display = 'none';
+                searchTerm = prod.name;
+                updateView();
+            };
+            suggestionsBox.appendChild(div);
+            count++;
+            if (count >= 5) return;
+        }
+    });
+    if (count > 0) suggestionsBox.style.display = 'block';
+    else suggestionsBox.style.display = 'none';
+    searchTerm = '';
+});
+searchBar.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        searchTerm = this.value.trim();
+        suggestionsBox.style.display = 'none';
+        updateView();
+    }
+});
+
+// Filter checkboxes change
+document.querySelectorAll('#filterPanel input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', function() {
+        updateView();
+    });
+});
+
+// Modal functions
+function openModal(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+    document.getElementById('modalIcon').src = product.icon;
+    document.getElementById('modalName').textContent = product.name;
+    document.getElementById('modalCategory').textContent = product.category;
+    // Description with read more
+    const descElem = document.getElementById('modalDesc');
+    descElem.textContent = product.longDesc;
+    const readMore = document.getElementById('readMore');
+    if (product.longDesc.length > 100) {
+        descElem.textContent = product.longDesc.substring(0, 100) + '...';
+        readMore.style.display = 'inline';
+        let full = false;
+        readMore.onclick = () => {
+            if (!full) {
+                descElem.textContent = product.longDesc;
+                readMore.textContent = 'Read Less';
+            } else {
+                descElem.textContent = product.longDesc.substring(0, 100) + '...';
+                readMore.textContent = 'Read More';
+            }
+            full = !full;
+        };
+    } else {
+        readMore.style.display = 'none';
+    }
+    // Carousel
+    const carousel = document.getElementById('modalCarousel');
+    carousel.innerHTML = '';
+    product.images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        carousel.appendChild(img);
+    });
+    // Details
+    document.getElementById('modalAndroid').textContent = 'Android Version: Android 5.0+';
+    document.getElementById('modalStorage').textContent = 'Storage: ' + product.storage;
+    document.getElementById('modalLastUpdate').textContent = 'Last Updated: ' + product.lastUpdate;
+    document.getElementById('modalVersion').textContent = 'Version: ' + product.version;
+    // Reviews
+    const reviewsDiv = document.getElementById('modalReviews');
+    reviewsDiv.innerHTML = '<h4>Reviews:</h4>';
+    product.reviews.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'review';
+        div.innerHTML = '<span class="username">' + r.user + '</span> <span class="rating">' + '★'.repeat(r.rating) + '</span><br>' + r.comment;
+        reviewsDiv.appendChild(div);
+    });
+    // Similar suggestions
+    const simDiv = document.getElementById('similarList');
+    simDiv.innerHTML = '';
+    product.similar.forEach(sid => {
+        const simProd = products.find(p => p.id === sid);
+        if (simProd) {
+            const item = document.createElement('div');
+            item.className = 'similar-item';
+            item.innerHTML = '<img src="' + simProd.icon + '" alt="' + simProd.name + '"><p>' + simProd.name + '</p>';
+            item.onclick = function() { openModal(simProd.id); };
+            simDiv.appendChild(item);
+        }
+    });
+    // Download/Buy button
+    const dlBtn = document.getElementById('downloadBtn');
+    if (product.price.toLowerCase() === 'free') {
+        dlBtn.textContent = 'DOWNLOAD';
+    } else {
+        dlBtn.textContent = 'BUY NOW';
+    }
+    dlBtn.href = '#' + product.id + '-download';
+    // Show modal
+    document.getElementById('modal').style.display = 'block';
+}
+
+// Close modal
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+// Close on outside click
+window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+</script>
 </body>
 </html>
