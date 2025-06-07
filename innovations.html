@@ -1,441 +1,1675 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>INNOVATIONS | Molecular Technology</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montagu+Slab:wght@600&family=Gloock&family=Exo+2:wght@500&family=Lato&display=swap" rel="stylesheet">
-  <style>
-    /* ===== RESET ===== */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { background:#000; color:#fff; font-family:'Exo 2',sans-serif; }
-    a { text-decoration:none; color:inherit; }
-    button, select, input { font-family:inherit; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Technology | Innovations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --red: #ff003c;
+            --dark-grey: #0a0a0a;
+            --medium-grey: #1a1a1a;
+            --light-grey: #333;
+            --white: #ffffff;
+            --glow: 0 0 10px rgba(255, 0, 60, 0.7), 0 0 20px rgba(255, 0, 60, 0.5);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-    /* ===== HEADER ===== */
-    header {
-      text-align:center; padding:3rem 1rem 2rem; animation:fadeIn 1.5s ease-out;
-    }
-    header h1 {
-      font-family:'Orbitron',sans-serif; font-size:3.5rem;
-      background:linear-gradient(90deg,#f00,#f80,#f00);
-      background-size:300%;
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      animation:aurora 5s ease infinite alternate,fadeIn 1.5s ease-out;
-    }
-    header h2 {
-      margin-top:1rem; font-family:'Montagu Slab',serif; font-size:1.2rem;
-      white-space:nowrap; overflow:hidden; border-right:.15em solid #fff;
-      width:0; margin:auto;
-      animation:typing 5s steps(60,end) forwards,blink .75s step-end infinite;
-    }
-    header .line {
-      height:2px; background:#f00; margin:1.5rem 0;
-      box-shadow:0 0 8px #f00;
-    }
-    @keyframes typing { from{width:0;} to{width:80%;} }
-    @keyframes blink { 50%{border-color:transparent;} }
-    @keyframes aurora { 0%{background-position:0% 50%;} 100%{background-position:100% 50%;} }
-    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ===== NAVIGATION ===== */
-    .nav { display:flex; justify-content:center; gap:1rem; margin-bottom:2rem; flex-wrap:wrap;}
-    .nav button {
-      background:transparent; color:#fff; border:2px solid #fff; padding:.5rem 1rem;
-      border-radius:8px; transition:.3s;
-    }
-    .nav button:hover, .nav .active {
-      background:#f00; color:#000; box-shadow:0 0 8px #f00; transform:scale(1.05);
-    }
+        body {
+            background-color: #000;
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(26, 26, 26, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(26, 26, 26, 0.2) 0%, transparent 20%);
+        }
 
-    /* ===== SEARCH & FILTER ===== */
-    .search-filter { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem; margin-bottom:2rem; }
-    .search-filter input {
-      width:250px; padding:.5rem 1rem; border-radius:8px; border:1px solid #444;
-      background:rgba(255,255,255,0.05); color:#fff; outline:none;
-    }
-    .search-filter select {
-      padding:.5rem; border-radius:8px; border:1px solid #444;
-      background:rgba(255,255,255,0.05); color:#fff;
-    }
-    .suggestions {
-      position:relative;
-    }
-    #suggestionsBox {
-      position:absolute; top:38px; left:0; right:0;
-      background:#111; border:1px solid #444; border-top:none;
-      max-height:150px; overflow-y:auto; display:none; z-index:1000;
-    }
-    #suggestionsBox div {
-      padding:.5rem; cursor:pointer; transition:.2s;
-    }
-    #suggestionsBox div:hover { background:#333; }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    /* ===== TABS ===== */
-    .tabs { display:flex; justify-content:center; gap:.5rem; margin-bottom:2rem; flex-wrap:wrap; }
-    .tabs button {
-      background:rgba(255,0,0,0.1); border:1px solid #f00; padding:.5rem 1rem;
-      border-radius:8px; color:#f00; transition:.3s;
-    }
-    .tabs button:hover, .tabs .active {
-      background:#f00; color:#000; box-shadow:0 0 8px #f00; transform:scale(1.05);
-    }
+        /* ===== HEADER STYLES ===== */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
 
-    /* ===== PRODUCTS ===== */
-    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; padding:0 1rem 4rem; }
-    .card {
-      background:#111; padding:1rem; border-radius:12px; border:1px solid #333;
-      display:flex; gap:1rem; box-shadow:0 0 10px #000; transition:.3s;
-    }
-    .card:hover { box-shadow:0 0 15px #f00; transform:scale(1.02); }
-    .card img {
-      width:80px; height:80px; object-fit:cover; border-radius:8px;
-    }
-    .info h3 { margin-bottom:.3rem; color:#f80; font-size:1.2rem; }
-    .info p { font-size:.9rem; margin:2px 0; color:#aaa; }
-    .view-more {
-      margin-top:.5rem; background:#f00; color:#000; border:none; padding:.5rem 1rem;
-      border-radius:8px; font-family:'Lato',sans-serif; transition:.3s;
-    }
-    .view-more:hover { filter:brightness(1.2); }
+        .page-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(45deg, #ff003c, #ff3366, #ff6699, #ff003c);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation:
+                aurora 8s ease infinite,
+                fadeIn 1.5s ease-out;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+            position: relative;
+            z-index: 2;
+        }
 
-    /* ===== MODAL ===== */
-    .modal {
-      display:none; position:fixed; z-index:2000; left:0; top:0;
-      width:100%; height:100%; background:rgba(0,0,0,0.8); overflow:auto;
-      animation:fadeIn .5s ease;
-    }
-    .modal-content {
-      background:#111; margin:5% auto; padding:1.5rem; border:1px solid #444;
-      width:90%; max-width:600px; border-radius:12px; position:relative;
-    }
-    .close {
-      position:absolute; top:.5rem; right:.8rem; font-size:1.5rem; color:#fff; cursor:pointer;
-    }
-    .modal-content img { float:right; width:80px; border-radius:8px; margin-left:1rem; }
-    .modal-content h2 { color:#f80; margin-top:0; font-family:'Gloock',serif; }
-    .modal-content p, .modal-content li { font-size:.95rem; margin:.3rem 0; }
-    .modal-content ul { padding-left:1.2rem; }
-    .modal-content button {
-      margin-top:1rem; background:#f00; color:#000; border:none; padding:.6rem 1.2rem;
-      font-family:'Lato'; border-radius:8px; transition:.3s;
-    }
-    .modal-content button:hover { filter:brightness(1.2); }
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    /* ===== MUSIC TOGGLE ===== */
-    #musicToggle {
-      position:fixed; bottom:1rem; right:1rem; background:#f00; color:#fff;
-      border:none; width:50px; height:50px; border-radius:50%; font-size:1.2rem;
-      box-shadow:0 0 10px #f00; cursor:pointer; transition:.3s;
-    }
-    #musicToggle:hover { filter:brightness(1.2); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    /* ===== RESPONSIVE ===== */
-    @media(max-width:600px) {
-      header h1 { font-size:2.5rem; }
-      .card { flex-direction:column; align-items:center; text-align:center; }
-      .card img { margin-bottom:1rem; }
-      .tabs, .nav, .search-filter { flex-direction:column; gap:.5rem; }
-    }
-  </style>
+        .typing-container {
+            min-height: 80px;
+            margin: 0 auto 20px;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .typing-animation {
+            font-family: 'Courier Prime', monospace;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--white);
+            position: relative;
+            text-align: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.4rem;
+            background-color: var(--red);
+            margin-left: 4px;
+            animation: blink 0.7s infinite;
+            position: absolute;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .red-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+            width: 100%;
+            margin: 1.5rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== NAVIGATION BUTTONS ===== */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-btn {
+            background-color: var(--dark-grey);
+            color: var(--red);
+            border: 1px solid var(--red);
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--glow);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 60, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .nav-btn:hover:before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--red);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.8);
+        }
+
+        .nav-btn.active {
+            background-color: var(--red);
+            color: #000;
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.9);
+        }
+
+        /* ===== SEARCH AND FILTERS ===== */
+        .search-filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-bar {
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 50px;
+            padding: 15px 25px;
+            color: var(--white);
+            width: 100%;
+            max-width: 500px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .search-bar:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.3);
+            outline: none;
+        }
+
+        .search-bar::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .filter-btn {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            color: var(--white);
+            border: 1px solid var(--light-grey);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 60, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .filter-btn:hover:before {
+            left: 100%;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border-color: var(--red);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.5);
+        }
+
+        /* ===== CATEGORY BUTTONS ===== */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-btn {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            color: var(--white);
+            border: 1px solid var(--light-grey);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 60, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .category-btn:hover:before {
+            left: 100%;
+        }
+
+        .category-btn.active {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border-color: var(--red);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* ===== PRODUCT CARDS ===== */
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+            padding: 3rem 0;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--light-grey);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: cardAppear 0.8s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--red);
+            box-shadow: 0 15px 35px rgba(255, 0, 60, 0.25);
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 2px solid var(--red);
+            box-shadow: var(--glow);
+            margin: 20px;
+            float: left;
+        }
+
+        .product-info {
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .product-info h3 {
+            color: var(--red);
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .product-category {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .product-stats {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .product-description {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+            min-height: 60px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .view-more-btn {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: var(--transition);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+            position: relative;
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .view-more-btn:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .view-more-btn:hover:after {
+            left: 100%;
+        }
+
+        .view-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.7);
+            background: linear-gradient(45deg, #ff3366, #ff6699);
+        }
+
+        /* ===== FILTER MODAL ===== */
+        .filter-modal {
+            display: none;
+            position: fixed;
+            z-index: 1003;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .filter-content {
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            margin: 5% auto;
+            padding: 30px;
+            border: 2px solid var(--red);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            color: var(--white);
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.4);
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        .filter-title {
+            color: var(--red);
+            font-size: 1.8rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .close-filter {
+            color: #aaa;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-filter:hover {
+            color: var(--red);
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group h3 {
+            color: var(--red);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .filter-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-option input {
+            accent-color: var(--red);
+        }
+
+        .filter-option label {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        .filter-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .filter-action-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .apply-btn {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+        }
+
+        .reset-btn {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            color: var(--white);
+            border: 1px solid var(--light-grey);
+        }
+
+        .filter-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+        }
+
+        /* ===== DETAILED PREVIEW MODAL ===== */
+        .preview-modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            overflow: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .preview-content {
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            margin: 3% auto;
+            padding: 40px;
+            border: 2px solid var(--red);
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 15px;
+            color: var(--white);
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.4);
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .preview-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            margin-right: 25px;
+            object-fit: cover;
+            border: 2px solid var(--red);
+            box-shadow: var(--glow);
+        }
+
+        .preview-title {
+            font-size: 2.5rem;
+            color: var(--red);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .preview-category {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-top: 10px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .preview-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .read-more {
+            color: var(--red);
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 10px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: #ff6699;
+        }
+
+        .preview-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--light-grey);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .preview-image:hover {
+            transform: scale(1.05);
+            border-color: var(--red);
+        }
+
+        .preview-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--red);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: var(--red);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .preview-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .action-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #00cc66, #00ff88);
+            color: #000;
+        }
+
+        .buy-btn {
+            background: linear-gradient(45deg, #ff9900, #ffcc00);
+            color: #000;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 3;
+        }
+
+        .close-btn:hover {
+            color: var(--red);
+        }
+
+        /* ===== SIMILAR PRODUCTS ===== */
+        .similar-section {
+            margin-top: 50px;
+            border-top: 1px solid var(--light-grey);
+            padding-top: 30px;
+        }
+
+        .similar-title {
+            color: var(--red);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .similar-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .similar-product {
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .similar-product:hover {
+            transform: translateY(-5px);
+            border-color: var(--red);
+        }
+
+        .similar-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 1px solid var(--red);
+        }
+
+        .similar-name {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* ===== REVIEWS SECTION ===== */
+        .reviews-section {
+            margin-top: 50px;
+            border-top: 1px solid var(--light-grey);
+            padding-top: 30px;
+        }
+
+        .reviews-title {
+            color: var(--red);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .review-card {
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .reviewer {
+            font-weight: 700;
+            color: var(--red);
+        }
+
+        .review-date {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .review-stars {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .add-review {
+            margin-top: 30px;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-input {
+            padding: 12px;
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 6px;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .review-input:focus {
+            border-color: var(--red);
+            outline: none;
+        }
+
+        .review-submit {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            transition: var(--transition);
+        }
+
+        .review-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 3.5rem;
+            }
+           
+            .nav-buttons {
+                gap: 10px;
+            }
+           
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+           
+            .search-filter-section {
+                flex-direction: column;
+                align-items: center;
+            }
+           
+            .filter-btn {
+                width: 100%;
+                max-width: 500px;
+            }
+           
+            .products-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+           
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+           
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+           
+            .preview-header {
+                flex-direction: column;
+                text-align: center;
+            }
+           
+            .preview-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+           
+            .preview-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+           
+            .typing-animation {
+                font-size: 1.1rem;
+            }
+           
+            .preview-content {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Background Music -->
-  <audio id="bgMusic" loop autoplay>
-    <source src="assets/sounds/innovationspagebackgroundmusic.mp3" type="audio/mpeg">
-  </audio>
-  <button id="musicToggle">🔊</button>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="page-title">INNOVATIONS</h1>
+            <div class="typing-container">
+                <p id="slogan" class="typing-animation">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
+            </div>
+            <div class="red-line"></div>
+           
+            <!-- Navigation -->
+            <nav class="nav-buttons">
+                <button class="nav-btn" onclick="window.location.href='index.html'">HOME</button>
+                <button class="nav-btn active">INNOVATIONS</button>
+                <button class="nav-btn" onclick="window.location.href='marketx.html'">MARKETX</button>
+                <button class="nav-btn" onclick="window.location.href='announces.html'">ANNOUNCES</button>
+                <button class="nav-btn" onclick="window.location.href='startup.html'">STARTUP</button>
+                <button class="nav-btn" onclick="window.location.href='issues.html'">ISSUES</button>
+                <button class="nav-btn" onclick="window.location.href='help.html'">HELP</button>
+            </nav>
+        </header>
 
-  <!-- Header -->
-  <header>
-    <h1>INNOVATIONS</h1>
-    <h2 class="subtitle">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</h2>
-    <div class="red-line line"></div>
-  </header>
+        <!-- Search and Filters -->
+        <div class="search-filter-section">
+            <input type="text" id="search-input" class="search-bar" placeholder="Search Any App, Game, Book, Gadget Etc...">
+            <button class="filter-btn" id="filter-btn">
+                <i class="fas fa-filter"></i> FILTER
+            </button>
+        </div>
 
-  <!-- Navigation -->
-  <div class="nav">
-    <a href="index.html">HOME</a>
-    <a href="innovations.html">INNOVATIONS</a>
-    <a href="marketx.html">MARKETX</a>
-    <a href="announces.html">ANNOUNCES</a>
-    <a href="startups.html">STARTUPS</a>
-    <a href="issues.html">ISSUES</a>
-    <a href="help.html">HELP</a>
-  </div>
+        <!-- Category Buttons -->
+        <div class="category-buttons">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="apps">Apps</button>
+            <button class="category-btn" data-category="games">Games</button>
+            <button class="category-btn" data-category="books">Books</button>
+            <button class="category-btn" data-category="gadgets">Gadgets</button>
+            <button class="category-btn" data-category="more">More</button>
+        </div>
 
-  <!-- Search & Filters -->
-  <div class="search-filter">
-    <div class="suggestions">
-      <input id="searchInput" type="text" placeholder="Search Any App, Game, Book, Gadget Etc..." onkeyup="applyFilters()">
-      <div id="suggestionsBox"></div>
-    </div>
-    <select id="catFilter" onchange="applyFilters()">
-      <option value="All">All</option>
-      <option value="App">App</option>
-      <option value="Game">Game</option>
-      <option value="Book">Book</option>
-      <option value="Gadget">Gadget</option>
-      <option value="More">More</option>
-    </select>
-    <select id="typeFilter" onchange="applyFilters()">
-      <option value="All">All Types</option>
-      <option value="Utility">Utility</option>
-      <option value="Action">Action</option>
-      <option value="Education">Education</option>
-      <option value="Hardware">Hardware</option>
-      <option value="Misc">Misc</option>
-    </select>
-    <select id="platFilter" onchange="applyFilters()">
-      <option value="All">All Platforms</option>
-      <option value="Mobile">Mobile</option>
-      <option value="PC">PC</option>
-    </select>
-    <select id="priceFilter" onchange="applyFilters()">
-      <option value="All">All Pricing</option>
-      <option value="Free">Free</option>
-      <option value="Paid">Paid</option>
-    </select>
-  </div>
+        <!-- Products Container -->
+        <div class="products-container" id="products-container">
+            <!-- Products will be dynamically generated here -->
+        </div>
+    </div>
 
-  <!-- Category Tabs -->
-  <div class="tabs">
-    <button class="active" data-cat="All" onclick="switchTab(this)">All</button>
-    <button data-cat="App" onclick="switchTab(this)">Apps</button>
-    <button data-cat="Game" onclick="switchTab(this)">Games</button>
-    <button data-cat="Book" onclick="switchTab(this)">Books</button>
-    <button data-cat="Gadget" onclick="switchTab(this)">Gadgets</button>
-    <button data-cat="More" onclick="switchTab(this)">More</button>
-  </div>
+    <!-- Filter Modal -->
+    <div id="filter-modal" class="filter-modal">
+        <div class="filter-content">
+            <div class="filter-header">
+                <h2 class="filter-title">Advanced Filters</h2>
+                <span class="close-filter" id="close-filter">&times;</span>
+            </div>
+           
+            <div class="filter-group">
+                <h3>Product Type</h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="type-action" name="type" value="action">
+                        <label for="type-action">Action</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="type-survival" name="type" value="survival">
+                        <label for="type-survival">Survival</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="type-simulation" name="type" value="simulation">
+                        <label for="type-simulation">Simulation</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="type-production" name="type" value="production">
+                        <label for="type-production">Production</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="type-communication" name="type" value="communication">
+                        <label for="type-communication">Communication</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="type-earning" name="type" value="earning">
+                        <label for="type-earning">Earning</label>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="filter-group">
+                <h3>Platform</h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="platform-pc" name="platform" value="pc">
+                        <label for="platform-pc">PC</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="platform-mobile" name="platform" value="mobile">
+                        <label for="platform-mobile">Mobile</label>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="filter-group">
+                <h3>Price</h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="price-free" name="price" value="free">
+                        <label for="price-free">Free</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="price-paid" name="price" value="paid">
+                        <label for="price-paid">Paid</label>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="filter-actions">
+                <button class="filter-action-btn reset-btn" id="reset-filters">RESET</button>
+                <button class="filter-action-btn apply-btn" id="apply-filters">APPLY</button>
+            </div>
+        </div>
+    </div>
 
-  <!-- Products -->
-  <div class="products" id="productGrid">
-    <!-- App Sample -->
-    <div class="card" data-name="Orbit Translator" data-cat="App" data-type="Utility" data-plat="Mobile" data-price="Free">
-      <img src="https://via.placeholder.com/80" alt="">
-      <div class="info">
-        <h3>Orbit Translator</h3>
-        <p>Category: App | Utility</p>
-        <p>Internet: No | Downloads: 1K+</p>
-        <p>Rating: ★★★★☆</p>
-        <p>Translate text in real time with AI-powered translator.</p>
-        <p><strong>Free</strong></p>
-        <button class="view-more" data-modal="modalApp">View More</button>
-      </div>
-    </div>
-    <!-- Game Sample -->
-    <div class="card" data-name="Space Quest" data-cat="Game" data-type="Action" data-plat="PC" data-price="Paid">
-      <img src="https://via.placeholder.com/80" alt="">
-      <div class="info">
-        <h3>Space Quest</h3>
-        <p>Category: Game | Action</p>
-        <p>Internet: Yes | Downloads: 500K+</p>
-        <p>Rating: ★★★★★</p>
-        <p>Explore the galaxy & battle aliens in this epic adventure.</p>
-        <p><strong>$9.99</strong></p>
-        <button class="view-more" data-modal="modalGame">View More</button>
-      </div>
-    </div>
-    <!-- Book Sample -->
-    <div class="card" data-name="Quantum Computing 101" data-cat="Book" data-type="Education" data-plat="Mobile" data-price="Free">
-      <img src="https://via.placeholder.com/80" alt="">
-      <div class="info">
-        <h3>Quantum Computing 101</h3>
-        <p>Category: Book | Education</p>
-        <p>Internet: No | Downloads: 2K+</p>
-        <p>Rating: ★★★★☆</p>
-        <p>An intro guide to quantum computing fundamentals.</p>
-        <p><strong>Free</strong></p>
-        <button class="view-more" data-modal="modalBook">View More</button>
-      </div>
-    </div>
-    <!-- Gadget Sample -->
-    <div class="card" data-name="Plasma Widget" data-cat="Gadget" data-type="Hardware" data-plat="All" data-price="Paid">
-      <img src="https://via.placeholder.com/80" alt="">
-      <div class="info">
-        <h3>Plasma Widget</h3>
-        <p>Category: Gadget | Hardware</p>
-        <p>Internet: No | Releases: 100+</p>
-        <p>Rating: ★★★★☆</p>
-        <p>A futuristic gadget harnessing plasma energy.</p>
-        <p><strong>$299.99</strong></p>
-        <button class="view-more" data-modal="modalGadget">View More</button>
-      </div>
-    </div>
-    <!-- More Sample -->
-    <div class="card" data-name="Innovator's Toolkit" data-cat="More" data-type="Misc" data-plat="All" data-price="Free">
-      <img src="https://via.placeholder.com/80" alt="">
-      <div class="info">
-        <h3>Innovator's Toolkit</h3>
-        <p>Category: More | Misc</p>
-        <p>Internet: Yes | Downloads: 500+</p>
-        <p>Rating: ★★★★☆</p>
-        <p>A bundle of resources & tools for innovators.</p>
-        <p><strong>Free</strong></p>
-        <button class="view-more" data-modal="modalMore">View More</button>
-      </div>
-    </div>
-  </div>
+    <!-- Detailed Preview Modal -->
+    <div id="preview-modal" class="preview-modal">
+        <div class="preview-content">
+            <span class="close-btn" id="close-preview">&times;</span>
+            <div class="preview-header">
+                <img id="preview-icon" class="preview-icon" src="" alt="Product Icon">
+                <div>
+                    <h2 id="preview-title" class="preview-title">Product Title</h2>
+                    <div id="preview-category" class="preview-category">Category: App</div>
+                </div>
+            </div>
+           
+            <div id="preview-description" class="preview-description">
+                Product description goes here...
+            </div>
+           
+            <h3 class="preview-title">Preview Images</h3>
+            <div id="preview-images" class="preview-images">
+                <!-- Images will be inserted here -->
+            </div>
+           
+            <h3 class="preview-title">Product Details</h3>
+            <div id="preview-stats" class="preview-stats">
+                <!-- Stats will be inserted here -->
+            </div>
+           
+            <div id="preview-actions" class="preview-actions">
+                <!-- Action buttons will be inserted here -->
+            </div>
+           
+            <div class="similar-section">
+                <h3 class="similar-title">Similar Products</h3>
+                <div id="similar-products" class="similar-products">
+                    <!-- Similar products will be inserted here -->
+                </div>
+            </div>
+           
+            <div class="reviews-section">
+                <h3 class="reviews-title">User Reviews</h3>
+                <div id="reviews-container">
+                    <!-- Reviews will be inserted here -->
+                </div>
+               
+                <div class="add-review">
+                    <h3 class="reviews-title">Add Your Review</h3>
+                    <div class="review-form">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <textarea class="review-input" placeholder="Write your review..." rows="4"></textarea>
+                        <button class="review-submit">SUBMIT REVIEW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <!-- Modals -->
-  <!-- App Modal -->
-  <div id="modalApp" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modalApp">&times;</span>
-      <h2>Orbit Translator</h2>
-      <img src="https://via.placeholder.com/80" alt="">
-      <p>Orbit Translator uses neural networks to translate text and speech in real time across multiple languages. Works offline and online, perfect for travel and study.</p>
-      <ul>
-        <li>OS: Android, iOS</li>
-        <li>Version: 1.0</li>
-        <li>Last Update: 2025-03-01</li>
-        <li>Internet Required: No</li>
-        <li>Storage: 50MB</li>
-      </ul>
-      <button onclick="window.open('https://itch.io/placeholder')">Download</button>
-    </div>
-  </div>
-  <!-- Game Modal -->
-  <div id="modalGame" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modalGame">&times;</span>
-      <h2>Space Quest</h2>
-      <img src="https://via.placeholder.com/80" alt="">
-      <p>Space Quest is an epic space adventure—pilot your ship, battle aliens, and explore galaxies in stunning detail.</p>
-      <ul>
-        <li>OS: Windows, Mac</li>
-        <li>Version: 2.5</li>
-        <li>Last Update: 2025-02-15</li>
-        <li>Internet Required: Yes (multiplayer)</li>
-        <li>Storage: 2GB</li>
-      </ul>
-      <button onclick="window.open('https://gumroad.com/placeholder')">Buy Now</button>
-    </div>
-  </div>
-  <!-- Book Modal -->
-  <div id="modalBook" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modalBook">&times;</span>
-      <h2>Quantum Computing 101</h2>
-      <img src="https://via.placeholder.com/80" alt="">
-      <p>This ebook demystifies quantum computing with clear examples and diagrams—perfect for beginners.</p>
-      <ul>
-        <li>Format: ePub, PDF</li>
-        <li>Version: 1.0</li>
-        <li>Last Update: 2025-01-10</li>
-        <li>Internet Required: No</li>
-        <li>Size: 5MB</li>
-      </ul>
-      <button onclick="window.open('https://gumroad.com/placeholder')">Download</button>
-    </div>
-  </div>
-  <!-- Gadget Modal -->
-  <div id="modalGadget" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modalGadget">&times;</span>
-      <h2>Plasma Widget</h2>
-      <img src="https://via.placeholder.com/80" alt="">
-      <p>The Plasma Widget wirelessly charges devices using plasma energy—sleek design with LED pulse effects.</p>
-      <ul>
-        <li>Devices: Smartphones, Tablets</li>
-        <li>Version: 1.2</li>
-        <li>Last Update: 2025-04-05</li>
-      </ul>
-      <button onclick="window.open('https://gumroad.com/placeholder')">Buy Now</button>
-    </div>
-  </div>
-  <!-- More Modal -->
-  <div id="modalMore" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modalMore">&times;</span>
-      <h2>Innovator's Toolkit</h2>
-      <img src="https://via.placeholder.com/80" alt="">
-      <p>A curated bundle of software & e-books for creative professionals—design, productivity, and learning tools.</p>
-      <ul>
-        <li>Includes: Design Pro, Idea Planner, eBooks</li>
-        <li>Version: 1.0</li>
-        <li>Last Update: 2025-02-20</li>
-      </ul>
-      <button onclick="window.open('https://gumroad.com/placeholder')">Download</button>
-    </div>
-  </div>
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: "quantum-os",
+                title: "Quantum OS",
+                category: "apps",
+                type: "Operating System",
+                platform: ["pc", "mobile"],
+                priceType: "free",
+                icon: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1581094794329-ef7ae5f0e8c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                ],
+                description: "Quantum OS is a revolutionary operating system designed specifically for quantum computing devices.",
+                fullDescription: "Quantum OS is a revolutionary operating system designed specifically for quantum computing devices. It leverages the principles of quantum mechanics to deliver unprecedented processing capabilities, enabling computations that were previously impossible on classical computers. With its intuitive interface and powerful quantum algorithms, Quantum OS makes quantum computing accessible to researchers, developers, and enterprises alike. The system includes advanced security protocols based on quantum encryption, ensuring that your data remains secure against even the most sophisticated attacks.",
+                internetRequired: "850 MB",
+                storageRequired: "2.5 GB",
+                downloads: "250K+",
+                rating: "4.8",
+                version: "1.2.5",
+                lastUpdate: "2023-11-15",
+                osRequirements: "Android 10+ or iOS 14+",
+                ageRating: "12+",
+                price: 0,
+                isPaid: false,
+                similarProducts: ["Cyber Nexus", "Neural Sync", "HoloPlay"],
+                reviews: [
+                    {
+                        user: "TechEnthusiast42",
+                        date: "2023-11-20",
+                        rating: 5,
+                        comment: "This OS has completely transformed how I work. The quantum processing capabilities are mind-blowing!"
+                    },
+                    {
+                        user: "DeveloperPro",
+                        date: "2023-11-18",
+                        rating: 4,
+                        comment: "Great potential, but the learning curve is steep. Looking forward to more tutorials and documentation."
+                    }
+                ]
+            },
+            {
+                id: "cyber-nexus",
+                title: "Cyber Nexus",
+                category: "apps",
+                type: "Security Suite",
+                platform: ["pc", "mobile"],
+                priceType: "paid",
+                icon: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                ],
+                description: "Cyber Nexus is the next-generation cybersecurity solution that combines AI with quantum-resistant encryption.",
+                fullDescription: "Cyber Nexus is the next-generation cybersecurity solution that combines artificial intelligence with quantum-resistant encryption to protect your digital assets. Its advanced threat detection algorithms can identify and neutralize zero-day vulnerabilities before they can be exploited. With real-time monitoring and automated response systems, Cyber Nexus provides enterprise-grade security for individuals and organizations. The suite includes firewall protection, malware detection, network security, and data encryption tools to safeguard your devices and information from cyber threats.",
+                internetRequired: "720 MB",
+                storageRequired: "1.8 GB",
+                downloads: "180K+",
+                rating: "4.9",
+                version: "2.0.1",
+                lastUpdate: "2023-12-01",
+                osRequirements: "Android 9+ or iOS 13+",
+                ageRating: "16+",
+                price: 49.99,
+                isPaid: true,
+                similarProducts: ["Quantum OS", "Neural Sync", "DataGuard"],
+                reviews: [
+                    {
+                        user: "SecurityExpert",
+                        date: "2023-12-05",
+                        rating: 5,
+                        comment: "The best security suite I've used. The AI threat detection is incredibly accurate."
+                    }
+                ]
+            },
+            {
+                id: "quantum-realms",
+                title: "Quantum Realms",
+                category: "games",
+                type: "Adventure",
+                platform: ["pc", "mobile"],
+                priceType: "paid",
+                icon: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                ],
+                description: "Step into the Quantum Realms, a groundbreaking adventure game with quantum physics-based gameplay.",
+                fullDescription: "Step into the Quantum Realms, a groundbreaking adventure game that combines stunning visuals with innovative quantum physics-based gameplay mechanics. Explore parallel dimensions, solve puzzles using quantum superposition, and battle enemies across multiple realities. With procedurally generated worlds and an ever-expanding universe, Quantum Realms offers endless possibilities for exploration and discovery. The game features a deep storyline, multiplayer modes, and regular content updates to keep the experience fresh and engaging.",
+                internetRequired: "3.2 GB",
+                storageRequired: "8.5 GB",
+                downloads: "420K+",
+                rating: "4.7",
+                version: "1.5.3",
+                lastUpdate: "2023-11-20",
+                osRequirements: "Android 11+ or iOS 15+",
+                ageRating: "16+",
+                price: 19.99,
+                isPaid: true,
+                similarProducts: ["Neo Dimensions", "Reality Shift", "Quantum Quest"],
+                reviews: [
+                    {
+                        user: "GamerPro",
+                        date: "2023-11-25",
+                        rating: 5,
+                        comment: "The quantum mechanics integration is genius! Best game I've played this year."
+                    },
+                    {
+                        user: "SciFiFan",
+                        date: "2023-11-22",
+                        rating: 4,
+                        comment: "Amazing concept and visuals, but needs more optimization for mobile devices."
+                    }
+                ]
+            },
+            {
+                id: "molecular-journey",
+                title: "Molecular Journey",
+                category: "books",
+                type: "Science Fiction",
+                platform: ["mobile"],
+                priceType: "paid",
+                icon: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                ],
+                description: "Molecular Journey is a captivating science fiction novel exploring quantum technology.",
+                fullDescription: "Molecular Journey is a captivating science fiction novel that explores the boundaries of human consciousness and quantum technology. Follow Dr. Elara Vance as she navigates parallel dimensions, encounters alien civilizations, and uncovers the secrets of molecular manipulation. The story blends hard science with philosophical questions about existence, identity, and the nature of reality. With its intricate plot and well-developed characters, Molecular Journey takes readers on an unforgettable adventure through the fabric of spacetime.",
+                fileSize: "15 MB",
+                pages: "420",
+                downloads: "85K+",
+                rating: "4.8",
+                lastUpdate: "2023-10-10",
+                format: "ePub, PDF, Mobi",
+                ageRating: "14+",
+                price: 9.99,
+                isPaid: true,
+                similarProducts: ["Quantum Consciousness", "The Nano Chronicles", "Parallel Existence"],
+                reviews: [
+                    {
+                        user: "BookWorm",
+                        date: "2023-10-15",
+                        rating: 5,
+                        comment: "A masterpiece of science fiction! The quantum concepts are explained so well."
+                    }
+                ]
+            }
+        ];
 
-  <!-- SCRIPT -->
-  <script>
-    // Background music toggle
-    const bg = document.getElementById('bgMusic');
-    const btn = document.getElementById('musicToggle');
-    btn.onclick = () => {
-      if (bg.paused) { bg.play(); btn.textContent='🔊'; }
-      else { bg.pause(); btn.textContent='🔈'; }
-    };
+        // DOM elements
+        const productsContainer = document.getElementById('products-container');
+        const searchInput = document.getElementById('search-input');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const previewModal = document.getElementById('preview-modal');
+        const closePreview = document.getElementById('close-preview');
+        const filterBtn = document.getElementById('filter-btn');
+        const filterModal = document.getElementById('filter-modal');
+        const closeFilter = document.getElementById('close-filter');
+        const resetFilters = document.getElementById('reset-filters');
+        const applyFilters = document.getElementById('apply-filters');
 
-    // Modal logic
-    document.querySelectorAll('.view-more').forEach(btn=>{
-      btn.onclick = ()=> {
-        document.getElementById(btn.dataset.modal).style.display='block';
-      };
-    });
-    document.querySelectorAll('.close').forEach(span=>{
-      span.onclick = ()=> {
-        document.getElementById(span.dataset.modal).style.display='none';
-      };
-    });
-    window.onclick = e=>{
-      if (e.target.classList.contains('modal')) e.target.style.display='none';
-    };
+        // Current filters state
+        let currentFilters = {
+            category: 'all',
+            types: [],
+            platforms: [],
+            priceTypes: [],
+            searchTerm: ''
+        };
 
-    // Tabs & filter
-    const cards = [...document.querySelectorAll('.card')];
-    function switchTab(el) {
-      document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-      el.classList.add('active');
-      applyFilters();
-    }
-    function applyFilters(){
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      const cat = document.getElementById('catFilter').value;
-      const typ = document.getElementById('typeFilter').value;
-      const plat= document.getElementById('platFilter').value;
-      const pr  = document.getElementById('priceFilter').value;
-      const activeTab = document.querySelector('.tabs .active').dataset.cat;
-      cards.forEach(c=>{
-        const name = c.dataset.name.toLowerCase();
-        const keep = (name.includes(q)) &&
-                     (cat==='All'||c.dataset.cat===cat) &&
-                     (typ==='All'||c.dataset.type===typ) &&
-                     (plat==='All'||c.dataset.plat===plat) &&
-                     (pr==='All'||c.dataset.price===pr) &&
-                     (activeTab==='All'||c.dataset.cat===activeTab);
-        c.style.display = keep?'flex':'none';
-      });
-    }
-    // Live suggestions
-    const suggestions = document.getElementById('suggestionsBox');
-    document.getElementById('searchInput').oninput = function(){
-      suggestions.innerHTML='';
-      if (!this.value) { suggestions.style.display='none'; applyFilters(); return; }
-      const q = this.value.toLowerCase();
-      cards.forEach(c=>{
-        if (c.dataset.name.toLowerCase().includes(q)) {
-          const div = document.createElement('div');
-          div.textContent = c.dataset.name;
-          div.onclick = ()=>{
-            document.getElementById('searchInput').value = div.textContent;
-            suggestions.style.display='none';
-            applyFilters();
-          };
-          suggestions.appendChild(div);
-        }
-      });
-      suggestions.style.display = suggestions.children.length?'block':'none';
-      applyFilters();
-    };
-    document.addEventListener('click',e=>{
-      if (!e.target.closest('.suggestions')) suggestions.style.display='none';
-    });
-  </script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up typing animation
+            setupTypingAnimation();
+           
+            // Generate products
+            renderProducts(products);
+           
+            // Set up event listeners
+            setupEventListeners();
+        });
+
+        function setupTypingAnimation() {
+            const slogan = document.getElementById('slogan');
+            const text = slogan.textContent;
+            slogan.textContent = '';
+           
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    slogan.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                    // Add cursor after text completes
+                    const cursor = document.createElement('span');
+                    cursor.classList.add('cursor');
+                    slogan.appendChild(cursor);
+                }
+            }, 50);
+        }
+
+        function renderProducts(productsToRender) {
+            productsContainer.innerHTML = '';
+           
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.dataset.category = product.category;
+                productCard.dataset.type = product.type;
+                productCard.dataset.platform = product.platform.join(',');
+                productCard.dataset.priceType = product.priceType;
+               
+                productCard.innerHTML = `
+                    <img src="${product.icon}" alt="${product.title}" class="product-icon">
+                    <div class="product-info">
+                        <h3>${product.title}</h3>
+                        <div class="product-category">${product.type}</div>
+                        <div class="product-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-download"></i> ${product.downloads}
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-star"></i> ${product.rating}/5
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-wifi"></i> ${product.internetRequired || product.fileSize || 'N/A'}
+                            </div>
+                        </div>
+                        <p class="product-description">${product.description}</p>
+                        ${product.price > 0 ? `<div class="product-price">$${product.price}</div>` : ''}
+                        <button class="view-more-btn" data-id="${product.id}">VIEW MORE</button>
+                    </div>
+                `;
+               
+                productsContainer.appendChild(productCard);
+            });
+           
+            // Add event listeners to view more buttons
+            document.querySelectorAll('.view-more-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    showProductPreview(productId);
+                });
+            });
+        }
+
+        function showProductPreview(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+           
+            // Set basic product info
+            document.getElementById('preview-title').textContent = product.title;
+            document.getElementById('preview-icon').src = product.icon;
+            document.getElementById('preview-category').textContent = `Category: ${product.type}`;
+           
+            // Set description with read more functionality
+            const descriptionEl = document.getElementById('preview-description');
+            descriptionEl.innerHTML = `
+                <p>${product.fullDescription.substring(0, 300)}...</p>
+                <span class="read-more" id="read-more">Read More</span>
+            `;
+           
+            document.getElementById('read-more').addEventListener('click', function() {
+                descriptionEl.innerHTML = `<p>${product.fullDescription}</p>`;
+            });
+           
+            // Set preview images
+            const imagesContainer = document.getElementById('preview-images');
+            imagesContainer.innerHTML = '';
+            product.images.forEach(img => {
+                const imgEl = document.createElement('img');
+                imgEl.src = img;
+                imgEl.classList.add('preview-image');
+                imgEl.alt = product.title;
+                imagesContainer.appendChild(imgEl);
+            });
+           
+            // Set product stats
+            const statsContainer = document.getElementById('preview-stats');
+            statsContainer.innerHTML = '';
+           
+            const statsToShow = [
+                { label: "Downloads", value: product.downloads, icon: "fas fa-download" },
+                { label: "Rating", value: `${product.rating}/5`, icon: "fas fa-star" },
+                { label: "Version", value: product.version || "1.0", icon: "fas fa-code-branch" },
+                { label: "Last Update", value: product.lastUpdate || "2023-11-01", icon: "fas fa-calendar-alt" },
+                { label: "OS Requirements", value: product.osRequirements || "Various", icon: "fas fa-mobile-alt" },
+                { label: "Age Rating", value: product.ageRating || "N/A", icon: "fas fa-user" },
+                { label: "Internet Required", value: product.internetRequired || product.fileSize || "N/A", icon: "fas fa-wifi" },
+                { label: "Storage Required", value: product.storageRequired || "N/A", icon: "fas fa-hdd" }
+            ];
+           
+            statsToShow.forEach(stat => {
+                const statCard = document.createElement('div');
+                statCard.classList.add('stat-card');
+                statCard.innerHTML = `
+                    <div class="stat-value">${stat.value}</div>
+                    <div class="stat-label">${stat.label}</div>
+                `;
+                statsContainer.appendChild(statCard);
+            });
+           
+            // Set action buttons
+            const actionsContainer = document.getElementById('preview-actions');
+            actionsContainer.innerHTML = '';
+           
+            if (product.isPaid) {
+                const buyBtn = document.createElement('button');
+                buyBtn.classList.add('action-btn', 'buy-btn');
+                buyBtn.innerHTML = `<i class="fas fa-shopping-cart"></i> BUY NOW - $${product.price}`;
+                buyBtn.addEventListener('click', () => {
+                    alert(`Redirecting to purchase page for ${product.title}...`);
+                    // In a real implementation, you would redirect to your purchase URL
+                });
+                actionsContainer.appendChild(buyBtn);
+            } else {
+                const downloadBtn = document.createElement('button');
+                downloadBtn.classList.add('action-btn', 'download-btn');
+                downloadBtn.innerHTML = `<i class="fas fa-download"></i> DOWNLOAD NOW`;
+                downloadBtn.addEventListener('click', () => {
+                    alert(`Redirecting to download page for ${product.title}...`);
+                    // In a real implementation, you would redirect to your download URL
+                });
+                actionsContainer.appendChild(downloadBtn);
+            }
+           
+            // Set similar products
+            const similarContainer = document.getElementById('similar-products');
+            similarContainer.innerHTML = '';
+           
+            products.filter(p => product.similarProducts.includes(p.title)).forEach(similar => {
+                const similarEl = document.createElement('div');
+                similarEl.classList.add('similar-product');
+                similarEl.innerHTML = `
+                    <img src="${similar.icon}" alt="${similar.title}" class="similar-icon">
+                    <div class="similar-name">${similar.title}</div>
+                `;
+                similarEl.addEventListener('click', () => {
+                    showProductPreview(similar.id);
+                });
+                similarContainer.appendChild(similarEl);
+            });
+           
+            // Set reviews
+            const reviewsContainer = document.getElementById('reviews-container');
+            reviewsContainer.innerHTML = '';
+           
+            product.reviews.forEach(review => {
+                const reviewEl = document.createElement('div');
+                reviewEl.classList.add('review-card');
+                reviewEl.innerHTML = `
+                    <div class="review-header">
+                        <div class="reviewer">${review.user}</div>
+                        <div class="review-date">${review.date}</div>
+                    </div>
+                    <div class="review-stars">
+                        ${'<i class="fas fa-star"></i>'.repeat(review.rating)}
+                    </div>
+                    <div class="review-text">${review.comment}</div>
+                `;
+                reviewsContainer.appendChild(reviewEl);
+            });
+           
+            // Show the modal
+            previewModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupEventListeners() {
+            // Close preview modal
+            closePreview.addEventListener('click', () => {
+                previewModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+           
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === previewModal) {
+                    previewModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+           
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                currentFilters.searchTerm = this.value.toLowerCase();
+                filterProducts();
+            });
+           
+            // Category filtering
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                   
+                    // Update filter
+                    currentFilters.category = this.dataset.category;
+                    filterProducts();
+                });
+            });
+           
+            // Filter button functionality
+            filterBtn.addEventListener('click', function() {
+                filterModal.style.display = 'block';
+            });
+           
+            // Close filter modal
+            closeFilter.addEventListener('click', () => {
+                filterModal.style.display = 'none';
+            });
+           
+            // Close filter modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === filterModal) {
+                    filterModal.style.display = 'none';
+                }
+            });
+           
+            // Reset filters
+            resetFilters.addEventListener('click', function() {
+                document.querySelectorAll('.filter-option input').forEach(input => {
+                    input.checked = false;
+                });
+                currentFilters.types = [];
+                currentFilters.platforms = [];
+                currentFilters.priceTypes = [];
+                filterProducts();
+                filterModal.style.display = 'none';
+            });
+           
+            // Apply filters
+            applyFilters.addEventListener('click', function() {
+                // Get selected types
+                currentFilters.types = Array.from(document.querySelectorAll('input[name="type"]:checked'))
+                    .map(input => input.value);
+               
+                // Get selected platforms
+                currentFilters.platforms = Array.from(document.querySelectorAll('input[name="platform"]:checked'))
+                    .map(input => input.value);
+               
+                // Get selected price types
+                currentFilters.priceTypes = Array.from(document.querySelectorAll('input[name="price"]:checked'))
+                    .map(input => input.value);
+               
+                filterProducts();
+                filterModal.style.display = 'none';
+            });
+        }
+
+        function filterProducts() {
+            const filteredProducts = products.filter(product => {
+                // Check category
+                if (currentFilters.category !== 'all' && product.category !== currentFilters.category) {
+                    return false;
+                }
+               
+                // Check search term
+                if (currentFilters.searchTerm) {
+                    const searchTerm = currentFilters.searchTerm.toLowerCase();
+                    const titleMatch = product.title.toLowerCase().includes(searchTerm);
+                    const descMatch = product.description.toLowerCase().includes(searchTerm);
+                    const typeMatch = product.type.toLowerCase().includes(searchTerm);
+                   
+                    if (!(titleMatch || descMatch || typeMatch)) {
+                        return false;
+                    }
+                }
+               
+                // Check type filters
+                if (currentFilters.types.length > 0 && !currentFilters.types.includes(product.type.toLowerCase())) {
+                    return false;
+                }
+               
+                // Check platform filters
+                if (currentFilters.platforms.length > 0) {
+                    const hasMatchingPlatform = product.platform.some(platform =>
+                        currentFilters.platforms.includes(platform.toLowerCase())
+                    );
+                    if (!hasMatchingPlatform) return false;
+                }
+               
+                // Check price type filters
+                if (currentFilters.priceTypes.length > 0) {
+                    const priceType = product.isPaid ? 'paid' : 'free';
+                    if (!currentFilters.priceTypes.includes(priceType)) {
+                        return false;
+                    }
+                }
+               
+                return true;
+            });
+           
+            renderProducts(filteredProducts);
+        }
+    </script>
 </body>
 </html>
