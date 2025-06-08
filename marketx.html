@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARKETX | Molecular Technology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montagu+Slab:wght@600&family=Gloock&family=Exo+2:wght@500&family=Lato&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { background:#000; color:#fff; font-family:'Exo 2',sans-serif; }
+    a { text-decoration:none; color:inherit; }
+    /* Header */
+    header { text-align:center; padding:3rem 1rem; animation:fadeIn 1.5s; }
+    header .nav { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    header .nav button { background:transparent; color:#fff; border:1px solid #fff; padding:.5rem 1rem; border-radius:8px; transition:.3s; }
+    header .nav button:hover { background:red; color:#000; transform:scale(1.05); box-shadow:0 0 8px red; }
+    header h1 { font-family:'Orbitron',sans-serif; font-size:3rem; background:linear-gradient(90deg,#f00,#f80,#f00); background-size:300%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:aurora 5s infinite alternate,fadeIn 1.5s; }
+    header p.subtitle { margin-top:1rem; font-family:'Gloock',serif; font-size:1.1rem; white-space:nowrap; overflow:hidden; border-right:.15em solid #fff; width:0; animation:typing 6s steps(60,end) forwards,blink .8s step-end infinite; }
+    header .line { height:2px; background:red; margin:1.5rem 0; box-shadow:0 0 8px red; }
+    /* Search & Filters */
+    .search-filter { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem; margin:1rem 0; }
+    .search-filter input { width:250px; padding:.5rem 1rem; border-radius:8px; border:1px solid #444; background:rgba(255,255,255,0.05); color:#fff; }
+    .search-filter select { padding:.5rem; border-radius:8px; border:1px solid #444; background:rgba(255,255,255,0.05); color:#fff; }
+    /* Tabs */
+    .tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem; margin:1rem 0; }
+    .tabs button { background:rgba(255,0,0,0.1); border:1px solid red; padding:.5rem 1rem; border-radius:8px; color:red; transition:.3s; }
+    .tabs button:hover, .tabs .active { background:red; color:#000; box-shadow:0 0 8px red; transform:scale(1.05); }
+    /* Products */
+    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; padding:1rem; }
+    .card { background:#111; border:1px solid #333; border-radius:12px; padding:1rem; display:flex; gap:1rem; box-shadow:0 0 10px #000; transition:.3s; }
+    .card:hover { box-shadow:0 0 15px red; transform:scale(1.02); }
+    .card img { width:80px; height:80px; border-radius:8px; object-fit:cover; }
+    .info h3 { font-family:'Montagu Slab',serif; color:red; margin-bottom:.3rem; }
+    .info p { font-size:.9rem; margin:2px 0; color:#aaa; }
+    .get-it { margin-top:.5rem; background:red; color:#000; border:none; padding:.5rem 1rem; border-radius:8px; transition:.3s; }
+    .get-it:hover { filter:brightness(1.2); }
+    /* Modal */
+    .modal { display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8); overflow:auto; animation:fadeIn .5s; }
+    .modal-content { background:#111; margin:5% auto; padding:1.5rem; border:1px solid #444; width:90%; max-width:600px; border-radius:12px; position:relative; }
+    .close { position:absolute; top:1rem; right:1rem; font-size:1.5rem; cursor:pointer; }
+    .modal-content img { float:right; width:80px; border-radius:8px; margin-left:1rem; }
+    .modal-content h2 { color:red; font-family:'Gloock',serif; }
+    .modal-content p, .modal-content li { margin:.4rem 0; font-size:.95rem; }
+    .modal-content ul { padding-left:1.2rem; }
+    .modal-content button { margin-top:1rem; background:red; color:#000; border:none; padding:.6rem 1.2rem; border-radius:8px; transition:.3s; }
+    .modal-content button:hover { filter:brightness(1.2); }
+    /* Music Toggle */
+    #musicToggle { position:fixed; bottom:1rem; right:1rem; background:red; color:#fff; border:none; width:50px; height:50px; border-radius:50%; font-size:1.2rem; box-shadow:0 0 10px red; cursor:pointer; transition:.3s; }
+    #musicToggle:hover { filter:brightness(1.2); }
+    /* Animations */
+    @keyframes typing { from{width:0;} to{width:80%;} }
+    @keyframes blink { 50%{border-color:transparent;} }
+    @keyframes aurora { 0%{background-position:0% 50%;} 100%{background-position:100% 50%;} }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    /* Responsive */
+    @media(max-width:600px){ .card{flex-direction:column;align-items:center;text-align:center;} .tabs, .nav, .search-filter {flex-direction:column;gap:.5rem;} }
+  </style>
+</head>
+<body>
+  <!-- Music -->
+  <audio id="bgMusic" loop autoplay>
+    <source src="https://cdn.pixabay.com/download/audio/2023/05/31/audio_ae7ba8a854.mp3?filename=ambient-futuristic-tech-145128.mp3" type="audio/mpeg">
+  </audio>
+  <button id="musicToggle">🔊</button>
+
+  <header>
+    <div class="nav">
+      <button>HOME</button>
+      <button>INNOVATIONS</button>
+      <button class="active">MARKETX</button>
+      <button>HELP</button>
+    </div>
+    <h1>MARKETX</h1>
+    <p class="subtitle">This Page Gives You Access To Buy Our Each Innovation's Items Or Product.</p>
+    <div class="line red-line"></div>
+  </header>
+
+  <div class="search-filter">
+    <div class="suggestions">
+      <input id="searchInput" placeholder="Search Any Items Or Products For App, Game And Book Etc..." onkeyup="applyFilters()">
+      <div id="suggestionsBox"></div>
+    </div>
+    <select id="catFilter" onchange="applyFilters()">
+      <option>All</option><option>App</option><option>Game</option><option>Book</option><option>Gadget</option><option>More</option>
+    </select>
+    <select id="typeFilter" onchange="applyFilters()">
+      <option>All Types</option><option>Utility</option><option>Action</option><option>Education</option><option>Simulation</option><option>Misc</option>
+    </select>
+    <select id="platFilter" onchange="applyFilters()">
+      <option>All Platforms</option><option>Mobile</option><option>PC</option>
+    </select>
+    <select id="priceFilter" onchange="applyFilters()">
+      <option>All Pricing</option><option>Free</option><option>Paid</option>
+    </select>
+  </div>
+
+  <div class="tabs">
+    <button class="active" data-cat="All" onclick="switchTab(this)">All</button>
+    <button data-cat="App" onclick="switchTab(this)">App's Products</button>
+    <button data-cat="Game" onclick="switchTab(this)">Games</button>
+    <button data-cat="Book" onclick="switchTab(this)">Books</button>
+    <button data-cat="Gadget" onclick="switchTab(this)">Gadgets</button>
+    <button data-cat="More" onclick="switchTab(this)">More</button>
+  </div>
+
+  <div class="products" id="productGrid">
+    <!-- Sample App Item -->
+    <div class="card" data-name="Premium Theme Pack" data-cat="App" data-type="Utility" data-plat="Mobile" data-price="Paid">
+      <img src="https://via.placeholder.com/80" alt="Theme Pack">
+      <div class="info">
+        <h3>Premium Theme Pack</h3>
+        <p>Customize your app with exclusive themes.</p>
+        <p><strong>$2.99</strong></p>
+        <button class="get-it" data-modal="modalApp">GET IT</button>
+      </div>
+    </div>
+    <!-- Sample Game Item -->
+    <div class="card" data-name="Diamond Bundle" data-cat="Game" data-type="Action" data-plat="PC" data-price="Paid">
+      <img src="https://via.placeholder.com/80" alt="Diamond Bundle">
+      <div class="info">
+        <h3>Diamond Bundle</h3>
+        <p>Get 500 diamonds for in-game purchases.</p>
+        <p><strong>$4.99</strong></p>
+        <button class="get-it" data-modal="modalGame">GET IT</button>
+      </div>
+    </div>
+    <!-- Sample Book Item -->
+    <div class="card" data-name="Chapter Unlock" data-cat="Book" data-type="Education" data-plat="Mobile" data-price="Paid">
+      <img src="https://via.placeholder.com/80" alt="Chapter Unlock">
+      <div class="info">
+        <h3>Chapter Unlock</h3>
+        <p>Unlock the next chapter of Quantum Computing 101.</p>
+        <p><strong>$0.99</strong></p>
+        <button class="get-it" data-modal="modalBook">GET IT</button>
+      </div>
+    </div>
+    <!-- Gadgets & More placeholders -->
+    <p class="placeholder-message">Gadgets & More Coming Soon…</p>
+  </div>
+
+  <!-- Modals -->
+  <div id="modalApp" class="modal"><div class="modal-content"><span class="close" data-modal="modalApp">&times;</span><h2>Premium Theme Pack</h2><img src="https://via.placeholder.com/80" alt=""><p>Exclusive themes to customize your app experience.</p><ul><li>Platform: Mobile</li><li>Price: $2.99</li></ul><button onclick="window.open('https://gumroad.com/placeholder')">Buy Now</button></div></div>
+  <div id="modalGame" class="modal"><div class="modal-content"><span class="close" data-modal="modalGame">&times;</span><h2>Diamond Bundle</h2><img src="https://via.placeholder.com/80" alt=""><p>500 diamonds for your game—unlock skins and upgrades.</p><ul><li>Platform: PC</li><li>Price: $4.99</li></ul><button onclick="window.open('https://itch.io/placeholder')">Buy Now</button></div></div>
+  <div id="modalBook" class="modal"><div class="modal-content"><span class="close" data-modal="modalBook">&times;</span><h2>Chapter Unlock</h2><img src="https://via.placeholder.com/80" alt=""><p>Unlock the next chapter of our premium ebook.</p><ul><li>Platform: Mobile</li><li>Price: $0.99</li></ul><button onclick="window.open('https://gumroad.com/placeholder')">Buy Now</button></div></div>
+
+  <script>
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    musicToggle.onclick = ()=>{ bgMusic.paused?bgMusic.play():bgMusic.pause(); musicToggle.textContent = bgMusic.paused?'🔈':'🔊'; };
+
+    document.querySelectorAll('.get-it').forEach(btn=>btn.onclick=()=>{
+      document.getElementById(btn.dataset.modal).style.display='block';
+    });
+    document.querySelectorAll('.close').forEach(span=>span.onclick=()=>{
+      document.getElementById(span.dataset.modal).style.display='none';
+    });
+    window.onclick = e=>{ if(e.target.classList.contains('modal')) e.target.style.display='none'; };
+
+    const cards = [...document.querySelectorAll('.card')];
+    function switchTab(el){ document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); applyFilters(); }
+    function applyFilters(){
+      const q=document.getElementById('searchInput').value.toLowerCase();
+      const cat=document.getElementById('catFilter').value;
+      const typ=document.getElementById('typeFilter').value;
+      const plat=document.getElementById('platFilter').value;
+      const pr=document.getElementById('priceFilter').value;
+      const active=document.querySelector('.tabs .active').dataset.cat;
+      cards.forEach(c=>{
+        const matches = c.dataset.name.toLowerCase().includes(q)
+          &&(cat==='All'||c.dataset.cat===cat)
+          &&(typ==='All Types'||c.dataset.type===typ)
+          &&(plat==='All Platforms'||c.dataset.plat===plat)
+          &&(pr==='All Pricing'||c.dataset.price===pr)
+          &&(active==='All'||c.dataset.cat===active);
+        c.style.display=matches?'flex':'none';
+      });
+    }
+    // Live suggestions omitted for brevity--similar to Innovations page
+  </script>
+</body>
+</html>
