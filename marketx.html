@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MARKETX | Molecular Technology</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Gorilla&family=Lato&family=Expo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Gorilla&family=Expo&family=Lato&display=swap');
 
     * {
       margin: 0;
@@ -23,25 +23,25 @@
     header {
       text-align: center;
       padding: 60px 20px 20px;
-      animation: fadeIn 2s ease;
+      animation: fadeInDown 1.5s ease-in-out;
     }
 
     header h1 {
       font-family: 'Gorilla', sans-serif;
-      font-size: 48px;
+      font-size: 52px;
       color: red;
+      text-shadow: 0 0 15px red, 0 0 25px white;
       animation: glow 2s ease-in-out infinite alternate;
     }
 
     header p {
-      font-family: 'Gorilla', serif;
-      font-size: 20px;
-      color: white;
-      margin-top: 10px;
-      border-right: .1em solid white;
+      font-family: 'Gorilla', sans-serif;
+      font-size: 18px;
+      margin-top: 15px;
       white-space: nowrap;
       overflow: hidden;
-      animation: typing 4s steps(60, end), blink-caret .75s step-end infinite;
+      border-right: .15em solid white;
+      animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
     }
 
     @keyframes typing {
@@ -54,8 +54,8 @@
       50% { border-color: white; }
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-20px); }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
@@ -70,6 +70,7 @@
       gap: 20px;
       margin-top: 30px;
       flex-wrap: wrap;
+      animation: fadeIn 2s ease-in-out;
     }
 
     nav button {
@@ -87,6 +88,7 @@
       background: red;
       color: black;
       transform: scale(1.1);
+      box-shadow: 0 0 10px red;
     }
 
     .red-line {
@@ -96,58 +98,49 @@
       margin: 30px 0;
     }
 
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      gap: 10px;
-      flex-wrap: wrap;
+    .search-container {
+      text-align: center;
+      padding: 30px;
+      animation: fadeInUp 1.5s ease-in-out;
     }
 
-    .search-bar input {
-      padding: 10px;
-      width: 300px;
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .search-container input {
+      padding: 12px;
+      width: 60%;
+      max-width: 600px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.1);
       color: white;
       font-family: 'Expo', sans-serif;
+      font-size: 16px;
     }
 
-    .filters {
+    .filters, .categories {
       display: flex;
       justify-content: center;
-      gap: 15px;
       flex-wrap: wrap;
-      padding: 10px;
+      gap: 15px;
+      padding: 15px;
     }
 
-    .filters select {
-      padding: 8px;
-      background: #111;
-      color: white;
-      border: 1px solid red;
-      border-radius: 8px;
-    }
-
-    .categories {
-      text-align: center;
-      margin: 20px;
-    }
-
-    .categories button {
-      margin: 10px;
-      padding: 10px 20px;
+    .filters select, .categories button {
+      padding: 10px 16px;
       background: transparent;
       border: 2px solid red;
       color: red;
+      font-family: 'Lato';
       border-radius: 10px;
       cursor: pointer;
       transition: 0.3s ease;
     }
 
-    .categories button:hover,
+    .filters select:hover, .categories button:hover,
     .categories button.active {
       background: red;
       color: black;
@@ -157,31 +150,31 @@
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 30px;
+      gap: 25px;
+      padding: 40px;
     }
 
     .product-card {
       background: #111;
-      border-radius: 15px;
+      border-radius: 20px;
       padding: 20px;
       box-shadow: 0 0 15px red;
-      transition: 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .product-card:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
       box-shadow: 0 0 25px red;
     }
 
     .product-card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .product-card h3 {
-      margin-top: 10px;
-      font-size: 20px;
+      font-size: 22px;
+      margin-top: 15px;
     }
 
     .product-card p {
@@ -216,60 +209,59 @@
     <button class="active">Marketx</button>
   </nav>
 
-  <div class="search-bar">
+  <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search Any Items Or Products For App, Game And Book Etc...">
-    <div class="filters">
-      <select id="categoryFilter">
-        <option value="All">All Categories</option>
-        <option value="App">App</option>
-        <option value="Game">Game</option>
-        <option value="Book">Book</option>
-      </select>
-      <select id="priceFilter">
-        <option value="All">All Prices</option>
-        <option value="Free">Free</option>
-        <option value="Paid">Paid</option>
-      </select>
-    </div>
+  </div>
+
+  <div class="filters">
+    <select id="categoryFilter">
+      <option value="All">All Categories</option>
+      <option value="App">App</option>
+      <option value="Game">Game</option>
+      <option value="Book">Book</option>
+    </select>
+    <select id="priceFilter">
+      <option value="All">All Prices</option>
+      <option value="Free">Free</option>
+      <option value="Paid">Paid</option>
+    </select>
   </div>
 
   <div class="categories">
-    <button class="active" onclick="filterProducts('All')">All</button>
-    <button onclick="filterProducts('App')">App's Product</button>
-    <button onclick="filterProducts('Game')">Games</button>
-    <button onclick="filterProducts('Book')">Books</button>
+    <button class="active" onclick="filterProducts('All', event)">All</button>
+    <button onclick="filterProducts('App', event)">App's Product</button>
+    <button onclick="filterProducts('Game', event)">Games</button>
+    <button onclick="filterProducts('Book', event)">Books</button>
     <button disabled>Gadgets</button>
     <button disabled>More</button>
   </div>
 
-  <div class="products" id="productContainer">
-    <!-- JavaScript Injected Product Cards -->
-  </div>
+  <div class="products" id="productContainer"></div>
 
   <script>
     const products = [
       {
-        name: "Sample App Skin",
+        name: "Premium Voice Skin",
         category: "App",
         price: "Paid",
         image: "https://via.placeholder.com/300x150",
-        description: "A premium dark mode skin for your app.",
+        description: "Get a futuristic voice skin with Jarvis-like tone.",
         link: "https://example.com"
       },
       {
-        name: "Diamond Pack",
+        name: "1000 Game Diamonds",
         category: "Game",
         price: "Paid",
         image: "https://via.placeholder.com/300x150",
-        description: "Buy 1000 diamonds for your favorite game.",
+        description: "Boost your progress with diamonds.",
         link: "https://example.com"
       },
       {
-        name: "Next Chapter Unlock",
+        name: "Unlock Chapter 5",
         category: "Book",
         price: "Free",
         image: "https://via.placeholder.com/300x150",
-        description: "Access the next chapter of our best-selling eBook.",
+        description: "Continue your reading journey.",
         link: "https://example.com"
       }
     ];
@@ -312,9 +304,9 @@
       });
     }
 
-    function filterProducts(cat) {
+    function filterProducts(cat, e) {
       document.querySelectorAll('.categories button').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      e.target.classList.add('active');
       displayProducts(cat);
     }
 
