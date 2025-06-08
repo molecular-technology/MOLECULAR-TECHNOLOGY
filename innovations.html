@@ -738,6 +738,7 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
         }
 
         .download-btn {
@@ -914,26 +915,26 @@
             .page-title {
                 font-size: 3.5rem;
             }
-           
+
             .nav-buttons {
                 gap: 10px;
             }
-           
+
             .nav-btn {
                 padding: 12px 20px;
                 font-size: 1rem;
             }
-           
+
             .search-filter-section {
                 flex-direction: column;
                 align-items: center;
             }
-           
+
             .filter-btn {
                 width: 100%;
                 max-width: 500px;
             }
-           
+
             .products-container {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
@@ -943,28 +944,28 @@
             .page-title {
                 font-size: 2.5rem;
             }
-           
+
             .nav-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
             }
-           
+
             .nav-btn {
                 width: 100%;
                 max-width: 300px;
             }
-           
+
             .preview-header {
                 flex-direction: column;
                 text-align: center;
             }
-           
+
             .preview-icon {
                 margin-right: 0;
                 margin-bottom: 20px;
             }
-           
+
             .preview-actions {
                 flex-direction: column;
                 align-items: center;
@@ -975,11 +976,11 @@
             .page-title {
                 font-size: 2rem;
             }
-           
+
             .typing-animation {
                 font-size: 1.1rem;
             }
-           
+
             .preview-content {
                 padding: 20px;
             }
@@ -987,49 +988,38 @@
     </style>
 </head>
 <body>
-    <!-- Main Container -->
     <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <h1 class="page-title">INNOVATIONS</h1>
+        <div class="header">
+            <h1 class="page-title">Innovations</h1>
             <div class="typing-container">
-                <p id="slogan" class="typing-animation">This Page Gives You Access To Download And Purchase Each Of Our Innovations.</p>
+                <div class="typing-animation" id="slogan">Explore cutting-edge technology products and solutions</div>
             </div>
             <div class="red-line"></div>
-           
-            <!-- Navigation -->
-            <nav class="nav-buttons">
-                <button class="nav-btn" onclick="window.location.href='index.html'">HOME</button>
-                <button class="nav-btn active">INNOVATIONS</button>
-                <button class="nav-btn" onclick="window.location.href='marketx.html'">MARKETX</button>
-                <button class="nav-btn" onclick="window.location.href='announces.html'">ANNOUNCES</button>
-                <button class="nav-btn" onclick="window.location.href='startup.html'">STARTUP</button>
-                <button class="nav-btn" onclick="window.location.href='issues.html'">ISSUES</button>
-                <button class="nav-btn" onclick="window.location.href='help.html'">HELP</button>
-            </nav>
-        </header>
+        </div>
 
-        <!-- Search and Filters -->
+        <div class="nav-buttons">
+            <button class="nav-btn">Home</button>
+            <button class="nav-btn active">Innovations</button>
+            <button class="nav-btn">About</button>
+            <button class="nav-btn">Contact</button>
+        </div>
+
         <div class="search-filter-section">
-            <input type="text" id="search-input" class="search-bar" placeholder="Search Any App, Game, Book, Gadget Etc...">
+            <input type="text" class="search-bar" id="search-input" placeholder="Search for innovations...">
             <button class="filter-btn" id="filter-btn">
-                <i class="fas fa-filter"></i> FILTER
+                <i class="fas fa-filter"></i> FILTERS
             </button>
         </div>
 
-        <!-- Category Buttons -->
         <div class="category-buttons">
             <button class="category-btn active" data-category="all">All</button>
             <button class="category-btn" data-category="apps">Apps</button>
             <button class="category-btn" data-category="games">Games</button>
             <button class="category-btn" data-category="books">Books</button>
-            <button class="category-btn" data-category="gadgets">Gadgets</button>
-            <button class="category-btn" data-category="more">More</button>
         </div>
 
-        <!-- Products Container -->
-        <div class="products-container" id="products-container">
-            <!-- Products will be dynamically generated here -->
+        <div id="products-container" class="products-container">
+            <!-- Products will be loaded here -->
         </div>
     </div>
 
@@ -1037,40 +1027,32 @@
     <div id="filter-modal" class="filter-modal">
         <div class="filter-content">
             <div class="filter-header">
-                <h2 class="filter-title">Advanced Filters</h2>
+                <h2 class="filter-title">FILTERS</h2>
                 <span class="close-filter" id="close-filter">&times;</span>
             </div>
-           
+
             <div class="filter-group">
-                <h3>Product Type</h3>
+                <h3>Type</h3>
                 <div class="filter-options">
                     <div class="filter-option">
-                        <input type="checkbox" id="type-action" name="type" value="action">
-                        <label for="type-action">Action</label>
+                        <input type="checkbox" id="type-os" name="type" value="operating system">
+                        <label for="type-os">Operating System</label>
                     </div>
                     <div class="filter-option">
-                        <input type="checkbox" id="type-survival" name="type" value="survival">
-                        <label for="type-survival">Survival</label>
+                        <input type="checkbox" id="type-security" name="type" value="security suite">
+                        <label for="type-security">Security Suite</label>
                     </div>
                     <div class="filter-option">
-                        <input type="checkbox" id="type-simulation" name="type" value="simulation">
-                        <label for="type-simulation">Simulation</label>
+                        <input type="checkbox" id="type-adventure" name="type" value="adventure">
+                        <label for="type-adventure">Adventure</label>
                     </div>
                     <div class="filter-option">
-                        <input type="checkbox" id="type-production" name="type" value="production">
-                        <label for="type-production">Production</label>
-                    </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="type-communication" name="type" value="communication">
-                        <label for="type-communication">Communication</label>
-                    </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="type-earning" name="type" value="earning">
-                        <label for="type-earning">Earning</label>
+                        <input type="checkbox" id="type-sci-fi" name="type" value="science fiction">
+                        <label for="type-sci-fi">Science Fiction</label>
                     </div>
                 </div>
             </div>
-           
+
             <div class="filter-group">
                 <h3>Platform</h3>
                 <div class="filter-options">
@@ -1084,7 +1066,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="filter-group">
                 <h3>Price</h3>
                 <div class="filter-options">
@@ -1098,7 +1080,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="filter-actions">
                 <button class="filter-action-btn reset-btn" id="reset-filters">RESET</button>
                 <button class="filter-action-btn apply-btn" id="apply-filters">APPLY</button>
@@ -1117,38 +1099,38 @@
                     <div id="preview-category" class="preview-category">Category: App</div>
                 </div>
             </div>
-           
+
             <div id="preview-description" class="preview-description">
                 Product description goes here...
             </div>
-           
+
             <h3 class="preview-title">Preview Images</h3>
             <div id="preview-images" class="preview-images">
                 <!-- Images will be inserted here -->
             </div>
-           
+
             <h3 class="preview-title">Product Details</h3>
             <div id="preview-stats" class="preview-stats">
                 <!-- Stats will be inserted here -->
             </div>
-           
+
             <div id="preview-actions" class="preview-actions">
                 <!-- Action buttons will be inserted here -->
             </div>
-           
+
             <div class="similar-section">
                 <h3 class="similar-title">Similar Products</h3>
                 <div id="similar-products" class="similar-products">
                     <!-- Similar products will be inserted here -->
                 </div>
             </div>
-           
+
             <div class="reviews-section">
                 <h3 class="reviews-title">User Reviews</h3>
                 <div id="reviews-container">
                     <!-- Reviews will be inserted here -->
                 </div>
-               
+
                 <div class="add-review">
                     <h3 class="reviews-title">Add Your Review</h3>
                     <div class="review-form">
@@ -1168,7 +1150,7 @@
     </div>
 
     <script>
-        // Sample product data
+        // Sample product data with redirect URLs
         const products = [
             {
                 id: "quantum-os",
@@ -1195,6 +1177,7 @@
                 ageRating: "12+",
                 price: 0,
                 isPaid: false,
+                redirectUrl: "https://olliehall.itch.io/banish", // Redirect URL added
                 similarProducts: ["Cyber Nexus", "Neural Sync", "HoloPlay"],
                 reviews: [
                     {
@@ -1236,6 +1219,7 @@
                 ageRating: "16+",
                 price: 49.99,
                 isPaid: true,
+                redirectUrl: "https://olliehall.itch.io/banish", // Redirect URL added
                 similarProducts: ["Quantum OS", "Neural Sync", "DataGuard"],
                 reviews: [
                     {
@@ -1271,6 +1255,7 @@
                 ageRating: "16+",
                 price: 19.99,
                 isPaid: true,
+                redirectUrl: "https://olliehall.itch.io/banish", // Redirect URL added
                 similarProducts: ["Neo Dimensions", "Reality Shift", "Quantum Quest"],
                 reviews: [
                     {
@@ -1311,6 +1296,7 @@
                 ageRating: "14+",
                 price: 9.99,
                 isPaid: true,
+                redirectUrl: "https://olliehall.itch.io/banish", // Redirect URL added
                 similarProducts: ["Quantum Consciousness", "The Nano Chronicles", "Parallel Existence"],
                 reviews: [
                     {
@@ -1348,10 +1334,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Set up typing animation
             setupTypingAnimation();
-           
+
             // Generate products
             renderProducts(products);
-           
+
             // Set up event listeners
             setupEventListeners();
         });
@@ -1360,7 +1346,7 @@
             const slogan = document.getElementById('slogan');
             const text = slogan.textContent;
             slogan.textContent = '';
-           
+
             let i = 0;
             const typingInterval = setInterval(() => {
                 if (i < text.length) {
@@ -1378,7 +1364,7 @@
 
         function renderProducts(productsToRender) {
             productsContainer.innerHTML = '';
-           
+
             productsToRender.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.classList.add('product-card');
@@ -1386,7 +1372,7 @@
                 productCard.dataset.type = product.type;
                 productCard.dataset.platform = product.platform.join(',');
                 productCard.dataset.priceType = product.priceType;
-               
+
                 productCard.innerHTML = `
                     <img src="${product.icon}" alt="${product.title}" class="product-icon">
                     <div class="product-info">
@@ -1408,10 +1394,10 @@
                         <button class="view-more-btn" data-id="${product.id}">VIEW MORE</button>
                     </div>
                 `;
-               
+
                 productsContainer.appendChild(productCard);
             });
-           
+
             // Add event listeners to view more buttons
             document.querySelectorAll('.view-more-btn').forEach(button => {
                 button.addEventListener('click', function() {
@@ -1424,23 +1410,23 @@
         function showProductPreview(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
-           
+
             // Set basic product info
             document.getElementById('preview-title').textContent = product.title;
             document.getElementById('preview-icon').src = product.icon;
             document.getElementById('preview-category').textContent = `Category: ${product.type}`;
-           
+
             // Set description with read more functionality
             const descriptionEl = document.getElementById('preview-description');
             descriptionEl.innerHTML = `
                 <p>${product.fullDescription.substring(0, 300)}...</p>
                 <span class="read-more" id="read-more">Read More</span>
             `;
-           
+
             document.getElementById('read-more').addEventListener('click', function() {
                 descriptionEl.innerHTML = `<p>${product.fullDescription}</p>`;
             });
-           
+
             // Set preview images
             const imagesContainer = document.getElementById('preview-images');
             imagesContainer.innerHTML = '';
@@ -1451,11 +1437,11 @@
                 imgEl.alt = product.title;
                 imagesContainer.appendChild(imgEl);
             });
-           
+
             // Set product stats
             const statsContainer = document.getElementById('preview-stats');
             statsContainer.innerHTML = '';
-           
+
             const statsToShow = [
                 { label: "Downloads", value: product.downloads, icon: "fas fa-download" },
                 { label: "Rating", value: `${product.rating}/5`, icon: "fas fa-star" },
@@ -1466,7 +1452,7 @@
                 { label: "Internet Required", value: product.internetRequired || product.fileSize || "N/A", icon: "fas fa-wifi" },
                 { label: "Storage Required", value: product.storageRequired || "N/A", icon: "fas fa-hdd" }
             ];
-           
+
             statsToShow.forEach(stat => {
                 const statCard = document.createElement('div');
                 statCard.classList.add('stat-card');
@@ -1476,35 +1462,31 @@
                 `;
                 statsContainer.appendChild(statCard);
             });
-           
-            // Set action buttons
+
+            // Set action buttons - MODIFIED SECTION
             const actionsContainer = document.getElementById('preview-actions');
             actionsContainer.innerHTML = '';
+
+            // Create an anchor element instead of a button
+            const actionLink = document.createElement('a');
+            actionLink.href = product.redirectUrl;
+            actionLink.target = "_blank";
+            actionLink.classList.add('action-btn');
            
             if (product.isPaid) {
-                const buyBtn = document.createElement('button');
-                buyBtn.classList.add('action-btn', 'buy-btn');
-                buyBtn.innerHTML = `<i class="fas fa-shopping-cart"></i> BUY NOW - $${product.price}`;
-                buyBtn.addEventListener('click', () => {
-                    alert(`Redirecting to purchase page for ${product.title}...`);
-                    // In a real implementation, you would redirect to your purchase URL
-                });
-                actionsContainer.appendChild(buyBtn);
+                actionLink.classList.add('buy-btn');
+                actionLink.innerHTML = `<i class="fas fa-shopping-cart"></i> BUY NOW - $${product.price}`;
             } else {
-                const downloadBtn = document.createElement('button');
-                downloadBtn.classList.add('action-btn', 'download-btn');
-                downloadBtn.innerHTML = `<i class="fas fa-download"></i> DOWNLOAD NOW`;
-                downloadBtn.addEventListener('click', () => {
-                    alert(`Redirecting to download page for ${product.title}...`);
-                    // In a real implementation, you would redirect to your download URL
-                });
-                actionsContainer.appendChild(downloadBtn);
+                actionLink.classList.add('download-btn');
+                actionLink.innerHTML = `<i class="fas fa-download"></i> DOWNLOAD NOW`;
             }
            
+            actionsContainer.appendChild(actionLink);
+
             // Set similar products
             const similarContainer = document.getElementById('similar-products');
             similarContainer.innerHTML = '';
-           
+
             products.filter(p => product.similarProducts.includes(p.title)).forEach(similar => {
                 const similarEl = document.createElement('div');
                 similarEl.classList.add('similar-product');
@@ -1517,11 +1499,11 @@
                 });
                 similarContainer.appendChild(similarEl);
             });
-           
+
             // Set reviews
             const reviewsContainer = document.getElementById('reviews-container');
             reviewsContainer.innerHTML = '';
-           
+
             product.reviews.forEach(review => {
                 const reviewEl = document.createElement('div');
                 reviewEl.classList.add('review-card');
@@ -1537,7 +1519,7 @@
                 `;
                 reviewsContainer.appendChild(reviewEl);
             });
-           
+
             // Show the modal
             previewModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -1549,7 +1531,7 @@
                 previewModal.style.display = 'none';
                 document.body.style.overflow = 'auto';
             });
-           
+
             // Close modal when clicking outside
             window.addEventListener('click', (e) => {
                 if (e.target === previewModal) {
@@ -1557,43 +1539,43 @@
                     document.body.style.overflow = 'auto';
                 }
             });
-           
+
             // Search functionality
             searchInput.addEventListener('input', function() {
                 currentFilters.searchTerm = this.value.toLowerCase();
                 filterProducts();
             });
-           
+
             // Category filtering
             categoryButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     // Update active button
                     categoryButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                   
+
                     // Update filter
                     currentFilters.category = this.dataset.category;
                     filterProducts();
                 });
             });
-           
+
             // Filter button functionality
             filterBtn.addEventListener('click', function() {
                 filterModal.style.display = 'block';
             });
-           
+
             // Close filter modal
             closeFilter.addEventListener('click', () => {
                 filterModal.style.display = 'none';
             });
-           
+
             // Close filter modal when clicking outside
             window.addEventListener('click', (e) => {
                 if (e.target === filterModal) {
                     filterModal.style.display = 'none';
                 }
             });
-           
+
             // Reset filters
             resetFilters.addEventListener('click', function() {
                 document.querySelectorAll('.filter-option input').forEach(input => {
@@ -1605,21 +1587,21 @@
                 filterProducts();
                 filterModal.style.display = 'none';
             });
-           
+
             // Apply filters
             applyFilters.addEventListener('click', function() {
                 // Get selected types
                 currentFilters.types = Array.from(document.querySelectorAll('input[name="type"]:checked'))
                     .map(input => input.value);
-               
+
                 // Get selected platforms
                 currentFilters.platforms = Array.from(document.querySelectorAll('input[name="platform"]:checked'))
                     .map(input => input.value);
-               
+
                 // Get selected price types
                 currentFilters.priceTypes = Array.from(document.querySelectorAll('input[name="price"]:checked'))
                     .map(input => input.value);
-               
+
                 filterProducts();
                 filterModal.style.display = 'none';
             });
@@ -1631,24 +1613,24 @@
                 if (currentFilters.category !== 'all' && product.category !== currentFilters.category) {
                     return false;
                 }
-               
+
                 // Check search term
                 if (currentFilters.searchTerm) {
                     const searchTerm = currentFilters.searchTerm.toLowerCase();
                     const titleMatch = product.title.toLowerCase().includes(searchTerm);
                     const descMatch = product.description.toLowerCase().includes(searchTerm);
                     const typeMatch = product.type.toLowerCase().includes(searchTerm);
-                   
+
                     if (!(titleMatch || descMatch || typeMatch)) {
                         return false;
                     }
                 }
-               
+
                 // Check type filters
                 if (currentFilters.types.length > 0 && !currentFilters.types.includes(product.type.toLowerCase())) {
                     return false;
                 }
-               
+
                 // Check platform filters
                 if (currentFilters.platforms.length > 0) {
                     const hasMatchingPlatform = product.platform.some(platform =>
@@ -1656,7 +1638,7 @@
                     );
                     if (!hasMatchingPlatform) return false;
                 }
-               
+
                 // Check price type filters
                 if (currentFilters.priceTypes.length > 0) {
                     const priceType = product.isPaid ? 'paid' : 'free';
@@ -1664,10 +1646,10 @@
                         return false;
                     }
                 }
-               
+
                 return true;
             });
-           
+
             renderProducts(filteredProducts);
         }
     </script>
