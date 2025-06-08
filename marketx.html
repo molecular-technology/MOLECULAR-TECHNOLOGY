@@ -83,27 +83,29 @@
     }
 
     nav button {
-      background: #222;
+      background: rgba(255, 0, 0, 0.1);
       border: 2px solid red;
       color: red;
       padding: 10px 20px;
       font-family: 'Expo', sans-serif;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 12px;
+      border-radius: 50px;
       transition: all 0.3s ease;
+      text-shadow: 0 0 8px red;
     }
 
     nav button:hover {
       background: red;
       color: black;
       transform: scale(1.1);
+      box-shadow: 0 0 10px red;
     }
 
     .red-line {
       height: 2px;
       width: 100%;
-      background: red;
+      background: linear-gradient(90deg, red, white, red);
       margin: 20px 0;
     }
 
@@ -115,22 +117,12 @@
       padding: 20px;
     }
 
-    .search-bar input {
+    .search-bar input, .search-bar select {
       padding: 10px;
-      width: 320px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid red;
+      border-radius: 12px;
+      background: rgba(255, 0, 0, 0.1);
       color: white;
-      font-family: 'Expo', sans-serif;
-    }
-
-    .search-bar select {
-      background: #111;
-      color: white;
-      border: 1px solid red;
-      border-radius: 8px;
-      padding: 10px;
       font-family: 'Expo', sans-serif;
     }
 
@@ -149,7 +141,7 @@
       padding: 10px 20px;
       font-family: 'Expo', sans-serif;
       cursor: pointer;
-      border-radius: 10px;
+      border-radius: 20px;
       transition: 0.3s ease;
     }
 
@@ -158,6 +150,7 @@
       background: red;
       color: black;
       transform: scale(1.05);
+      box-shadow: 0 0 10px red;
     }
 
     .products {
@@ -169,26 +162,28 @@
 
     .product-card {
       background: #111;
-      border-radius: 15px;
+      border-radius: 18px;
       padding: 20px;
-      box-shadow: 0 0 15px red;
+      box-shadow: 0 0 20px red;
       transition: 0.3s;
       animation: fadeInUp 1s ease;
+      position: relative;
     }
 
     .product-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 25px red;
+      transform: scale(1.03);
+      box-shadow: 0 0 30px red;
     }
 
     .product-card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 14px;
     }
 
     .product-card h3 {
       margin-top: 10px;
-      font-size: 20px;
+      font-size: 22px;
+      text-shadow: 0 0 5px red;
     }
 
     .product-card p {
@@ -205,8 +200,9 @@
       color: black;
       font-weight: bold;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
+      box-shadow: 0 0 10px red;
     }
 
     .modal {
@@ -215,7 +211,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -226,7 +222,7 @@
     .modal-content {
       background: #111;
       padding: 30px;
-      border-radius: 12px;
+      border-radius: 16px;
       max-width: 500px;
       width: 90%;
       box-shadow: 0 0 20px red;
@@ -236,12 +232,18 @@
 
     .modal-content h3 {
       color: red;
+      text-shadow: 0 0 10px red;
     }
 
     .modal-content button {
       margin-top: 20px;
       background: red;
       color: black;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-weight: bold;
+      box-shadow: 0 0 10px red;
+      cursor: pointer;
     }
   </style>
 </head>
