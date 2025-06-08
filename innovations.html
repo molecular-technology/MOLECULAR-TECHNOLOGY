@@ -992,20 +992,23 @@
         <div class="header">
             <h1 class="page-title">Innovations</h1>
             <div class="typing-container">
-                <div class="typing-animation" id="slogan">Explore cutting-edge technology products and solutions</div>
+                <div class="typing-animation" id="slogan">This Page Gives You Access To Download And Purchase Each Of Our Innovations</div>
             </div>
             <div class="red-line"></div>
         </div>
 
         <div class="nav-buttons">
-            <button class="nav-btn">Home</button>
-            <button class="nav-btn active">Innovations</button>
-            <button class="nav-btn">About</button>
-            <button class="nav-btn">Contact</button>
+            <a href="home.html" class="nav-btn">HOME</a>
+            <a href="innovations.html" class="nav-btn active">INNOVATIONS</a>
+            <a href="marketx.html" class="nav-btn">MARKETX</a>
+            <a href="announces.html" class="nav-btn">ANNOUNCES</a>
+            <a href="startups.html" class="nav-btn">STARTUPS</a>
+            <a href="issues.html" class="nav-btn">ISSUES</a>
+            <a href="help.html" class="nav-btn">HELP</a>
         </div>
 
         <div class="search-filter-section">
-            <input type="text" class="search-bar" id="search-input" placeholder="Search for innovations...">
+            <input type="text" class="search-bar" id="search-input" placeholder="Search Any Apps, Games, Books, Gadget Etc... ">
             <button class="filter-btn" id="filter-btn">
                 <i class="fas fa-filter"></i> FILTERS
             </button>
@@ -1016,6 +1019,8 @@
             <button class="category-btn" data-category="apps">Apps</button>
             <button class="category-btn" data-category="games">Games</button>
             <button class="category-btn" data-category="books">Books</button>
+            <button class="category-btn" data-category="gadgets">Gadgets</button>
+            <button class="category-btn" data-category="others">Others</button>
         </div>
 
         <div id="products-container" class="products-container">
@@ -1119,7 +1124,7 @@
             </div>
 
             <div class="similar-section">
-                <h3 class="similar-title">Similar Products</h3>
+                <h3 class="similar-title">Similar Innovations</h3>
                 <div id="similar-products" class="similar-products">
                     <!-- Similar products will be inserted here -->
                 </div>
@@ -1141,7 +1146,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <textarea class="review-input" placeholder="Write your review..." rows="4"></textarea>
+                        <textarea class="review-input" placeholder="Write your review here..." rows="4"></textarea>
                         <button class="review-submit">SUBMIT REVIEW</button>
                     </div>
                 </div>
@@ -1150,7 +1155,7 @@
     </div>
 
     <script>
-        // Sample product data with redirect URLs
+        // Sample product data with redirect URLs For Now
         const products = [
             {
                 id: "quantum-os",
@@ -1173,7 +1178,7 @@
                 rating: "4.8",
                 version: "1.2.5",
                 lastUpdate: "2023-11-15",
-                osRequirements: "Android 10+ or iOS 14+",
+                osRequirements: "Android 10+ or iOS 14+", 
                 ageRating: "12+",
                 price: 0,
                 isPaid: false,
