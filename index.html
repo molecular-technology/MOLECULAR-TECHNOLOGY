@@ -249,25 +249,27 @@
     }
 
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 32px;
-      }
-      header p {
-        font-size: 15p;
-      }
-      nav button {
-        font-size: 14px;
-        padding: 10px 20px;
-      }
-      .scroll-container img {
-        width: 250px;
-        height: 400px;
-      }
-      .arrow {
-        font-size: 24px;
-        padding: 8px;
-      }
+    header h1 {
+      font-size: 32px;
     }
+    header p {
+      font-size: 15px;
+      min-height: 3.2em; /* ensures full slogan fits in 2–3 lines */
+    }
+    nav button {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+    .scroll-container img {
+      width: 250px;
+      height: 400px;
+    }
+    .arrow {
+      font-size: 24px;
+      padding: 8px;
+    }
+  }
+    
   </style>
 </head>
 <body>
@@ -329,7 +331,6 @@
   </footer>
 
   <script>
-    <script>
   function updateArrows(containerId) {
     const container = document.getElementById(containerId);
     const leftArrow = container.parentElement.querySelector(".arrow.left");
@@ -393,6 +394,5 @@
     document.getElementById('upcomingScroll').addEventListener('scroll', () => updateArrows('upcomingScroll'));
   };
 </script>
-  </script>
 </body>
 </html>
