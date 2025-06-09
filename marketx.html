@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MARKETX | Molecular Technology</title>
-  <link href="https://fonts.googleapis.com/css2?family=Gorilla&family=Expo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gorilla&family=Courier+Prime&family=Expo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
@@ -30,7 +30,7 @@
     header h1 {
       font-family: 'Gorilla', sans-serif;
       font-size: 64px;
-      background: linear-gradient(90deg, red, white, red);
+      background: linear-gradient(90deg, red, black);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glow 2s ease-in-out infinite alternate;
@@ -38,7 +38,7 @@
     }
 
     header p {
-      font-family: 'Gorilla', sans-serif;
+      font-family: 'Courier Prime', monospace;
       font-size: 20px;
       color: white;
       margin-top: 10px;
@@ -46,6 +46,117 @@
       white-space: nowrap;
       overflow: hidden;
       animation: typing 4s steps(60, end), blink-caret .75s step-end infinite;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    nav button {
+      background: black;
+      border: 2px solid red;
+      color: red;
+      padding: 12px 24px;
+      font-family: 'Expo', sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 0;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px red;
+      position: relative;
+    }
+
+    nav button:hover {
+      background: #111;
+      color: white;
+      box-shadow: 0 0 10px red, 0 0 20px red;
+    }
+
+    .categories button {
+      background: #333;
+      border: 1px solid white;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 10px;
+    }
+
+    .categories button:hover {
+      background: white;
+      color: black;
+    }
+
+    .filter-button {
+      background: #222;
+      color: red;
+      border: 2px solid red;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      text-shadow: 0 0 6px red;
+    }
+
+    .filter-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.95);
+      padding: 40px;
+      z-index: 9999;
+      display: none;
+      overflow-y: auto;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .product-card img {
+      width: 350px;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .modal-content {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background: #111;
+      padding: 40px;
+      color: white;
+    }
+
+    .modal-images {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-images img {
+      height: 250px;
+      border-radius: 10px;
+    }
+
+    .price-calculator {
+      margin-top: 20px;
+    }
+
+    .price-calculator input {
+      width: 80px;
+      padding: 8px;
+      margin-right: 10px;
+    }
+
+    .price-output {
+      font-weight: bold;
+      margin-top: 10px;
+      color: red;
     }
 
     @keyframes typing {
@@ -73,6 +184,58 @@
         transform: translateY(0);
       }
     }
+  </style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARKETX | Molecular Technology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gorilla&family=Courier+Prime&family=Expo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Expo', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    header h1 {
+      font-family: 'Gorilla', sans-serif;
+      font-size: 64px;
+      background: linear-gradient(90deg, red, black);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-family: 'Courier Prime', monospace;
+      font-size: 20px;
+      color: white;
+      margin-top: 10px;
+      border-right: .1em solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(60, end), blink-caret .75s step-end infinite;
+    }
 
     nav {
       display: flex;
@@ -84,63 +247,37 @@
     }
 
     nav button {
-      background: #222;
+      background: black;
       border: 2px solid red;
-      color: white;
-      padding: 10px 20px;
+      color: red;
+      padding: 12px 24px;
       font-family: 'Expo', sans-serif;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 50px;
+      border-radius: 0;
+      text-transform: uppercase;
       transition: all 0.3s ease;
-      text-shadow: 0 0 8px red;
+      box-shadow: 0 0 8px red;
+      position: relative;
     }
 
     nav button:hover {
-      background: red;
-      color: black;
-      transform: scale(1.1);
-      box-shadow: 0 0 10px red;
-    }
-
-    .red-line {
-      height: 2px;
-      width: 100%;
-      background: linear-gradient(90deg, red, white, red);
-      margin: 20px 0;
-    }
-
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px;
-    }
-
-    .search-bar input {
-      flex: 1;
-      width: 100%;
-      max-width: 900px;
-      padding: 12px 20px;
-      border: 2px solid red;
-      border-radius: 20px;
-      background: rgba(128,128,128,0.1);
+      background: #111;
       color: white;
-      font-family: 'Expo', sans-serif;
-      font-size: 16px;
+      box-shadow: 0 0 10px red, 0 0 20px red;
     }
 
-    .search-bar button {
+    .categories button {
       background: #333;
-      border: none;
-      color: red;
-      font-size: 18px;
-      padding: 10px 16px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 10px red;
+      border: 1px solid white;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 10px;
+    }
+
+    .categories button:hover {
+      background: white;
+      color: black;
     }
 
     .filter-button {
@@ -148,127 +285,30 @@
       color: red;
       border: 2px solid red;
       padding: 10px 20px;
-      border-radius: 30px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 18px;
-      margin-top: 10px;
       text-shadow: 0 0 6px red;
     }
 
     .filter-popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #111;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px red;
-      z-index: 9999;
-      display: none;
-      width: 90%;
-      max-width: 900px;
-      max-height: 85vh;
-      overflow-y: auto;
-      animation: fadeInUp 0.5s ease;
-    }
-
-    .filter-popup h2 {
-      color: red;
-      text-shadow: 0 0 10px red;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .categories {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 10px;
-    }
-
-    .categories button {
-      background: grey;
-      border: 2px solid red;
-      color: white;
-      padding: 10px 20px;
-      font-family: 'Expo', sans-serif;
-      cursor: pointer;
-      border-radius: 20px;
-      transition: 0.3s ease;
-    }
-
-    .categories button:hover,
-    .categories button.active {
-      background: red;
-      color: black;
-      transform: scale(1.05);
-      box-shadow: 0 0 10px red;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 30px;
-    }
-
-    .product-card {
-      background: #111;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 0 20px red;
-      transition: 0.3s;
-      animation: fadeInUp 1s ease;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 30px red;
-    }
-
-    .product-card img {
-      width: 100%;
-      border-radius: 14px;
-    }
-
-    .product-card h3 {
-      margin-top: 10px;
-      font-size: 22px;
-      text-shadow: 0 0 5px red;
-    }
-
-    .product-card p {
-      font-size: 14px;
-      color: #ccc;
-      margin: 10px 0;
-    }
-
-    .product-card button {
-      margin-top: 10px;
-      padding: 10px;
-      width: 100%;
-      background: red;
-      color: black;
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 0 10px red;
-    }
-
-    .modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
       background: rgba(0,0,0,0.95);
-      display: none;
+      padding: 40px;
       z-index: 9999;
-      animation: fadeInUp 0.6s ease;
+      display: none;
+      overflow-y: auto;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .product-card img {
+      width: 350px;
+      height: 300px;
+      object-fit: cover;
     }
 
     .modal-content {
@@ -280,21 +320,58 @@
       color: white;
     }
 
-    .modal-content h3 {
-      font-size: 28px;
-      color: red;
+    .modal-images {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px red;
     }
 
-    .modal-content button {
-      background: red;
-      color: black;
-      border-radius: 12px;
-      padding: 12px 24px;
+    .modal-images img {
+      height: 250px;
+      border-radius: 10px;
+    }
+
+    .price-calculator {
+      margin-top: 20px;
+    }
+
+    .price-calculator input {
+      width: 80px;
+      padding: 8px;
+      margin-right: 10px;
+    }
+
+    .price-output {
       font-weight: bold;
-      box-shadow: 0 0 10px red;
-      cursor: pointer;
+      margin-top: 10px;
+      color: red;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: white; }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px red; }
+      to { text-shadow: 0 0 20px white, 0 0 30px red; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
