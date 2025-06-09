@@ -47,17 +47,18 @@
         }
 
     header p {
-  font-family: Courier, monospace;
-  font-size: 18px;
-  max-width: 90%;
-  margin: 0 auto;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid white;
-  animation:
-    typing 6s steps(80, end),
-    blink-caret 0.75s step-end infinite;
-}
+      font-family: Courier, monospace;
+      font-size: 18px;
+      max-width: 90%;
+      margin: 0 auto;
+      white-space: normal;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing-multi 6s steps(100, end), blink-caret 0.75s step-end infinite;
+      border-right: 2px solid white;
+      line-height: 1.4;
+      text-align: center;
+    }
 
     nav {
       display: flex;
@@ -189,6 +190,11 @@
       transition: transform 0.3s ease;
     }
 
+    .arrow:disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    
     .arrow:hover {
       transform: translateY(-50%) scale(1.1);
       box-shadow: 0 0 12px red;
@@ -228,10 +234,14 @@
       100% {background-position: 0% 50%}
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
+    @keyframes typing-multi {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 500px;
+  }
+}
 
     @keyframes blink-caret {
       from, to { border-color: transparent; }
@@ -243,7 +253,7 @@
         font-size: 32px;
       }
       header p {
-        font-size: 14p;
+        font-size: 15p;
       }
       nav button {
         font-size: 14px;
@@ -319,30 +329,70 @@
   </footer>
 
   <script>
-    function scrollLeft(id) {
-  document.getElementById(id).scrollBy({ left: -400, behavior: 'smooth' });
-}
+    <script>
+  function updateArrows(containerId) {
+    const container = document.getElementById(containerId);
+    const leftArrow = container.parentElement.querySelector(".arrow.left");
+    const rightArrow = container.parentElement.querySelector(".arrow.right");
 
-function scrollRight(id) {
-  document.getElementById(id).scrollBy({ left: 400, behavior: 'smooth' });
-}
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-    function redirectTo(link) {
-      window.location.href = link;
+    if (container.scrollLeft <= 0) {
+      leftArrow.disabled = true;
+      leftArrow.style.opacity = 0.3;
+      leftArrow.style.pointerEvents = 'none';
+    } else {
+      leftArrow.disabled = false;
+      leftArrow.style.opacity = 1;
+      leftArrow.style.pointerEvents = 'auto';
     }
 
-    function navigate(page) {
-      document.body.style.opacity = 0;
-      setTimeout(() => {
-        window.location.href = page;
-      }, 400);
+    if (container.scrollLeft >= maxScrollLeft - 10) {
+      rightArrow.disabled = true;
+      rightArrow.style.opacity = 0.3;
+      rightArrow.style.pointerEvents = 'none';
+    } else {
+      rightArrow.disabled = false;
+      rightArrow.style.opacity = 1;
+      rightArrow.style.pointerEvents = 'auto';
     }
+  }
 
+  function scrollLeft(id) {
+    const container = document.getElementById(id);
+    container.scrollBy({ left: -400, behavior: 'smooth' });
+    setTimeout(() => updateArrows(id), 500);
+  }
+
+  function scrollRight(id) {
+    const container = document.getElementById(id);
+    container.scrollBy({ left: 400, behavior: 'smooth' });
+    setTimeout(() => updateArrows(id), 500);
+  }
+
+  function redirectTo(link) {
+    window.location.href = link;
+  }
+
+  function navigate(page) {
     document.body.style.opacity = 0;
-    window.onload = () => {
-      document.body.style.transition = "opacity 1s ease";
-      document.body.style.opacity = 1;
-    };
+    setTimeout(() => {
+      window.location.href = page;
+    }, 400);
+  }
+
+  document.body.style.opacity = 0;
+  window.onload = () => {
+    document.body.style.transition = "opacity 1s ease";
+    document.body.style.opacity = 1;
+
+    updateArrows('latestScroll');
+    updateArrows('upcomingScroll');
+
+    document.getElementById('latestScroll').addEventListener('scroll', () => updateArrows('latestScroll'));
+    document.getElementById('upcomingScroll').addEventListener('scroll', () => updateArrows('upcomingScroll'));
+  };
+</script>
   </script>
 </body>
 </html>
