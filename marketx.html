@@ -83,7 +83,7 @@
             font-size: 1.8rem;
             color: var(--white);
             margin-bottom: 1.5rem;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Courier Prime', monospace;
             animation: slideInFromBottom 1s ease-out;
         }
 
@@ -279,6 +279,7 @@
 
         .category-buttons {
             display: flex;
+            justify-content: center;
             gap: 15px;
             padding: 5px 0;
             min-width: max-content;
@@ -938,16 +939,18 @@
     <div class="container">
         <div class="header">
             <h1 class="page-title">MARKETX</h1>
-            <div class="page-subtitle">This Page Gives You Access To Buy Our Each Innovation's Items Or Products</div>
+            <div class="page-subtitle">This Page Gives You Access To Purchase Each Of Our Innovation's Items Or Products</div>
             <div class="red-line"></div>
         </div>
 
         <div class="nav-buttons">
-            <button class="nav-btn">Home</button>
-            <button class="nav-btn">Innovations</button>
-            <button class="nav-btn active">MARKETX</button>
-            <button class="nav-btn">About</button>
-            <button class="nav-btn">Contact</button>
+            <a href="home.html">HOME</a>
+            <a href="innovations.html">INNOVATIONS</a>
+            <a href="marketx.html">MARKETX</a>
+            <a href="announces.html">ANNOUNCES</a>
+            <a href="startups.html">STARTUPS</a>
+            <a href="issues.html">ISSUES</a>
+            <a href="help.html">HELP</a>
         </div>
 
         <div class="search-filter-section">
@@ -960,11 +963,11 @@
         <div class="category-scroll">
             <div class="category-buttons">
                 <button class="category-btn active" data-category="all">All</button>
-                <button class="category-btn" data-category="apps">App's Products</button>
-                <button class="category-btn" data-category="games">Games</button>
-                <button class="category-btn" data-category="books">Books</button>
-                <button class="category-btn" data-category="gadgets">Gadgets</button>
-                <button class="category-btn" data-category="more">More</button>
+                <button class="category-btn" data-category="apps">App's Items</button>
+                <button class="category-btn" data-category="games">Game's Items</button>
+                <button class="category-btn" data-category="books">Book's Items</button>
+                <button class="category-btn" data-category="gadgets">Gadget's Items</button>
+                <button class="category-btn" data-category="more">More Items</button>
             </div>
         </div>
 
@@ -986,23 +989,23 @@
                 <div class="filter-options">
                     <div class="filter-option">
                         <input type="checkbox" id="category-apps" name="category" value="apps">
-                        <label for="category-apps">App Products</label>
+                        <label for="category-apps">App's Items</label>
                     </div>
                     <div class="filter-option">
                         <input type="checkbox" id="category-games" name="category" value="games">
-                        <label for="category-games">Games</label>
+                        <label for="category-games">Game's Items</label>
                     </div>
                     <div class="filter-option">
                         <input type="checkbox" id="category-books" name="category" value="books">
-                        <label for="category-books">Books</label>
+                        <label for="category-books">Book's Items</label>
                     </div>
                     <div class="filter-option">
                         <input type="checkbox" id="category-gadgets" name="category" value="gadgets">
-                        <label for="category-gadgets">Gadgets</label>
+                        <label for="category-gadgets">Gadget's Items</label>
                     </div>
                     <div class="filter-option">
                         <input type="checkbox" id="category-more" name="category" value="more">
-                        <label for="category-more">More</label>
+                        <label for="category-more">More Items</label>
                     </div>
                 </div>
             </div>
