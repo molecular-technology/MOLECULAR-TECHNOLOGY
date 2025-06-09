@@ -337,38 +337,33 @@
     const rightArrow = container.parentElement.querySelector(".arrow.right");
 
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const currentScroll = container.scrollLeft;
 
-    if (container.scrollLeft <= 0) {
-      leftArrow.disabled = true;
-      leftArrow.style.opacity = 0.3;
-      leftArrow.style.pointerEvents = 'none';
-    } else {
-      leftArrow.disabled = false;
-      leftArrow.style.opacity = 1;
-      leftArrow.style.pointerEvents = 'auto';
-    }
+    // Enable or disable left arrow
+    leftArrow.disabled = currentScroll <= 10;
+    leftArrow.style.opacity = leftArrow.disabled ? 0.3 : 1;
+    leftArrow.style.pointerEvents = leftArrow.disabled ? 'none' : 'auto';
 
-    if (container.scrollLeft >= maxScrollLeft - 10) {
-      rightArrow.disabled = true;
-      rightArrow.style.opacity = 0.3;
-      rightArrow.style.pointerEvents = 'none';
-    } else {
-      rightArrow.disabled = false;
-      rightArrow.style.opacity = 1;
-      rightArrow.style.pointerEvents = 'auto';
-    }
+    // Enable or disable right arrow
+    rightArrow.disabled = currentScroll >= maxScrollLeft - 10;
+    rightArrow.style.opacity = rightArrow.disabled ? 0.3 : 1;
+    rightArrow.style.pointerEvents = rightArrow.disabled ? 'none' : 'auto';
   }
 
   function scrollLeft(id) {
     const container = document.getElementById(id);
     container.scrollBy({ left: -400, behavior: 'smooth' });
-    setTimeout(() => updateArrows(id), 500);
+
+    // Call update after scroll completes
+    setTimeout(() => updateArrows(id), 600);
   }
 
   function scrollRight(id) {
     const container = document.getElementById(id);
     container.scrollBy({ left: 400, behavior: 'smooth' });
-    setTimeout(() => updateArrows(id), 500);
+
+    // Call update after scroll completes
+    setTimeout(() => updateArrows(id), 600);
   }
 
   function redirectTo(link) {
@@ -382,7 +377,6 @@
     }, 400);
   }
 
-  document.body.style.opacity = 0;
   window.onload = () => {
     document.body.style.transition = "opacity 1s ease";
     document.body.style.opacity = 1;
@@ -392,7 +386,7 @@
 
     document.getElementById('latestScroll').addEventListener('scroll', () => updateArrows('latestScroll'));
     document.getElementById('upcomingScroll').addEventListener('scroll', () => updateArrows('upcomingScroll'));
-  };
+  };
 </script>
 </body>
 </html>
