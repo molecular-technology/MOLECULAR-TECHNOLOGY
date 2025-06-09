@@ -79,17 +79,27 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .page-subtitle {
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-family: 'Courier Prime', monospace;
-            animation: slideInFromBottom 1s ease-out;
+        .typing-container {
+            min-height: 80px;
+            margin: 0 auto 20px;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        @keyframes slideInFromBottom {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .typing-animation {
+            font-family: 'Courier Prime', monospace;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--white);
+            position: relative;
+            text-align: center;
         }
 
         .red-line {
@@ -939,18 +949,19 @@
     <div class="container">
         <div class="header">
             <h1 class="page-title">MARKETX</h1>
-            <div class="page-subtitle">This Page Gives You Access To Purchase Each Of Our Innovation's Items Or Products</div>
+            <div class="typing-animation" id="slogan">This Page Gives You Access To Download And Purchase Each Of Our Innovations</div>
+            </div>
             <div class="red-line"></div>
         </div>
 
         <div class="nav-buttons">
-            <a href="home.html">HOME</a>
-            <a href="innovations.html">INNOVATIONS</a>
-            <a href="marketx.html">MARKETX</a>
-            <a href="announces.html">ANNOUNCES</a>
-            <a href="startups.html">STARTUPS</a>
-            <a href="issues.html">ISSUES</a>
-            <a href="help.html">HELP</a>
+            <a href="home.html" class="nav-btn">HOME</a>
+            <a href="innovations.html" class="nav-btn">INNOVATIONS</a>
+            <a href="marketx.html" class="nav-btn active">MARKETX</a>
+            <a href="announces.html" class="nav-btn">ANNOUNCES</a>
+            <a href="startups.html" class="nav-btn">STARTUPS</a>
+            <a href="issues.html" class="nav-btn">ISSUES</a>
+            <a href="help.html" class="nav-btn">HELP</a>
         </div>
 
         <div class="search-filter-section">
@@ -1316,12 +1327,35 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+             // Set up typing animation
+            setupTypingAnimation();
+            
             // Generate products
             renderProducts(products);
 
             // Set up event listeners
             setupEventListeners();
         });
+
+        function setupTypingAnimation() {
+            const slogan = document.getElementById('slogan');
+            const text = slogan.textContent;
+            slogan.textContent = '';
+
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    slogan.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                    // Add cursor after text completes
+                    const cursor = document.createElement('span');
+                    cursor.classList.add('cursor');
+                    slogan.appendChild(cursor);
+                }
+            }, 50);
+        }
 
         function renderProducts(productsToRender) {
             productsContainer.innerHTML = '';
