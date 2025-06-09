@@ -339,31 +339,20 @@
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
     const currentScroll = container.scrollLeft;
 
-    // Enable or disable left arrow
-    leftArrow.disabled = currentScroll <= 10;
-    leftArrow.style.opacity = leftArrow.disabled ? 0.3 : 1;
-    leftArrow.style.pointerEvents = leftArrow.disabled ? 'none' : 'auto';
-
-    // Enable or disable right arrow
-    rightArrow.disabled = currentScroll >= maxScrollLeft - 10;
-    rightArrow.style.opacity = rightArrow.disabled ? 0.3 : 1;
-    rightArrow.style.pointerEvents = rightArrow.disabled ? 'none' : 'auto';
+    leftArrow.disabled = currentScroll <= 0;
+    rightArrow.disabled = currentScroll >= maxScrollLeft - 5;
   }
 
   function scrollLeft(id) {
     const container = document.getElementById(id);
-    container.scrollBy({ left: -400, behavior: 'smooth' });
-
-    // Call update after scroll completes
-    setTimeout(() => updateArrows(id), 600);
+    container.scrollLeft -= 400;
+    setTimeout(() => updateArrows(id), 300);
   }
 
   function scrollRight(id) {
     const container = document.getElementById(id);
-    container.scrollBy({ left: 400, behavior: 'smooth' });
-
-    // Call update after scroll completes
-    setTimeout(() => updateArrows(id), 600);
+    container.scrollLeft += 400;
+    setTimeout(() => updateArrows(id), 300);
   }
 
   function redirectTo(link) {
