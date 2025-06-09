@@ -1,225 +1,261 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HOME | Molecular Technology</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Courier+Prime&family=Caladea&display=swap" rel="stylesheet">
+  <title>MOLECULAR TECHNOLOGY | HOME</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Caladea&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
-    }
+    }body {
+  background-color: black;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+}
 
-    body {
-      background: black;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      overflow-x: hidden;
-    }
+header {
+  text-align: center;
+  padding: 60px 20px 20px;
+  animation: fadeIn 2s ease;
+}
 
-    header {
-      padding: 50px 20px 20px;
-      text-align: center;
-      animation: fadeIn 2s ease;
-    }
+header h1 {
+  font-size: 48px;
+  background: linear-gradient(270deg, ff0000, ff00d4, 7d14ed, 012ef1, 04fdf7, 04fdad);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 7s ease infinite;
+}
 
-    header h1 {
-      font-size: 64px;
-      text-transform: uppercase;
-      background: linear-gradient(270deg, red, darkred, crimson, firebrick);
-      background-size: 800% 800%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: aurora 10s ease infinite, glow 3s ease-in-out infinite alternate;
-    }
+header p {
+  font-family: Courier, monospace;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid white;
+  animation: typing 5s steps(80, end), blink-caret 0.75s step-end infinite;
+}
 
-    @keyframes aurora {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 20px;
+  animation: fadeIn 1.5s ease;
+}
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px red; }
-      to { text-shadow: 0 0 20px crimson, 0 0 40px red; }
-    }
+nav button {
+  background-color: #111;
+  border: 1px solid red;
+  color: red;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px red;
+}
 
-    .slogan {
-      font-family: 'Courier Prime', monospace;
-      font-size: 20px;
-      color: white;
-      margin-top: 10px;
-      overflow: hidden;
-      border-right: 2px solid white;
-      white-space: nowrap;
-      animation: typing 5s steps(60, end), blink-caret .75s step-end infinite;
-    }
+nav button:hover {
+  background: red;
+  color: black;
+  box-shadow: 0 0 14px red;
+}
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
+.red-line {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, red, black, red);
+  margin: 20px 0;
+}
 
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: white; }
-    }
+section h2 {
+  font-size: 28px;
+  color: red;
+  text-align: center;
+  margin-top: 40px;
+  text-shadow: 0 0 8px red;
+}
 
-    .red-line {
-      height: 2px;
-      width: 100%;
-      background: linear-gradient(90deg, red, red);
-      margin: 30px 0;
-    }
+.scroll-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 95%;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
 
-    nav button {
-      background: #111;
-      border: 2px solid red;
-      color: red;
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 12px 24px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 10px red;
-      font-family: 'Orbitron', sans-serif;
-    }
+.scroll-container img {
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  transition: transform 0.4s;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
 
-    nav button:hover {
-      background: red;
-      color: black;
-      box-shadow: 0 0 20px red, 0 0 40px crimson;
-    }
+.scroll-container img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px red;
+}
 
-    .section-title {
-      font-size: 32px;
-      color: red;
-      text-align: center;
-      margin: 50px 0 20px;
-      text-shadow: 0 0 10px red;
-    }
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 0, 0, 0.7);
+  border: none;
+  color: black;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
 
-    .scroll-section {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      padding: 20px;
-      scroll-snap-type: x mandatory;
-    }
+.arrow.left {
+  left: 10px;
+}
 
-    .scroll-section::-webkit-scrollbar {
-      height: 10px;
-    }
+.arrow.right {
+  right: 10px;
+}
 
-    .scroll-section::-webkit-scrollbar-thumb {
-      background: red;
-      border-radius: 10px;
-    }
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Caladea', serif;
+}
 
-    .product-img {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      width: 400px;
-      height: 600px;
-      background: #222;
-      border-radius: 20px;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.3s;
-      cursor: pointer;
-      box-shadow: 0 0 20px red;
-    }
+footer h3 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
-    .product-img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px crimson;
-    }
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  margin: 0 10px;
+  filter: drop-shadow(0 0 5px red);
+}
 
-    .mission {
-      text-align: center;
-      font-family: 'Caladea', serif;
-      font-size: 20px;
-      margin: 60px 20px;
-      color: white;
-    }
+@keyframes aurora {
+  0% {background-position: 0% 50%}
+  50% {background-position: 100% 50%}
+  100% {background-position: 0% 50%}
+}
 
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 40px;
-    }
+@keyframes typing {
+  from {width: 0}
+  to {width: 100%}
+}
 
-    .socials a img {
-      width: 32px;
-      height: 32px;
-      filter: drop-shadow(0 0 5px red);
-    }
+@keyframes blink-caret {
+  from, to {border-color: transparent}
+  50% {border-color: white;}
+}
+
+@keyframes glow {
+  from {text-shadow: 0 0 10px red;}
+  to {text-shadow: 0 0 20px red, 0 0 30px red;}
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 32px;
+  }
+  .scroll-container img {
+    width: 250px;
+    height: 400px;
+  }
+}
+
   </style>
 </head>
 <body>
   <header>
     <h1>MOLECULAR TECHNOLOGY</h1>
-    <p class="slogan">OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</p>
-  </header>
+    <p>OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</p>
+  </header>  <div class="red-line"></div>  <nav>
+    <button onclick="navigate('home.html')">HOME</button>
+    <button onclick="navigate('innovations.html')">INNOVATIONS</button>
+    <button onclick="navigate('marketx.html')">MARKETX</button>
+    <button onclick="navigate('announces.html')">ANNOUNCES</button>
+    <button onclick="navigate('startups.html')">STARTUPS</button>
+    <button onclick="navigate('issues.html')">ISSUES</button>
+    <button onclick="navigate('help.html')">HELP</button>
+  </nav>  <section>
+    <h2>LATEST INNOVATIONS</h2>
+    <div class="scroll-container" id="latestScroll">
+      <button class="arrow left" onclick="scrollLeft('latestScroll')">⮜</button>
+      <img src="Latestproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <img src="Latestproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <img src="Latestproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <img src="Latestproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <img src="Latestproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <img src="Latestproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <button class="arrow right" onclick="scrollRight('latestScroll')">⮞</button>
+    </div><h2>UPCOMING INNOVATIONS</h2>
+<div class="scroll-container" id="upcomingScroll">
+  <button class="arrow left" onclick="scrollLeft('upcomingScroll')">⮜</button>
+  <img src="Upcomingproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+  <img src="Upcomingproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+  <img src="Upcomingproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+  <img src="Upcomingproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+  <img src="Upcomingproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+  <img src="Upcomingproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+  <button class="arrow right" onclick="scrollRight('upcomingScroll')">⮞</button>
+</div>
 
-  <div class="red-line"></div>
-
-  <nav>
-    <button onclick="location.href='index.html'">Home</button>
-    <button onclick="location.href='innovations.html'">Innovations</button>
-    <button onclick="location.href='marketx.html'">MarketX</button>
-    <button onclick="location.href='announces.html'">Announces</button>
-    <button onclick="location.href='startups.html'">Startups</button>
-    <button onclick="location.href='issues.html'">Issues</button>
-    <button onclick="location.href='help.html'">Help</button>
-  </nav>
-
-  <section>
-    <h2 class="section-title">LATEST INNOVATIONS</h2>
-    <div class="scroll-section">
-      <div class="product-img" style="background-image: url('Latestproductimage1');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Latestproductimage2');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Latestproductimage3');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Latestproductimage4');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Latestproductimage5');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Latestproductimage6');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
+  </section>  <footer>
+    <h3>OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</h3>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><img src="instagram.png" alt="Instagram"></a>
+      <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><img src="youtube.png" alt="YouTube"></a>
+      <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
+      <a href="https://x.com/MoleculartTechX?s=09"><img src="twitter.png" alt="Twitter"></a>
     </div>
-  </section>
+  </footer>  <script>
+    function scrollLeft(id) {
+      document.getElementById(id).scrollBy({ left: -400, behavior: 'smooth' });
+    }
 
-  <section>
-    <h2 class="section-title">UPCOMING INNOVATIONS</h2>
-    <div class="scroll-section">
-      <div class="product-img" style="background-image: url('Upcomingproductimage1');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Upcomingproductimage2');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Upcomingproductimage3');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Upcomingproductimage4');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Upcomingproductimage5');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-      <div class="product-img" style="background-image: url('Upcomingproductimage6');" onclick="location.href='YOUR REDIRECT LINK HERE'"></div>
-    </div>
-  </section>
+    function scrollRight(id) {
+      document.getElementById(id).scrollBy({ left: 400, behavior: 'smooth' });
+    }
 
-  <div class="mission">
-    OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.
-  </div>
+    function redirectTo(link) {
+      window.location.href = link;
+    }
 
-  <div class="socials">
-    <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw==" target="_blank"><img src="instagram.png" alt="Instagram" /></a>
-    <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa" target="_blank"><img src="youtube.png" alt="YouTube" /></a>
-    <a href="https://www.facebook.com/share/1FEy9L4KAj/" target="_blank"><img src="facebook.png" alt="Facebook" /></a>
-    <a href="https://x.com/MoleculartTechX?s=09" target="_blank"><img src="twitter.png" alt="Twitter/X" /></a>
-  </div>
-</body>
+    function navigate(page) {
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = page;
+      }, 400);
+    }
+
+    document.body.style.opacity = 0;
+    window.onload = () => {
+      document.body.style.transition = "opacity 1s ease";
+      document.body.style.opacity = 1;
+    };
+  </script></body>
 </html>
