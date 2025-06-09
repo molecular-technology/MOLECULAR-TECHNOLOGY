@@ -90,16 +90,19 @@
       text-shadow: 0 0 8px red;
     }
 
-    .scroll-container {
+    .scroll-wrapper {
       position: relative;
+      width: 95%;
+      margin: auto;
+    }
+
+    .scroll-container {
       display: flex;
       align-items: center;
       overflow-x: auto;
       scroll-behavior: smooth;
       gap: 20px;
-      padding: 20px;
-      margin: 20px auto;
-      width: 95%;
+      padding: 20px 50px;
     }
 
     .scroll-container::-webkit-scrollbar {
@@ -122,7 +125,7 @@
     }
 
     .arrow {
-      position: fixed;
+      position: absolute;
       top: 50%;
       transform: translateY(-50%);
       background: radial-gradient(circle, red, darkred);
@@ -132,7 +135,7 @@
       padding: 12px;
       border-radius: 50%;
       cursor: pointer;
-      z-index: 100;
+      z-index: 10;
       transition: transform 0.3s ease;
     }
 
@@ -142,11 +145,11 @@
     }
 
     .arrow.left {
-      left: 15px;
+      left: 5px;
     }
 
     .arrow.right {
-      right: 15px;
+      right: 5px;
     }
 
     footer {
@@ -229,26 +232,30 @@
 
   <section>
     <h2>LATEST INNOVATIONS</h2>
-    <div class="scroll-container" id="latestScroll">
+    <div class="scroll-wrapper">
       <button class="arrow left" onclick="scrollLeft('latestScroll')">◄</button>
-      <img src="Latestproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Latestproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Latestproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Latestproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Latestproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Latestproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <div class="scroll-container" id="latestScroll">
+        <img src="Latestproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Latestproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Latestproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Latestproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Latestproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Latestproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      </div>
       <button class="arrow right" onclick="scrollRight('latestScroll')">►</button>
     </div>
 
     <h2>UPCOMING INNOVATIONS</h2>
-    <div class="scroll-container" id="upcomingScroll">
+    <div class="scroll-wrapper">
       <button class="arrow left" onclick="scrollLeft('upcomingScroll')">◄</button>
-      <img src="Upcomingproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Upcomingproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Upcomingproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Upcomingproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Upcomingproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      <img src="Upcomingproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      <div class="scroll-container" id="upcomingScroll">
+        <img src="Upcomingproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Upcomingproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Upcomingproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Upcomingproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Upcomingproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+        <img src="Upcomingproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
+      </div>
       <button class="arrow right" onclick="scrollRight('upcomingScroll')">►</button>
     </div>
   </section>
