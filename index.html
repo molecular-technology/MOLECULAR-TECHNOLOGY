@@ -179,33 +179,31 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: radial-gradient(circle, red, darkred);
+      background: rgba(255, 0, 0, 0.6);
       border: none;
       color: white;
-      font-size: 30px;
-      padding: 12px;
+      font-size: 26px;
+      padding: 14px 18px;
       border-radius: 50%;
       cursor: pointer;
-      z-index: 10;
-      transition: transform 0.3s ease;
+      z-index: 100;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
     }
-
-    .arrow:disabled {
-      opacity: 0.3;
-      pointer-events: none;
-    }
-    
+     
     .arrow:hover {
+      background: red;
+      box-shadow: 0 0 20px red;
       transform: translateY(-50%) scale(1.1);
-      box-shadow: 0 0 12px red;
     }
 
     .arrow.left {
-      left: 5px;
+      left: 10px;
     }
 
     .arrow.right {
-      right: 5px;
+      right: 10px;
     }
 
     footer {
@@ -331,28 +329,29 @@
   </footer>
 
   <script>
-  function updateArrows(containerId) {
-    const container = document.getElementById(containerId);
-    const leftArrow = container.parentElement.querySelector(".arrow.left");
-    const rightArrow = container.parentElement.querySelector(".arrow.right");
-
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-    const currentScroll = container.scrollLeft;
-
-    leftArrow.disabled = currentScroll <= 0;
-    rightArrow.disabled = currentScroll >= maxScrollLeft - 5;
+  function scrollLeft() {
+    document.getElementById("latestScroll").scrollBy({
+      left: -400,
+      behavior: "smooth"
   }
 
-  function scrollLeft(id) {
-    const container = document.getElementById(id);
-    container.scrollLeft -= 400;
-    setTimeout(() => updateArrows(id), 300);
+  function scrollRight() {
+    document.getElementById("latestScroll").scrollBy({
+      left: 400,
+      behavior: "smooth"
   }
 
-  function scrollRight(id) {
-    const container = document.getElementById(id);
-    container.scrollLeft += 400;
-    setTimeout(() => updateArrows(id), 300);
+  function scrollLeft() {
+    document.getElementById("upcomingScroll").scrollBy({
+      left: -400,
+      behavior: "smooth"
+    });
+  }
+
+  function scrollRight() {
+    document.getElementById("upcomingScroll").scrollBy({
+      left: 400,
+      behavior: "smooth"
   }
 
   function redirectTo(link) {
