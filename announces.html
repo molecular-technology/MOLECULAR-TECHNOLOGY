@@ -1108,10 +1108,34 @@
         };
 
         // Initialize page
+       // Set up typing animation
+            setupTypingAnimation();
+        
         document.addEventListener('DOMContentLoaded', function() {
             renderAnnouncements(announcements);
             setupEventListeners();
         });
+
+        function setupTypingAnimation() {
+            const slogan = document.getElementById('slogan');
+            const text = slogan.textContent;
+            slogan.textContent = '';
+
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    slogan.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                    // Add cursor after text completes
+                    const cursor = document.createElement('span');
+                    cursor.classList.add('cursor');
+                    slogan.appendChild(cursor);
+                }
+            }, 50);
+        }
+
 
         function renderAnnouncements(announcementsToRender) {
             announcementsContainer.innerHTML = '';
