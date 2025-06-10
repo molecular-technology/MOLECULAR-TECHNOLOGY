@@ -51,15 +51,15 @@
       font-size: 18px;
       max-width: 90%;
       margin: 0 auto;
-      white-space: normal;
-      overflow: hidden;
       display: inline-block;
-      animation: typing-multi 6s steps(100, end), blink-caret 0.75s step-end infinite;
-      border-right: 2px solid white;
       line-height: 1.4;
       text-align: center;
+      overflow: hidden;
+      white-space: normal; /* allows wrapping */
+      border-right: 2px solid white;
+      animation: typingWrap 5s steps(60, end), blink-caret 0.75s step-end infinite;
     }
-
+    
     nav {
       display: flex;
       justify-content: center;
@@ -200,6 +200,7 @@
       right: 5px;
     }
 
+
     footer {
       margin-top: 60px;
       padding: 20px;
@@ -226,9 +227,9 @@
       100% {background-position: 0% 50%}
     }
 
-    @keyframes typing-multi {
-      0% { max-height: 0; }
-      100% { max-height: 500px; }
+    @keyframes typingWrap {
+      from { max-height: 0; opacity: 0; }
+      to { max-height: 500px; opacity: 1; }
     }
 
     @keyframes blink-caret {
@@ -252,9 +253,11 @@
         width: 250px;
         height: 400px;
       }
-      .arrow {
+
+       .arrow {
         font-size: 24px;
         padding: 8px;
+      
       }
     }
   </style>
@@ -308,10 +311,11 @@
   <footer>
     <h3>OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</h3>
     <div class="social-icons">
-      <a href="#"><img src="instagram.png" alt="Instagram"></a>
-      <a href="#"><img src="youtube.png" alt="YouTube"></a>
-      <a href="#"><img src="facebook.png" alt="Facebook"></a>
-      <a href="#"><img src="twitter.png" alt="Twitter"></a>
+      <a href="https://www.facebook.com/share/1VL5xBoyFv/"><img src="facebook.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/molecular_technology?igsh=MWJuZ3JrcDdpamp2dw=="><img src="instagram.png" alt="Instagram"></a>
+      <a href="https://youtube.com/@moleculartechnologyorg?si=ciXQ5yGhRRZE-kUI"><img src="youtube.png" alt="YouTube"></a>
+      <a href="https://x.com/MoleculartTechX?t=TeDLXGQCBqT7uPt1AN3VRQ&s=09"><img src="twitter.png" alt="Twitter"></a>
+
     </div>
   </footer>
 
