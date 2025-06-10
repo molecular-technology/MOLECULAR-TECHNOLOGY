@@ -17,11 +17,19 @@
       background-color: black;
       color: white;
       font-family: 'Orbitron', sans-serif;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeBody 1.5s ease forwards;
+    }
+
+    @keyframes fadeBody {
+      to { opacity: 1; }
     }
 
     header {
       text-align: center;
       padding: 60px 20px 20px;
+      animation: fadeIn 2s ease;
     }
 
     header h1 {
@@ -33,70 +41,68 @@
       animation: aurora 7s ease infinite;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     header p {
       font-family: Courier, monospace;
       font-size: 18px;
       max-width: 90%;
       margin: 0 auto;
-      border-right: 2px solid white;
-      white-space: nowrap;
+      white-space: normal;
       overflow: hidden;
-      animation: typing 4s steps(80, end), blink-caret 0.75s step-end infinite;
-    }
-
-    @keyframes aurora {
-      0% {background-position: 0% 50%}
-      50% {background-position: 100% 50%}
-      100% {background-position: 0% 50%}
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: white }
+      display: inline-block;
+      animation: typing-multi 6s steps(100, end), blink-caret 0.75s step-end infinite;
+      border-right: 2px solid white;
+      line-height: 1.4;
+      text-align: center;
     }
 
     nav {
       display: flex;
       justify-content: center;
+      gap: 12px;
       flex-wrap: wrap;
-      gap: 10px;
       padding: 20px;
+      animation: fadeIn 1.5s ease;
     }
 
     nav button {
       background-color: #111;
-      color: red;
       border: 1px solid red;
-      padding: 10px 20px;
+      color: red;
+      padding: 14px 28px;
+      font-size: 16px;
+      text-transform: uppercase;
       font-weight: bold;
       cursor: pointer;
       border-radius: 6px;
-      box-shadow: 0 0 10px red;
       transition: all 0.3s ease;
+      box-shadow: 0 0 8px red;
     }
 
     nav button:hover {
       background: red;
       color: black;
-      box-shadow: 0 0 20px red;
+      transform: translateY(-3px);
+      box-shadow: 0 0 18px red;
     }
 
     .red-line {
       height: 4px;
+      width: 100%;
       background: red;
-      box-shadow: 0 0 10px red;
+      box-shadow: 0 0 10px red, 0 0 20px red;
       margin: 20px 0;
     }
 
-    h2 {
-      text-align: center;
+    section h2 {
+      font-size: 28px;
       color: red;
-      margin: 40px 0 10px;
+      text-align: center;
+      margin-top: 40px;
       text-shadow: 0 0 8px red;
     }
 
@@ -104,15 +110,15 @@
       position: relative;
       width: 95%;
       margin: auto;
-      overflow: hidden;
     }
 
     .scroll-container {
       display: flex;
+      align-items: center;
       overflow-x: auto;
-      gap: 20px;
-      padding: 20px;
       scroll-behavior: smooth;
+      gap: 20px;
+      padding: 20px 50px;
     }
 
     .scroll-container::-webkit-scrollbar {
@@ -120,36 +126,70 @@
     }
 
     .scroll-container img {
-      width: 300px;
-      height: 400px;
+      width: 400px;
+      height: 500px;
       border-radius: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.4s, box-shadow 0.4s, filter 0.4s;
       cursor: pointer;
+      flex: 0 0 auto;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
     .scroll-container img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px red;
+      box-shadow: 0 0 40px red;
+      filter: brightness(1.1);
+    }
+
+    .scroll-container img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      transform: skewX(-25deg);
+      z-index: 2;
+      transition: left 0.5s ease;
+      pointer-events: none;
+      border-radius: 20px;
+    }
+
+    .scroll-container img:hover::after {
+      left: 125%;
     }
 
     .arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: radial-gradient(circle, #ff0000, darkred);
-      color: white;
+      background: radial-gradient(circle, red, darkred);
       border: none;
+      color: white;
       font-size: 30px;
-      padding: 12px 16px;
+      padding: 12px;
       border-radius: 50%;
       cursor: pointer;
       z-index: 10;
-      box-shadow: 0 0 15px red;
       transition: transform 0.3s ease;
+    }
+
+    .arrow:disabled {
+      opacity: 0.3;
+      pointer-events: none;
     }
 
     .arrow:hover {
       transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 12px red;
     }
 
     .arrow.left {
@@ -161,32 +201,60 @@
     }
 
     footer {
+      margin-top: 60px;
+      padding: 20px;
       text-align: center;
       font-family: 'Caladea', serif;
-      padding: 40px 10px;
+    }
+
+    footer h3 {
+      color: white;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
     .social-icons img {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       margin: 0 10px;
       filter: drop-shadow(0 0 5px red);
     }
 
+    @keyframes aurora {
+      0% {background-position: 0% 50%}
+      50% {background-position: 100% 50%}
+      100% {background-position: 0% 50%}
+    }
+
+    @keyframes typing-multi {
+      0% { max-height: 0; }
+      100% { max-height: 500px; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+
     @media (max-width: 768px) {
       header h1 {
-        font-size: 30px;
+        font-size: 32px;
       }
       header p {
+        font-size: 15px;
+        min-height: 3.2em;
+      }
+      nav button {
         font-size: 14px;
+        padding: 10px 20px;
       }
       .scroll-container img {
-        width: 200px;
-        height: 300px;
+        width: 250px;
+        height: 400px;
       }
       .arrow {
         font-size: 24px;
-        padding: 10px;
+        padding: 8px;
       }
     }
   </style>
@@ -209,29 +277,33 @@
     <button onclick="navigate('help.html')">HELP</button>
   </nav>
 
-  <h2>LATEST INNOVATIONS</h2>
-  <div class="scroll-wrapper">
-    <button class="arrow left" onclick="scrollLeft('latestScroll')">◄</button>
-    <div class="scroll-container" id="latestScroll">
-      <img src="Latestproductimage1" onclick="redirectTo('#')">
-      <img src="Latestproductimage2" onclick="redirectTo('#')">
-      <img src="Latestproductimage3" onclick="redirectTo('#')">
-      <img src="Latestproductimage4" onclick="redirectTo('#')">
+  <section>
+    <h2>LATEST INNOVATIONS</h2>
+    <div class="scroll-wrapper">
+      <button class="arrow left" onclick="scrollLeft('latestScroll')">◄</button>
+      <div class="scroll-container" id="latestScroll">
+        <img src="Latestproductimage1" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Latestproductimage2" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Latestproductimage3" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Latestproductimage4" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Latestproductimage5" onclick="redirectTo('YOUR LINK')"/>
+      </div>
+      <button class="arrow right" onclick="scrollRight('latestScroll')">►</button>
     </div>
-    <button class="arrow right" onclick="scrollRight('latestScroll')">►</button>
-  </div>
 
-  <h2>UPCOMING INNOVATIONS</h2>
-  <div class="scroll-wrapper">
-    <button class="arrow left" onclick="scrollLeft('upcomingScroll')">◄</button>
-    <div class="scroll-container" id="upcomingScroll">
-      <img src="Upcomingproductimage1" onclick="redirectTo('#')">
-      <img src="Upcomingproductimage2" onclick="redirectTo('#')">
-      <img src="Upcomingproductimage3" onclick="redirectTo('#')">
-      <img src="Upcomingproductimage4" onclick="redirectTo('#')">
+    <h2>UPCOMING INNOVATIONS</h2>
+    <div class="scroll-wrapper">
+      <button class="arrow left" onclick="scrollLeft('upcomingScroll')">◄</button>
+      <div class="scroll-container" id="upcomingScroll">
+        <img src="Upcomingproductimage1" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Upcomingproductimage2" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Upcomingproductimage3" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Upcomingproductimage4" onclick="redirectTo('YOUR LINK')"/>
+        <img src="Upcomingproductimage5" onclick="redirectTo('YOUR LINK')"/>
+      </div>
+      <button class="arrow right" onclick="scrollRight('upcomingScroll')">►</button>
     </div>
-    <button class="arrow right" onclick="scrollRight('upcomingScroll')">►</button>
-  </div>
+  </section>
 
   <footer>
     <h3>OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</h3>
@@ -244,29 +316,84 @@
   </footer>
 
   <script>
-    function scrollLeft(id) {
-      const container = document.getElementById(id);
-      container.scrollBy({ left: -400, behavior: 'smooth' });
+  function updateArrows(containerId) {
+    const container = document.getElementById(containerId);
+    const leftArrow = container.parentElement.querySelector(".arrow.left");
+    const rightArrow = container.parentElement.querySelector(".arrow.right");
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const currentScroll = container.scrollLeft;
+    leftArrow.disabled = currentScroll <= 0;
+    rightArrow.disabled = currentScroll >= maxScrollLeft - 5;
+  }
+
+  function scrollLeft(id) {
+    const container = document.getElementById(id);
+    container.scrollLeft -= 400;
+    setTimeout(() => updateArrows(id), 300);
+  }
+
+  function scrollRight(id) {
+    const container = document.getElementById(id);
+    container.scrollLeft += 400;
+    setTimeout(() => updateArrows(id), 300);
+  }
+
+  function redirectTo(link) {
+    window.location.href = link;
+  }
+
+  function navigate(page) {
+    document.body.style.opacity = 0;
+    setTimeout(() => {
+      window.location.href = page;
+    }, 400);
+  }
+
+  // Auto-scroll with pause on hover
+  function startAutoScroll(containerId) {
+    const container = document.getElementById(containerId);
+    let direction = 1;
+    let interval;
+
+    function scroll() {
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+      container.scrollLeft += 2 * direction;
+      if (container.scrollLeft >= maxScrollLeft || container.scrollLeft <= 0) {
+        direction *= -1;
+      }
+      updateArrows(containerId);
     }
 
-    function scrollRight(id) {
-      const container = document.getElementById(id);
-      container.scrollBy({ left: 400, behavior: 'smooth' });
+    function start() {
+      interval = setInterval(scroll, 20);
     }
 
-    function redirectTo(link) {
-      window.location.href = link;
+    function stop() {
+      clearInterval(interval);
     }
 
-    function navigate(page) {
-      document.body.style.opacity = 0;
-      setTimeout(() => window.location.href = page, 400);
-    }
+    container.addEventListener("mouseenter", stop);
+    container.addEventListener("mouseleave", start);
+    start();
+  }
 
-    window.onload = () => {
-      document.body.style.transition = "opacity 0.8s ease";
-      document.body.style.opacity = 1;
-    };
-  </script>
+  window.onload = () => {
+    document.body.style.transition = "opacity 1s ease";
+    document.body.style.opacity = 1;
+
+    updateArrows('latestScroll');
+    updateArrows('upcomingScroll');
+
+    const latest = document.getElementById('latestScroll');
+    const upcoming = document.getElementById('upcomingScroll');
+
+    latest.addEventListener('scroll', () => updateArrows('latestScroll'));
+    upcoming.addEventListener('scroll', () => updateArrows('upcomingScroll'));
+
+    startAutoScroll('latestScroll');
+    startAutoScroll('upcomingScroll');
+  };
+</script>
+  
 </body>
 </html>
