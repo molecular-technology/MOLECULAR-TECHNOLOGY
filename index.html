@@ -59,6 +59,30 @@
       border-right: 2px solid white;
       animation: typingWrap 5s steps(60, end), blink-caret 0.75s step-end infinite;
     }
+
+    .slogan-text {
+      font-family: Courier, monospace;
+      font-size: 18px;
+      max-width: 90%;
+      margin: 0 auto;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      display: inline-block;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .slogan-text::after {
+      content: '|';
+      animation: blink-caret 0.8s step-end infinite;
+      position: absolute;
+      right: -10px;
+    }
+
+    @keyframes blink-caret {
+      from, to { opacity: 0; }
+      50% { opacity: 1; }
+    }
     
     nav {
       display: flex;
@@ -245,6 +269,9 @@
         font-size: 15px;
         min-height: 3.2em;
       }
+      .slogan-text {
+        font-size: 15px;
+      }
       nav button {
         font-size: 14px;
         padding: 10px 20px;
@@ -265,7 +292,7 @@
 <body>
   <header>
     <h1>MOLECULAR TECHNOLOGY</h1>
-    <p>OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.</p>
+    <p id="slogan" class="slogan-text"></p>
   </header>
 
   <div class="red-line"></div>
@@ -397,6 +424,23 @@
     startAutoScroll('latestScroll');
     startAutoScroll('upcomingScroll');
   };
+
+    const slogan = "OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.";
+  const target = document.getElementById("slogan");
+  let index = 0;
+
+  function typeText() {
+    if (index < slogan.length) {
+      target.textContent += slogan.charAt(index);
+      index++;
+      setTimeout(typeText, 40); // Adjust typing speed here (ms)
+    }
+  }
+
+  window.onload = () => {
+    typeText();
+  };
+    
 </script>
   
 </body>
