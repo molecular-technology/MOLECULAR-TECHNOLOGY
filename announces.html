@@ -52,7 +52,7 @@
         .page-title {
             font-size: 4.5rem;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 7px;
             text-transform: uppercase;
             font-family: 'Orbitron', sans-serif;
             background: linear-gradient(45deg, #ff003c, #ff3366, #ff6699, #ff003c);
@@ -84,7 +84,7 @@
             font-size: 1.8rem;
             color: var(--white);
             margin-bottom: 1.5rem;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Courier Prime', monospace;
             animation: slideInFromBottom 1s ease-out;
         }
 
@@ -283,6 +283,7 @@
             gap: 15px;
             padding: 5px 0;
             min-width: max-content;
+            justify-content: center;
         }
 
         .category-btn {
@@ -888,7 +889,7 @@
         </div>
 
         <div class="nav-buttons">
-            <a href="home.html" class="nav-btn">HOME</a>
+            <a href="index.html" class="nav-btn">HOME</a>
             <a href="innovations.html" class="nav-btn">INNOVATIONS</a>
             <a href="marketx.html" class="nav-btn">MARKETX</a>
             <a href="announces.html" class="nav-btn active">ANNOUNCES</a>
@@ -940,7 +941,7 @@
             <div class="detail-actions">
                 <div class="detail-like-container" id="detail-like">
                     <i class="fas fa-bolt detail-like-icon"></i>
-                    <span class="detail-like-text">Like</span>
+                    <span class="detail-like-text">Charge</span>
                 </div>
                 <button class="share-btn"><i class="fas fa-share-alt"></i> SHARE</button>
             </div>
@@ -949,7 +950,7 @@
                 <h3 class="comments-title">Comments</h3>
                 <div class="comment-form">
                     <textarea class="comment-input" placeholder="Write your comment..." rows="4"></textarea>
-                    <button class="comment-submit">POST COMMENT</button>
+                    <button class="comment-submit">POST MY COMMENT</button>
                 </div>
                 <div class="comments-list" id="comments-list">
                     <!-- Comments will be inserted here -->
@@ -1198,7 +1199,7 @@
             // Set like state
             const detailLike = document.getElementById('detail-like');
             detailLike.classList.toggle('liked', announcement.liked);
-            detailLike.querySelector('.detail-like-text').textContent = announcement.liked ? 'Charged' : 'Like';
+            detailLike.querySelector('.detail-like-text').textContent = announcement.liked ? 'Charged' : 'Charge';
             detailLike.setAttribute('data-id', announcement.id);
            
             // Set voting section if applicable
@@ -1217,7 +1218,7 @@
                             </div>
                         `).join('')}
                     </div>
-                    <button class="vote-btn" id="vote-btn">SUBMIT VOTE</button>
+                    <button class="vote-btn" id="vote-btn">SUBMIT MY VOTE</button>
                 `;
                
                 // Add event listeners to voting options
@@ -1316,7 +1317,7 @@
                 if (commentText) {
                     // In a real implementation, this would be saved to a database
                     // For now, we'll just show an alert
-                    alert('Comment submitted! In a real implementation, this would be saved to a database.');
+                    alert('Your Comment Is submitted! Your Comment Will Be Update Soon Publically.');
                     commentInput.value = '';
                 }
             });
