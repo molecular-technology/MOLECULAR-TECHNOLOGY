@@ -291,7 +291,7 @@
   <section>
     <h2>LATEST INNOVATIONS</h2>
     <div class="scroll-wrapper">
-      <button class="arrow left" onclick="scrollLeft('latestScroll')">◄</button>
+      <button class="arrow left" onclick="scrollContent('latestScroll', -400)">◄</button>
       <div class="scroll-container" id="latestScroll">
         <img src="Latestproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
         <img src="Latestproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
@@ -300,12 +300,12 @@
         <img src="Latestproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
         <img src="Latestproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
       </div>
-      <button class="arrow right" onclick="scrollRight('latestScroll')">►</button>
+      <button class="arrow right" onclick="scrollContent('latestScroll', 400)">►</button>
     </div>
 
     <h2>UPCOMING INNOVATIONS</h2>
     <div class="scroll-wrapper">
-      <button class="arrow left" onclick="scrollLeft('upcomingScroll')">◄</button>
+      <button class="arrow left" onclick="scrollContent('upcomingScroll', -400)">◄</button>
       <div class="scroll-container" id="upcomingScroll">
         <img src="Upcomingproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
         <img src="Upcomingproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
@@ -314,7 +314,7 @@
         <img src="Upcomingproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
         <img src="Upcomingproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
       </div>
-      <button class="arrow right" onclick="scrollRight('upcomingScroll')">►</button>
+      <button class="arrow right" onclick="scrollContent('upcomingScroll', 400)">►</button>
     </div>
   </section>
 
@@ -329,29 +329,11 @@
   </footer>
 
   <script>
-  function scrollLeft() {
-    document.getElementById("latestScroll").scrollBy({
-      left: -400,
-      behavior: "smooth"
-  }
-
-  function scrollRight() {
-    document.getElementById("latestScroll").scrollBy({
-      left: 400,
-      behavior: "smooth"
-  }
-
-  function scrollLeft() {
-    document.getElementById("upcomingScroll").scrollBy({
-      left: -400,
-      behavior: "smooth"
-    });
-  }
-
-  function scrollRight() {
-    document.getElementById("upcomingScroll").scrollBy({
-      left: 400,
-      behavior: "smooth"
+  function scrollContent(containerId, distance) {
+    const container = document.getElementById(containerId);
+    container.scrollBy{
+      left: distance,
+      behavior: 'smooth'
   }
 
   function redirectTo(link) {
