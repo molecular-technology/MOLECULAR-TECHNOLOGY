@@ -17,19 +17,11 @@
       background-color: black;
       color: white;
       font-family: 'Orbitron', sans-serif;
-      overflow-x: hidden;
-      opacity: 0;
-      animation: fadeBody 1.5s ease forwards;
-    }
-
-    @keyframes fadeBody {
-      to { opacity: 1; }
     }
 
     header {
       text-align: center;
       padding: 60px 20px 20px;
-      animation: fadeIn 2s ease;
     }
 
     header h1 {
@@ -41,189 +33,15 @@
       animation: aurora 7s ease infinite;
     }
 
-    @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
     header p {
       font-family: Courier, monospace;
       font-size: 18px;
       max-width: 90%;
       margin: 0 auto;
-      white-space: normal;
-      overflow: hidden;
-      display: inline-block;
-      animation: typing-multi 6s steps(100, end), blink-caret 0.75s step-end infinite;
       border-right: 2px solid white;
-      line-height: 1.4;
-      text-align: center;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 20px;
-      animation: fadeIn 1.5s ease;
-    }
-
-    nav button {
-      background-color: #111;
-      border: 1px solid red;
-      color: red;
-      padding: 14px 28px;
-      font-size: 16px;
-      text-transform: uppercase;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px red;
-    }
-
-    @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-    nav button:hover {
-      background: red;
-      color: black;
-      transform: translateY(-3px);
-      box-shadow: 0 0 18px red;
-    }
-
-    .red-line {
-      height: 4px;
-      width: 100%;
-      background: red;
-      box-shadow: 0 0 10px red, 0 0 20px red;
-      margin: 20px 0;
-    }
-
-    section h2 {
-      font-size: 28px;
-      color: red;
-      text-align: center;
-      margin-top: 40px;
-      text-shadow: 0 0 8px red;
-    }
-
-    .scroll-wrapper {
-      position: relative;
-      width: 95%;
-      margin: auto;
-    }
-
-    .scroll-container {
-      display: flex;
-      align-items: center;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 20px;
-      padding: 20px 50px;
-    }
-
-    .scroll-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .scroll-container img {
-      width: 400px;
-      height: 500px;
-      border-radius: 20px;
-      transition: transform 0.4s, box-shadow 0.4s, filter 0.4s;
-      cursor: pointer;
-      flex: 0 0 auto;
-      position: relative;
-    }
-
-     @keyframes imgAppear {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-    .scroll-container img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px red;
-      filter: brightness(1.1);
-    }
-
-    .scroll-container img::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,0,0,0.6), transparent);
-      transform: skewX(-20deg);
-      transition: left 0.6s;
-      pointer-events: none;
-      border-radius: 20px;
-    }
-
-    .scroll-container img:hover::before {
-      left: 100%;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 0, 0, 0.6);
-      border: none;
-      color: white;
-      font-size: 26px;
-      padding: 14px 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 100;
-      box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
-      transition: all 0.3s ease;
-      backdrop-filter: blur(4px);
-    }
-     
-    .arrow:hover {
-      background: red;
-      box-shadow: 0 0 20px red;
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .arrow.left {
-      left: 10px;
-    }
-
-    .arrow.right {
-      right: 10px;
-    }
-
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      text-align: center;
-      font-family: 'Caladea', serif;
-    }
-
-    footer h3 {
-      color: white;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .social-icons img {
-      width: 32px;
-      height: 32px;
-      margin: 0 10px;
-      filter: drop-shadow(0 0 5px red);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(80, end), blink-caret 0.75s step-end infinite;
     }
 
     @keyframes aurora {
@@ -232,42 +50,145 @@
       100% {background-position: 0% 50%}
     }
 
-    @keyframes typing-multi {
-  0% {
-    max-height: 0;
-  }
-  100% {
-    max-height: 500px;
-  }
-}
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
 
     @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: white; }
+      from, to { border-color: transparent }
+      50% { border-color: white }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+    }
+
+    nav button {
+      background-color: #111;
+      color: red;
+      border: 1px solid red;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 0 10px red;
+      transition: all 0.3s ease;
+    }
+
+    nav button:hover {
+      background: red;
+      color: black;
+      box-shadow: 0 0 20px red;
+    }
+
+    .red-line {
+      height: 4px;
+      background: red;
+      box-shadow: 0 0 10px red;
+      margin: 20px 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: red;
+      margin: 40px 0 10px;
+      text-shadow: 0 0 8px red;
+    }
+
+    .scroll-wrapper {
+      position: relative;
+      width: 95%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-container img {
+      width: 300px;
+      height: 400px;
+      border-radius: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .scroll-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px red;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: radial-gradient(circle, #ff0000, darkred);
+      color: white;
+      border: none;
+      font-size: 30px;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 0 15px red;
+      transition: transform 0.3s ease;
+    }
+
+    .arrow:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .arrow.left {
+      left: 5px;
+    }
+
+    .arrow.right {
+      right: 5px;
+    }
+
+    footer {
+      text-align: center;
+      font-family: 'Caladea', serif;
+      padding: 40px 10px;
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      filter: drop-shadow(0 0 5px red);
     }
 
     @media (max-width: 768px) {
-    header h1 {
-      font-size: 32px;
+      header h1 {
+        font-size: 30px;
+      }
+      header p {
+        font-size: 14px;
+      }
+      .scroll-container img {
+        width: 200px;
+        height: 300px;
+      }
+      .arrow {
+        font-size: 24px;
+        padding: 10px;
+      }
     }
-    header p {
-      font-size: 15px;
-      min-height: 3.2em; /* ensures full slogan fits in 2–3 lines */
-    }
-    nav button {
-      font-size: 14px;
-      padding: 10px 20px;
-    }
-    .scroll-container img {
-      width: 250px;
-      height: 400px;
-    }
-    .arrow {
-      font-size: 24px;
-      padding: 8px;
-    }
-  }
-    
   </style>
 </head>
 <body>
@@ -279,7 +200,7 @@
   <div class="red-line"></div>
 
   <nav>
-    <button onclick="navigate('home.html')">HOME</button>
+    <button onclick="navigate('index.html')">HOME</button>
     <button onclick="navigate('innovations.html')">INNOVATIONS</button>
     <button onclick="navigate('marketx.html')">MARKETX</button>
     <button onclick="navigate('announces.html')">ANNOUNCES</button>
@@ -288,75 +209,64 @@
     <button onclick="navigate('help.html')">HELP</button>
   </nav>
 
-  <section>
-    <h2>LATEST INNOVATIONS</h2>
-    <div class="scroll-wrapper">
-      <button class="arrow left" onclick="scrollContent('latestScroll', -400)">◄</button>
-      <div class="scroll-container" id="latestScroll">
-        <img src="Latestproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Latestproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Latestproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Latestproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Latestproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Latestproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      </div>
-      <button class="arrow right" onclick="scrollContent('latestScroll', 400)">►</button>
+  <h2>LATEST INNOVATIONS</h2>
+  <div class="scroll-wrapper">
+    <button class="arrow left" onclick="scrollLeft('latestScroll')">◄</button>
+    <div class="scroll-container" id="latestScroll">
+      <img src="Latestproductimage1" onclick="redirectTo('#')">
+      <img src="Latestproductimage2" onclick="redirectTo('#')">
+      <img src="Latestproductimage3" onclick="redirectTo('#')">
+      <img src="Latestproductimage4" onclick="redirectTo('#')">
     </div>
+    <button class="arrow right" onclick="scrollRight('latestScroll')">►</button>
+  </div>
 
-    <h2>UPCOMING INNOVATIONS</h2>
-    <div class="scroll-wrapper">
-      <button class="arrow left" onclick="scrollContent('upcomingScroll', -400)">◄</button>
-      <div class="scroll-container" id="upcomingScroll">
-        <img src="Upcomingproductimage1" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Upcomingproductimage2" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Upcomingproductimage3" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Upcomingproductimage4" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Upcomingproductimage5" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-        <img src="Upcomingproductimage6" onclick="redirectTo('YOUR REDIRECT LINK HERE')"/>
-      </div>
-      <button class="arrow right" onclick="scrollContent('upcomingScroll', 400)">►</button>
+  <h2>UPCOMING INNOVATIONS</h2>
+  <div class="scroll-wrapper">
+    <button class="arrow left" onclick="scrollLeft('upcomingScroll')">◄</button>
+    <div class="scroll-container" id="upcomingScroll">
+      <img src="Upcomingproductimage1" onclick="redirectTo('#')">
+      <img src="Upcomingproductimage2" onclick="redirectTo('#')">
+      <img src="Upcomingproductimage3" onclick="redirectTo('#')">
+      <img src="Upcomingproductimage4" onclick="redirectTo('#')">
     </div>
-  </section>
+    <button class="arrow right" onclick="scrollRight('upcomingScroll')">►</button>
+  </div>
 
   <footer>
     <h3>OUR MISSION IS TO BRING YOU FUTURE REVOLUTIONARY TECHNOLOGIES WITH GROUNDBREAKING QUALITY AND SPEED.</h3>
     <div class="social-icons">
-      <a href="https://www.instagram.com/molecular_technology_org?igsh=MWJuZ3JrcDdpamp2dw=="><img src="instagram.png" alt="Instagram"></a>
-      <a href="https://youtube.com/@moleculartechnologyorg?si=uF3k-quBH0GQKQBa"><img src="youtube.png" alt="YouTube"></a>
-      <a href="https://www.facebook.com/share/1FEy9L4KAj/"><img src="facebook.png" alt="Facebook"></a>
-      <a href="https://x.com/MoleculartTechX?s=09"><img src="twitter.png" alt="Twitter"></a>
+      <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="youtube.png" alt="YouTube"></a>
+      <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="twitter.png" alt="Twitter"></a>
     </div>
   </footer>
 
   <script>
-  function scrollContent(containerId, distance) {
-    const container = document.getElementById(containerId);
-    container.scrollBy{
-      left: distance,
-      behavior: 'smooth'
-  }
+    function scrollLeft(id) {
+      const container = document.getElementById(id);
+      container.scrollBy({ left: -400, behavior: 'smooth' });
+    }
 
-  function redirectTo(link) {
-    window.location.href = link;
-  }
+    function scrollRight(id) {
+      const container = document.getElementById(id);
+      container.scrollBy({ left: 400, behavior: 'smooth' });
+    }
 
-  function navigate(page) {
-    document.body.style.opacity = 0;
-    setTimeout(() => {
-      window.location.href = page;
-    }, 400);
-  }
+    function redirectTo(link) {
+      window.location.href = link;
+    }
 
-  window.onload = () => {
-    document.body.style.transition = "opacity 1s ease";
-    document.body.style.opacity = 1;
+    function navigate(page) {
+      document.body.style.opacity = 0;
+      setTimeout(() => window.location.href = page, 400);
+    }
 
-    updateArrows('latestScroll');
-    updateArrows('upcomingScroll');
-
-    document.getElementById('latestScroll').addEventListener('scroll', () => updateArrows('latestScroll'));
-    document.getElementById('upcomingScroll').addEventListener('scroll', () => updateArrows('upcomingScroll'));
-  };
-</script>
+    window.onload = () => {
+      document.body.style.transition = "opacity 0.8s ease";
+      document.body.style.opacity = 1;
+    };
+  </script>
 </body>
 </html>
