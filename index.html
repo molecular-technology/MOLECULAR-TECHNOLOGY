@@ -408,6 +408,23 @@
     start();
   }
 
+  // Typing animation
+  function startTypingAnimation() {
+    const slogan = "OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.";
+    const target = document.getElementById("slogan");
+    let index = 0;
+
+    function typeText() {
+      if (index < slogan.length) {
+        target.textContent += slogan.charAt(index);
+        index++;
+        setTimeout(typeText, 40); // Typing speed
+      }
+    }
+
+    typeText();
+  }
+
   window.onload = () => {
     document.body.style.transition = "opacity 1s ease";
     document.body.style.opacity = 1;
@@ -423,24 +440,9 @@
 
     startAutoScroll('latestScroll');
     startAutoScroll('upcomingScroll');
-  }
 
-    const slogan = "OUR RESEARCHERS CONCENTRATE ON INDIVIDUAL MOLECULES WHEN INNOVATING REVOLUTIONARY TECHNOLOGIES.";
-  const target = document.getElementById("slogan");
-  let index = 0;
-
-  function typeText() {
-    if (index < slogan.length) {
-      target.textContent += slogan.charAt(index);
-      index++;
-      setTimeout(typeText, 40); // Adjust typing speed here (ms)
-    }
-  }
-
-  window.onload = () => {
-    typeText();
+    startTypingAnimation(); // ✅ This works now!
   };
-    
 </script>
   
 </body>
