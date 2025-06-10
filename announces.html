@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Technology | ANNOUNCES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --red: #ff003c;
+            --dark-grey: #0a0a0a;
+            --medium-grey: #1a1a1a;
+            --light-grey: #333;
+            --white: #ffffff;
+            --glow: 0 0 10px rgba(255, 0, 60, 0.7), 0 0 20px rgba(255, 0, 60, 0.5);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --electric-yellow: #ffcc00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(26, 26, 26, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(26, 26, 26, 0.2) 0%, transparent 20%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER STYLES ===== */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(45deg, #ff003c, #ff3366, #ff6699, #ff003c);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation:
+                aurora 8s ease infinite,
+                fadeIn 1.5s ease-out;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-subtitle {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            animation: slideInFromBottom 1s ease-out;
+        }
+
+        @keyframes slideInFromBottom {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .red-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+            width: 100%;
+            margin: 1.5rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== NAVIGATION BUTTONS ===== */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-btn {
+            background-color: var(--dark-grey);
+            color: var(--red);
+            border: 1px solid var(--red);
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--glow);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 60, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .nav-btn:hover:before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--red);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.8);
+        }
+
+        .nav-btn.active {
+            background-color: var(--red);
+            color: #000;
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.9);
+        }
+
+        /* ===== SEARCH AND FILTERS ===== */
+        .search-filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-bar {
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 50px;
+            padding: 15px 25px;
+            color: var(--white);
+            width: 100%;
+            max-width: 600px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Roboto', sans-serif;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 60, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 0, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 60, 0); }
+        }
+
+        .search-bar:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.3);
+            outline: none;
+            animation: none;
+        }
+
+        .search-bar::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .filter-btn {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            color: var(--white);
+            border: 1px solid var(--light-grey);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 60, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .filter-btn:hover:before {
+            left: 100%;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border-color: var(--red);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.5);
+        }
+
+        /* ===== CATEGORY BUTTONS ===== */
+        .category-scroll {
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .category-scroll::-webkit-scrollbar-track {
+            background: var(--dark-grey);
+            border-radius: 10px;
+        }
+
+        .category-scroll::-webkit-scrollbar-thumb {
+            background: var(--red);
+            border-radius: 10px;
+        }
+
+        .category-buttons {
+            display: flex;
+            gap: 15px;
+            padding: 5px 0;
+            min-width: max-content;
+        }
+
+        .category-btn {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            color: var(--white);
+            border: 1px solid var(--light-grey);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            animation: fadeInScale 0.5s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .category-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 60, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .category-btn:hover:before {
+            left: 100%;
+        }
+
+        .category-btn.active {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border-color: var(--red);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* ===== ANNOUNCEMENT CARDS ===== */
+        .announcements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 35px;
+            padding: 3rem 0;
+        }
+
+        .announcement-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--light-grey);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: cardAppear 0.8s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .announcement-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--red);
+            box-shadow: 0 15px 35px rgba(255, 0, 60, 0.25);
+        }
+
+        .announcement-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+
+        .announcement-card:hover .announcement-image {
+            transform: scale(1.05);
+        }
+
+        .announcement-content {
+            padding: 20px;
+        }
+
+        .announcement-title {
+            color: var(--red);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .announcement-date {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .announcement-desc {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            min-height: 80px;
+        }
+
+        .announcement-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .like-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .like-icon {
+            font-size: 1.5rem;
+            color: #ccc;
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+        }
+
+        .like-container.liked .like-icon {
+            color: var(--electric-yellow);
+            animation: lightning 0.4s;
+        }
+
+        @keyframes lightning {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .like-text {
+            font-size: 1rem;
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .like-container.liked .like-text {
+            color: var(--electric-yellow);
+        }
+
+        .like-container.liked .like-text::after {
+            content: 'd';
+            position: absolute;
+            right: -15px;
+        }
+
+        .read-more-btn {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            transition: var(--transition);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .read-more-btn:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .read-more-btn:hover:after {
+            left: 100%;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.7);
+        }
+
+        /* ===== ANIMATION EFFECTS ===== */
+        .electric-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .lightning {
+            position: absolute;
+            background: var(--electric-yellow);
+            animation: electricFlow 0.5s linear;
+        }
+
+        @keyframes electricFlow {
+            0% { width: 2px; height: 0; opacity: 1; }
+            50% { height: 100%; opacity: 0.8; }
+            100% { height: 100%; width: 0; opacity: 0; }
+        }
+
+        /* ===== DETAILED VIEW MODAL ===== */
+        .detail-modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            overflow: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .detail-content {
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            margin: 3% auto;
+            padding: 40px;
+            border: 2px solid var(--red);
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 15px;
+            color: var(--white);
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.4);
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .detail-header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .detail-title {
+            font-size: 2.5rem;
+            color: var(--red);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .detail-date {
+            font-size: 1.1rem;
+            color: #aaa;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .detail-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid var(--light-grey);
+        }
+
+        .detail-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .detail-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .detail-like-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .detail-like-icon {
+            font-size: 1.8rem;
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .detail-like-container.liked .detail-like-icon {
+            color: var(--electric-yellow);
+            animation: lightning 0.4s;
+        }
+
+        .detail-like-text {
+            font-size: 1.2rem;
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .detail-like-container.liked .detail-like-text {
+            color: var(--electric-yellow);
+        }
+
+        .share-btn {
+            background: linear-gradient(45deg, #00cc66, #00ff88);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            transition: var(--transition);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        /* ===== VOTING SECTION ===== */
+        .voting-section {
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .voting-title {
+            color: var(--red);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .voting-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .voting-option {
+            background: rgba(60, 60, 60, 0.5);
+            border: 1px solid var(--light-grey);
+            border-radius: 6px;
+            padding: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voting-option:hover {
+            border-color: var(--red);
+        }
+
+        .voting-option.selected {
+            border-color: var(--electric-yellow);
+            background: rgba(255, 204, 0, 0.1);
+        }
+
+        .voting-bar {
+            height: 10px;
+            background: var(--light-grey);
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .voting-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--red), #ff3366);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s ease-out;
+        }
+
+        .vote-count {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .vote-btn {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            transition: var(--transition);
+        }
+
+        .vote-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+        }
+
+        /* ===== COMMENTS SECTION ===== */
+        .comments-section {
+            background: rgba(40, 40, 40, 0.7);
+            border: 1px solid var(--light-grey);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .comments-title {
+            color: var(--red);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .comment-input {
+            padding: 12px;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--light-grey);
+            border-radius: 6px;
+            color: var(--white);
+            font-size: 1rem;
+            min-height: 100px;
+        }
+
+        .comment-input:focus {
+            border-color: var(--red);
+            outline: none;
+        }
+
+        .comment-submit {
+            background: linear-gradient(45deg, #ff003c, #ff3366);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            transition: var(--transition);
+        }
+
+        .comment-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comment {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--light-grey);
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .comment-user {
+            font-weight: 700;
+            color: var(--red);
+        }
+
+        .comment-date {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .comment-text {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 3;
+        }
+
+        .close-btn:hover {
+            color: var(--red);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 3.5rem;
+            }
+
+            .nav-buttons {
+                gap: 10px;
+            }
+
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .search-filter-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .announcements-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .detail-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .announcements-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="page-title">ANNOUNCES</h1>
+            <div class="page-subtitle">This Page Gives You Access To Know What's Going On Technology</div>
+            <div class="red-line"></div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="home.html" class="nav-btn">HOME</a>
+            <a href="innovations.html" class="nav-btn">INNOVATIONS</a>
+            <a href="marketx.html" class="nav-btn">MARKETX</a>
+            <a href="announces.html" class="nav-btn active">ANNOUNCES</a>
+            <a href="startups.html" class="nav-btn">STARTUPS</a>
+            <a href="issues.html" class="nav-btn">ISSUES</a>
+            <a href="help.html" class="nav-btn">HELP</a>
+        </div>
+
+        <div class="search-filter-section">
+            <input type="text" class="search-bar" id="search-input" placeholder="Search Any News, Votings, Updates, Upcoming, Tricks Etc...">
+            <button class="filter-btn" id="filter-btn">
+                <i class="fas fa-filter"></i> FILTERS
+            </button>
+        </div>
+
+        <div class="category-scroll">
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="news">News</button>
+                <button class="category-btn" data-category="votings">Votings</button>
+                <button class="category-btn" data-category="updates">Updates</button>
+                <button class="category-btn" data-category="upcoming">Upcoming</button>
+                <button class="category-btn" data-category="tricks">Tricks</button>
+            </div>
+        </div>
+
+        <div id="announcements-container" class="announcements-container">
+            <!-- Announcements will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Detailed View Modal -->
+    <div id="detail-modal" class="detail-modal">
+        <div class="detail-content">
+            <span class="close-btn" id="close-detail">&times;</span>
+            <div class="detail-header">
+                <h2 class="detail-title" id="detail-title"></h2>
+                <div class="detail-date" id="detail-date"></div>
+            </div>
+
+            <img id="detail-image" class="detail-image" src="" alt="Announcement Image">
+           
+            <div class="detail-text" id="detail-text"></div>
+           
+            <div id="voting-container" class="voting-section">
+                <!-- Voting content will be inserted here -->
+            </div>
+           
+            <div class="detail-actions">
+                <div class="detail-like-container" id="detail-like">
+                    <i class="fas fa-bolt detail-like-icon"></i>
+                    <span class="detail-like-text">Like</span>
+                </div>
+                <button class="share-btn"><i class="fas fa-share-alt"></i> SHARE</button>
+            </div>
+           
+            <div class="comments-section">
+                <h3 class="comments-title">Comments</h3>
+                <div class="comment-form">
+                    <textarea class="comment-input" placeholder="Write your comment..." rows="4"></textarea>
+                    <button class="comment-submit">POST COMMENT</button>
+                </div>
+                <div class="comments-list" id="comments-list">
+                    <!-- Comments will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample announcement data
+        const announcements = [
+            {
+                id: "quantum-update",
+                title: "Quantum OS 2.0 Release Date Announced",
+                category: "updates",
+                date: "2023-12-15",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "We're excited to announce that Quantum OS 2.0 will be released on January 15th, 2024. This major update includes revolutionary quantum algorithm optimizations and a completely redesigned user interface.",
+                fullText: "We're thrilled to announce the official release date for Quantum OS 2.0 - January 15th, 2024! This represents our most significant update since the initial launch, featuring:\n\n• Completely redesigned quantum algorithm engine with 3x performance improvements\n• New intuitive user interface with customizable quantum workspace\n• Advanced security protocols based on quantum entanglement principles\n• Cross-platform synchronization between desktop and mobile devices\n• Over 50 new features requested by our user community\n\nOur team has been working tirelessly to deliver a quantum computing experience that's both powerful and accessible. Early beta testers have reported unprecedented productivity gains and stability improvements.\n\nAll current Quantum OS users will receive the update automatically on release day. We can't wait for you to experience the future of computing!",
+                likes: 142,
+                liked: false,
+                type: "text",
+                comments: [
+                    { user: "TechEnthusiast42", date: "2023-12-16", text: "Can't wait for this update! The screenshots look amazing." },
+                    { user: "QuantumDev", date: "2023-12-17", text: "The new algorithm engine is a game-changer. Been testing the beta!" }
+                ]
+            },
+            {
+                id: "feature-vote",
+                title: "Vote for the Next Feature in Cyber Nexus",
+                category: "votings",
+                date: "2023-12-10",
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Help us decide which feature to implement next in Cyber Nexus. Cast your vote now!",
+                fullText: "We're planning our next major update for Cyber Nexus and we want your input! Help us decide which feature to prioritize:\n\n1. Real-time Dark Web Monitoring\n2. AI-Powered Threat Prediction\n3. Cross-Platform Device Synchronization\n4. Quantum-Resistant VPN\n\nYour vote will directly influence our development roadmap. Voting ends on December 31st, and we'll announce the results in January.\n\nAs a thank you for participating, all voters will receive a 20% discount coupon for our premium security suite when the update launches.",
+                likes: 89,
+                liked: false,
+                type: "voting",
+                options: [
+                    { text: "Real-time Dark Web Monitoring", votes: 45 },
+                    { text: "AI-Powered Threat Prediction", votes: 78 },
+                    { text: "Cross-Platform Device Synchronization", votes: 32 },
+                    { text: "Quantum-Resistant VPN", votes: 56 }
+                ],
+                userVote: null,
+                comments: [
+                    { user: "SecurityPro", date: "2023-12-11", text: "Voted for quantum VPN! That's the future." },
+                    { user: "CyberGuard", date: "2023-12-12", text: "Threat prediction would be most valuable for enterprise users." }
+                ]
+            },
+            {
+                id: "quantum-phone",
+                title: "Introducing the Quantum Phone - Coming 2024",
+                category: "upcoming",
+                date: "2023-12-05",
+                image: "https://images.unsplash.com/photo-1581094794329-ef7ae5f0e8c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Get a first look at our revolutionary Quantum Phone featuring molecular-level security and unprecedented processing power.",
+                fullText: "We're excited to unveil our most ambitious project yet - the Quantum Phone! Launching in Q3 2024, this revolutionary device represents a leap forward in mobile technology:\n\n• Quantum Processing Unit (QPU) for unprecedented computational power\n• Molecular-level security encryption that's virtually unhackable\n• Holographic display technology for immersive 3D interactions\n• Self-charging battery using ambient energy harvesting\n• Revolutionary quantum camera system with molecular-level detail\n\nOur engineers have been working in secret for three years to develop this breakthrough device. The Quantum Phone will run our new Quantum Mobile OS, offering a seamless experience across all Molecular Technology products.\n\nPre-orders will open in June 2024. Sign up for our newsletter to be among the first to know when reservations begin!",
+                likes: 210,
+                liked: false,
+                type: "text",
+                comments: [
+                    { user: "FutureTech", date: "2023-12-06", text: "This sounds incredible! How much will it cost?" },
+                    { user: "GadgetLover", date: "2023-12-07", text: "Can't wait to see the holographic display in action!" }
+                ]
+            },
+            {
+                id: "android-tips",
+                title: "5 Hidden Android Features You Should Be Using",
+                category: "tricks",
+                date: "2023-11-28",
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Discover powerful Android features that most users don't know about. Boost your productivity and security today!",
+                fullText: "Android is packed with powerful features that many users never discover. Here are 5 hidden gems you should be using:\n\n1. **Digital Wellbeing Dashboard** - Track your app usage and set limits to reduce screen time (Settings > Digital Wellbeing)\n\n2. **Guest Mode** - Protect your personal data when lending your phone (Swipe down notification panel > user icon)\n\n3. **Developer Options** - Unlock advanced customization (Settings > About phone > Tap Build number 7 times)\n\n4. **Smart Lock** - Keep your phone unlocked in trusted locations or when connected to trusted devices (Settings > Security > Smart Lock)\n\n5. **Screen Pinning** - Lock your phone to a single app for security or focus (Settings > Security > Screen pinning)\n\nThese features can significantly enhance your Android experience, improving both productivity and security. Try them out today!\n\nPro Tip: Combine Smart Lock with Screen Pinning when lending your phone to friends for maximum security.",
+                likes: 124,
+                liked: false,
+                type: "text",
+                comments: [
+                    { user: "AndroidUser", date: "2023-11-29", text: "Didn't know about screen pinning! Thanks for the tip." },
+                    { user: "TechTips", date: "2023-11-30", text: "The digital wellbeing dashboard changed how I use my phone." }
+                ]
+            },
+            {
+                id: "game-tricks",
+                title: "Quantum Realms: Secret Level Unlock Trick",
+                category: "tricks",
+                date: "2023-11-20",
+                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Discover how to unlock the secret quantum level in our popular game Quantum Realms.",
+                fullText: "Players have been searching for the secret quantum level in Quantum Realms - here's how to unlock it!\n\n1. Complete the main storyline (all 12 chapters)\n2. Collect all 42 quantum particles scattered throughout the game\n3. Visit the Quantum Nexus in Chapter 7 between 8-9pm game time\n4. Perform the sequence: Jump, Crouch, Spin Attack, Quantum Dash (in that exact order)\n5. Enter the newly revealed portal\n\nThe secret quantum level contains:\n• Exclusive quantum-themed weapons and skins\n• Challenging new enemies and bosses\n• A hidden storyline that reveals the game's deeper lore\n• Special achievements worth 500 gamer points\n\nThis level is designed for advanced players and offers some of the most challenging gameplay in Quantum Realms. Good luck, and may quantum forces be with you!",
+                likes: 187,
+                liked: false,
+                type: "text",
+                comments: [
+                    { user: "GamerPro", date: "2023-11-21", text: "Finally! Been searching for this for weeks." },
+                    { user: "QuantumGamer", date: "2023-11-22", text: "The quantum boss in this level is insane!" }
+                ]
+            },
+            {
+                id: "security-news",
+                title: "New Cybersecurity Threats and How to Protect Yourself",
+                category: "news",
+                date: "2023-11-15",
+                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Stay informed about the latest cybersecurity threats and learn how to protect your digital assets.",
+                fullText: "Recent developments in cybersecurity have revealed new threats that every digital citizen should be aware of:\n\n**Quantum Computing Threats**\nWith quantum computers becoming more accessible, traditional encryption methods are vulnerable. We recommend:\n• Upgrading to quantum-resistant encryption\n• Using multi-factor authentication everywhere\n• Regularly updating all security software\n\n**AI-Powered Phishing Attacks**\nNew AI systems can generate highly convincing phishing emails. Protect yourself by:\n• Verifying sender email addresses carefully\n• Never clicking suspicious links\n• Using our Cyber Nexus AI detection tool\n\n**Ransomware 3.0**\nThe latest ransomware can now spread through IoT devices. Defense strategies include:\n• Segmenting your home network\n• Regularly updating IoT firmware\n• Maintaining offline backups\n\nAt Molecular Technology, we're committed to staying ahead of these threats. Our security team works 24/7 to develop new protections, and we'll continue to keep you informed about emerging risks.",
+                likes: 95,
+                liked: false,
+                type: "text",
+                comments: [
+                    { user: "SecurityExpert", date: "2023-11-16", text: "Great overview of the current threat landscape." },
+                    { user: "TechUser", date: "2023-11-17", text: "The quantum threat is real. Thanks for the tips!" }
+                ]
+            }
+        ];
+
+        // DOM elements
+        const announcementsContainer = document.getElementById('announcements-container');
+        const searchInput = document.getElementById('search-input');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const detailModal = document.getElementById('detail-modal');
+        const closeDetail = document.getElementById('close-detail');
+        const filterBtn = document.getElementById('filter-btn');
+
+        // Current filters state
+        let currentFilters = {
+            category: 'all',
+            searchTerm: ''
+        };
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderAnnouncements(announcements);
+            setupEventListeners();
+        });
+
+        function renderAnnouncements(announcementsToRender) {
+            announcementsContainer.innerHTML = '';
+
+            announcementsToRender.forEach(announcement => {
+                const announcementCard = document.createElement('div');
+                announcementCard.classList.add('announcement-card');
+                announcementCard.dataset.category = announcement.category;
+
+                announcementCard.innerHTML = `
+                    ${announcement.image ? `<img src="${announcement.image}" alt="${announcement.title}" class="announcement-image">` : ''}
+                    <div class="announcement-content">
+                        <h3 class="announcement-title">${announcement.title}</h3>
+                        <div class="announcement-date">Posted on ${announcement.date}</div>
+                        <p class="announcement-desc">${announcement.description}</p>
+                        <div class="announcement-actions">
+                            <div class="like-container" data-id="${announcement.id}">
+                                <i class="fas fa-bolt like-icon"></i>
+                                <span class="like-text">Like</span>
+                                <div class="electric-effect"></div>
+                            </div>
+                            <button class="read-more-btn" data-id="${announcement.id}">READ MORE</button>
+                        </div>
+                    </div>
+                `;
+
+                announcementsContainer.appendChild(announcementCard);
+            });
+
+            // Add event listeners to like buttons
+            document.querySelectorAll('.like-container').forEach(container => {
+                container.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const announcementId = this.getAttribute('data-id');
+                    toggleLike(announcementId, this);
+                    createLightningEffect(this);
+                });
+            });
+
+            // Add event listeners to read more buttons
+            document.querySelectorAll('.read-more-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const announcementId = this.getAttribute('data-id');
+                    showAnnouncementDetail(announcementId);
+                });
+            });
+        }
+
+        function toggleLike(announcementId, container) {
+            const announcement = announcements.find(a => a.id === announcementId);
+            if (!announcement) return;
+
+            announcement.liked = !announcement.liked;
+           
+            if (announcement.liked) {
+                announcement.likes++;
+                container.classList.add('liked');
+                container.querySelector('.like-text').textContent = 'Charged';
+            } else {
+                announcement.likes--;
+                container.classList.remove('liked');
+                container.querySelector('.like-text').textContent = 'Charge';
+            }
+        }
+
+        function createLightningEffect(container) {
+            const effectContainer = container.querySelector('.electric-effect');
+            effectContainer.innerHTML = '';
+           
+            // Create multiple lightning bolts
+            for (let i = 0; i < 3; i++) {
+                const lightning = document.createElement('div');
+                lightning.classList.add('lightning');
+               
+                // Random position
+                const left = Math.random() * 100;
+                lightning.style.left = `${left}%`;
+               
+                // Random delay
+                const delay = Math.random() * 0.3;
+                lightning.style.animationDelay = `${delay}s`;
+               
+                effectContainer.appendChild(lightning);
+            }
+           
+            // Show effect
+            effectContainer.style.opacity = '1';
+            setTimeout(() => {
+                effectContainer.style.opacity = '0';
+            }, 500);
+        }
+
+        function showAnnouncementDetail(announcementId) {
+            const announcement = announcements.find(a => a.id === announcementId);
+            if (!announcement) return;
+
+            // Set basic announcement info
+            document.getElementById('detail-title').textContent = announcement.title;
+            document.getElementById('detail-date').textContent = `Posted on ${announcement.date}`;
+            document.getElementById('detail-text').textContent = announcement.fullText;
+           
+            // Set image if available
+            const detailImage = document.getElementById('detail-image');
+            if (announcement.image) {
+                detailImage.src = announcement.image;
+                detailImage.style.display = 'block';
+            } else {
+                detailImage.style.display = 'none';
+            }
+           
+            // Set like state
+            const detailLike = document.getElementById('detail-like');
+            detailLike.classList.toggle('liked', announcement.liked);
+            detailLike.querySelector('.detail-like-text').textContent = announcement.liked ? 'Charged' : 'Like';
+            detailLike.setAttribute('data-id', announcement.id);
+           
+            // Set voting section if applicable
+            const votingContainer = document.getElementById('voting-container');
+            if (announcement.type === 'voting') {
+                votingContainer.innerHTML = `
+                    <h3 class="voting-title">Vote for the Next Feature</h3>
+                    <div class="voting-options">
+                        ${announcement.options.map((option, index) => `
+                            <div class="voting-option ${announcement.userVote === index ? 'selected' : ''}" data-index="${index}">
+                                ${option.text}
+                                <div class="voting-bar">
+                                    <div class="voting-fill" style="width: ${(option.votes / Math.max(...announcement.options.map(o => o.votes)) * 100) || 0}%"></div>
+                                </div>
+                                <div class="vote-count">${option.votes} votes</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="vote-btn" id="vote-btn">SUBMIT VOTE</button>
+                `;
+               
+                // Add event listeners to voting options
+                document.querySelectorAll('.voting-option').forEach(option => {
+                    option.addEventListener('click', function() {
+                        document.querySelectorAll('.voting-option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                    });
+                });
+               
+                // Add event listener to vote button
+                document.getElementById('vote-btn').addEventListener('click', function() {
+                    const selectedOption = document.querySelector('.voting-option.selected');
+                    if (selectedOption) {
+                        const optionIndex = parseInt(selectedOption.getAttribute('data-index'));
+                        announcement.userVote = optionIndex;
+                        announcement.options[optionIndex].votes++;
+                        showAnnouncementDetail(announcementId); // Refresh view
+                    }
+                });
+               
+                votingContainer.style.display = 'block';
+            } else {
+                votingContainer.style.display = 'none';
+            }
+           
+            // Set comments
+            const commentsList = document.getElementById('comments-list');
+            commentsList.innerHTML = '';
+            announcement.comments.forEach(comment => {
+                const commentEl = document.createElement('div');
+                commentEl.classList.add('comment');
+                commentEl.innerHTML = `
+                    <div class="comment-header">
+                        <div class="comment-user">${comment.user}</div>
+                        <div class="comment-date">${comment.date}</div>
+                    </div>
+                    <div class="comment-text">${comment.text}</div>
+                `;
+                commentsList.appendChild(commentEl);
+            });
+           
+            // Show the modal
+            detailModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupEventListeners() {
+            // Close detail modal
+            closeDetail.addEventListener('click', () => {
+                detailModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === detailModal) {
+                    detailModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Detail like button
+            document.getElementById('detail-like').addEventListener('click', function() {
+                const announcementId = this.getAttribute('data-id');
+                toggleLike(announcementId, this);
+                createLightningEffect(this);
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                currentFilters.searchTerm = this.value.toLowerCase();
+                filterAnnouncements();
+            });
+
+            // Category filtering
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Update filter
+                    currentFilters.category = this.dataset.category;
+                    filterAnnouncements();
+                });
+            });
+
+            // Comment submission
+            document.querySelector('.comment-submit').addEventListener('click', function() {
+                const commentInput = document.querySelector('.comment-input');
+                const commentText = commentInput.value.trim();
+               
+                if (commentText) {
+                    // In a real implementation, this would be saved to a database
+                    // For now, we'll just show an alert
+                    alert('Comment submitted! In a real implementation, this would be saved to a database.');
+                    commentInput.value = '';
+                }
+            });
+        }
+
+        function filterAnnouncements() {
+            const filteredAnnouncements = announcements.filter(announcement => {
+                // Check category
+                if (currentFilters.category !== 'all' && announcement.category !== currentFilters.category) {
+                    return false;
+                }
+
+                // Check search term
+                if (currentFilters.searchTerm) {
+                    const searchTerm = currentFilters.searchTerm.toLowerCase();
+                    const titleMatch = announcement.title.toLowerCase().includes(searchTerm);
+                    const descMatch = announcement.description.toLowerCase().includes(searchTerm);
+                    const textMatch = announcement.fullText.toLowerCase().includes(searchTerm);
+
+                    if (!(titleMatch || descMatch || textMatch)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+
+            renderAnnouncements(filteredAnnouncements);
+        }
+    </script>
+</body>
+</html>
