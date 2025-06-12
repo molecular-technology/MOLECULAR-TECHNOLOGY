@@ -1,605 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STARTUP - Molecular Technology</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&family=Rockwell&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0a192f;
-            --secondary: #00d1ff;
-            --accent: #ff2a6d;
-            --dark: #06102a;
-            --light: #d1e8e2;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
-            color: var(--light);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 15% 50%, rgba(0, 209, 255, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 85% 30%, rgba(255, 42, 109, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 50% 80%, rgba(0, 209, 255, 0.1) 0%, transparent 30%);
-            z-index: -1;
-        }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(0, 209, 255, 0.5);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        .topnav {
-            display: flex;
-            justify-content: center;
-            padding: 25px 20px;
-            background: rgba(10, 25, 47, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 209, 255, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-btn {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
-            color: var(--light);
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 8px 15px;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            color: var(--secondary);
-        }
-
-        .nav-btn:hover::after {
-            width: 100%;
-        }
-
-        .nav-btn.active {
-            color: var(--secondary);
-            font-weight: bold;
-        }
-
-        .nav-btn.active::after {
-            width: 100%;
-        }
-
-        .header-content {
-            text-align: center;
-            padding: 60px 20px 40px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .page-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--light), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(0, 209, 255, 0.5);
-            position: relative;
-            display: inline-block;
-        }
-
-        .page-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-            border-radius: 2px;
-        }
-
-        .page-description {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 30px auto 40px;
-            line-height: 1.6;
-            color: var(--light);
-            font-weight: 600;
-        }
-
-        .divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            width: 80%;
-            margin: 0 auto 60px;
-            border: none;
-        }
-
-        .ideas-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .idea-section {
-            background: rgba(15, 35, 60, 0.6);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease-out;
-            animation-fill-mode: backwards;
-        }
-
-        .idea-section:nth-child(1) { animation-delay: 0.2s; }
-        .idea-section:nth-child(2) { animation-delay: 0.4s; }
-        .idea-section:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .idea-section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 209, 255, 0.2);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .section-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 209, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 24px;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            color: var(--light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-description {
-            margin-bottom: 25px;
-            line-height: 1.6;
-            color: #a8d0e6;
-        }
-
-        .char-count {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .idea-input {
-            width: 100%;
-            min-height: 180px;
-            background: rgba(30, 45, 70, 0.6);
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            border-radius: 8px;
-            padding: 15px;
-            color: white;
-            font-family: 'Rockwell', serif;
-            font-size: 1.1rem;
-            resize: vertical;
-            transition: border-color 0.3s ease;
-        }
-
-        .idea-input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(0, 209, 255, 0.2);
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 14px 20px;
-            background: linear-gradient(135deg, var(--secondary), #0077b6);
-            color: var(--dark);
-            border: none;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.5s;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0, 209, 255, 0.4);
-        }
-
-        .email-info {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--secondary);
-            text-align: center;
-            font-style: italic;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(6, 16, 42, 0.8);
-            border-top: 1px solid rgba(0, 209, 255, 0.2);
-        }
-
-        .footer-text {
-            font-size: 1rem;
-            color: var(--light);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .footer-text a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-text a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .topnav {
-                flex-wrap: wrap;
-            }
-            .nav-btn {
-                margin: 5px;
-                font-size: 14px;
-            }
-            .page-title {
-                font-size: 3.5rem;
-            }
-            .page-description {
-                font-size: 1.1rem;
-            }
-            .ideas-container {
-                grid-template-columns: 1fr;
-            }
-            .section-title {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* Animation for character counter */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .char-limit {
-            animation: pulse 0.5s ease;
-            color: var(--accent);
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARTUP - Molecular Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&family=Rockwell&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #0a192f;
+            --secondary: #00d1ff;
+            --accent: #ff2a6d;
+            --dark: #06102a;
+            --light: #d1e8e2;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(0, 209, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 85% 30%, rgba(255, 42, 109, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(0, 209, 255, 0.1) 0%, transparent 30%);
+            z-index: -1;
+        }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(0, 209, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.2);
+                opacity: 0;
+            }
+        }
+        .topnav {
+            display: flex;
+            justify-content: center;
+            padding: 25px 20px;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 209, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-btn {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            color: var(--light);
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        .nav-btn:hover {
+            color: var(--secondary);
+        }
+        .nav-btn:hover::after {
+            width: 100%;
+        }
+        .nav-btn.active {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        .nav-btn.active::after {
+            width: 100%;
+        }
+        .header-content {
+            text-align: center;
+            padding: 60px 20px 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--light), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 209, 255, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            border-radius: 2px;
+        }
+        .page-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 30px auto 40px;
+            line-height: 1.6;
+            color: var(--light);
+            font-weight: 600;
+        }
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            width: 80%;
+            margin: 0 auto 60px;
+            border: none;
+        }
+        .ideas-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        .idea-section {
+            background: rgba(15, 35, 60, 0.6);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+            animation-fill-mode: backwards;
+        }
+        .idea-section:nth-child(1) { animation-delay: 0.2s; }
+        .idea-section:nth-child(2) { animation-delay: 0.4s; }
+        .idea-section:nth-child(3) { animation-delay: 0.6s; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .idea-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 209, 255, 0.2);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 209, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-description {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #a8d0e6;
+        }
+        .char-count {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .char-count.char-limit {
+            animation: pulse 0.5s ease;
+            color: var(--accent);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .idea-input {
+            width: 100%;
+            min-height: 180px;
+            background: rgba(30, 45, 70, 0.6);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            color: white;
+            font-family: 'Rockwell', serif;
+            font-size: 1.1rem;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        .idea-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 209, 255, 0.2);
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, var(--secondary), #0077b6);
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 209, 255, 0.4);
+        }
+        .email-info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            text-align: center;
+            font-style: italic;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(6, 16, 42, 0.8);
+            border-top: 1px solid rgba(0, 209, 255, 0.2);
+        }
+        .footer-text {
+            font-size: 1rem;
+            color: var(--light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .footer-text a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .topnav {
+                flex-wrap: wrap;
+            }
+            .nav-btn {
+                margin: 5px;
+                font-size: 14px;
+            }
+            .page-title {
+                font-size: 3.5rem;
+            }
+            .page-description {
+                font-size: 1.1rem;
+            }
+            .ideas-container {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Animated background particles -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Navigation -->
-    <nav class="topnav">
-        <a href="https://molecular-technology.github.io/MOLECULAR-TECHNOLOGY/index.html" class="nav-btn">HOME</a>
-        <a href="#" class="nav-btn">ABOUT</a>
-        <a href="#" class="nav-btn">WORK</a>
-        <a href="#" class="nav-btn">CAREER</a>
-        <a href="#" class="nav-btn active">STARTUP</a>
-        <a href="#" class="nav-btn">CONTACT</a>
-    </nav>
-    
-    <!-- Page Header -->
-    <div class="header-content">
-        <h1 class="page-title">STARTUP</h1>
-        <p class="page-description">
-            This Page Gives You Access To Share Your Ideas With Us. If Your Idea Is Selected, 
-            You'll Receive 25% Of Profit Share. (Only for NEW INNOVATION IDEAS and EXTRAORDINARY IDEAS)
-        </p>
-        <hr class="divider">
-    </div>
-    
-    <!-- Idea Sections -->
-    <div class="ideas-container">
-        <!-- Product Improvement -->
-        <section class="idea-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h2 class="section-title">PRODUCT IMPROVEMENT</h2>
-            </div>
-            <p class="section-description">
-                Share your ideas to enhance our existing products. Minimum 100 characters required.
-            </p>
-            <div class="char-count">
-                <span id="char-count-1">0</span>/100 characters
-            </div>
-            <form id="form1" class="idea-form">
-                <textarea class="idea-input" id="idea1" minlength="100" required placeholder="Describe your product improvement idea..."></textarea>
-                <button type="submit" class="submit-btn">SUBMIT IDEA</button>
-            </form>
-            <p class="email-info">Ideas sent to: review1work@gmail.com</p>
-        </section>
-        
-        <!-- New Innovation -->
-        <section class="idea-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <h2 class="section-title">NEW INNOVATION</h2>
-            </div>
-            <p class="section-description">
-                Present groundbreaking concepts for new products or services. Minimum 700 characters required.
-            </p>
-            <div class="char-count">
-                <span id="char-count-2">0</span>/700 characters
-            </div>
-            <form id="form2" class="idea-form">
-                <textarea class="idea-input" id="idea2" minlength="700" required placeholder="Describe your innovative idea..."></textarea>
-                <button type="submit" class="submit-btn">SUBMIT IDEA</button>
-            </form>
-            <p class="email-info">Ideas sent to: review2work@gmail.com</p>
-        </section>
-        
-        <!-- Extraordinary Ideas -->
-        <section class="idea-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h2 class="section-title">EXTRAORDINARY IDEAS</h2>
-            </div>
-            <p class="section-description">
-                Share revolutionary concepts that could transform industries. Minimum 1000 characters required.
-            </p>
-            <div class="char-count">
-                <span id="char-count-3">0</span>/1000 characters
-            </div>
-            <form id="form3" class="idea-form">
-                <textarea class="idea-input" id="idea3" minlength="1000" required placeholder="Describe your extraordinary idea..."></textarea>
-                <button type="submit" class="submit-btn">SUBMIT IDEA</button>
-            </form>
-            <p class="email-info">Ideas sent to: review3work@gmail.com</p>
-        </section>
-    </div>
-    
-    <!-- Footer -->
-    <footer>
-        <p class="footer-text">
-            &copy; 2023 Molecular Technology. All rights reserved. 
-            Your ideas are secure with us. By submitting, you agree to our 
-            <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
-        </p>
-    </footer>
-    
-    <script>
-        // Create animated particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random properties
-                const size = Math.random() * 10 + 2;
-                const posX = Math.random() * 100;
-                const delay = Math.random() * 15;
-                const duration = Math.random() * 10 + 15;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Character counters
-        function setupCharCounters() {
-            const textareas = document.querySelectorAll('.idea-input');
-            
-            textareas.forEach((textarea, index) => {
-                const counter = document.getElementById(`char-count-${index+1}`);
-                
-                // Update counter on input
-                textarea.addEventListener('input', () => {
-                    const charCount = textarea.value.length;
-                    counter.textContent = charCount;
-                    
-                    // Add animation when approaching min limit
-                    const min = parseInt(textarea.getAttribute('minlength'));
-                    if (charCount > min * 0.9 && charCount < min) {
-                        counter.classList.add('char-limit');
-                    } else {
-                        counter.classList.remove('char-limit');
-                    }
-                });
-                
-                // Initialize counter
-                counter.textContent = textarea.value.length;
-            });
-        }
-        
-        // Form submission handling
-        function setupFormHandlers() {
-            const forms = document.querySelectorAll('.idea-form');
-            
-            forms.forEach((form, index) => {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const textarea = form.querySelector('textarea');
-                    const idea = textarea.value;
-                    
-                    // Check min length
-                    const min = parseInt(textarea.getAttribute('minlength'));
-                    if (idea.length < min) {
-                        alert(`Please enter at least ${min} characters for your idea.`);
-                        return;
-                    }
-                    
-                    // Show submission animation
-                    const submitBtn = form.querySelector('.submit-btn');
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
-                    submitBtn.disabled = true;
-                    
-                    // Simulate submission (in a real implementation, this would send to your email)
-                    setTimeout(() => {
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> IDEA SENT!';
-                        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
-                        
-                        // Reset after a delay
-                        setTimeout(() => {
-                            submitBtn.innerHTML = 'SUBMIT IDEA';
-                            submitBtn.style.background = 'linear-gradient(135deg, var(--secondary), #0077b6)';
-                            submitBtn.disabled = false;
-                            textarea.value = '';
-                            document.getElementById(`char-count-${index+1}`).textContent = '0';
-                        }, 2000);
-                    }, 1500);
-                });
-            });
-        }
-        
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            setupCharCounters();
-            setupFormHandlers();
-            
-            // Add hover effect to idea sections on load
-            setTimeout(() => {
-                document.querySelectorAll('.idea-section').forEach(section => {
-                    section.style.transform = 'translateY(0)';
-                });
-            }, 100);
-        });
-    </script>
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="topnav">
+        <a href="https://molecular-technology.github.io/MOLECULAR-TECHNOLOGY/index.html" class="nav-btn">HOME</a>
+        <a href="#" class="nav-btn">ABOUT</a>
+        <a href="#" class="nav-btn">WORK</a>
+        <a href="#" class="nav-btn">CAREER</a>
+        <a href="#" class="nav-btn active">STARTUP</a>
+        <a href="#" class="nav-btn">CONTACT</a>
+    </nav>
+    
+    <!-- Page Header -->
+    <div class="header-content">
+        <h1 class="page-title">STARTUP</h1>
+        <p class="page-description">
+            This Page Gives You Access To Share Your Ideas With Us. If Your Idea Is Selected, 
+            You'll Receive 25% Of Profit Share. (Only for NEW INNOVATION IDEAS and EXTRAORDINARY IDEAS)
+        </p>
+        <hr class="divider">
+    </div>
+    
+    <!-- Idea Sections -->
+    <div class="ideas-container">
+        <!-- Product Improvement -->
+        <section class="idea-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h2 class="section-title">PRODUCT IMPROVEMENT</h2>
+            </div>
+            <p class="section-description">
+                Share your ideas to enhance our existing products. Minimum 100 characters required.
+            </p>
+            <div class="char-count">
+                <span id="char-count-1">0</span>/100 characters
+            </div>
+            <form id="form1" class="idea-form">
+                <textarea class="idea-input" id="idea1" minlength="100" required placeholder="Describe your product improvement idea..."></textarea>
+                <button type="submit" class="submit-btn">SUBMIT IDEA</button>
+            </form>
+            <p class="email-info">Ideas sent to: review1work@gmail.com</p>
+        </section>
+        
+        <!-- New Innovation -->
+        <section class="idea-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h2 class="section-title">NEW INNOVATION</h2>
+            </div>
+            <p class="section-description">
+                Present groundbreaking concepts for new products or services. Minimum 700 characters required.
+            </p>
+            <div class="char-count">
+                <span id="char-count-2">0</span>/700 characters
+            </div>
+            <form id="form2" class="idea-form">
+                <textarea class="idea-input" id="idea2" minlength="700" required placeholder="Describe your innovative idea..."></textarea>
+                <button type="submit" class="submit-btn">SUBMIT IDEA</button>
+            </form>
+            <p class="email-info">Ideas sent to: review2work@gmail.com</p>
+        </section>
+        
+        <!-- Extraordinary Ideas -->
+        <section class="idea-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2 class="section-title">EXTRAORDINARY IDEAS</h2>
+            </div>
+            <p class="section-description">
+                Share revolutionary concepts that could transform industries. Minimum 1000 characters required.
+            </p>
+            <div class="char-count">
+                <span id="char-count-3">0</span>/1000 characters
+            </div>
+            <form id="form3" class="idea-form">
+                <textarea class="idea-input" id="idea3" minlength="1000" required placeholder="Describe your extraordinary idea..."></textarea>
+                <button type="submit" class="submit-btn">SUBMIT IDEA</button>
+            </form>
+            <p class="email-info">Ideas sent to: review3work@gmail.com</p>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">
+            &copy; 2023 Molecular Technology. All rights reserved. 
+            Your ideas are secure with us. By submitting, you agree to our 
+            <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+        </p>
+    </footer>
+    
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 10 + 2;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Character counters
+        function setupCharCounters() {
+            const textareas = document.querySelectorAll('.idea-input');
+            
+            textareas.forEach((textarea, index) => {
+                const counter = document.getElementById(`char-count-${index+1}`);
+                
+                // Update counter on input
+                textarea.addEventListener('input', () => {
+                    const charCount = textarea.value.length;
+                    counter.textContent = charCount;
+                    
+                    // Add animation when approaching min limit
+                    const min = parseInt(textarea.getAttribute('minlength'));
+                    if (charCount > min * 0.9 && charCount < min) {
+                       .classList.add('char-limit');
+                    } else {
+                        counter.classList.remove('char-limit');
+                    }
+                });
+                
+                // Initialize counter
+                counter.textContent = textarea.value.length;
+            });
+        }
+        
+        // Form submission handling
+        function setupFormHandlers() {
+            const forms = document.querySelectorAll('.idea-form');
+            
+            forms.forEach((form, index) => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const textarea = form.querySelector('textarea');
+                    const idea = textarea.value;
+                    
+                    // Check min length
+                    const min = parseInt(textarea.getAttribute('minlength'));
+                    if (idea.length < min) {
+                        alert(`Please enter at least ${min} characters for your idea.`);
+                        return;
+                    }
+                    
+                    // Show submission animation
+                    const submitBtn = form.querySelector('.submit-btn');
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate submission (in a real implementation, this would send to your email)
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> IDEA SENT!';
+                        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+                        
+                        // Reset after a delay
+                        setTimeout(() => {
+                            submitBtn.innerHTML = 'SUBMIT IDEA';
+                            submitBtn.style.background = 'linear-gradient(135deg, var(--secondary), #0077b6)';
+                            submitBtn.disabled = false;
+                            textarea.value = '';
+                            document.getElementById(`char-count-${index+1}`).textContent = '0';
+                        }, 2000);
+                    }, 1500);
+                });
+            });
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setupCharCounters();
+            setupFormHandlers();
+            
+            // Add hover effect to idea sections on load
+            setTimeout(() => {
+                document.querySelectorAll('.idea-section').forEach(section => {
+                    section.style.transform = 'translateY(0)';
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html>
