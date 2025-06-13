@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STARTUPS | Molecular Technology</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Montserrat:wght@300;400;500&family=Rockwell:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Montserrat:wght@300;400;500&family=Rockwell:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -12,99 +12,85 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+       
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%),
-                        radial-gradient(circle at 10% 20%, rgba(25, 45, 100, 0.2) 0%, transparent 20%),
-                        radial-gradient(circle at 90% 80%, rgba(70, 20, 100, 0.15) 0%, transparent 20%);
-            color: #ffffff;
+            background: #0a0a0a; /* Dark background */
+            color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(40, 40, 40, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(60, 60, 60, 0.15) 0%, transparent 20%);
             padding-bottom: 50px;
-            position: relative;
         }
-        
-        /* New Premium Animations */
-        @keyframes hologram {
-            0% { transform: rotateX(0deg) rotateY(0deg); }
-            50% { transform: rotateX(10deg) rotateY(10deg); }
-            100% { transform: rotateX(0deg) rotateY(0deg); }
+       
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        @keyframes pulseBorder {
-            0% { border-color: rgba(255, 30, 30, 0.3); }
-            50% { border-color: rgba(255, 30, 30, 0.6); }
-            100% { border-color: rgba(255, 30, 30, 0.3); }
-        }
-        
-        @keyframes dataStream {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes matrixFlow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-        
-        @keyframes techGlow {
-            0% { box-shadow: 0 0 15px rgba(255, 30, 30, 0.3); }
-            100% { box-shadow: 0 0 30px rgba(255, 30, 30, 0.6); }
-        }
-        
-        /* Header with enhanced animations */
+       
+        /* Header with animation */
         .page-header {
             text-align: center;
-            padding: 80px 20px 40px;
+            padding: 60px 20px 30px;
             position: relative;
             overflow: hidden;
-            animation: hologram 4s infinite;
         }
-        
+       
         .page-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 4.5rem;
             font-weight: 700;
             text-transform: uppercase;
-            background: linear-gradient(90deg, #ff0000, #ff4444);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #ffffff;
             letter-spacing: 3px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             position: relative;
-            animation: titleGlow 3s infinite alternate, hologram 8s infinite;
+            animation: titleGlow 3s infinite alternate;
         }
-        
+       
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
+            }
+        }
+       
         .subtitle {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             color: #ffffff;
             max-width: 800px;
-            margin: 0 auto 40px;
-            height: 80px;
+            margin: 0 auto 30px;
+            height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: dataStream 1.5s ease-out;
         }
-        
+       
         .typing-animation {
-            border-right: 2px solid #ffffff;
+            border-right: 2px solid #fff;
             padding-right: 5px;
-            animation: blink 0.7s infinite, pulseBorder 1.5s infinite;
+            animation: blink 0.7s infinite;
         }
-        
+       
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #fff; }
+        }
+       
         .red-line {
             height: 3px;
             background: linear-gradient(90deg, transparent, #ff0000, transparent);
             width: 100%;
             margin: 20px auto;
             position: relative;
-            animation: linePulse 2s infinite, matrixFlow 10s linear infinite;
         }
-        
+       
         .red-line::before, .red-line::after {
             content: '';
             position: absolute;
@@ -114,33 +100,47 @@
             background: #ff0000;
             animation: linePulse 2s infinite;
         }
-        
+       
+        .red-line::before {
+            left: 0;
+            animation-delay: 0s;
+        }
+       
+        .red-line::after {
+            right: 0;
+            animation-delay: 1s;
+        }
+       
+        @keyframes linePulse {
+            0% { opacity: 0; width: 20px; }
+            50% { opacity: 1; width: 100px; }
+            100% { opacity: 0; width: 20px; }
+        }
+       
         /* Navigation buttons */
         .nav-buttons {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            padding: 30px 20px;
+            gap: 20px;
+            padding: 20px;
             flex-wrap: wrap;
-            animation: techGlow 2s infinite;
         }
-        
+       
         .nav-btn {
             font-family: 'Orbitron', sans-serif;
             background: rgba(30, 30, 30, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 0, 0, 0.5);
             color: #ffffff;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border-radius: 40px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 30px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            will-change: transform, box-shadow;
         }
-        
+       
         .nav-btn::before {
             content: '';
             position: absolute;
@@ -148,128 +148,119 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent);
+            transition: 0.5s;
             z-index: -1;
         }
-        
+       
         .nav-btn:hover {
-            background: rgba(255, 30, 30, 0.3);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+            background: rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
         }
-        
+       
         .nav-btn:hover::before {
             left: 100%;
         }
-        
+       
         /* Idea sections */
         .idea-sections {
             display: flex;
             flex-direction: column;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-            animation: techGlow 3s infinite;
+            gap: 40px;
+            margin: 40px auto;
         }
-        
+       
         .idea-section {
-            background: rgba(40, 40, 40, 0.8);
-            border-radius: 25px;
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 15px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            animation: hologram 6s infinite;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
         }
-        
+       
         .idea-section:hover {
-            transform: translateY(-15px) scale(1.025);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.8);
+            transform: translateY(-10px);
+            border-color: rgba(255, 0, 0, 0.5);
         }
-        
+       
         .section-header {
-            background: linear-gradient(90deg, #ff0000, #ff4444);
-            padding: 30px;
+            background: linear-gradient(90deg, #333333, #ff0000);
+            padding: 20px;
             text-align: center;
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             position: relative;
-            overflow: hidden;
-            animation: hologram 5s infinite;
         }
-        
+       
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+       
         .char-requirement {
-            font-size: 1.1rem;
-            margin-top: 12px;
+            font-size: 1rem;
+            margin-top: 8px;
             font-family: 'Montserrat', sans-serif;
             opacity: 0.9;
-            color: #888888;
-            animation: dataStream 1s ease-out;
         }
-        
+       
         .form-container {
-            padding: 40px;
-            background: rgba(50, 50, 50, 0.8);
-            border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            animation: hologram 4s infinite;
+            padding: 30px;
         }
-        
+       
         .idea-input {
             width: 100%;
-            min-height: 250px;
-            background: rgba(60, 60, 60, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 25px;
-            color: #ffffff;
+            min-height: 200px;
+            background: rgba(50, 50, 50, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
             font-family: 'Rockwell', serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             resize: vertical;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            will-change: transform, box-shadow;
-            animation: hologram 5s infinite;
+            transition: all 0.3s ease;
         }
-        
+       
         .idea-input:focus {
             outline: none;
-            border-color: #ff4444;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
-            background: rgba(60, 60, 60, 0.5);
-            transform: translateY(-3px) scale(1.01);
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            background: rgba(50, 50, 50, 0.7);
         }
-        
+       
         .char-count {
             text-align: right;
-            margin-top: 15px;
-            font-size: 1rem;
+            margin-top: 10px;
+            font-size: 0.9rem;
             opacity: 0.7;
-            color: #888888;
-            animation: dataStream 1.2s ease-out;
         }
-        
+       
         .submit-btn {
             display: block;
             width: 100%;
-            padding: 20px;
-            margin-top: 30px;
-            background: linear-gradient(90deg, #ff0000, #ff4444);
+            padding: 15px;
+            margin-top: 20px;
+            background: linear-gradient(90deg, #333333, #ff0000);
             border: none;
-            border-radius: 15px;
-            color: #ffffff;
+            border-radius: 8px;
+            color: white;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            will-change: transform, box-shadow;
-            animation: techGlow 2s infinite;
         }
-        
+       
         .submit-btn::before {
             content: '';
             position: absolute;
@@ -278,156 +269,323 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: 0.5s;
             z-index: -1;
         }
-        
+       
         .submit-btn:hover {
-            transform: translateY(-7px) scale(1.03);
-            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6);
         }
-        
+       
         .submit-btn:hover::before {
             left: 100%;
         }
-        
+       
         .submit-btn:disabled {
             background: linear-gradient(90deg, #555, #777);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
-        
+       
+        .submit-btn:disabled:hover::before {
+            animation: none;
+        }
+       
+        /* Success message */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(40, 40, 40, 0.95);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateX(120%);
+            transition: transform 0.5s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #ff0000;
+        }
+       
+        .success-message.show {
+            transform: translateX(0);
+        }
+       
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 80px;
-            padding: 30px;
-            font-size: 1rem;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
             opacity: 0.7;
             font-family: 'Montserrat', sans-serif;
-            color: #888888;
-            animation: hologram 8s infinite;
+            color: #aaa;
         }
-        
+       
         /* Responsive design */
         @media (max-width: 768px) {
             .page-title {
                 font-size: 3rem;
             }
-            
+           
             .subtitle {
                 font-size: 1.2rem;
-                height: 100px;
+                height: 80px;
             }
-            
+           
+            .nav-buttons {
+                gap: 10px;
+            }
+           
             .nav-btn {
-                padding: 12px 25px;
-                font-size: 1.1rem;
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
-            
+           
             .section-header {
-                font-size: 1.8rem;
-            }
-            
-            .form-container {
-                padding: 25px;
-            }
-            
-            .char-count {
-                font-size: 0.95rem;
+                font-size: 1.5rem;
             }
         }
-        
+       
         @media (max-width: 480px) {
             .page-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            
+           
             .subtitle {
                 font-size: 1rem;
-                height: 120px;
+                height: 100px;
             }
-            
-            .idea-input {
+           
+            .form-container {
                 padding: 20px;
-                font-size: 1.1rem;
             }
+        }
+       
+        /* Animation for section entrance */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+       
+        .idea-section {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+       
+        .idea-section:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+       
+        .idea-section:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+       
+        .idea-section:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+       
+        /* Email modal */
+        .email-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+       
+        .email-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+       
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            border: 1px solid #ff0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            position: relative;
+        }
+       
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #ff0000;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+       
+        .modal-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+       
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+       
+        .modal-input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: rgba(50, 50, 50, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+       
+        .modal-input:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+       
+        .modal-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #333, #ff0000);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+       
+        .modal-btn:hover {
+            background: linear-gradient(90deg, #444, #ff3333);
         }
     </style>
 </head>
 <body>
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <span>Your Idea Has Been Submitted Successfully!</span>
+    </div>
+   
+    <!-- Email Modal -->
+    <div class="email-modal" id="emailModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">ENTER YOUR EMAIL</h2>
+                <p>We'll send a confirmation or feedback to your email address.</p>
+            </div>
+            <input type="email" class="modal-input" id="userEmail" placeholder="Please Enter Your Email For Feedback Here.(Example : saikat123@example.com)." required>
+            <button class="modal-btn" id="confirmEmail">CONFIRM & SEND MY IDEA</button>
+        </div>
+    </div>
+   
     <!-- Page Header -->
     <header class="page-header">
-        <h1 class="page-title">STARTUPS</h1>
-        <div class="subtitle">
-            <div class="typing-animation">This Page Gives You Access To Share Your Creative Ideas With Us And If Selected So, You'll Get 25% Of Profit Share.(Note: Profit Shares Are Only For "NEW INNOVATIONS IDEAS" AND "EXTRAORDINARY IDEAS")</div>
+        <div class="container">
+            <h1 class="page-title">STARTUPS</h1>
+            <div class="subtitle">
+                <div class="typing-animation">This Page Gives You Access To Share Your Creative Ideas With Us And If Selected 25% Of Profit Share (Note: Profit Shares Are Only For "NEW INNOVATIONS IDEAS" AND "EXTRAORDINARY IDEAS")</div>
+            </div>
+            <div class="red-line"></div>
         </div>
-        <div class="red-line"></div>
     </header>
-    
+   
     <!-- Navigation Buttons -->
-    <div class="nav-buttons">
-        <button class="nav-btn">HOME</button>
-        <button class="nav-btn">INNOVATIONS</button>
-        <button class="nav-btn" style="background: rgba(255, 30, 30, 0.3);">STARTUPS</button>
-        <button class="nav-btn">ABOUT</button>
-        <button class="nav-btn">CONTACT</button>
+    <div class="container">
+        <div class="nav-buttons">
+            <button class="nav-btn">HOME</button>
+            <button class="nav-btn">INNOVATIONS</button>
+            <button class="nav-btn" style="background: rgba(255, 0, 0, 0.3);">STARTUPS</button>
+            <button class="nav-btn">ABOUT</button>
+            <button class="nav-btn">CONTACT</button>
+        </div>
     </div>
-    
+   
     <!-- Idea Submission Sections -->
-    <div class="idea-sections">
-        <!-- Product Improvement Ideas -->
-        <section class="idea-section">
-            <div class="section-header">
-                PRODUCT IMPROVEMENT IDEAS
-                <div class="char-requirement">Minimum 100 characters</div>
-            </div>
-            <div class="form-container">
-                <textarea class="idea-input" placeholder="Share your improvement idea here for our product..." minlength="100" id="product-idea"></textarea>
-                <div class="char-count"><span id="product-count">0</span>/100 characters</div>
-                <button class="submit-btn" onclick="submitIdea('product')" id="product-btn" disabled>
-                    <i class="fas fa-paper-plane"></i> SEND MY IMPROVEMENT IDEA!
-                </button>
-            </div>
-        </section>
-        
-        <!-- New Innovation Ideas -->
-        <section class="idea-section">
-            <div class="section-header">
-                NEW INNOVATION IDEAS
-                <div class="char-requirement">Minimum 700 characters</div>
-            </div>
-            <div class="form-container">
-                <textarea class="idea-input" placeholder="Describe your fresh innovative idea in detail here..." minlength="700" id="innovation-idea"></textarea>
-                <div class="char-count"><span id="innovation-count">0</span>/700 characters</div>
-                <button class="submit-btn" onclick="submitIdea('innovation')" id="innovation-btn" disabled>
-                    <i class="fas fa-lightbulb"></i> SEND MY NEW INNOVATIONS IDEA!
-                </button>
-            </div>
-        </section>
-        
-        <!-- Extraordinary Ideas -->
-        <section class="idea-section">
-            <div class="section-header">
-                EXTRAORDINARY IDEAS
-                <div class="char-requirement">Minimum 1000 characters</div>
-            </div>
-            <div class="form-container">
-                <textarea class="idea-input" placeholder="Input your extraordinary and groundbreaking idea to us here..." minlength="1000" id="extraordinary-idea"></textarea>
-                <div class="char-count"><span id="extraordinary-count">0</span>/1000 characters</div>
-                <button class="submit-btn" onclick="submitIdea('extraordinary')" id="extraordinary-btn" disabled>
-                    <i class="fas fa-rocket"></i> SEND MY SUPER IDEA!
-                </button>
-            </div>
-        </section>
+    <div class="container">
+        <div class="idea-sections">
+            <!-- Product Improvement Ideas -->
+            <section class="idea-section">
+                <div class="section-header">
+                    PRODUCT IMPROVEMENT IDEAS
+                    <div class="char-requirement">Minimum 100 Characters</div>
+                </div>
+                <div class="form-container">
+                    <textarea class="idea-input" placeholder="Share your improvement ideas here for our products..." minlength="100" id="product-idea"></textarea>
+                    <div class="char-count"><span id="product-count">0</span>/100 characters</div>
+                    <button class="submit-btn" id="product-btn" disabled>
+                        <i class="fas fa-paper-plane"></i> SEND MY IMPROVEMENT IDEA
+                    </button>
+                </div>
+            </section>
+           
+            <!-- New Innovation Ideas -->
+            <section class="idea-section">
+                <div class="section-header">
+                    NEW INNOVATION IDEAS
+                    <div class="char-requirement">Minimum 700 Characters</div>
+                </div>
+                <div class="form-container">
+                    <textarea class="idea-input" placeholder="Describe your fresh innovative idea in detail here..." minlength="700" id="innovation-idea"></textarea>
+                    <div class="char-count"><span id="innovation-count">0</span>/700 characters</div>
+                    <button class="submit-btn" id="innovation-btn" disabled>
+                        <i class="fas fa-lightbulb"></i> SEND MY INNOVATION IDEA
+                    </button>
+                </div>
+            </section>
+           
+            <!-- Extraordinary Ideas -->
+            <section class="idea-section">
+                <div class="section-header">
+                    EXTRAORDINARY IDEAS
+                    <div class="char-requirement">Minimum 1000 Characters</div>
+                </div>
+                <div class="form-container">
+                    <textarea class="idea-input" placeholder="Input your extraordinary and groundbreaking idea here..." minlength="1000" id="extraordinary-idea"></textarea>
+                    <div class="char-count"><span id="extraordinary-count">0</span>/1000 characters</div>
+                    <button class="submit-btn" id="extraordinary-btn" disabled>
+                        <i class="fas fa-rocket"></i> SEND MY EXTRAORDINARY IDEA
+                    </button>
+                </div>
+            </section>
+        </div>
     </div>
-    
+   
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; ©2025 MOLECULAR TECHNOLOGY | Don't Worry, Your All Informations Are Safe With Us.</p>
+        <p>&copy; 2025 MOLECULAR TECHNOLOGY | Don't Worry, Your All Inserted Informations Are Safe With Us. ✓</p>
     </div>
-    
+   
     <script>
         // Character counters
         document.getElementById('product-idea').addEventListener('input', function() {
@@ -435,58 +593,137 @@
             document.getElementById('product-count').textContent = count;
             document.getElementById('product-btn').disabled = count < 100;
         });
-        
+       
         document.getElementById('innovation-idea').addEventListener('input', function() {
             const count = this.value.length;
             document.getElementById('innovation-count').textContent = count;
             document.getElementById('innovation-btn').disabled = count < 700;
         });
-        
+       
         document.getElementById('extraordinary-idea').addEventListener('input', function() {
             const count = this.value.length;
             document.getElementById('extraordinary-count').textContent = count;
             document.getElementById('extraordinary-btn').disabled = count < 1000;
         });
-        
-        // Form submission handler
-        function submitIdea(type) {
-            let email, textarea, message;
-            
+       
+        // Current idea data
+        let currentIdeaType = '';
+        let currentIdeaContent = '';
+        let currentRecipientEmail = '';
+       
+        // Setup button event listeners
+        document.getElementById('product-btn').addEventListener('click', function() {
+            prepareIdeaSubmission('product', 'review1work@gmail.com');
+        });
+       
+        document.getElementById('innovation-btn').addEventListener('click', function() {
+            prepareIdeaSubmission('innovation', 'review2work@gmail.com');
+        });
+       
+        document.getElementById('extraordinary-btn').addEventListener('click', function() {
+            prepareIdeaSubmission('extraordinary', 'review3work@gmail.com');
+        });
+       
+        // Modal controls
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('emailModal').classList.remove('show');
+        });
+       
+        document.getElementById('confirmEmail').addEventListener('click', function() {
+            const userEmail = document.getElementById('userEmail').value;
+            if(validateEmail(userEmail)) {
+                sendIdeaEmail(userEmail);
+                document.getElementById('emailModal').classList.remove('show');
+            } else {
+                alert('Please enter a valid email address');
+            }
+        });
+       
+        function prepareIdeaSubmission(type, recipientEmail) {
+            let textarea;
             switch(type) {
                 case 'product':
-                    email = 'review1work@gmail.com';
                     textarea = document.getElementById('product-idea');
-                    message = "Your Improvement Idea Is Submitted Successfully! We'll Try To Use Your Idea Into Our Product.";
                     break;
                 case 'innovation':
-                    email = 'review2work@gmail.com';
                     textarea = document.getElementById('innovation-idea');
-                    message = "Your New Innovation Idea Is Submitted Successfully! We'll Mail You Soon.";
                     break;
                 case 'extraordinary':
-                    email = 'review3work@gmail.com';
                     textarea = document.getElementById('extraordinary-idea');
-                    message = "Congratulations, Your Extraordinary Idea Is Submitted Successfully! We'll Mail You In 24 Hours";
                     break;
             }
-            
-            const idea = textarea.value;
-            
-            // In a real implementation, this would send to your backend
-            // For this demo, we'll simulate submission
-            alert(`${message}\n\nWould send to: ${email}\n\nContent:\n${idea.substring(0, 150)}...`);
-            
-            // Reset form
+           
+            currentIdeaType = type;
+            currentIdeaContent = textarea.value;
+            currentRecipientEmail = recipientEmail;
+           
+            // Show email modal
+            document.getElementById('emailModal').classList.add('show');
+            document.getElementById('userEmail').focus();
+        }
+       
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+       
+        function sendIdeaEmail(userEmail) {
+            // In a real implementation, you would send the email to your server
+            // For this demo, we simulate sending the email
+           
+            // Prepare email content
+            const subject = `${currentIdeaType.toUpperCase()} Idea Submission from ${userEmail}`;
+            const body = `New idea submission from: ${userEmail}\n\nType: ${currentIdeaType}\n\nIdea Content:\n${currentIdeaContent}`;
+           
+            // Create a mailto link - this will open the user's email client
+            const mailtoLink = `mailto:${currentRecipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+           
+            // Open the email client
+            window.location.href = mailtoLink;
+           
+            // Show success message
+            showSuccessMessage(`Your ${currentIdeaType} Idea Has Been Submitted !`);
+           
+            // Reset the form
+            resetForm(currentIdeaType);
+        }
+       
+        function showSuccessMessage(msg) {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.querySelector('span').textContent = msg;
+            successMsg.classList.add('show');
+           
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 5000);
+        }
+       
+        function resetForm(type) {
+            let textarea;
+            switch(type) {
+                case 'product':
+                    textarea = document.getElementById('product-idea');
+                    document.getElementById('product-btn').disabled = true;
+                    break;
+                case 'innovation':
+                    textarea = document.getElementById('innovation-idea');
+                    document.getElementById('innovation-btn').disabled = true;
+                    break;
+                case 'extraordinary':
+                    textarea = document.getElementById('extraordinary-idea');
+                    document.getElementById('extraordinary-btn').disabled = true;
+                    break;
+            }
+           
             textarea.value = '';
             document.getElementById(`${type}-count`).textContent = '0';
-            document.getElementById(`${type}-btn`).disabled = true;
         }
-        
+       
         // Typing animation
         const subtitle = document.querySelector('.typing-animation');
         const fullText = subtitle.textContent;
         subtitle.textContent = '';
-        
+       
         let charIndex = 0;
         function typeText() {
             if(charIndex < fullText.length) {
@@ -496,13 +733,18 @@
             } else {
                 // Keep the cursor blinking
                 setInterval(() => {
-                    subtitle.style.borderRightColor = subtitle.style.borderRightColor === 'transparent' ? '#ffffff' : 'transparent';
+                    subtitle.style.borderRightColor = subtitle.style.borderRightColor === 'transparent' ? '#fff' : 'transparent';
                 }, 700);
             }
         }
-        
+       
         // Start typing animation after a short delay
         setTimeout(typeText, 1000);
+       
+        // Initialize counters
+        document.getElementById('product-count').textContent = document.getElementById('product-idea').value.length;
+        document.getElementById('innovation-count').textContent = document.getElementById('innovation-idea').value.length;
+        document.getElementById('extraordinary-count').textContent = document.getElementById('extraordinary-idea').value.length;
     </script>
 </body>
 </html>
