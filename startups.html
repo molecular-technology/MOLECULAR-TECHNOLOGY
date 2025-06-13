@@ -129,6 +129,9 @@
         .nav-btn {
             font-family: 'Orbitron', sans-serif;
             background: rgba(30, 30, 30, 0.8);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
             border: 1px solid rgba(255, 0, 0, 0.5);
             color: #ffffff;
             padding: 12px 25px;
@@ -495,14 +498,15 @@
         <i class="fas fa-check-circle"></i>
         <span>Your Idea Has Been Submitted Successfully!</span>
     </div>
-   
+    
+   <!--I'll Remake It Later -->
     <!-- Email Modal -->
     <div class="email-modal" id="emailModal">
         <div class="modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
             <div class="modal-header">
-                <h2 class="modal-title">ENTER YOUR EMAIL</h2>
-                <p>We'll send a confirmation or feedback to your email address.</p>
+                <h2 class="modal-title">PLEASE ENTER YOUR EMAIL</h2>
+                <p>We'll send a confirmation or feedback to your email address soon!</p>
             </div>
             <input type="email" class="modal-input" id="userEmail" placeholder="Please Enter Your Email For Feedback Here.(Example : saikat123@example.com)." required>
             <button class="modal-btn" id="confirmEmail">CONFIRM & SEND MY IDEA</button>
@@ -523,12 +527,14 @@
     <!-- Navigation Buttons -->
     <div class="container">
         <div class="nav-buttons">
-            <button class="nav-btn">HOME</button>
-            <button class="nav-btn">INNOVATIONS</button>
-            <button class="nav-btn" style="background: rgba(255, 0, 0, 0.3);">STARTUPS</button>
-            <button class="nav-btn">ABOUT</button>
-            <button class="nav-btn">CONTACT</button>
-        </div>
+    <a href="index.html" class="nav-btn">HOME</a>
+    <a href="innovations.html" class="nav-btn">INNOVATIONS</a>
+    <a href="marketx.html" class="nav-btn">MARKETX</a>
+    <a href="announces.html" class="nav-btn">ANNOUNCES</a>
+    <a href="startups.html" class="nav-btn" style="background: rgba(255, 0, 0, 0.3);">STARTUP</a>
+    <a href="issues.html" class="nav-btn">ISSUES</a>
+    <a href="help.html" class="nav-btn">HELP</a>
+</div>
     </div>
    
     <!-- Idea Submission Sections -->
@@ -538,13 +544,13 @@
             <section class="idea-section">
                 <div class="section-header">
                     PRODUCT IMPROVEMENT IDEAS
-                    <div class="char-requirement">Minimum 100 Characters</div>
+                    <div class="char-requirement">Minimum 100 Characters Required!</div>
                 </div>
                 <div class="form-container">
                     <textarea class="idea-input" placeholder="Share your improvement ideas here for our products..." minlength="100" id="product-idea"></textarea>
                     <div class="char-count"><span id="product-count">0</span>/100 characters</div>
                     <button class="submit-btn" id="product-btn" disabled>
-                        <i class="fas fa-paper-plane"></i> SEND MY IMPROVEMENT IDEA
+                        <i class="fas fa-paper-plane"></i> SEND MY IMPROVEMENT IDEA!
                     </button>
                 </div>
             </section>
@@ -553,13 +559,13 @@
             <section class="idea-section">
                 <div class="section-header">
                     NEW INNOVATION IDEAS
-                    <div class="char-requirement">Minimum 700 Characters</div>
+                    <div class="char-requirement">Minimum 700 Characters Required!</div>
                 </div>
                 <div class="form-container">
                     <textarea class="idea-input" placeholder="Describe your fresh innovative idea in detail here..." minlength="700" id="innovation-idea"></textarea>
                     <div class="char-count"><span id="innovation-count">0</span>/700 characters</div>
                     <button class="submit-btn" id="innovation-btn" disabled>
-                        <i class="fas fa-lightbulb"></i> SEND MY INNOVATION IDEA
+                        <i class="fas fa-lightbulb"></i> SEND MY INNOVATION IDEA!
                     </button>
                 </div>
             </section>
@@ -568,13 +574,13 @@
             <section class="idea-section">
                 <div class="section-header">
                     EXTRAORDINARY IDEAS
-                    <div class="char-requirement">Minimum 1000 Characters</div>
+                    <div class="char-requirement">Minimum 1000 Characters Required!</div>
                 </div>
                 <div class="form-container">
                     <textarea class="idea-input" placeholder="Input your extraordinary and groundbreaking idea here..." minlength="1000" id="extraordinary-idea"></textarea>
                     <div class="char-count"><span id="extraordinary-count">0</span>/1000 characters</div>
                     <button class="submit-btn" id="extraordinary-btn" disabled>
-                        <i class="fas fa-rocket"></i> SEND MY EXTRAORDINARY IDEA
+                        <i class="fas fa-rocket"></i> SEND MY EXTRAORDINARY IDEA!
                     </button>
                 </div>
             </section>
@@ -673,7 +679,7 @@
            
             // Prepare email content
             const subject = `${currentIdeaType.toUpperCase()} Idea Submission from ${userEmail}`;
-            const body = `New idea submission from: ${userEmail}\n\nType: ${currentIdeaType}\n\nIdea Content:\n${currentIdeaContent}`;
+            const body = `New idea submission from: ${userEmail}\n\nType: ${currentIdeaType}\n\nIdea Content Text:\n${currentIdeaContent}`;
            
             // Create a mailto link - this will open the user's email client
             const mailtoLink = `mailto:${currentRecipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
