@@ -201,11 +201,11 @@
             border: 1px solid rgba(255, 0, 0, 0.2);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 40px;
+            animation: fadeIn 0.5s ease;
         }
         
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.5s ease;
         }
         
         @keyframes fadeIn {
@@ -453,6 +453,11 @@
             box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
         }
         
+        .post-btn:disabled {
+            background: linear-gradient(90deg, #555, #777);
+            cursor: not-allowed;
+        }
+        
         .issues-list {
             display: grid;
             gap: 20px;
@@ -626,6 +631,7 @@
             height: 40px;
             animation: spin 1s linear infinite;
             margin: 20px auto;
+            display: none;
         }
         
         @keyframes spin {
@@ -691,7 +697,7 @@
         <div class="container">
             <h1 class="page-title">ISSUES</h1>
             <div class="subtitle">
-                <div class="typing-animation">Find Solutions, Report Problems, Post Issues Publicly And Get Help For All Molecular Technology's Innovations</div>
+                <div class="typing-animation">Find solutions, report problems, and get help for all Molecular Technology products</div>
             </div>
             <div class="red-line"></div>
         </div>
@@ -702,11 +708,10 @@
         <div class="nav-buttons">
             <a href="index.html" class="nav-btn">HOME</a>
             <a href="innovations.html" class="nav-btn">INNOVATIONS</a>
-            <a herf="marketx.html" class="nav-btn">MARKETX</a>
-            <a herf="announces.html" class="nav-btn">ANNOUNCES</a>
-            <a href="startups.html" class="nav-btn">STARTUPS</a>
-            <a href="issues.html" class="nav-btn" style="background: rgba(255, 0, 0, 0.3);">ISSUES</a>
-            <a href="help.html" class="nav-btn">HELP</a>
+            <a href="startups.html" class="nav-btn">STARTUP</a>
+            <a href="#" class="nav-btn" style="background: rgba(255, 0, 0, 0.3);">ISSUES</a>
+            <a href="about.html" class="nav-btn">ABOUT</a>
+            <a href="contact.html" class="nav-btn">CONTACT</a>
         </div>
     </div>
     
@@ -725,7 +730,7 @@
             <h2 class="section-title">Frequently Asked Questions(FAQ)</h2>
             
             <div class="search-container">
-                <input type="text" class="search-box" id="faqSearch" placeholder="Search for your issue...">
+                <input type="text" class="search-box" id="faqSearch" placeholder="Search for questions...">
             </div>
             
             <div class="faq-list" id="faqList">
@@ -753,7 +758,7 @@
                 </div>
                 
                 <button class="submit-btn" id="submitComplain">
-                    <i class="fas fa-paper-plane"></i> SEND MY ISSUE
+                    <i class="fas fa-paper-plane"></i> SEND MY COMPLAIN
                 </button>
             </div>
         </div>
@@ -782,7 +787,6 @@
             </div>
             
             <div class="issues-list" id="issuesList">
-                <div class="spinner" id="loadingSpinner"></div>
                 <!-- Live issues will be added here by JavaScript -->
             </div>
         </div>
@@ -790,7 +794,7 @@
     
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2025 MOLECULAR TECHNOLOGY | We'll Support Everyone Equally 24*7. ✓</p>
+        <p>&copy; 2025 MOLECULAR TECHNOLOGY | We're Working 24*7 To Solve Your Issue. ✓</p>
     </div>
     
     <script>
@@ -841,10 +845,50 @@
             }
         ];
         
-        // Gist details for persistent storage
-        const GIST_ID = "https://gist.github.com/molecular-technology/cdf47c71a6e73203cfeeb96de6ddb568"; // It's My Actual Gist ID
-        const GIST_FILENAME = "issues.json";
-        const GIST_API_URL = `https://api.github.com/gists/${GIST_ID}`;
+        // Sample issues data
+        let issues = [
+            {
+                id: 1,
+                product: "Quantum AI Assistant",
+                content: "The voice recognition has become very unresponsive after the latest update. It takes multiple attempts to get it to understand simple commands. This started happening about 3 days ago.",
+                date: "2023-10-15",
+                likes: 12,
+                liked: false,
+                replies: [
+                    {
+                        id: 1,
+                        author: "Admin",
+                        content: "We're aware of this issue and working on a fix. A patch will be released within 48 hours. In the meantime, try clearing the cache from settings.",
+                        date: "2023-10-16"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                product: "Nano Health Tracker",
+                content: "My sleep tracking data seems inaccurate. It shows me as awake when I know I was sleeping. This happens about 3 nights per week. I've tried adjusting the band tightness but it doesn't help.",
+                date: "2023-10-12",
+                likes: 8,
+                liked: true,
+                replies: []
+            },
+            {
+                id: 3,
+                product: "BioSync Smartwatch",
+                content: "The battery drains extremely fast when using the GPS for workouts. From 100% to 20% in just 90 minutes of running. This is much worse than advertised battery life.",
+                date: "2023-10-10",
+                likes: 24,
+                liked: false,
+                replies: [
+                    {
+                        id: 1,
+                        author: "Admin",
+                        content: "Thank you for reporting this. We've identified a firmware issue affecting battery performance during GPS activities. An update addressing this will be available next week.",
+                        date: "2023-10-11"
+                    }
+                ]
+            }
+        ];
         
         // Initialize the page
         function initPage() {
@@ -853,10 +897,12 @@
             initProductSearch();
             setupComplainForm();
             setupIssueForm();
-            loadIssues();
-            
-            // Typing animation
+            renderIssues();
             initTypingAnimation();
+            
+            // Set Live Issues as default tab
+            document.querySelector('[data-tab="live-issues"]').classList.add('active');
+            document.getElementById('live-issues').classList.add('active');
         }
         
         // Initialize FAQ
@@ -993,6 +1039,11 @@
                     return;
                 }
                 
+                if(product === "Product Name") {
+                    showSuccessMessage('Please select a product for your complaint');
+                    return;
+                }
+                
                 // Prepare email
                 const subject = `Complaint about ${product}`;
                 const body = `Product: ${product}\n\nComplaint Details:\n${message}`;
@@ -1005,6 +1056,9 @@
                 complainText.value = '';
                 complainCount.textContent = '0';
                 document.getElementById('complainSelectedProduct').style.display = 'none';
+                
+                // Show success message
+                showSuccessMessage('Complaint submitted successfully! Please check your email client to send the message.');
             });
         }
         
@@ -1012,13 +1066,15 @@
         function setupIssueForm() {
             const issueText = document.getElementById('issueText');
             const issueCount = document.getElementById('issueCount');
+            const postIssue = document.getElementById('postIssue');
             
             issueText.addEventListener('input', function() {
                 const count = this.value.length;
                 issueCount.textContent = count;
+                postIssue.disabled = count < 100 || count > 1000;
             });
             
-            document.getElementById('postIssue').addEventListener('click', async function() {
+            postIssue.addEventListener('click', function() {
                 const product = document.querySelector('#issueSelectedProduct span').textContent;
                 const content = issueText.value;
                 
@@ -1029,6 +1085,11 @@
                 
                 if(content.length > 1000) {
                     showSuccessMessage('Please limit your issue to 1000 characters');
+                    return;
+                }
+                
+                if(product === "Product Name") {
+                    showSuccessMessage('Please select a product for your issue');
                     return;
                 }
                 
@@ -1043,12 +1104,16 @@
                     replies: []
                 };
                 
-                // Save to persistent storage
-                await saveIssue(newIssue);
+                // Add to issues
+                issues.unshift(newIssue);
+                
+                // Update UI
+                renderIssues();
                 
                 // Reset form
                 issueText.value = '';
                 issueCount.textContent = '0';
+                postIssue.disabled = true;
                 document.getElementById('issueSelectedProduct').style.display = 'none';
                 
                 // Show success message
@@ -1056,69 +1121,8 @@
             });
         }
         
-        // Save issue to Gist
-        async function saveIssue(issue) {
-            try {
-                // Get existing issues
-                const response = await fetch(GIST_API_URL);
-                const gistData = await response.json();
-                const content = gistData.files[GIST_FILENAME].content;
-                let issues = content ? JSON.parse(content) : [];
-                
-                // Add new issue
-                issues.unshift(issue);
-                
-                // Update gist
-                await fetch(GIST_API_URL, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        // Authorization not needed for public gists
-                    },
-                    body: JSON.stringify({
-                        files: {
-                            [GIST_FILENAME]: {
-                                content: JSON.stringify(issues, null, 2)
-                            }
-                        }
-                    })
-                });
-                
-                // Update UI
-                renderIssues(issues);
-            } catch (error) {
-                console.error('Error saving issue:', error);
-                showSuccessMessage('Error saving issue. Using local storage instead.');
-                
-                // Fallback to localStorage
-                let issues = JSON.parse(localStorage.getItem('issues') || [];
-                issues.unshift(issue);
-                localStorage.setItem('issues', JSON.stringify(issues));
-                renderIssues(issues);
-            }
-        }
-        
-        // Load issues from Gist
-        async function loadIssues() {
-            try {
-                const response = await fetch(GIST_API_URL);
-                const gistData = await response.json();
-                const content = gistData.files[GIST_FILENAME].content;
-                const issues = content ? JSON.parse(content) : [];
-                
-                renderIssues(issues);
-            } catch (error) {
-                console.error('Error loading issues:', error);
-                showSuccessMessage('Loading issues from local storage');
-                
-                // Fallback to localStorage
-                const issues = JSON.parse(localStorage.getItem('issues')) || [];
-                renderIssues(issues);
-            }
-        }
-        
         // Render issues to the page
-        function renderIssues(issues) {
+        function renderIssues() {
             const issuesList = document.getElementById('issuesList');
             issuesList.innerHTML = '';
             
@@ -1141,6 +1145,14 @@
                             <i class="fas fa-thumbs-up"></i> <span>${issue.likes}</span>
                         </button>
                     </div>
+                    <div class="admin-controls">
+                        <button class="admin-btn reply-btn" data-id="${issue.id}">Reply</button>
+                        <button class="admin-btn delete-btn" data-id="${issue.id}">Delete</button>
+                    </div>
+                    <div class="reply-form" id="replyForm-${issue.id}">
+                        <textarea class="reply-text" placeholder="Write your reply as admin..."></textarea>
+                        <button class="admin-btn submit-reply" data-id="${issue.id}">Submit Reply</button>
+                    </div>
                     ${issue.replies.length > 0 ? `
                     <div class="replies-container">
                         ${issue.replies.map(reply => `
@@ -1157,18 +1169,56 @@
                 `;
                 issuesList.appendChild(issueCard);
                 
-                // Add like event listener
+                // Add event listeners
                 const likeBtn = issueCard.querySelector('.like-btn');
                 likeBtn.addEventListener('click', function() {
-                    const liked = this.classList.contains('liked');
-                    const likesSpan = this.querySelector('span');
+                    const issueId = parseInt(this.getAttribute('data-id'));
+                    const issue = issues.find(i => i.id === issueId);
                     
-                    if(liked) {
-                        this.classList.remove('liked');
-                        likesSpan.textContent = parseInt(likesSpan.textContent) - 1;
-                    } else {
-                        this.classList.add('liked');
-                        likesSpan.textContent = parseInt(likesSpan.textContent) + 1;
+                    if(issue) {
+                        issue.liked = !issue.liked;
+                        if(issue.liked) {
+                            issue.likes++;
+                        } else {
+                            issue.likes--;
+                        }
+                        renderIssues();
+                    }
+                });
+                
+                const replyBtn = issueCard.querySelector('.reply-btn');
+                replyBtn.addEventListener('click', function() {
+                    const issueId = parseInt(this.getAttribute('data-id'));
+                    const replyForm = document.getElementById(`replyForm-${issueId}`);
+                    replyForm.style.display = replyForm.style.display === 'block' ? 'none' : 'block';
+                });
+                
+                const deleteBtn = issueCard.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', function() {
+                    const issueId = parseInt(this.getAttribute('data-id'));
+                    if(confirm('Are you sure you want to delete this issue?')) {
+                        issues = issues.filter(i => i.id !== issueId);
+                        renderIssues();
+                        showSuccessMessage('Issue deleted successfully!');
+                    }
+                });
+                
+                const submitReply = issueCard.querySelector('.submit-reply');
+                submitReply.addEventListener('click', function() {
+                    const issueId = parseInt(this.getAttribute('data-id'));
+                    const issue = issues.find(i => i.id === issueId);
+                    const replyText = document.querySelector(`#replyForm-${issueId} .reply-text`).value;
+                    
+                    if(replyText.trim() !== '') {
+                        issue.replies.push({
+                            id: Date.now(),
+                            author: "Admin",
+                            content: replyText,
+                            date: new Date().toLocaleDateString()
+                        });
+                        
+                        renderIssues();
+                        showSuccessMessage('Reply posted successfully!');
                     }
                 });
             });
