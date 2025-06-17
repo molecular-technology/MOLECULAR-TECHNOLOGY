@@ -12,25 +12,25 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: #0a0a0a;
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(40, 40, 40, 0.2) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(60, 60, 60, 0.15) 0%, transparent 20%);
             padding-bottom: 50px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header with animation */
         .page-header {
             text-align: center;
@@ -38,7 +38,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .page-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 4.5rem;
@@ -50,7 +50,7 @@
             position: relative;
             animation: titleGlow 3s infinite alternate;
         }
-        
+
         @keyframes titleGlow {
             0% {
                 text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
@@ -59,7 +59,7 @@
                 text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
             }
         }
-        
+
         .subtitle {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
@@ -71,18 +71,18 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .typing-animation {
             border-right: 2px solid #fff;
             padding-right: 5px;
             animation: blink 0.7s infinite;
         }
-        
+
         @keyframes blink {
             0%, 100% { border-color: transparent; }
             50% { border-color: #fff; }
         }
-        
+
         .red-line {
             height: 3px;
             background: linear-gradient(90deg, transparent, #ff0000, transparent);
@@ -90,7 +90,7 @@
             margin: 20px auto;
             position: relative;
         }
-        
+
         .red-line::before, .red-line::after {
             content: '';
             position: absolute;
@@ -100,23 +100,23 @@
             background: #ff0000;
             animation: linePulse 2s infinite;
         }
-        
+
         .red-line::before {
             left: 0;
             animation-delay: 0s;
         }
-        
+
         .red-line::after {
             right: 0;
             animation-delay: 1s;
         }
-        
+
         @keyframes linePulse {
             0% { opacity: 0; width: 20px; }
             50% { opacity: 1; width: 100px; }
             100% { opacity: 0; width: 20px; }
         }
-        
+
         /* Navigation buttons */
         .nav-buttons {
             display: flex;
@@ -125,7 +125,7 @@
             padding: 20px;
             flex-wrap: wrap;
         }
-        
+
         .nav-btn {
             font-family: 'Orbitron', sans-serif;
             background: rgba(30, 30, 30, 0.8);
@@ -143,7 +143,7 @@
             display: inline-block;
             text-align: center;
         }
-        
+
         .nav-btn::before {
             content: '';
             position: absolute;
@@ -155,17 +155,17 @@
             transition: 0.5s;
             z-index: -1;
         }
-        
+
         .nav-btn:hover {
             background: rgba(255, 0, 0, 0.3);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
         }
-        
+
         .nav-btn:hover::before {
             left: 100%;
         }
-        
+
         /* Tabs */
         .tabs {
             display: flex;
@@ -174,7 +174,7 @@
             gap: 10px;
             flex-wrap: wrap;
         }
-        
+
         .tab-btn {
             padding: 12px 25px;
             background: rgba(40, 40, 40, 0.8);
@@ -185,13 +185,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .tab-btn.active, .tab-btn:hover {
             background: rgba(255, 0, 0, 0.5);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
         }
-        
+
         /* Tab content */
         .tab-content {
             display: none;
@@ -203,16 +203,16 @@
             margin-bottom: 40px;
             animation: fadeIn 0.5s ease;
         }
-        
+
         .tab-content.active {
             display: block;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .section-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
@@ -221,24 +221,24 @@
             border-bottom: 2px solid #ff0000;
             color: #fff;
         }
-        
+
         /* Form styles */
         .help-form {
             display: grid;
             gap: 25px;
         }
-        
+
         .input-group {
             position: relative;
         }
-        
+
         .input-label {
             display: block;
             margin-bottom: 8px;
             font-family: 'Orbitron', sans-serif;
             color: #ff0000;
         }
-        
+
         .input-field {
             width: 100%;
             padding: 15px 20px;
@@ -249,25 +249,25 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
         }
-        
+
         .input-field:focus {
             outline: none;
             border-color: #ff0000;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
         }
-        
+
         textarea.input-field {
             min-height: 200px;
             resize: vertical;
         }
-        
+
         .char-count {
             text-align: right;
             margin-top: 8px;
             font-size: 0.9rem;
             opacity: 0.7;
         }
-        
+
         .submit-btn {
             padding: 15px;
             background: linear-gradient(90deg, #333, #ff0000);
@@ -281,7 +281,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .submit-btn::before {
             content: '';
             position: absolute;
@@ -292,24 +292,24 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: 0.5s;
         }
-        
+
         .submit-btn:hover {
             background: linear-gradient(90deg, #444, #ff3333);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
         }
-        
+
         .submit-btn:hover::before {
             left: 100%;
         }
-        
+
         .submit-btn:disabled {
             background: linear-gradient(90deg, #555, #777);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
-        
+
         /* Success message */
         .success-message {
             position: fixed;
@@ -329,11 +329,11 @@
             gap: 10px;
             border-left: 4px solid #ff0000;
         }
-        
+
         .success-message.show {
             transform: translateX(0);
         }
-        
+
         /* Info cards */
         .info-cards {
             display: grid;
@@ -341,7 +341,7 @@
             gap: 25px;
             margin-top: 40px;
         }
-        
+
         .info-card {
             background: rgba(30, 30, 30, 0.7);
             border-radius: 15px;
@@ -349,30 +349,30 @@
             border: 1px solid rgba(255, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
-        
+
         .info-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
             border-color: rgba(255, 0, 0, 0.5);
         }
-        
+
         .card-icon {
             font-size: 2.5rem;
             color: #ff0000;
             margin-bottom: 15px;
         }
-        
+
         .card-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.4rem;
             margin-bottom: 15px;
         }
-        
+
         .card-content {
             line-height: 1.6;
             color: #ddd;
         }
-        
+
         /* Footer */
         .footer {
             text-align: center;
@@ -383,46 +383,46 @@
             font-family: 'Montserrat', sans-serif;
             color: #aaa;
         }
-        
+
         /* Responsive design */
         @media (max-width: 768px) {
             .page-title {
                 font-size: 3rem;
             }
-            
+
             .subtitle {
                 font-size: 1.2rem;
                 height: 80px;
             }
-            
+
             .nav-buttons {
                 gap: 10px;
             }
-            
+
             .nav-btn {
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
-            
+
             .section-title {
                 font-size: 1.5rem;
             }
-            
+
             .info-cards {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 480px) {
             .page-title {
                 font-size: 2.2rem;
             }
-            
+
             .subtitle {
                 font-size: 1rem;
                 height: 100px;
             }
-            
+
             .tab-btn {
                 padding: 10px 15px;
                 font-size: 0.9rem;
@@ -436,31 +436,31 @@
         <i class="fas fa-check-circle"></i>
         <span id="successText">Your message has been submitted successfully!</span>
     </div>
-    
+
     <!-- Page Header -->
     <header class="page-header">
         <div class="container">
             <h1 class="page-title">HELP CENTRE</h1>
             <div class="subtitle">
-                <div class="typing-animation">Get Direct Technical Support From Us Or Promote Your Products Through Our Website.</div>
+                <div class="typing-animation" id="typingElement">Get Technical Support Or Promote Your Brand's Products In Our Website.</div>
             </div>
             <div class="red-line"></div>
         </div>
     </header>
-    
+
     <!-- Navigation Buttons -->
     <div class="container">
         <div class="nav-buttons">
             <a href="index.html" class="nav-btn">HOME</a>
             <a href="innovations.html" class="nav-btn">INNOVATIONS</a>
             <a herf="marketx.html" class="nav-btn">MARKETX</a>
-            <a herf="announces.html" class=""nav-btn>ANNOUNCES</a>
+            <a herf="announces.html" class="nav-btn">MARKETX</a>
             <a href="startups.html" class="nav-btn">STARTUPS</a>
             <a href="issues.html" class="nav-btn">ISSUES</a>
             <a href="help.html" class="nav-btn" style="background: rgba(255, 0, 0, 0.3);">HELP</a>
         </div>
     </div>
-    
+
     <!-- Tab Buttons -->
     <div class="container">
         <div class="tabs">
@@ -468,79 +468,79 @@
             <button class="tab-btn" data-tab="brand-promotion">Brand Promotion</button>
         </div>
     </div>
-    
+
     <!-- Tech Support Section -->
     <div class="container">
         <div class="tab-content active" id="tech-support">
             <h2 class="section-title">Technical Support</h2>
             <p class="card-content" style="margin-bottom: 25px;">Experiencing technical issues? Let us know the details and our team will assist you promptly.</p>
-            
+
             <div class="help-form">
                 <div class="input-group">
                     <label class="input-label">Your Name</label>
                     <input type="text" class="input-field" id="techName" placeholder="Enter your full name">
                 </div>
-                
+
                 <div class="input-group">
                     <label class="input-label">Email Address</label>
-                    <input type="email" class="input-field" id="techEmail" placeholder="youremail@example.com">
+                    <input type="email" class="input-field" id="techEmail" placeholder="your.email@example.com">
                 </div>
-                
+
                 <div class="input-group">
                     <label class="input-label">Product/Service</label>
-                    <input type="text" class="input-field" id="techProduct" placeholder="Which product are you having problem with?">
+                    <input type="text" class="input-field" id="techProduct" placeholder="Which product are you having issues with?">
                 </div>
-                
+
                 <div class="input-group">
                     <label class="input-label">Issue Description</label>
                     <textarea class="input-field" id="techIssue" placeholder="Describe your technical issue in detail (minimum 200 characters)..." minlength="200"></textarea>
                     <div class="char-count"><span id="techCharCount">0</span>/200 characters</div>
                 </div>
-                
+
                 <button class="submit-btn" id="submitTech">
                     <i class="fas fa-headset"></i> GET TECHNICAL SUPPORT
                 </button>
             </div>
         </div>
-        
+
         <!-- Brand Promotion Section -->
         <div class="tab-content" id="brand-promotion">
             <h2 class="section-title">Brand Promotion</h2>
-            <p class="card-content" style="margin-bottom: 25px;">Interested in promoting your brand with us? Share your proposal & product details.</p>
-            
+            <p class="card-content" style="margin-bottom: 25px;">Interested in promoting your brand's products with us? Share your proposal & product's details.</p>
+
             <div class="help-form">
                 <div class="input-group">
                     <label class="input-label">Brand/Company Name</label>
                     <input type="text" class="input-field" id="brandName" placeholder="Enter your brand name">
                 </div>
-                
+
                 <div class="input-group">
                     <label class="input-label">Contact Person</label>
                     <input type="text" class="input-field" id="contactPerson" placeholder="Full name of contact person">
                 </div>
-                
+
                 <div class="input-group">
                     <label class="input-label">Email Address</label>
                     <input type="email" class="input-field" id="brandEmail" placeholder="brand@example.com">
                 </div>
-                
+
                 <div class="input-group">
                     <label class="input-label">Phone Number</label>
                     <input type="tel" class="input-field" id="brandPhone" placeholder="+1 (123) 456-7890">
                 </div>
-                
+
                 <div class="input-group">
                     <label class="input-label">Promotion Details</label>
                     <textarea class="input-field" id="promotionDetails" placeholder="Describe your promotion proposal (minimum 200 characters)..." minlength="200"></textarea>
                     <div class="char-count"><span id="promoCharCount">0</span>/200 characters</div>
                 </div>
-                
+
                 <button class="submit-btn" id="submitBrand">
                     <i class="fas fa-bullhorn"></i> SUBMIT PROMOTION REQUEST
                 </button>
             </div>
         </div>
-        
+
         <!-- Additional Information Section -->
         <div class="info-cards">
             <div class="info-card">
@@ -550,7 +550,7 @@
                 <h3 class="card-title">Direct Email</h3>
                 <p class="card-content">Prefer to contact us directly? Email us at:<br><strong>moleculartechnology1@gmail.com</strong></p>
             </div>
-            
+
             <div class="info-card">
                 <div class="card-icon">
                     <i class="fas fa-clock"></i>
@@ -558,7 +558,7 @@
                 <h3 class="card-title">Response Time</h3>
                 <p class="card-content">Our team typically responds within 12-24 hours. For urgent matters, please include "URGENT" in your subject line.</p>
             </div>
-            
+
             <div class="info-card">
                 <div class="card-icon">
                     <i class="fas fa-shield-alt"></i>
@@ -568,12 +568,12 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2025 MOLECULAR TECHNOLOGY | </p>
+        <p>&copy; 2025 MOLECULAR TECHNOLOGY | We'll Try Our Best To Solve Your Every Problems.✓</p>
     </div>
-    
+
     <script>
         // Initialize the page
         function initPage() {
@@ -582,120 +582,154 @@
             setupFormSubmissions();
             initTypingAnimation();
         }
-        
+
         // Setup tab navigation
         function setupTabNavigation() {
             const tabButtons = document.querySelectorAll('.tab-btn');
-            
+
             tabButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     // Remove active class from all buttons and contents
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                    
+
                     // Add active class to clicked button
                     button.classList.add('active');
-                    
+
                     // Show corresponding content
                     const tabId = button.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
                 });
             });
         }
-        
+
         // Setup character counters
         function setupCharacterCounters() {
             const techIssue = document.getElementById('techIssue');
             const promoDetails = document.getElementById('promotionDetails');
-            
-            techIssue.addEventListener('input', function() {
-                document.getElementById('techCharCount').textContent = this.value.length;
-            });
-            
-            promoDetails.addEventListener('input', function() {
-                document.getElementById('promoCharCount').textContent = this.value.length;
-            });
+
+            if(techIssue) {
+                techIssue.addEventListener('input', function() {
+                    document.getElementById('techCharCount').textContent = this.value.length;
+                });
+                // Initialize counter
+                document.getElementById('techCharCount').textContent = techIssue.value.length;
+            }
+
+            if(promoDetails) {
+                promoDetails.addEventListener('input', function() {
+                    document.getElementById('promoCharCount').textContent = this.value.length;
+                });
+                // Initialize counter
+                document.getElementById('promoCharCount').textContent = promoDetails.value.length;
+            }
         }
-        
+
         // Setup form submissions
         function setupFormSubmissions() {
-            document.getElementById('submitTech').addEventListener('click', function() {
-                const name = document.getElementById('techName').value;
-                const email = document.getElementById('techEmail').value;
-                const product = document.getElementById('techProduct').value;
-                const issue = document.getElementById('techIssue').value;
-                
-                if(issue.length < 200) {
-                    showSuccessMessage('Please provide at least 200 characters describing your issue');
-                    return;
-                }
-                
-                // Prepare email
-                const subject = `Technical Support Request from ${name}`;
-                const body = `Name: ${name}\nEmail: ${email}\nProduct: ${product}\n\nIssue Details:\n${issue}`;
-                const mailtoLink = `mailto:moleculartechnology1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                // Open email client
-                window.location.href = mailtoLink;
-                
-                // Show success message
-                showSuccessMessage('Your support request has been submitted!');
-            });
+            const submitTechBtn = document.getElementById('submitTech');
+            const submitBrandBtn = document.getElementById('submitBrand');
             
-            document.getElementById('submitBrand').addEventListener('click', function() {
-                const brandName = document.getElementById('brandName').value;
-                const contactPerson = document.getElementById('contactPerson').value;
-                const email = document.getElementById('brandEmail').value;
-                const phone = document.getElementById('brandPhone').value;
-                const details = document.getElementById('promotionDetails').value;
-                
-                if(details.length < 200) {
-                    showSuccessMessage('Please provide at least 200 characters about your promotion');
-                    return;
-                }
-                
-                // Prepare email
-                const subject = `Brand Promotion Request from ${brandName}`;
-                const body = `Brand: ${brandName}\nContact: ${contactPerson}\nEmail: ${email}\nPhone: ${phone}\n\nPromotion Details:\n${details}`;
-                const mailtoLink = `mailto:moleculartechnology1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                // Open email client
-                window.location.href = mailtoLink;
-                
-                // Show success message
-                showSuccessMessage('Your promotion request has been submitted!');
-            });
+            if(submitTechBtn) {
+                submitTechBtn.addEventListener('click', handleTechSubmit);
+            }
+            
+            if(submitBrandBtn) {
+                submitBrandBtn.addEventListener('click', handleBrandSubmit);
+            }
         }
-        
+
+        function handleTechSubmit() {
+            const name = document.getElementById('techName').value;
+            const email = document.getElementById('techEmail').value;
+            const product = document.getElementById('techProduct').value;
+            const issue = document.getElementById('techIssue').value;
+
+            if(!name || !email || !product || !issue) {
+                showSuccessMessage('Please fill all required fields');
+                return;
+            }
+
+            if(issue.length < 200) {
+                showSuccessMessage('Please provide at least 200 characters describing your issue');
+                return;
+            }
+
+            // Prepare email
+            const subject = `Technical Support Request from ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\nProduct: ${product}\n\nIssue Details:\n${issue}`;
+            const mailtoLink = `mailto:moleculartechnology1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            showSuccessMessage('Your support request has been submitted!');
+        }
+
+        function handleBrandSubmit() {
+            const brandName = document.getElementById('brandName').value;
+            const contactPerson = document.getElementById('contactPerson').value;
+            const email = document.getElementById('brandEmail').value;
+            const phone = document.getElementById('brandPhone').value;
+            const details = document.getElementById('promotionDetails').value;
+
+            if(!brandName || !contactPerson || !email || !phone || !details) {
+                showSuccessMessage('Please fill all required fields');
+                return;
+            }
+
+            if(details.length < 200) {
+                showSuccessMessage('Please provide at least 200 characters about your promotion');
+                return;
+            }
+
+            // Prepare email
+            const subject = `Brand Promotion Request from ${brandName}`;
+            const body = `Brand: ${brandName}\nContact: ${contactPerson}\nEmail: ${email}\nPhone: ${phone}\n\nPromotion Details:\n${details}`;
+            const mailtoLink = `mailto:moleculartechnology1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            showSuccessMessage('Your promotion request has been submitted!');
+        }
+
         // Show success message
         function showSuccessMessage(message) {
             const successMsg = document.getElementById('successMessage');
             const successText = document.getElementById('successText');
-            
+
+            if(!successMsg || !successText) return;
+
             successText.textContent = message;
             successMsg.classList.add('show');
-            
+
             setTimeout(() => {
                 successMsg.classList.remove('show');
             }, 5000);
         }
-        
+
         // Initialize typing animation
         function initTypingAnimation() {
-            const subtitle = document.querySelector('.typing-animation');
-            const fullText = subtitle.textContent;
-            subtitle.textContent = '';
+            const typingElement = document.getElementById('typingElement');
+            if(!typingElement) return;
+            
+            const fullText = typingElement.textContent;
+            typingElement.textContent = '';
             
             let charIndex = 0;
             function typeText() {
                 if(charIndex < fullText.length) {
-                    subtitle.textContent += fullText.charAt(charIndex);
+                    typingElement.textContent += fullText.charAt(charIndex);
                     charIndex++;
                     setTimeout(typeText, 50);
                 } else {
                     // Keep the cursor blinking
                     setInterval(() => {
-                        subtitle.style.borderRightColor = subtitle.style.borderRightColor === 'transparent' ? '#fff' : 'transparent';
+                        const currentColor = typingElement.style.borderRightColor;
+                        typingElement.style.borderRightColor = currentColor === 'transparent' ? '#fff' : 'transparent';
                     }, 700);
                 }
             }
@@ -703,9 +737,9 @@
             // Start typing animation after a short delay
             setTimeout(typeText, 1000);
         }
-        
+
         // Initialize the page when loaded
-        window.addEventListener('DOMContentLoaded', initPage);
+        document.addEventListener('DOMContentLoaded', initPage);
     </script>
 </body>
 </html>
