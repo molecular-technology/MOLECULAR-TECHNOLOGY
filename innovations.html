@@ -1065,7 +1065,7 @@
         }
 
         .share-option {
-            background: #222;
+            background: #000000;
             border-radius: 10px;
             padding: 15px;
             text-align: center;
@@ -1077,18 +1077,18 @@
         .share-option:hover {
             transform: translateY(-5px);
             border-color: #00cc66;
-            box-shadow: 0 0 15px rgba(0, 204, 102, 0.4);
+            box-shadow: 0 0 15px rgba(255, 0, 0);
         }
 
         .share-icon {
             font-size: 2rem;
             margin-bottom: 10px;
-            color: #00cc66;
+            color: #ff0000;
         }
 
         .share-label {
             font-size: 0.9rem;
-            color: #ccc;
+            color: #ff0000;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
@@ -1812,10 +1812,10 @@
             platformBtn.classList.add('action-btn');
             if (product.isPaid) {
                 platformBtn.classList.add('buy-btn');
-                platformBtn.innerHTML = `<i class="fas fa-shopping-cart"></i> GET IT - $${product.price}`;
+                platformBtn.innerHTML = `<i class="fas fa-shopping-cart"></i> PURCHASE NOW ⟫ $${product.price}`;
             } else {
                 platformBtn.classList.add('download-btn');
-                platformBtn.innerHTML = `<i class="fas fa-download"></i> GET IT`;
+                platformBtn.innerHTML = `<i class="fas fa-download"></i> DOWNLOAD NOW`;
             }
             platformBtn.addEventListener('click', () => {
                 showPlatformModal(product);
