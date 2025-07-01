@@ -1053,7 +1053,7 @@
         .share-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 25px rgba(0, 204, 102, 0.6);
-            background: linear-gradient(45deg, #ff0000, #c70000);
+            background: linear-gradient(45deg, #00ff88, #00cc66);
         }
 
         .share-options {
@@ -1076,7 +1076,7 @@
         .share-option:hover {
             transform: translateY(-5px);
             border-color: #ff0000;
-            box-shadow: 0 0 15px rgba(0, 204, 102, 0.4);
+            box-shadow: 0 0 15px rgba(255, 2, 2);
         }
 
         .share-icon {
@@ -1794,10 +1794,10 @@
             platformBtn.classList.add('action-btn');
             if (product.isPaid) {
                 platformBtn.classList.add('buy-btn');
-                platformBtn.innerHTML = `<i class="fas fa-shopping-cart"></i> GET IT - $${product.price}`;
+                platformBtn.innerHTML = `<i class="fas fa-shopping-cart"></i>  PURCHASE NOW- $${product.price}`;
             } else {
                 platformBtn.classList.add('download-btn');
-                platformBtn.innerHTML = `<i class="fas fa-download"></i> GET IT`;
+                platformBtn.innerHTML = `<i class="fas fa-download"></i> GET NOW`;
             }
             platformBtn.addEventListener('click', () => {
                 showPlatformModal(product);
@@ -1890,7 +1890,7 @@
             switch(method) {
                 case 'copy':
                     navigator.clipboard.writeText(productUrl)
-                        .then(() => alert('Link copied to clipboard!'))
+                        .then(() => alert('Product Sharing link copied to your clipboard!'))
                         .catch(err => console.error('Could not copy text: ', err));
                     break;
                     
